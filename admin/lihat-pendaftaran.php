@@ -177,7 +177,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th><center>ID Pendaftar</center></th>
+                    <th><center>ID Pendaftaran</center></th>
                     <th><center>Nomor Pendaftaran</center></th>
                     <th><center>Tanggal Pendaftaran</center></th>
                     <th><center>Opsi</center></th>
