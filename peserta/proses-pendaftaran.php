@@ -50,11 +50,12 @@
                     <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                         <div class="card-body">
                               <?php
-                              $connection = mysqli_connect("localhost:3306", "root", "", "peserta_pelatihan");
+                              include 'koneksi.php';
+                              $nik = $_POST['nik'];
                               $nama = $_POST['nama'];
                               $umur = $_POST['umur'];
                               $tempat_lahir = $_POST['tempat_lahir'];
-                              $tgl_lahir = $_POST['tgl_lahir'];
+                              $tgl_lahir = date($_POST['tgl_lahir']);
                               $pendidikan = $_POST['pendidikan'];
                               $tahun_lulus = $_POST['tahun_lulus'];
                               $agama = $_POST['agama'];
@@ -65,37 +66,8 @@
                               $no_telp = $_POST['no_telp'];
 
                               if($connection){
-                                echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </h3></center> ";
-                                echo "<p>";
-                                echo "<br>";
-                                echo "Nama          : $nama";
-                                echo "<br>";
-                                echo "umur          : $umur";
-                                echo "<br>";
-                                echo "Tempat Lahir  : $tempat_lahir";
-                                echo "<br>";
-                                echo "Tanggal Lahir : $tgl_lahir";
-                                echo "<br>";
-                                echo "Pendidikan    : $pendidikan";
-                                echo "<br>";
-                                echo "Tahun Lulus   : $tahun_lulus";
-                                echo "<br>";
-                                echo "Agama         : $agama";
-                                echo "<br>";
-                                echo "Jenis Kelamin : $jenis_kelamin";
-                                echo "<br>";
-                                echo "Tinggi Badan  : $tinggi_badan";
-                                echo "<br>";
-                                echo "Berat Badan   : $berat_badan";
-                                echo "<br>";
-                                echo "Alamat Rumah  : $alamat_rumah";
-                                echo "<br>";
-                                echo "Nomor Telepon : $no_telp";
-                                echo "<br>";
-                                echo "</p>";
-
-                                $query ="INSERT INTO pendaftaran (id_calon_peserta,nama, umur, tempat_lahir, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan, berat_badan, alamat_rumah, no_telp)
-                                VALUES ('".$_SESSION['id_calon_peserta']."','$nama', '$umur', '$tempat_lahir', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah', '$no_telp')";
+                                $query ="insert into pendaftaran (nik, nama, umur, tempat_lahir, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan, berat_badan, alamat_rumah, no_telp)
+                                VALUES ('$nama','')";
 
                                 $hasil = mysqli_query($connection,$query);
                                 echo "<br>";
