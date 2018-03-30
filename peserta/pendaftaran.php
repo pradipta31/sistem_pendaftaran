@@ -58,6 +58,9 @@
                             <div class="card-body">
                                 <form  name="form" method="post" action="proses-pendaftaran.php" onsubmit="return validasi_input(this)">
                                     <p class="h1 text-center py-1">Form Input</p>
+                                    <label style="font-size: 14px">NIK</label>
+                                    <input type="number" class="form-control" name="nik">
+                                    <br>
                                     <label style="font-size: 14px">Nama Lengkap</label>
                                     <input type="text" class="form-control" name="nama">
                                     <br>
@@ -95,7 +98,7 @@
                                     <input type="text" class="form-control" name="agama">
                                     <br>
                                     <label style="font-size: 14px">Jenis Kelamin</label>
-                                    <select class="form-control" name="jenis_kelamin">
+                                    <select class="form-control" name="jenis_kelamin"  style="height: 36px">
                                         <option>-- Jenis Kelamin--</option>
                                         <option value="pria">Pria</option>
                                         <option value="wanita">Wanita</option>
@@ -124,8 +127,12 @@
         </section>
         <script type="text/javascript">
         function validasi_input(form){
-          if (form.nama.value == ""){
-            alert("kolom nama masih kosong!");
+          if (form.nik.value == ""){
+            alert("kolom NIK masih kosong!");
+            form.nik.focus();
+            return (false);
+          }else if (form.nama.value=="") {
+            alert("Kolom nama masih kosong");
             form.nama.focus();
             return (false);
           }else if (form.umur.value=="All") {

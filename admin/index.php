@@ -109,14 +109,9 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
           </a>
         </li>
         <li>
-          <a href="pendaftaranV1/lihat-pendaftaran.php">
+          <a href="lihat-pendaftaran.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
             <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
-          </a>
-        </li>
-        <li>
-          <a href="tambah-pendaftaran.php">
-            <i class="fa fa-bar-chart"></i> <span>Tambah Pendaftaran</span>
           </a>
         </li>
         <li class="treeview">

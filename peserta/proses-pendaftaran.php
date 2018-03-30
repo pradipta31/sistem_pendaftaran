@@ -49,8 +49,11 @@
                 <div class="form-input">
                     <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                         <div class="card-body">
+                          <form action="" method="post">
                               <?php
-                              $connection = mysqli_connect("localhost:3306", "root", "", "peserta_pelatihan");
+                              $connection = mysqli_connect("localhost", "root", "", "sistem_pendaftaran");
+
+                              $nik = $_POST['nik'];
                               $nama = $_POST['nama'];
                               $umur = $_POST['umur'];
                               $tempat_lahir = $_POST['tempat_lahir'];
@@ -67,6 +70,8 @@
                               if($connection){
                                 echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </h3></center> ";
                                 echo "<p>";
+                                echo "<br>";
+                                echo "NIK          : $nik";
                                 echo "<br>";
                                 echo "Nama          : $nama";
                                 echo "<br>";
@@ -94,10 +99,14 @@
                                 echo "<br>";
                                 echo "</p>";
 
-                                $query ="INSERT INTO pendaftaran (id_calon_peserta,nama, umur, tempat_lahir, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan, berat_badan, alamat_rumah, no_telp)
-                                VALUES ('".$_SESSION['id_calon_peserta']."','$nama', '$umur', '$tempat_lahir', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah', '$no_telp')";
-
-                                $hasil = mysqli_query($connection,$query);
+                                function tambahdata($nik, $nama, $umur, $tempat_lahir, $tgl_lahir, $pendidikan, $tahun_lulus, $agama, $jenis_kelamin, $tinggi_badan, $berat_badan, $alamat_rumah, $no_telp)
+                                {
+                                  global $link;
+                                $query ="INSERT INTO calon_peserta (nik, nama, umur, tempat_lahir, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan, berat_badan, alamat_rumah, no_telp)
+                                VALUES ('$nik', '$nama', '$umur', '$tempat_lahir', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah', '$no_telp')";
+                                $query2 ="INSERT INTO pendaftaran (tgl_pendaftaran)
+                                VALUES ('$pendaftaran')";
+                                $hasil = mysqli_multi_query($connection,$query);
                                 echo "<br>";
                                 echo "<br>";
                                 echo "Pelaksanaan Tes Tulis dan Wawancara akan diinfokan lebih lanjut melalui sms";
@@ -119,3 +128,4 @@
     </section>
   </body>
 </html>
+</form>

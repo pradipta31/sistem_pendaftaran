@@ -1,5 +1,5 @@
 <?php
-  $url    = 'http://localhost:8080/sistem_wahyu';
+  $url    = 'http://localhost:8080/sistem_pendaftaran';
   $dbhost = 'localhost';
   $dbuser = 'root';
   $dbpass = '';
