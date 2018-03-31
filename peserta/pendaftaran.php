@@ -57,7 +57,7 @@
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
                                 <form  name="form" method="post" action="proses-pendaftaran.php" onsubmit="return validasi_input(this)">
-                                    <p class="h1 text-center py-1">Form Input</p>
+                                    <p class="h1 text-center py-1">PENDAFTARAN DISNAKER </p>
                                     <label style="font-size: 14px">NIK</label>
                                     <input type="number" class="form-control" name="nik">
                                     <br>
@@ -111,7 +111,7 @@
                                     <input type="year" class="form-control" name="berat_badan">
                                     <br>
                                     <label style="font-size: 14px">Alamat Rumah</label>
-                                    <input type="text" class="form-control" name="alamat_rumah">
+                                    <input type="text" class="form-control" name="alamat">
                                     <br>
                                     <label style="font-size: 14px">No Telepon</label>
                                     <input type="number" class="form-control" name="no_telp">

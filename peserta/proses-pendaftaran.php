@@ -51,23 +51,34 @@
                         <div class="card-body">
                           <form action="" method="post">
                               <?php
-                              $connection = mysqli_connect("localhost", "root", "", "sistem_pendaftaran");
+                              include 'koneksi.php';
+                              $query = mysqli_query($koneksi,"SELECT * FROM pendaftaran ORDER BY nomor_pendaftaran DESC LIMIT 1 ");
+                              $tgl_pendaftaran = date("Y-m-d H:i:s");
+                              $row = mysqli_num_rows($query);
+                              $rows = mysqli_fetch_array($query);
+                              if ($row <= 0) {
+                                $nomor_pendaftaran = 1;
+                              }
+                              else {
+                                $nomor_pendaftaran = $rows['nomor_pendaftaran'] + 1;
+                              }
+
 
                               $nik = $_POST['nik'];
                               $nama = $_POST['nama'];
                               $umur = $_POST['umur'];
                               $tempat_lahir = $_POST['tempat_lahir'];
-                              $tgl_lahir = $_POST['tgl_lahir'];
                               $pendidikan = $_POST['pendidikan'];
+                              $tgl_lahir = date($_POST['tgl_lahir']);
                               $tahun_lulus = $_POST['tahun_lulus'];
                               $agama = $_POST['agama'];
                               $jenis_kelamin = $_POST['jenis_kelamin'];
                               $tinggi_badan = $_POST['tinggi_badan'];
                               $berat_badan = $_POST['berat_badan'];
-                              $alamat_rumah = $_POST['alamat_rumah'];
+                              $alamat_rumah = $_POST['alamat'];
                               $no_telp = $_POST['no_telp'];
 
-                              if($connection){
+                              if($koneksi){
                                 echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </h3></center> ";
                                 echo "<p>";
                                 echo "<br>";
@@ -99,20 +110,16 @@
                                 echo "<br>";
                                 echo "</p>";
 
-                                function tambahdata($nik, $nama, $umur, $tempat_lahir, $tgl_lahir, $pendidikan, $tahun_lulus, $agama, $jenis_kelamin, $tinggi_badan, $berat_badan, $alamat_rumah, $no_telp)
-                                {
-                                  global $link;
-                                $query ="INSERT INTO calon_peserta (nik, nama, umur, tempat_lahir, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan, berat_badan, alamat_rumah, no_telp)
-                                VALUES ('$nik', '$nama', '$umur', '$tempat_lahir', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah', '$no_telp')";
-                                $query2 ="INSERT INTO pendaftaran (tgl_pendaftaran)
-                                VALUES ('$pendaftaran')";
-                                $hasil = mysqli_multi_query($connection,$query);
+
+                                $query1 ="insert into pendaftaran (nomor_pendaftaran, tgl_pendaftaran, nik, nama, umur, tempat_lahir, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,no_telp)
+                                VALUES ('$nomor_pendaftaran','$tgl_pendaftaran','$nik', '$nama', '$umur', '$tempat_lahir', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah', '$no_telp')";
+                                $hasil = mysqli_query($koneksi,$query1);
                                 echo "<br>";
                                 echo "<br>";
                                 echo "Pelaksanaan Tes Tulis dan Wawancara akan diinfokan lebih lanjut melalui sms";
                                 echo "<br>";
                                 echo " ";
-                                mysqli_close($connection);
+                                mysqli_close($koneksi);
                               }else{
                                 echo "Server Not Connected";
                               }
