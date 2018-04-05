@@ -103,7 +103,7 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
-        <li class="active">
+        <li>
           <a href="index.php">
             <i class="fa fa-home"></i> <span>Home</span>
           </a>
@@ -123,8 +123,8 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"> Tambah Hasil Pendaftaran</a></li>
-            <li><a href="pages/charts/morris.html"> Hasil Pendaftaran</a></li>
+            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Pendaftaran</a></li>
+            <li><a href="hasil-tes.php"> Hasil Pendaftaran</a></li>
           </ul>
         </li>
         <li class="treeview">

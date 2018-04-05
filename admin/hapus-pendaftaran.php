@@ -2,7 +2,7 @@
   include "koneksi.php";
   $query = "SELECT * FROM pendaftaran";
   $tampil = $koneksi->query($query);
-  $sql = "DELETE FROM calon_peserta WHERE id = ('$_GET[id]')";
+  $sql = "DELETE FROM pendaftaran WHERE id = ('$_GET[id]')";
   $data = $koneksi->query($sql);
 
   if(mysqli_query($koneksi, $sql)){

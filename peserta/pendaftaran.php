@@ -207,16 +207,13 @@
                         queue: false
                     },
                 });
-
                 // filter items when filter link is clicked
                 jQuery('#filters a').click(function(){
                     var selector = $(this).attr('data-filter');
                     $container.isotope({ filter: selector });
                     return false;
                 });
-
                 jQuery('#filters li a').click(function(){
-
                     jQuery('#filters li').removeClass('current');
                     jQuery(this).parent().addClass('current');
                 });

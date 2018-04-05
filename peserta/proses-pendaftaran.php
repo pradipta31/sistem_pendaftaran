@@ -52,8 +52,6 @@
                           <form action="" method="post">
                               <?php
                               include 'koneksi.php';
-<<<<<<< HEAD
-=======
                               $query = mysqli_query($koneksi,"SELECT * FROM pendaftaran ORDER BY nomor_pendaftaran DESC LIMIT 1 ");
                               $tgl_pendaftaran = date("Y-m-d H:i:s");
                               $row = mysqli_num_rows($query);
@@ -64,17 +62,10 @@
                               else {
                                 $nomor_pendaftaran = $rows['nomor_pendaftaran'] + 1;
                               }
-
-
->>>>>>> 23222e82202dfceae3c7a31bac18cc2ec58170ca
                               $nik = $_POST['nik'];
                               $nama = $_POST['nama'];
                               $umur = $_POST['umur'];
                               $tempat_lahir = $_POST['tempat_lahir'];
-<<<<<<< HEAD
-                              $tgl_lahir = date($_POST['tgl_lahir']);
-=======
->>>>>>> 23222e82202dfceae3c7a31bac18cc2ec58170ca
                               $pendidikan = $_POST['pendidikan'];
                               $tgl_lahir = date($_POST['tgl_lahir']);
                               $tahun_lulus = $_POST['tahun_lulus'];
@@ -84,12 +75,6 @@
                               $berat_badan = $_POST['berat_badan'];
                               $alamat_rumah = $_POST['alamat'];
                               $no_telp = $_POST['no_telp'];
-
-<<<<<<< HEAD
-                              if($connection){
-                                $query ="insert into pendaftaran (nik, nama, umur, tempat_lahir, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan, berat_badan, alamat_rumah, no_telp)
-                                VALUES ('$nama','')";
-=======
                               if($koneksi){
                                 echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </h3></center> ";
                                 echo "<p>";
@@ -121,13 +106,12 @@
                                 echo "Nomor Telepon : $no_telp";
                                 echo "<br>";
                                 echo "</p>";
-
->>>>>>> 23222e82202dfceae3c7a31bac18cc2ec58170ca
-
                                 $query1 ="insert into pendaftaran (nomor_pendaftaran, tgl_pendaftaran, nik, nama, umur, tempat_lahir, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,no_telp)
                                 VALUES ('$nomor_pendaftaran','$tgl_pendaftaran','$nik', '$nama', '$umur', '$tempat_lahir', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah', '$no_telp')";
                                 $hasil = mysqli_query($koneksi,$query1);
                                 echo "<br>";
+                                echo "<br>";
+                                echo "Nomor Pendaftaran Anda Adalah : $nomor_pendaftaran";
                                 echo "<br>";
                                 echo "Pelaksanaan Tes Tulis dan Wawancara akan diinfokan lebih lanjut melalui sms";
                                 echo "<br>";
@@ -137,6 +121,7 @@
                                 echo "Server Not Connected";
                               }
                                ?>
+                               </form>
                                 <div class="text-center py-4 mt-3">
                                     <button  name="close" class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px" type="close">Tutup</button>
                                 </div>
@@ -148,4 +133,3 @@
     </section>
   </body>
 </html>
-</form>
