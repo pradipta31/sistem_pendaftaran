@@ -65,15 +65,15 @@
                               $nik = $_POST['nik'];
                               $nama = $_POST['nama'];
                               $umur = $_POST['umur'];
-                              $tempat_lahir = $_POST['tempat_lahir'];
-                              $pendidikan = $_POST['pendidikan'];
                               $tgl_lahir = date($_POST['tgl_lahir']);
+                              $pendidikan = $_POST['pendidikan'];
                               $tahun_lulus = $_POST['tahun_lulus'];
                               $agama = $_POST['agama'];
                               $jenis_kelamin = $_POST['jenis_kelamin'];
                               $tinggi_badan = $_POST['tinggi_badan'];
                               $berat_badan = $_POST['berat_badan'];
                               $alamat_rumah = $_POST['alamat'];
+                              $kabupaten = $_POST['kabupaten'];
                               $no_telp = $_POST['no_telp'];
                               if($koneksi){
                                 echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </h3></center> ";
@@ -84,8 +84,6 @@
                                 echo "Nama          : $nama";
                                 echo "<br>";
                                 echo "umur          : $umur";
-                                echo "<br>";
-                                echo "Tempat Lahir  : $tempat_lahir";
                                 echo "<br>";
                                 echo "Tanggal Lahir : $tgl_lahir";
                                 echo "<br>";
@@ -103,11 +101,13 @@
                                 echo "<br>";
                                 echo "Alamat Rumah  : $alamat_rumah";
                                 echo "<br>";
+                                echo "Kabupaten/Kota  : $kabupaten";
+                                echo "<br>";
                                 echo "Nomor Telepon : $no_telp";
                                 echo "<br>";
                                 echo "</p>";
-                                $query1 ="insert into pendaftaran (nomor_pendaftaran, tgl_pendaftaran, nik, nama, umur, tempat_lahir, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,no_telp)
-                                VALUES ('$nomor_pendaftaran','$tgl_pendaftaran','$nik', '$nama', '$umur', '$tempat_lahir', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah', '$no_telp')";
+                                $query1 ="insert into pendaftaran (nomor_pendaftaran, tgl_pendaftaran, nik, nama, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
+                                VALUES ('$nomor_pendaftaran','$tgl_pendaftaran','$nik', '$nama', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')";
                                 $hasil = mysqli_query($koneksi,$query1);
                                 echo "<br>";
                                 echo "<br>";
@@ -123,7 +123,7 @@
                                ?>
                                </form>
                                 <div class="text-center py-4 mt-3">
-                                    <button  name="close" class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px" type="close">Tutup</button>
+                                    <button  name="close" class="btn btn-primary btn-lg" onclick="window.location.href='pendaftaran.php'" style="padding: 10px 25px; border-radius:7px" type="close">Tutup</button>
                                 </div>
                         </div>
                     </div>

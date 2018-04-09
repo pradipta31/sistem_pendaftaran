@@ -32,6 +32,10 @@ if( strlen($email) < 2 )
         {
             $_SESSION['session_admin']= 'TRUE';
         }
+        elseif ( $row['hak_akses'] == 'kepalakantor')
+         {
+            $_SESSION['session_kepalakantor']= 'TRUE';
+        }
         header('location:'.$url.'/'.$_SESSION['akses'].'/');
         exit();
 

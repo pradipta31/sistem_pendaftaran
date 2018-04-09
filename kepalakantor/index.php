@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if( !isset($_SESSION['session_admin']) )
+if( !isset($_SESSION['session_kepalakantor']) )
 {
     header('location:./../'.$_SESSION['akses']);
     exit();
@@ -32,17 +32,9 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-<style media="screen">
-  .style-judul{
-    color: #fff;
-    margin-top: 5px;
-    font-style: normal;
-    position: absolute;
-  }
-</style>
   <header class="main-header">
-    <nav class="navbar navbar-static-top" style="margin-left: -220px;">
-      <b class="style-judul" style="margin-left: 230px; font-size:25px;">SISTEM INFORMASI EKSEKUTIF PESERTA PELATIHAN KAPAL PESIAR</b>
+    <nav class="navbar navbar-static-top" style="margin-left: -230px;">
+      <b style="margin-left: 230px; font-size: px;">SISTEM INFORMASI EKSEKUTIF PESERTA PELATIHAN KAPAL PESIAR</b>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="user user-menu">
@@ -76,25 +68,6 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
             <i class="fa fa-home"></i> <span>Home</span>
           </a>
         </li>
-        <li>
-          <a href="lihat-pendaftaran.php">
-          <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
-            <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i>
-            <span>Hasil Pendaftaran</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Pendaftaran</a></li>
-            <li><a href="hasil-tes.php"> Hasil Pendaftaran</a></li>
-          </ul>
-        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-newspaper-o"></i>
@@ -104,8 +77,10 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"> Tambah Laporan</a></li>
-            <li><a href="pages/charts/morris.html"> Laporan</a></li>
+            <li><a href="pages/charts/chartjs.html"> Grafik Jumlah Peserta</a></li>
+            <li><a href="pages/charts/chartjs.html"> Grafik Jenis Kelamin</a></li>
+            <li><a href="pages/charts/chartjs.html"> Grafik Asal Wilayah</a></li>
+            <li><a href="pages/charts/chartjs.html"> Grafik Hasil Tes</a></li>
           </ul>
         </li>
       </ul>
