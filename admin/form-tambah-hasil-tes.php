@@ -171,7 +171,7 @@
           <div class="box-header with-border">
             <h3 class="box-title">Data Pendaftaran : <?php echo $row['nomor_pendaftaran']; ?></h3>
           </div>
-            <form action="proses-tambah-hasil-tes.php" method="post" name="page">
+            <form action="proses-tambah-hasil-tes.php" method="post">
               <div class="box-body">
                 <input type="hidden" name="id_pendaftaran" value="<?php echo $row['id_pendaftaran'];?>">
                 <!-- <div class="form-group">
@@ -196,7 +196,7 @@
                 </div>
                 <div class="form-group">
                   <label>Status</label>
-                  <input type="number" class="form-control" name="status" id="status" disabled>
+                  <input type="text" class="form-control" name="status" id="statusNilai" disabled>
                 </div>
                 <button type="button" class="btn btn-default" name="button" onclick="window.location='tambah-hasil-tes.php'">Kembali</button>
                 <input type="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">
@@ -222,13 +222,19 @@
       var nilaiTesTulis = document.getElementById('nilaiTesTulis').value;
       var nilaiTesWawancara = document.getElementById('nilaiTesWawancara').value;
       var result = (parseInt(nilaiTesTulis) + parseInt(nilaiTesWawancara)) / 2;
-      if ((result >= 90) && (result <= 100)) {
-         keterangan = "Lulus";
-      }else if ((result < 90)) {
-        keterangan = "TidakLulus";
-      }
+      var ket = ("");
       document.getElementById('totalNilai').value = result;
-      document.getElementById('status').innerHTML = keterangan;
+      var ket = ("");
+      if (result == 100) {
+        ket = ("lulus");
+      }else if (result >= 80) {
+        ket = ("Lulus");
+      }
+      else if (result < 80) {
+        ket = ("TidakLulus");
+      }
+
+      document.getElementById('statusNilai').value = ket;
   }
 </script>
 

@@ -113,15 +113,15 @@
                                     <label style="font-size: 14px">Kabupaten/Kota</label>
                                     <select class="form-control" name="kabupaten"  style="height: 36px">
                                         <option>-- Kabupaten/Kota Alamat Rumah--</option>
-                                        <option value="1">Denpasar</option>
-                                        <option value="2">Badung</option>
-                                        <option value="3">Gianyar</option>
-                                        <option value="4">Klungkung</option>
-                                        <option value="5">Bangli</option>
-                                        <option value="6">Karangasem</option>
-                                        <option value="7">Bangli</option>
-                                        <option value="8">Buleleng</option>
-                                        <option value="9">Negara</option>
+                                        <option value="Denpasar">Denpasar</option>
+                                        <option value="Badung">Badung</option>
+                                        <option value="Gianyar">Gianyar</option>
+                                        <option value="Klungkung">Klungkung</option>
+                                        <option value="Bangli">Bangli</option>
+                                        <option value="Karangasem">Karangasem</option>
+                                        <option value="Tabanan">Tabanan</option>
+                                        <option value="Buleleng">Buleleng</option>
+                                        <option value="Negara">Negara</option>
                                     </select>
                                     <br>
                                     <label style="font-size: 14px">No Telepon</label>

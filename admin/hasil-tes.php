@@ -122,7 +122,7 @@
         <div class="col-md-6">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Tambah Hasil Tes</h3>
+              <h3 class="box-title">Hasil Tes Pendaftaran</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -131,6 +131,7 @@
                 <tr>
                   <th style="width: 10px"><center>No</center></th>
                   <th><center>Nomor Pendaftaran</center></th>
+                  <th><center>Total Nilai</center></th>
                   <th><center>status</center></th>
                   <th><center>Opsi</center></th>
                 </tr>
@@ -143,7 +144,8 @@
                 <tr>
                   <td><?php echo $no++;?></td>
                   <td><center><?php echo $row['nomor_pendaftaran']; ?></center></td>
-                  <td><span class="badge bg-green"><?php echo $row['status'];?></span></td>
+                  <td><center> <?php echo $row['total_nilai']; ?> </center></td>
+                  <td><?php echo $row['status'];?></td>
                   <td> <a href="#"><i class="fa fa-edit"></i></a>
                   <a href="#"> <i class="fa fa-trash-o"></i> </a> </td>
                 </tr>
