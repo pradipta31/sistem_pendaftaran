@@ -82,9 +82,6 @@
                                         <option value="30">30 tahun</option>
                                       </select>
                                     <br>
-                                    <label style="font-size: 14px">Tempat Lahir</label>
-                                    <input type="text" class="form-control" name="tempat_lahir">
-                                    <br>
                                     <label style="font-size: 14px">Tanggal Lahir</label>
                                     <input type="date" class="form-control" name="tgl_lahir">
                                     <br>
@@ -113,6 +110,20 @@
                                     <label style="font-size: 14px">Alamat Rumah</label>
                                     <input type="text" class="form-control" name="alamat">
                                     <br>
+                                    <label style="font-size: 14px">Kabupaten/Kota</label>
+                                    <select class="form-control" name="kabupaten"  style="height: 36px">
+                                        <option>-- Kabupaten/Kota Alamat Rumah--</option>
+                                        <option value="1">Denpasar</option>
+                                        <option value="2">Badung</option>
+                                        <option value="3">Gianyar</option>
+                                        <option value="4">Klungkung</option>
+                                        <option value="5">Bangli</option>
+                                        <option value="6">Karangasem</option>
+                                        <option value="7">Bangli</option>
+                                        <option value="8">Buleleng</option>
+                                        <option value="9">Negara</option>
+                                    </select>
+                                    <br>
                                     <label style="font-size: 14px">No Telepon</label>
                                     <input type="number" class="form-control" name="no_telp">
                                     <div class="text-center py-4 mt-3">
@@ -138,10 +149,6 @@
           }else if (form.umur.value=="All") {
             alert("Kolom umur belum dipilih");
             form.umur.focus();
-            return (false);
-          }else if (form.tempat_lahir.value=="") {
-            alert("Kolom tempat lahir kosong");
-            form.tempat_lahir.focus();
             return (false);
           }else if (form.tgl_lahir.value=="") {
             alert("Kolom tanggal lahir masih kosong");
@@ -174,6 +181,10 @@
           }else if (form.alamat.value=="") {
             alert("Kolom Alamat Rumah masih kosong");
             form.alamat.focus();
+            return (false);
+          }else if (form.alamat.value=="") {
+            alert("Kolom Kabupaten/Kota masih kosong");
+            form.kabupaten.focus();
             return (false);
           }else if (form.telp.value=="") {
             alert("Kolom Nomor Telepon masih kosong");

@@ -1,16 +1,40 @@
+<?php
+  include "koneksi.php";
+  $id = $_GET['id'];
+  $query = "SELECT * FROM pendaftaran WHERE id='$id'";
+  $hasil = mysqli_query($koneksi,$query);
+  $row = mysqli_fetch_array($hasil);
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Data Pendaftaran</title>
+  <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
   <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -18,25 +42,33 @@
 <div class="wrapper">
 
   <header class="main-header">
+    <!-- Logo -->
     <a href="../../index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
+      <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Admin</b>LTE</span>
     </a>
+    <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
+              <!-- User image -->
               <li class="user-header">
                 <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
@@ -45,6 +77,7 @@
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
+              <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
                   <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
@@ -52,38 +85,38 @@
               </li>
             </ul>
           </li>
+          <!-- Control Sidebar Toggle Button -->
         </ul>
       </div>
     </nav>
   </header>
+  <!-- Left side column. contains the logo and sidebar -->
+
+  <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
+      <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="dinas11.png" class="img-responsive">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
         </div>
       </div>
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
+
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
         <li>
-          <a href="../index.php">
+          <a href="index.php">
             <i class="fa fa-home"></i> <span>Home</span>
           </a>
         </li>
         <li>
           <a href="lihat-pendaftaran.php">
+          <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
             <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
           </a>
         </li>
@@ -115,59 +148,65 @@
         </li>
       </ul>
     </section>
+    <!-- /.sidebar -->
   </aside>
+
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <section class="content">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Tambah Hasil Tes</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table class="table table-bordered">
-
-                <tr>
-                  <th style="width: 10px"><center>No</center></th>
-                  <th><center>Nomor Pendaftaran</center></th>
-                  <th><center>status</center></th>
-                  <th><center>Opsi</center></th>
-                </tr>
-                <?php
-                  include "koneksi.php";
-                  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes");
-                  $no = 1;
-                  while($row = mysqli_fetch_assoc($query)){
-                    ?>
-                <tr>
-                  <td><?php echo $no++;?></td>
-                  <td><center><?php echo $row['nomor_pendaftaran']; ?></center></td>
-                  <td><span class="badge bg-green"><?php echo $row['status'];?></span></td>
-                  <td> <a href="#"><i class="fa fa-edit"></i></a>
-                  <a href="#"> <i class="fa fa-trash-o"></i> </a> </td>
-                </tr>
-                <?php
-                }
-              ?>
-              </table>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <!-- <ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">&raquo;</a></li>
-              </ul> -->
-            </div>
-          </div>
-
-          <!-- /.box -->
-        </div>
-      </div>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Data Pendaftaran
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Tambah Hasil Tes</li>
+      </ol>
     </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="col-md-6">
+        <div class="box box-default">
+          <div class="box-header with-border">
+            <h3 class="box-title">Data Pendaftaran : <?php echo $row['nomor_pendaftaran']; ?></h3>
+          </div>
+            <form action="proses-tambah-hasil-tes.php" method="post" name="page">
+              <div class="box-body">
+                <input type="hidden" name="id_pendaftaran" value="<?php echo $row['id_pendaftaran'];?>">
+                <!-- <div class="form-group">
+                  <label>Nomor Pendaftaran</label>
+                  <input type="number" class="form-control" name="nomor_pendaftaran" value="<?php echo $row['nomor_pendaftaran']; ?>" disabled>
+                </div> -->
+                <div class="form-group">
+                  <label>Nama</label>
+                  <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?>">
+                </div>
+                <div class="form-group">
+                  <label>Nilai Tes Tulis</label>
+                  <input type="number" class="form-control" name="nilai_tulis" id="nilaiTesTulis" onkeyup="sum();">
+                </div>
+                <div class="form-group">
+                  <label>Nilai Tes Wawancara</label>
+                  <input type="number" class="form-control" name="nilai_wawancara" id="nilaiTesWawancara" onkeyup="sum();">
+                </div>
+                <div class="form-group">
+                  <label>Total Nilai</label>
+                  <input type="number" class="form-control" name="total_nilai" id="totalNilai" disabled>
+                </div>
+                <div class="form-group">
+                  <label>Status</label>
+                  <input type="number" class="form-control" name="status" id="status" disabled>
+                </div>
+                <button type="button" class="btn btn-default" name="button" onclick="window.location='tambah-hasil-tes.php'">Kembali</button>
+                <input type="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">
+              </div>
+            </form>
+          </div>
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
   </div>
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
@@ -178,14 +217,37 @@
   </footer>
   <div class="control-sidebar-bg"></div>
 </div>
+<script>
+  function sum() {
+      var nilaiTesTulis = document.getElementById('nilaiTesTulis').value;
+      var nilaiTesWawancara = document.getElementById('nilaiTesWawancara').value;
+      var result = (parseInt(nilaiTesTulis) + parseInt(nilaiTesWawancara)) / 2;
+      if ((result >= 90) && (result <= 100)) {
+         keterangan = "Lulus";
+      }else if ((result < 90)) {
+        keterangan = "TidakLulus";
+      }
+      document.getElementById('totalNilai').value = result;
+      document.getElementById('status').innerHTML = keterangan;
+  }
+</script>
+
+<!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<!-- page script -->
 <script>
   $(function () {
     $('#example1').DataTable()
@@ -198,6 +260,9 @@
       'autoWidth'   : false
     })
   })
+  function editRapat(){
+    $("#editModal").modal('show');
+  }
 </script>
 </body>
 </html>

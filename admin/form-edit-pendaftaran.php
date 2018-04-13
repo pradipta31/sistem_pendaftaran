@@ -91,28 +91,20 @@
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
+
+  <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="dinas11.png" class="img-responsive">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
         </div>
       </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
+
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
@@ -122,8 +114,9 @@
             <i class="fa fa-home"></i> <span>Home</span>
           </a>
         </li>
-        <li class="active">
+        <li>
           <a href="lihat-pendaftaran.php">
+          <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
             <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
           </a>
         </li>
@@ -193,10 +186,6 @@
                 <input type="text" class="form-control" name="umur" value="<?php echo $row['umur']; ?>">
               </div>
               <div class="form-group">
-                <label>Tempat Lahir</label>
-                <input type="text" class="form-control" name="tempat_lahir" value="<?php echo $row['tempat_lahir']; ?>">
-              </div>
-              <div class="form-group">
                 <label>Tanggal Lahir</label>
                 <input type="date" class="form-control" name="tgl_lahir" value="<?php echo $row['tgl_lahir']; ?>">
               </div>
@@ -227,6 +216,10 @@
               <div class="form-group">
                 <label>Alamat</label>
                 <input type="text" class="form-control" name="alamat" value="<?php echo $row['alamat']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Kabupaten/kota</label>
+                <input type="text" class="form-control" name="kabupaten" value="<?php echo $row['kabupaten']; ?>">
               </div>
               <div class="form-group">
                 <label>Nomor Telepon</label>

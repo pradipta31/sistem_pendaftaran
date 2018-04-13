@@ -32,45 +32,21 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
+<style media="screen">
+  .style-judul{
+    color: #fff;
+    margin-top: 5px;
+    font-style: normal;
+    position: absolute;
+  }
+</style>
   <header class="main-header">
-    <!-- Logo -->
-    <a href="index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-
+    <nav class="navbar navbar-static-top" style="margin-left: -220px;">
+      <b class="style-judul" style="margin-left: 230px; font-size:25px;">SISTEM INFORMASI EKSEKUTIF PESERTA PELATIHAN KAPAL PESIAR</b>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $nama; ?></span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  <?php echo $nama ?>
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-right">
-                  <a href="../logout.php" onclick="return confirm('Yakin ingin Logout ?')" class="btn btn-default btn-flat">Logout</a>
-                </div>
-              </li>
-            </ul>
+          <li class="user user-menu">
+            <a href="../logout.php" onclick="return confirm('Yakin ingin Logout ?')"><b>Logout</b></a>
           </li>
         </ul>
       </div>
@@ -83,22 +59,14 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="dinas11.png" class="img-responsive">
         </div>
         <div class="pull-left info">
+          <p>Selamat Datang</p>
           <p><?php echo $nama; ?></p>
         </div>
       </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
+
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
@@ -148,7 +116,16 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    ADMIN
+    <section class="content">
+      <div class="row">
+        <div class="text-center">
+          <h1>Selamat Datang di Sistem Informasi Eksekutif Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provinsi Bali</h1>
+          <p style="margin-top: 100px; margin-bottom: 250px;">
+            <img src="dinasku.png" alt="DISNAKER Prov Bali" height="400px" width="400px">
+          </p>
+        </div>
+      </div>
+    </section>
 
   <div class="control-sidebar-bg"></div>
 

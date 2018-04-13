@@ -149,7 +149,6 @@
       </ul>
     </section>
     <!-- /.sidebar -->
-    <!-- /.sidebar -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -169,76 +168,68 @@
     <section class="content">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">Nomor Pendaftaran : <?php echo $row['nomor_pendaftaran']; ?></h3>
+          <h3 class="box-title">Data Pendaftaran : <?php echo $row['nomor_pendaftaran']; ?></h3>
         </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <div class="row">
-            <div class="col-md-2">
+          <form action="proses-edit-pendaftaran.php" method="post">
+            <div class="box-body">
+              <input type="hidden" name="id" value="<?php echo $row['id'];?>">
               <div class="form-group">
-                <label>NIK </label>
-                </br>
+                <label>NIK</label>
+                <input type="number" class="form-control" name="nik" value="<?php echo $row['nik']; ?>">
+              </div>
+              <div class="form-group">
                 <label>Nama</label>
-                </br>
-                <label>Umur</label>
-                </br>
-                <label>Tanggal Lahir</label>
-                </br>
-                <label>Pendidikan</label>
-                </br>
-                <label>Tahun Lulus</label>
-                </br>
-                <label>Agama</label>
-                </br>
-                <label>Jenis Kelamin</label>
-                </br>
-                <label>Tinggi Badan</label>
-                </br>
-                <label>Berat Badan</label>
-                </br>
-                <label>Alamat</label>
-                </br>
-                <label>Kabupaten/Kota</label>
-                </br>
-                <label>Nomor Telepon</label>
-                </br>
+                <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?>">
               </div>
-            </div>
-            <div class="col-md-5">
               <div class="form-group">
-                <label>: <?php echo $row['nik']; ?></label>
-                </br>
-                <label>: <?php echo $row['nama']; ?></label>
-                </br>
-                <label>: <?php echo $row['umur']; ?></label>
-                </br>
-                <label>: <?php echo $row['tgl_lahir']; ?></label>
-                </br>
-                <label>: <?php echo $row['pendidikan']; ?></label>
-                </br>
-                <label>: <?php echo $row['tahun_lulus']; ?></label>
-                </br>
-                <label>: <?php echo $row['agama']; ?></label>
-                </br>
-                <label>: <?php echo $row['jenis_kelamin']; ?></label>
-                </br>
-                <label>: <?php echo $row['tinggi_badan']; ?></label>
-                </br>
-                <label>: <?php echo $row['berat_badan']; ?></label>
-                </br>
-                <label>: <?php echo $row['alamat']; ?></label>
-                </br>
-                <label>: <?php echo $row['kabupaten']; ?></label>
-                </br>
-                <label>: <?php echo $row['no_telp']; ?></label>
-                </br>
+                <label>Umur</label>
+                <input type="text" class="form-control" name="umur" value="<?php echo $row['umur']; ?>">
               </div>
+              <div class="form-group">
+                <label>Tempat Lahir</label>
+                <input type="text" class="form-control" name="tempat_lahir" value="<?php echo $row['tempat_lahir']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Tanggal Lahir</label>
+                <input type="date" class="form-control" name="tgl_lahir" value="<?php echo $row['tgl_lahir']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Pendidikan</label>
+                <input type="text" class="form-control" name="pendidikan" value="<?php echo $row['pendidikan']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Tahun Lulus</label>
+                <input type="text" class="form-control" name="tahun_lulus" value="<?php echo $row['tahun_lulus']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Agama</label>
+                <input type="text" class="form-control" name="agama" value="<?php echo $row['agama']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Jenis Kelamin</label>
+                <input type="text" class="form-control" name="jenis_kelamin" value="<?php echo $row['jenis_kelamin']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Tinggi Badan</label>
+                <input type="text" class="form-control" name="tinggi_badan" value="<?php echo $row['tinggi_badan']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Berat Badan</label>
+                <input type="text" class="form-control" name="berat_badan" value="<?php echo $row['berat_badan']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Alamat</label>
+                <input type="text" class="form-control" name="alamat" value="<?php echo $row['alamat']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Nomor Telepon</label>
+                <input type="text" class="form-control" name="no_telp" value="<?php echo $row['no_telp']; ?>">
+              </div>
+              <button type="button" class="btn btn-default" name="button" onclick="window.location='lihat-pendaftaran.php'">Kembali</button>
+              <input type="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">
             </div>
-            <!-- /.col -->
-          </div>
-          <button type="button" class="btn btn-default" name="button" onclick="window.location='lihat-pendaftaran.php'">Kembali</button>
+          </form>
         </div>
-      </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -250,10 +241,6 @@
     <strong>Copyright &copy; 2016-2017 <a href="#">DISNAKER Prov. Bali</a>.</strong> All rights
     reserved.
   </footer>
-
-
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 

@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if( !isset($_SESSION['session_admin']) )
+{
+    header('location:./../'.$_SESSION['akses']);
+    exit();
+}
+$email = $_SESSION['email_user'];
+$nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,34 +68,33 @@
       </div>
     </nav>
   </header>
+
+  <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
+      <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="dinas11.png" class="img-responsive">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>Selamat Datang : <?php echo $nama; ?></p>
         </div>
       </div>
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
+
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
         <li>
-          <a href="../index.php">
+          <a href="index.php">
             <i class="fa fa-home"></i> <span>Home</span>
           </a>
         </li>
         <li>
           <a href="lihat-pendaftaran.php">
+          <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
             <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
           </a>
         </li>
@@ -115,46 +126,57 @@
         </li>
       </ul>
     </section>
+    <!-- /.sidebar -->
   </aside>
   <div class="content-wrapper">
     <section class="content">
       <div class="row">
         <div class="col-md-6">
-          <div class="box box-primary">
+          <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Tambah Hasil Tes</h3>
             </div>
-            <form role="form" action="proses-tambah-hasil-tes.php">
-              <div class="box-body">
-                <div class="form-group">
-                  <label>Nomor Pendaftaran</label>
-                  <input type="text" class="form-control" placeholder="Masukkan Nomor Pendaftaran Peserta" name="nomor_pendaftaran">
-                </div>
-                <div class="form-group">
-                  <label>Nama Peserta</label>
-                  <input type="text" class="form-control" disabled>
-                </div>
-                <div class="form-group">
-                  <label>Nilai Tes Tulis</label>
-                  <input type="number" class="form-control" placeholder="Masukkan Nilai Tes Tulis" name="nilai_tulis">
-                </div>
-                <div class="form-group">
-                  <label>Nilai Tes Wawancara</label>
-                  <input type="text" class="form-control" placeholder="Masukkan Nilai Tes Wawancara" name="nilai_wawancara">
-                </div>
-                <div class="form-group">
-                  <label>Status</label>
-                  <select class="form-control" name="status">
-                    <option value="1">Lulus</option>
-                    <option value="2">Tidak Lulus</option>
-                  </select>
-                </div>
-              </div>
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
+
+                <tr>
+                  <th style="width: 10px"><center>No</center></th>
+                  <th><center>Nomor Pendaftaran</center></th>
+                  <th><center>Nama</center></th>
+                  <th><center>Opsi</center></th>
+                </tr>
+                <?php
+                  include "koneksi.php";
+                  $query = mysqli_query($koneksi, "SELECT * FROM pendaftaran");
+                  $no = 1;
+                  while($row = mysqli_fetch_assoc($query)){
+                    ?>
+                <tr>
+                  <td><?php echo $no++;?></td>
+                  <td><center><a href="form-tambah-hasil-tes.php?id=<?php echo "$row[id]"; ?>"><?php echo $row['nomor_pendaftaran']; ?></a></center></td>
+                  <td><?php echo $row['nama'];?></td>
+                  <td> <a href="#"><i class="fa fa-edit"></i></a>
+                  <a href="#"> <i class="fa fa-trash-o"></i> </a> </td>
+                </tr>
+                <?php
+                }
+              ?>
+              </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <!-- <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul> -->
+            </div>
           </div>
+
+          <!-- /.box -->
         </div>
       </div>
     </section>
