@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if( !isset($_SESSION['session_admin']) )
+if( !isset($_SESSION['session_kepalakantor']) )
 {
     header('location:./../'.$_SESSION['akses']);
     exit();
@@ -32,17 +32,9 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-<style media="screen">
-  .style-judul{
-    color: #fff;
-    margin-top: 5px;
-    font-style: normal;
-    position: absolute;
-  }
-</style>
   <header class="main-header">
-    <nav class="navbar navbar-static-top" style="margin-left: -220px;">
-      <b class="style-judul" style="margin-left: 230px; font-size:25px;">SISTEM INFORMASI EKSEKUTIF PESERTA PELATIHAN KAPAL PESIAR</b>
+    <nav class="navbar navbar-static-top" style="margin-left: -230px;">
+      <b style="margin-left: 230px; font-size: px;">SISTEM INFORMASI EKSEKUTIF PESERTA PELATIHAN KAPAL PESIAR</b>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="user user-menu">

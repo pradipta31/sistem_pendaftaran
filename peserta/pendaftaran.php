@@ -57,7 +57,10 @@
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
                                 <form  name="form" method="post" action="proses-pendaftaran.php" onsubmit="return validasi_input(this)">
-                                    <p class="h1 text-center py-1">Form Input</p>
+                                    <p class="h1 text-center py-1">PENDAFTARAN DISNAKER </p>
+                                    <label style="font-size: 14px">NIK</label>
+                                    <input type="number" class="form-control" name="nik">
+                                    <br>
                                     <label style="font-size: 14px">Nama Lengkap</label>
                                     <input type="text" class="form-control" name="nama">
                                     <br>
@@ -79,9 +82,6 @@
                                         <option value="30">30 tahun</option>
                                       </select>
                                     <br>
-                                    <label style="font-size: 14px">Tempat Lahir</label>
-                                    <input type="text" class="form-control" name="tempat_lahir">
-                                    <br>
                                     <label style="font-size: 14px">Tanggal Lahir</label>
                                     <input type="date" class="form-control" name="tgl_lahir">
                                     <br>
@@ -95,7 +95,7 @@
                                     <input type="text" class="form-control" name="agama">
                                     <br>
                                     <label style="font-size: 14px">Jenis Kelamin</label>
-                                    <select class="form-control" name="jenis_kelamin">
+                                    <select class="form-control" name="jenis_kelamin"  style="height: 36px">
                                         <option>-- Jenis Kelamin--</option>
                                         <option value="pria">Pria</option>
                                         <option value="wanita">Wanita</option>
@@ -108,7 +108,21 @@
                                     <input type="year" class="form-control" name="berat_badan">
                                     <br>
                                     <label style="font-size: 14px">Alamat Rumah</label>
-                                    <input type="text" class="form-control" name="alamat_rumah">
+                                    <input type="text" class="form-control" name="alamat">
+                                    <br>
+                                    <label style="font-size: 14px">Kabupaten/Kota</label>
+                                    <select class="form-control" name="kabupaten"  style="height: 36px">
+                                        <option>-- Kabupaten/Kota Alamat Rumah--</option>
+                                        <option value="Denpasar">Denpasar</option>
+                                        <option value="Badung">Badung</option>
+                                        <option value="Gianyar">Gianyar</option>
+                                        <option value="Klungkung">Klungkung</option>
+                                        <option value="Bangli">Bangli</option>
+                                        <option value="Karangasem">Karangasem</option>
+                                        <option value="Tabanan">Tabanan</option>
+                                        <option value="Buleleng">Buleleng</option>
+                                        <option value="Negara">Negara</option>
+                                    </select>
                                     <br>
                                     <label style="font-size: 14px">No Telepon</label>
                                     <input type="number" class="form-control" name="no_telp">
@@ -124,17 +138,17 @@
         </section>
         <script type="text/javascript">
         function validasi_input(form){
-          if (form.nama.value == ""){
-            alert("kolom nama masih kosong!");
+          if (form.nik.value == ""){
+            alert("kolom NIK masih kosong!");
+            form.nik.focus();
+            return (false);
+          }else if (form.nama.value=="") {
+            alert("Kolom nama masih kosong");
             form.nama.focus();
             return (false);
           }else if (form.umur.value=="All") {
             alert("Kolom umur belum dipilih");
             form.umur.focus();
-            return (false);
-          }else if (form.tempat_lahir.value=="") {
-            alert("Kolom tempat lahir kosong");
-            form.tempat_lahir.focus();
             return (false);
           }else if (form.tgl_lahir.value=="") {
             alert("Kolom tanggal lahir masih kosong");
@@ -168,6 +182,10 @@
             alert("Kolom Alamat Rumah masih kosong");
             form.alamat.focus();
             return (false);
+          }else if (form.alamat.value=="") {
+            alert("Kolom Kabupaten/Kota masih kosong");
+            form.kabupaten.focus();
+            return (false);
           }else if (form.telp.value=="") {
             alert("Kolom Nomor Telepon masih kosong");
             form.telp.focus();
@@ -200,16 +218,13 @@
                         queue: false
                     },
                 });
-
                 // filter items when filter link is clicked
                 jQuery('#filters a').click(function(){
                     var selector = $(this).attr('data-filter');
                     $container.isotope({ filter: selector });
                     return false;
                 });
-
                 jQuery('#filters li a').click(function(){
-
                     jQuery('#filters li').removeClass('current');
                     jQuery(this).parent().addClass('current');
                 });

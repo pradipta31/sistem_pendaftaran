@@ -60,12 +60,18 @@
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
                                 <form  name="form" method="post" action="proses-hasil.php" onsubmit="return validasi_input(this)">
+                                  <?php
+                                  include 'koneksi.php';
+                                  $query = mysqli_query($koneksi,"SELECT * FROM hasil_tes");
+                                  ?>
+
+
 
                                     <h3><p><center>Data Tidak Ditemukan</p></center></h3>
                                     <br>
 
                                     <div class="text-center py-4 mt-3">
-                                        <button class="btn btn-primary btn-lg" name="submit" style="padding: 10px 25px; border-radius:7px" type="submit">OK</button>
+                                        <button  name="close" class="btn btn-primary btn-lg" onclick="window.location.href='hasil.php'" style="padding: 10px 25px; border-radius:7px" type="close">OK</button>
                                     </div>
                                 </form>
                             </div>
