@@ -6,7 +6,7 @@ if( !isset($_SESSION['session_admin']) )
     header('location:./../'.$_SESSION['akses']);
     exit();
 }
-$email = $_SESSION['email_user'];
+$username = $_SESSION['username_user'];
 $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 
 ?>
