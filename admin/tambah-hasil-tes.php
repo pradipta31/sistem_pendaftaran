@@ -1,15 +1,4 @@
-<?php
-session_start();
 
-if( !isset($_SESSION['session_admin']) )
-{
-    header('location:./../'.$_SESSION['akses']);
-    exit();
-}
-$email = $_SESSION['email_user'];
-$nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +17,7 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  
+
   <style media="screen">
     .style-judul{
       color: #fff;
@@ -58,54 +47,42 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
         <div class="pull-left image">
           <img src="dinas11.png" class="img-responsive">
         </div>
-        <div class="pull-left info">
-          <p>Selamat Datang : <?php echo $nama; ?></p>
-        </div>
       </div>
-
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MENU</li>
-        <li>
-          <a href="index.php">
-            <i class="fa fa-home"></i> <span>Home</span>
-          </a>
-        </li>
-        <li>
-          <a href="lihat-pendaftaran.php">
-          <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
-            <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i>
-            <span>Hasil Pendaftaran</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Pendaftaran</a></li>
-            <li><a href="hasil-tes.php"> Hasil Pendaftaran</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-newspaper-o"></i>
-            <span>Laporan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"> Tambah Laporan</a></li>
-            <li><a href="pages/charts/morris.html"> Laporan</a></li>
-          </ul>
-        </li>
-      </ul>
-    </section>
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="header">MENU</li>
+          <li>
+            <a href="index.php">
+              <i class="fa fa-home"></i> <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="lihat-pendaftaran.php">
+            <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
+              <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
+            </a>
+          </li>
+          <li>
+            <a href="soal-tes.php">
+              <i class="fa fa-table"></i>
+              <span>Soal Tes Peserta</span>
+              <span class="pull-right-container">
+              </span>
+            </a>
+          </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-table"></i>
+              <span>Hasil Tes Peserta</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes</a></li>
+              <li><a href="hasil-tes.php"> Hasil Tes Peserta</a></li>
+            </ul>
+          </li>
+      </section>
     <!-- /.sidebar -->
   </aside>
   <div class="content-wrapper">

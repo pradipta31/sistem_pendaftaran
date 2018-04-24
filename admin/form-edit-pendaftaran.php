@@ -88,36 +88,30 @@
         <li>
           <a href="lihat-pendaftaran.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
-            <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
+            <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
+          </a>
+        </li>
+        <li>
+          <a href="soal-tes.php">
+            <i class="fa fa-table"></i>
+            <span>Soal Tes Peserta</span>
+            <span class="pull-right-container">
+            </span>
           </a>
         </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
-            <span>Hasil Pendaftaran</span>
+            <span>Hasil Tes Peserta</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Pendaftaran</a></li>
-            <li><a href="hasil-tes.php"> Hasil Pendaftaran</a></li>
+            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes</a></li>
+            <li><a href="hasil-tes.php"> Hasil Tes Peserta</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-newspaper-o"></i>
-            <span>Laporan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"> Tambah Laporan</a></li>
-            <li><a href="pages/charts/morris.html"> Laporan</a></li>
-          </ul>
-        </li>
-      </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -127,11 +121,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Pendaftaran
+        Data Peserta
       </h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Data Pendaftaran</li>
+        <li class="active">Data Peserta</li>
       </ol>
     </section>
 
@@ -139,7 +133,7 @@
     <section class="content">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">Data Pendaftaran : <?php echo $row['nomor_pendaftaran']; ?></h3>
+          <h3 class="box-title">Nomor Peserta : <?php echo $row['nomor_pendaftaran']; ?></h3>
         </div>
           <form action="proses-edit-pendaftaran.php" method="post">
             <div class="box-body">

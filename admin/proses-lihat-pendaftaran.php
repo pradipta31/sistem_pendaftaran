@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Data Pendaftaran</title>
+  <title>Data Peserta</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -75,47 +75,42 @@
 
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MENU</li>
-        <li>
-          <a href="index.php">
-            <i class="fa fa-home"></i> <span>Home</span>
-          </a>
-        </li>
-        <li>
-          <a href="lihat-pendaftaran.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
-            <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i>
-            <span>Hasil Pendaftaran</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Pendaftaran</a></li>
-            <li><a href="hasil-tes.php"> Hasil Pendaftaran</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-newspaper-o"></i>
-            <span>Laporan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"> Tambah Laporan</a></li>
-            <li><a href="pages/charts/morris.html"> Laporan</a></li>
-          </ul>
-        </li>
-      </ul>
-    </section>
+          <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MENU</li>
+            <li>
+              <a href="index.php">
+                <i class="fa fa-home"></i> <span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="lihat-pendaftaran.php">
+              <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
+                <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
+              </a>
+            </li>
+            <li>
+              <a href="soal-tes.php">
+                <i class="fa fa-table"></i>
+                <span>Soal Tes Peserta</span>
+                <span class="pull-right-container">
+                </span>
+              </a>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-table"></i>
+                <span>Hasil Tes Peserta</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes</a></li>
+                <li><a href="hasil-tes.php"> Hasil Tes Peserta</a></li>
+              </ul>
+            </li>
+        </section>
     <!-- /.sidebar -->
     <!-- /.sidebar -->
   </aside>
@@ -125,7 +120,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Pendaftaran
+        Data Peserta
       </h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>

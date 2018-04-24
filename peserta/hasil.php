@@ -42,6 +42,7 @@
                             <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="pendaftaran.php">Pendaftaran</a></li>
+                                  <li><a href="tes.php">Tes</a></li>
                                 <li><a href="hasil.php" class="active">Hasil Tes</a></li>
                             </ul>
                         </nav>

@@ -40,9 +40,9 @@
                     <div class="col-lg-9 col-md-8 col-sm-8 templatemo-nav-container">
                         <nav class="templatemo-nav">
                             <ul>
-                                <li><a href="index.php" class="active">Home</a></li>
+                                <li><a href="index.php">Home</a></li>
                                 <li><a href="pendaftaran.php">Pendaftaran</a></li>
-                                <li><a href="tes.php">Tes</a></li>
+                                <li><a href="tes.php" class="active">Tes</a></li>
                                 <li><a href="hasil.php">Hasil Tes</a></li>
                             </ul>
                         </nav>
@@ -54,28 +54,20 @@
             <div class="container">
                 <div class="row section-title-container">
                     <div class="col-lg-12 text-uppercase text-center">
-                        <h2 class="section-title-2">Welcome To Pendaftaran Pelatihan Kapal Pesiar DISNAKER ESDM Provinsi Bali</h2>
-                        <div class="section-title-underline"></div>
+                        <h2 class="section-title-2">Tes Online Peserta Pelatihan Kapal Pesiar</h2>
                         <hr class="section-title-underline">
                     </div>
-                    <ol>
-                      <h3>A. Persyaratan Pendaftaran</h3>
-                      <h4>
-                      <li>Mengisi Formulir Pendaftaran</li>
-                      <li>Pria dan Wanita, Warga Negara Indonesia</li>
-                      <li>Lulusan minimal SMP,SMA/SMK sederajat</li>
-                      <li>Umur minimal 18 tahun dan maksimal 30 tahun</li>
-                      <li>Tinggi badan minimal 155 cm untuk wanita dan 165 cm untuk pria</li>
-                      <li>Berat badab ideal</li>
-                      <li>Berbahasa inggris lancar baik secara lisan maupun tulisan</li>
-                      <li>Rambut rapi dan tidak diwarnai, gigi bagus(tanpa kawat gigi)</li>
-                      <li>Tidak mempunyai tanda tatto pada tanggan, kaki, maupun leher</li>
-                      <li>Dapat bekerja dalam kelompok dan dalam waktu yang lama</li>
-                      <li>Tidak menderita ketergantungan narkoba dan alkohol</li>
-                    </h4>
-                      </ol>
+                    <div class="form-input">
+                        <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
+                            <div class="card-body">
+                                <form  name="form" method="post" action="proses-pendaftaran.php" onsubmit="return validasi_input(this)">
 
-            </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
         </section>
         <!-- Blog -->
 

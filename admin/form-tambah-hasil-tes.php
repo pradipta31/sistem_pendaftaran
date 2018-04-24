@@ -151,7 +151,7 @@
                 </div> -->
                 <div class="form-group">
                   <label>Nama</label>
-                  <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?>">
+                  <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?> ">
                 </div>
                 <div class="form-group">
                   <label>Nilai Tes Tulis</label>
@@ -163,11 +163,11 @@
                 </div>
                 <div class="form-group">
                   <label>Total Nilai</label>
-                  <input type="number" class="form-control" name="total_nilai" id="totalNilai" disabled>
+                  <input type="number" class="form-control" name="total_nilai" id="totalNilai">
                 </div>
                 <div class="form-group">
                   <label>Status</label>
-                  <input type="text" class="form-control" name="status" id="statusNilai" disabled>
+                  <input type="text" class="form-control" name="status" id="statusNilai">
                 </div>
                 <button type="button" class="btn btn-default" name="button" onclick="window.location='tambah-hasil-tes.php'">Kembali</button>
                 <input type="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">
