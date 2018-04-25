@@ -61,7 +61,7 @@
           </a>
         </li>
         <li>
-          <a href="lihat-pendaftaran.php">
+          <a href="lihat-peserta.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
             <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
           </a>

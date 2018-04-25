@@ -86,7 +86,7 @@
           </a>
         </li>
         <li>
-          <a href="lihat-pendaftaran.php">
+          <a href="lihat-peserta.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
             <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
           </a>
@@ -133,7 +133,7 @@
     <section class="content">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">Nomor Peserta : <?php echo $row['nomor_pendaftaran']; ?></h3>
+          <h3 class="box-title">Nomor Peserta : <?php echo $row['nomor_peserta']; ?></h3>
         </div>
           <form action="proses-edit-hasil.php" method="post">
             <div class="box-body">

@@ -56,7 +56,7 @@
             </a>
           </li>
           <li>
-            <a href="lihat-pendaftaran.php">
+            <a href="lihat-peserta.php">
             <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
               <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
             </a>
@@ -99,22 +99,19 @@
 
                 <tr>
                   <th style="width: 10px"><center>No</center></th>
-                  <th><center>Nomor Pendaftaran</center></th>
+                  <th><center>Nomor Peserta</center></th>
                   <th><center>Nama</center></th>
-                  <th><center>Opsi</center></th>
                 </tr>
                 <?php
                   include "koneksi.php";
-                  $query = mysqli_query($koneksi, "SELECT * FROM pendaftaran");
+                  $query = mysqli_query($koneksi, "SELECT * FROM peserta");
                   $no = 1;
                   while($row = mysqli_fetch_assoc($query)){
                     ?>
                 <tr>
                   <td><?php echo $no++;?></td>
-                  <td><center><a href="form-tambah-hasil-tes.php?id=<?php echo "$row[id]"; ?>"><?php echo $row['nomor_pendaftaran']; ?></a></center></td>
+                  <td><center><a href="form-tambah-hasil-tes.php?id=<?php echo "$row[id]"; ?>"><?php echo $row['nomor_peserta']; ?></a></center></td>
                   <td><?php echo $row['nama'];?></td>
-                  <td> <a href="#"><i class="fa fa-edit"></i></a>
-                  <a href="#"> <i class="fa fa-trash-o"></i> </a> </td>
                 </tr>
                 <?php
                 }

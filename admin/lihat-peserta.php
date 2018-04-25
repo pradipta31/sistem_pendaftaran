@@ -59,7 +59,7 @@
             </a>
           </li>
           <li>
-            <a href="lihat-pendaftaran.php">
+            <a href="lihat-peserta.php">
             <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
               <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
             </a>
@@ -118,17 +118,17 @@
                   <tbody>
                     <?php
                       include "koneksi.php";
-                      $query = mysqli_query($koneksi, "SELECT * FROM pendaftaran");
+                      $query = mysqli_query($koneksi, "SELECT * FROM peserta");
                       while($row = mysqli_fetch_assoc($query)){
                         ?>
                           <tr>
                             <td><center><?php echo $row['id']; ?></center></td>
-                            <td><center><?php echo $row['nomor_pendaftaran']; ?></center></td>
+                            <td><center><?php echo $row['nomor_peserta']; ?></center></td>
                             <td><center> <?php echo $row['tgl_pendaftaran']; ?> </center></td>
                             <td><center>
-                              <a href="proses-lihat-pendaftaran.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-eye"></i></a>
-                              <a href="form-edit-pendaftaran.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-edit"></i></a>
-                              <a href="hapus-pendaftaran.php?id=<?php echo "$row[id]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
+                              <a href="proses-lihat-peserta.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-eye"></i></a>
+                              <a href="form-edit-peserta.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-edit"></i></a>
+                              <a href="hapus-peserta.php?id=<?php echo "$row[id]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
                             </center></td>
                           </tr>
                           <?php

@@ -58,7 +58,7 @@
           </a>
         </li>
         <li>
-          <a href="lihat-pendaftaran.php">
+          <a href="lihat-peserta.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
             <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
           </a>
@@ -92,7 +92,7 @@
         <div class="col-md-6">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Hasil Tes Pendaftaran</h3>
+              <h3 class="box-title">Hasil Tes Peserta</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -100,7 +100,7 @@
 
                 <tr>
                   <th style="width: 10px"><center>No</center></th>
-                  <th><center>Nomor Pendaftaran</center></th>
+                  <th><center>Nomor Peserta</center></th>
                   <th><center>Nama</center></th>
                   <th><center>Total Nilai</center></th>
                   <th><center>status</center></th>
@@ -115,7 +115,7 @@
 
                 <tr>
                   <td><?php echo $no++;?></td>
-                  <td><center><?php echo $row['nomor_pendaftaran']; ?></center></td>
+                  <td><center><?php echo $row['nomor_peserta']; ?></center></td>
                   <td><center><?php echo $row['nama']; ?></center></td>
                   <td><center> <?php echo $row['total_nilai']; ?> </center></td>
                   <td><?php echo $row['status'];?></td>

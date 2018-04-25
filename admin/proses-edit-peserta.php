@@ -15,11 +15,11 @@
   $kabupaten = $_POST['kabupaten'];
   $no_telp= $_POST['no_telp'];
 
-  $query = "UPDATE pendaftaran SET nik='$nik', nama='$nama', umur = '$umur',
+  $query = "UPDATE peserta SET nik='$nik', nama='$nama', umur = '$umur',
   tgl_lahir = '$tgl_lahir', pendidikan = '$pendidikan', tahun_lulus = '$tahun_lulus',
   agama = '$agama', jenis_kelamin = '$jenis_kelamin', tinggi_badan = '$tinggi_badan', berat_badan = '$berat_badan',
   alamat='$alamat', kabupaten = '$kabupaten', no_telp='$no_telp' WHERE id = '$id'";
 
   mysqli_query($koneksi,$query);
-  header ("location: lihat-pendaftaran.php");
+  header ("location: lihat-peserta.php");
  ?>

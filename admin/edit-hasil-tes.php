@@ -1,7 +1,7 @@
 <?php
   include "koneksi.php";
   $id = $_GET['id'];
-  $query = "SELECT * FROM pendaftaran WHERE id='$id'";
+  $query = "SELECT * FROM peserta WHERE id='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
 ?>
@@ -86,7 +86,7 @@
           </a>
         </li>
         <li>
-          <a href="lihat-pendaftaran.php">
+          <a href="lihat-peserta.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
             <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
           </a>
@@ -159,7 +159,7 @@
           </form>
         </div>
     </div>
-  
+
       <!-- /.row -->
     </section>
     <!-- /.content -->

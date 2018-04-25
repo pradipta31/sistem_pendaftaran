@@ -47,20 +47,20 @@
                     <hr class="section-title-underline">
                 </div>
                 <div class="form-input">
-                    <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
+                    <div class="card mx-xl-5" style="width: 700px; border-radius: 7px; margin-right: :10px; margin-left: 20px">
                         <div class="card-body">
                           <form action="" method="post">
                               <?php
                               include 'koneksi.php';
-                              $query = mysqli_query($koneksi,"SELECT * FROM pendaftaran ORDER BY nomor_pendaftaran DESC LIMIT 1 ");
+                              $query = mysqli_query($koneksi,"SELECT * FROM peserta ORDER BY nomor_peserta DESC LIMIT 1 ");
                               $tgl_pendaftaran = date("Y-m-d H:i:s");
                               $row = mysqli_num_rows($query);
                               $rows = mysqli_fetch_array($query);
                               if ($row <= 0) {
-                                $nomor_pendaftaran = 1;
+                                $nomor_peserta = 1;
                               }
                               else {
-                                $nomor_pendaftaran = $rows['nomor_pendaftaran'] + 1;
+                                $nomor_peserta = $rows['nomor_peserta'] + 1;
                               }
                               $nik = $_POST['nik'];
                               $nama = $_POST['nama'];
@@ -105,13 +105,13 @@
                                 echo "<br>";
                                 echo "Nomor Telepon    : $no_telp";
                                 echo "<br>";
-                                echo "</pre>";
-                                $query1 ="insert into pendaftaran (nomor_pendaftaran, tgl_pendaftaran, nik, nama, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
-                                VALUES ('$nomor_pendaftaran','$tgl_pendaftaran','$nik', '$nama', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')";
+
+                                $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
+                                VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')";
                                 $hasil = mysqli_query($koneksi,$query1);
                                 echo "<br>";
                                 echo "<br>";
-                                echo "Nomor Pendaftaran Anda Adalah : $nomor_pendaftaran";
+                                echo "Nomor Pendaftaran Anda Adalah : $nomor_peserta";
                                 echo "<br>";
                                 echo "Pelaksanaan Tes Tulis dan Wawancara akan diinfokan lebih lanjut melalui sms</h3>";
                                 echo "<br>";
@@ -120,6 +120,7 @@
                               }else{
                                 echo "Server Not Connected";
                               }
+                                echo "</pre>";
                                ?>
                                </form>
                                 <div class="text-center py-4 mt-3">
