@@ -192,11 +192,11 @@
                 </div>
                 <div class="form-group">
                   <label>Total Nilai</label>
-                  <input type="number" class="form-control" name="total_nilai" id="totalNilai" disabled>
+                  <input type="number" class="form-control" name="total_nilai" id="totalNilai">
                 </div>
                 <div class="form-group">
                   <label>Status</label>
-                  <input type="text" class="form-control" name="status" id="statusNilai" disabled>
+                  <input type="text" class="form-control" name="status" id="statusNilai">
                 </div>
                 <button type="button" class="btn btn-default" name="button" onclick="window.location='tambah-hasil-tes.php'">Kembali</button>
                 <input type="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">
@@ -237,23 +237,14 @@
       document.getElementById('statusNilai').value = ket;
   }
 </script>
-
-<!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- DataTables -->
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<!-- page script -->
 <script>
   $(function () {
     $('#example1').DataTable()
