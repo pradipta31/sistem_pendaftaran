@@ -17,45 +17,26 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <header class="main-header">
-    <a href="../../index2.html" class="logo">
-      <span class="logo-mini"><b>A</b>LT</span>
-      <span class="logo-lg"><b>Admin</b>LTE</span>
-    </a>
-    <nav class="navbar navbar-static-top">
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <li class="user-footer">
-                <div class="pull-right">
-                  <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <style media="screen">
+    .style-judul{
+      color: #fff;
+      margin-top: 5px;
+      font-style: normal;
+      position: absolute;
+    }
+  </style>
+    <header class="main-header">
+      <nav class="navbar navbar-static-top" style="margin-left: -220px;">
+        <b class="style-judul" style="margin-left: 230px; font-size:25px;">SISTEM INFORMASI EKSEKUTIF PESERTA PELATIHAN KAPAL PESIAR</b>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="user user-menu">
+              <a href="../logout.php" onclick="return confirm('Yakin ingin Logout ?')"><b>Logout</b></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
   <aside class="main-sidebar">
       <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
@@ -78,49 +59,43 @@
             </a>
           </li>
           <li>
-            <a href="lihat-pendaftaran.php">
+            <a href="lihat-peserta.php">
             <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
-              <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
+              <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
+            </a>
+          </li>
+          <li>
+            <a href="soal-tes.php">
+              <i class="fa fa-table"></i>
+              <span>Soal Tes Peserta</span>
+              <span class="pull-right-container">
+              </span>
             </a>
           </li>
           <li class="treeview">
             <a href="#">
               <i class="fa fa-table"></i>
-              <span>Hasil Pendaftaran</span>
+              <span>Hasil Tes Peserta</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="tambah-hasil-tes.php"> Tambah Hasil Pendaftaran</a></li>
-              <li><a href="hasil-tes.php"> Hasil Pendaftaran</a></li>
+              <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes</a></li>
+              <li><a href="hasil-tes.php"> Hasil Tes Peserta</a></li>
             </ul>
           </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-newspaper-o"></i>
-              <span>Laporan</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="pages/charts/chartjs.html"> Tambah Laporan</a></li>
-              <li><a href="pages/charts/morris.html"> Laporan</a></li>
-            </ul>
-          </li>
-        </ul>
       </section>
       <!-- /.sidebar -->
   </aside>
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Data Pendaftaran
+        Data Peserta
       </h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Data Pendaftaran</li>
+        <li class="active">Data Peserta</li>
       </ol>
     </section>
     <section class="content">
@@ -128,14 +103,14 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Pendaftaran</h3>
+              <h3 class="box-title">Data Peserta</h3>
             </div>
               <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th><center>ID Pendaftaran</center></th>
-                    <th><center>Nomor Pendaftaran</center></th>
+                    <th><center>ID Peserta</center></th>
+                    <th><center>Nomor Peserta</center></th>
                     <th><center>Tanggal Pendaftaran</center></th>
                     <th><center>Opsi</center></th>
                   </tr>
@@ -143,17 +118,17 @@
                   <tbody>
                     <?php
                       include "koneksi.php";
-                      $query = mysqli_query($koneksi, "SELECT * FROM pendaftaran");
+                      $query = mysqli_query($koneksi, "SELECT * FROM peserta");
                       while($row = mysqli_fetch_assoc($query)){
                         ?>
                           <tr>
                             <td><center><?php echo $row['id']; ?></center></td>
-                            <td><center><?php echo $row['nomor_pendaftaran']; ?></center></td>
+                            <td><center><?php echo $row['nomor_peserta']; ?></center></td>
                             <td><center> <?php echo $row['tgl_pendaftaran']; ?> </center></td>
                             <td><center>
-                              <a href="proses-lihat-pendaftaran.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-eye"></i></a>
-                              <a href="form-edit-pendaftaran.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-edit"></i></a>
-                              <a href="hapus-pendaftaran.php?id=<?php echo "$row[id]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
+                              <a href="proses-lihat-peserta.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-eye"></i></a>
+                              <a href="form-edit-peserta.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-edit"></i></a>
+                              <a href="hapus-peserta.php?id=<?php echo "$row[id]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
                             </center></td>
                           </tr>
                           <?php

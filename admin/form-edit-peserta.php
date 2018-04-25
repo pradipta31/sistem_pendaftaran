@@ -1,7 +1,7 @@
 <?php
   include "koneksi.php";
   $id = $_GET['id'];
-  $query = "SELECT * FROM pendaftaran WHERE id='$id'";
+  $query = "SELECT * FROM peserta WHERE id='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
 ?>
@@ -41,55 +41,26 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="../../index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-right">
-                  <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <style media="screen">
+    .style-judul{
+      color: #fff;
+      margin-top: 5px;
+      font-style: normal;
+      position: absolute;
+    }
+  </style>
+    <header class="main-header">
+      <nav class="navbar navbar-static-top" style="margin-left: -220px;">
+        <b class="style-judul" style="margin-left: 230px; font-size:25px;">SISTEM INFORMASI EKSEKUTIF PESERTA PELATIHAN KAPAL PESIAR</b>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="user user-menu">
+              <a href="../logout.php" onclick="return confirm('Yakin ingin Logout ?')"><b>Logout</b></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
   <!-- Left side column. contains the logo and sidebar -->
 
   <!-- Left side column. contains the logo and sidebar -->
@@ -115,40 +86,33 @@
           </a>
         </li>
         <li>
-          <a href="lihat-pendaftaran.php">
+          <a href="lihat-peserta.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
-            <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
+            <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
+          </a>
+        </li>
+        <li>
+          <a href="soal-tes.php">
+            <i class="fa fa-table"></i>
+            <span>Soal Tes Peserta</span>
+            <span class="pull-right-container">
+            </span>
           </a>
         </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
-            <span>Hasil Pendaftaran</span>
+            <span>Hasil Tes Peserta</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Pendaftaran</a></li>
-            <li><a href="hasil-tes.php"> Hasil Pendaftaran</a></li>
+            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes</a></li>
+            <li><a href="hasil-tes.php"> Hasil Tes Peserta</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-newspaper-o"></i>
-            <span>Laporan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"> Tambah Laporan</a></li>
-            <li><a href="pages/charts/morris.html"> Laporan</a></li>
-          </ul>
-        </li>
-      </ul>
     </section>
-    <!-- /.sidebar -->
     <!-- /.sidebar -->
   </aside>
 
@@ -157,11 +121,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Pendaftaran
+        Data Peserta
       </h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Data Pendaftaran</li>
+        <li class="active">Data Peserta</li>
       </ol>
     </section>
 
@@ -169,76 +133,68 @@
     <section class="content">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">Nomor Pendaftaran : <?php echo $row['nomor_pendaftaran']; ?></h3>
+          <h3 class="box-title">Nomor Peserta : <?php echo $row['nomor_peserta']; ?></h3>
         </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <div class="row">
-            <div class="col-md-2">
+          <form action="proses-edit-peserta.php" method="post">
+            <div class="box-body">
+              <input type="hidden" name="id" value="<?php echo $row['id'];?>">
               <div class="form-group">
-                <label>NIK </label>
-                </br>
+                <label>NIK</label>
+                <input type="number" class="form-control" name="nik" value="<?php echo $row['nik']; ?>">
+              </div>
+              <div class="form-group">
                 <label>Nama</label>
-                </br>
-                <label>Umur</label>
-                </br>
-                <label>Tanggal Lahir</label>
-                </br>
-                <label>Pendidikan</label>
-                </br>
-                <label>Tahun Lulus</label>
-                </br>
-                <label>Agama</label>
-                </br>
-                <label>Jenis Kelamin</label>
-                </br>
-                <label>Tinggi Badan</label>
-                </br>
-                <label>Berat Badan</label>
-                </br>
-                <label>Alamat</label>
-                </br>
-                <label>Kabupaten/Kota</label>
-                </br>
-                <label>Nomor Telepon</label>
-                </br>
+                <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?>">
               </div>
-            </div>
-            <div class="col-md-5">
               <div class="form-group">
-                <label>: <?php echo $row['nik']; ?></label>
-                </br>
-                <label>: <?php echo $row['nama']; ?></label>
-                </br>
-                <label>: <?php echo $row['umur']; ?></label>
-                </br>
-                <label>: <?php echo $row['tgl_lahir']; ?></label>
-                </br>
-                <label>: <?php echo $row['pendidikan']; ?></label>
-                </br>
-                <label>: <?php echo $row['tahun_lulus']; ?></label>
-                </br>
-                <label>: <?php echo $row['agama']; ?></label>
-                </br>
-                <label>: <?php echo $row['jenis_kelamin']; ?></label>
-                </br>
-                <label>: <?php echo $row['tinggi_badan']; ?></label>
-                </br>
-                <label>: <?php echo $row['berat_badan']; ?></label>
-                </br>
-                <label>: <?php echo $row['alamat']; ?></label>
-                </br>
-                <label>: <?php echo $row['kabupaten']; ?></label>
-                </br>
-                <label>: <?php echo $row['no_telp']; ?></label>
-                </br>
+                <label>Umur</label>
+                <input type="text" class="form-control" name="umur" value="<?php echo $row['umur']; ?>">
               </div>
+              <div class="form-group">
+                <label>Tanggal Lahir</label>
+                <input type="date" class="form-control" name="tgl_lahir" value="<?php echo $row['tgl_lahir']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Pendidikan</label>
+                <input type="text" class="form-control" name="pendidikan" value="<?php echo $row['pendidikan']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Tahun Lulus</label>
+                <input type="text" class="form-control" name="tahun_lulus" value="<?php echo $row['tahun_lulus']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Agama</label>
+                <input type="text" class="form-control" name="agama" value="<?php echo $row['agama']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Jenis Kelamin</label>
+                <input type="text" class="form-control" name="jenis_kelamin" value="<?php echo $row['jenis_kelamin']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Tinggi Badan</label>
+                <input type="text" class="form-control" name="tinggi_badan" value="<?php echo $row['tinggi_badan']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Berat Badan</label>
+                <input type="text" class="form-control" name="berat_badan" value="<?php echo $row['berat_badan']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Alamat</label>
+                <input type="text" class="form-control" name="alamat" value="<?php echo $row['alamat']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Kabupaten/kota</label>
+                <input type="text" class="form-control" name="kabupaten" value="<?php echo $row['kabupaten']; ?>">
+              </div>
+              <div class="form-group">
+                <label>Nomor Telepon</label>
+                <input type="text" class="form-control" name="no_telp" value="<?php echo $row['no_telp']; ?>">
+              </div>
+              <button type="button" class="btn btn-default" name="button" onclick="window.location='lihat-peserta.php'">Kembali</button>
+              <input type="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">
             </div>
-            <!-- /.col -->
-          </div>
-          <button type="button" class="btn btn-default" name="button" onclick="window.location='lihat-pendaftaran.php'">Kembali</button>
+          </form>
         </div>
-      </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -250,10 +206,6 @@
     <strong>Copyright &copy; 2016-2017 <a href="#">DISNAKER Prov. Bali</a>.</strong> All rights
     reserved.
   </footer>
-
-
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 

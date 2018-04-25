@@ -6,7 +6,7 @@ if( !isset($_SESSION['session_admin']) )
     header('location:./../'.$_SESSION['akses']);
     exit();
 }
-$email = $_SESSION['email_user'];
+$username = $_SESSION['username_user'];
 $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 
 ?>
@@ -77,38 +77,32 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
           </a>
         </li>
         <li>
-          <a href="lihat-pendaftaran.php">
+          <a href="lihat-peserta.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
-            <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
+            <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
+          </a>
+        </li>
+        <li>
+          <a href="soal-tes.php">
+            <i class="fa fa-table"></i>
+            <span>Soal Tes Peserta</span>
+            <span class="pull-right-container">
+            </span>
           </a>
         </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
-            <span>Hasil Pendaftaran</span>
+            <span>Hasil Tes Peserta</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Pendaftaran</a></li>
-            <li><a href="hasil-tes.php"> Hasil Pendaftaran</a></li>
+            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes</a></li>
+            <li><a href="hasil-tes.php"> Hasil Tes Peserta</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-newspaper-o"></i>
-            <span>Laporan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"> Tambah Laporan</a></li>
-            <li><a href="pages/charts/morris.html"> Laporan</a></li>
-          </ul>
-        </li>
-      </ul>
     </section>
     <!-- /.sidebar -->
   </aside>

@@ -1,7 +1,7 @@
 <?php
   include "koneksi.php";
   $id = $_GET['id'];
-  $query = "SELECT * FROM pendaftaran WHERE id='$id'";
+  $query = "SELECT * FROM hasil_tes WHERE id='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
 ?>
@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Data Pendaftaran</title>
+  <title>Hasil Tes</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -41,55 +41,26 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="../../index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-right">
-                  <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <style media="screen">
+    .style-judul{
+      color: #fff;
+      margin-top: 5px;
+      font-style: normal;
+      position: absolute;
+    }
+  </style>
+    <header class="main-header">
+      <nav class="navbar navbar-static-top" style="margin-left: -220px;">
+        <b class="style-judul" style="margin-left: 230px; font-size:25px;">SISTEM INFORMASI EKSEKUTIF PESERTA PELATIHAN KAPAL PESIAR</b>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="user user-menu">
+              <a href="../logout.php" onclick="return confirm('Yakin ingin Logout ?')"><b>Logout</b></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
   <!-- Left side column. contains the logo and sidebar -->
 
   <!-- Left side column. contains the logo and sidebar -->
@@ -115,38 +86,32 @@
           </a>
         </li>
         <li>
-          <a href="lihat-pendaftaran.php">
+          <a href="lihat-peserta.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
-            <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
+            <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
+          </a>
+        </li>
+        <li>
+          <a href="soal-tes.php">
+            <i class="fa fa-table"></i>
+            <span>Soal Tes Peserta</span>
+            <span class="pull-right-container">
+            </span>
           </a>
         </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
-            <span>Hasil Pendaftaran</span>
+            <span>Hasil Tes Peserta</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Pendaftaran</a></li>
-            <li><a href="hasil-tes.php"> Hasil Pendaftaran</a></li>
+            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes</a></li>
+            <li><a href="hasil-tes.php"> Hasil Tes Peserta</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-newspaper-o"></i>
-            <span>Laporan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"> Tambah Laporan</a></li>
-            <li><a href="pages/charts/morris.html"> Laporan</a></li>
-          </ul>
-        </li>
-      </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -156,11 +121,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Pendaftaran
+        Data Peserta
       </h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Data Pendaftaran</li>
+        <li class="active">Data Peserta</li>
       </ol>
     </section>
 
@@ -168,64 +133,33 @@
     <section class="content">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">Data Pendaftaran : <?php echo $row['nomor_pendaftaran']; ?></h3>
+          <h3 class="box-title">Nomor Peserta : <?php echo $row['nomor_peserta']; ?></h3>
         </div>
-          <form action="proses-edit-pendaftaran.php" method="post">
+          <form action="proses-edit-hasil.php" method="post">
             <div class="box-body">
               <input type="hidden" name="id" value="<?php echo $row['id'];?>">
-              <div class="form-group">
-                <label>NIK</label>
-                <input type="number" class="form-control" name="nik" value="<?php echo $row['nik']; ?>">
-              </div>
               <div class="form-group">
                 <label>Nama</label>
                 <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?>">
               </div>
               <div class="form-group">
-                <label>Umur</label>
-                <input type="text" class="form-control" name="umur" value="<?php echo $row['umur']; ?>">
+                <label>Nilai Tes Tulis</label>
+                <input type="number" class="form-control" name="nilai_tulis" value="<?php echo $row['nilai_tulis']; ?>">
               </div>
               <div class="form-group">
-                <label>Tanggal Lahir</label>
-                <input type="date" class="form-control" name="tgl_lahir" value="<?php echo $row['tgl_lahir']; ?>">
+                <label>Nilai Tes Wawancara</label>
+                <input type="number" class="form-control" name="nilai_wawancara" value="<?php echo $row['nilai_wawancara']; ?>">
               </div>
               <div class="form-group">
-                <label>Pendidikan</label>
-                <input type="text" class="form-control" name="pendidikan" value="<?php echo $row['pendidikan']; ?>">
+                <label>Total Nilai</label>
+                <input type="number" class="form-control" name="total_nilai" value="<?php echo $row['total_nilai']; ?>">
               </div>
               <div class="form-group">
-                <label>Tahun Lulus</label>
-                <input type="text" class="form-control" name="tahun_lulus" value="<?php echo $row['tahun_lulus']; ?>">
+                <label>Status</label>
+                <input type="text" class="form-control" name="status" value="<?php echo $row['status']; ?>">
               </div>
-              <div class="form-group">
-                <label>Agama</label>
-                <input type="text" class="form-control" name="agama" value="<?php echo $row['agama']; ?>">
-              </div>
-              <div class="form-group">
-                <label>Jenis Kelamin</label>
-                <input type="text" class="form-control" name="jenis_kelamin" value="<?php echo $row['jenis_kelamin']; ?>">
-              </div>
-              <div class="form-group">
-                <label>Tinggi Badan</label>
-                <input type="text" class="form-control" name="tinggi_badan" value="<?php echo $row['tinggi_badan']; ?>">
-              </div>
-              <div class="form-group">
-                <label>Berat Badan</label>
-                <input type="text" class="form-control" name="berat_badan" value="<?php echo $row['berat_badan']; ?>">
-              </div>
-              <div class="form-group">
-                <label>Alamat</label>
-                <input type="text" class="form-control" name="alamat" value="<?php echo $row['alamat']; ?>">
-              </div>
-              <div class="form-group">
-                <label>Kabupaten/kota</label>
-                <input type="text" class="form-control" name="kabupaten" value="<?php echo $row['kabupaten']; ?>">
-              </div>
-              <div class="form-group">
-                <label>Nomor Telepon</label>
-                <input type="text" class="form-control" name="no_telp" value="<?php echo $row['no_telp']; ?>">
-              </div>
-              <button type="button" class="btn btn-default" name="button" onclick="window.location='lihat-pendaftaran.php'">Kembali</button>
+
+              <button type="button" class="btn btn-default" name="button" onclick="window.location='hasil-tes.php'">Kembali</button>
               <input type="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">
             </div>
           </form>

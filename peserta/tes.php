@@ -42,7 +42,8 @@
                             <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="pendaftaran.php">Pendaftaran</a></li>
-                                <li><a href="hasil.php" class="active">Hasil Tes</a></li>
+                                <li><a href="tes.php" class="active">Tes</a></li>
+                                <li><a href="hasil.php">Hasil Tes</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -53,26 +54,14 @@
             <div class="container">
                 <div class="row section-title-container">
                     <div class="col-lg-12 text-uppercase text-center">
-                        <h1 class="section-title-2">Pencarian Hasil Tes Peserta Pelatihan </h1>
+                        <h2 class="section-title-2">Tes Online Peserta Pelatihan Kapal Pesiar</h2>
                         <hr class="section-title-underline">
                     </div>
                     <div class="form-input">
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
-                                <form  name="form" method="post" action="proses-hasil.php" onsubmit="return validasi_input(this)">
-                                  <?php
-                                  include 'koneksi.php';
-                                  $query = mysqli_query($koneksi,"SELECT * FROM hasil_tes");
-                                  ?>
+                                <form  name="form" method="post" action="proses-pendaftaran.php" onsubmit="return validasi_input(this)">
 
-
-
-                                    <h3><p><center>Data Tidak Ditemukan</p></center></h3>
-                                    <br>
-
-                                    <div class="text-center py-4 mt-3">
-                                        <button  name="close" class="btn btn-primary btn-lg" onclick="window.location.href='hasil.php'" style="padding: 10px 25px; border-radius:7px" type="close">OK</button>
-                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -80,16 +69,11 @@
                   </div>
                 </div>
         </section>
-        <script type="text/javascript">
-        function validasi_input(form){
-          if (form.hasil.value == ""){
-            alert("kolom hasil kosong!");
-            form.hasil.focus();
-            return (false);
-          }
-          return (true);
-          }
-          </script>
+        <!-- Blog -->
+
+        <!-- Features -->
+
+
 
         <footer class="text-center">
             <p class="small copyright-text">Copyright &copy; 2084 Company Name</p>
@@ -97,36 +81,22 @@
 
         <!-- JS -->
         <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
-        <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>      <!-- Isotope, http://isotope.metafizzy.co -->
+        <script type="text/javascript" src="js/responsiveCarousel.min.js"></script>      <!-- Carousel -->
         <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
         <script>
-            // All images are loaded. Call isotope
-            $(window).load(function() {
-                 var $container = $('#folio-container');
-                // init
-                $container.isotope({
-                // options
-                itemSelector: '.folio-item',
-                animationOptions: {
-                        duration: 750,
-                        easing: 'linear',
-                        queue: false
-                    },
+
+            $(function() {
+                $('.crsl-items').carousel({
+                    visible: 1,
+                    itemMinWidth: 320,
+                    itemEqualHeight: 320,
+                    itemMargin: 9,
                 });
-
-                // filter items when filter link is clicked
-                jQuery('#filters a').click(function(){
-                    var selector = $(this).attr('data-filter');
-                    $container.isotope({ filter: selector });
-                    return false;
-                });
-
-                jQuery('#filters li a').click(function(){
-
-                    jQuery('#filters li').removeClass('current');
-                    jQuery(this).parent().addClass('current');
+                $(".crsl-nav a[href=#]").on('click', function(e) {
+                    e.preventDefault();
                 });
             });
+
         </script>
     </body>
 </html>

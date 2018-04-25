@@ -47,20 +47,20 @@
                     <hr class="section-title-underline">
                 </div>
                 <div class="form-input">
-                    <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
+                    <div class="card mx-xl-5" style="width: 700px; border-radius: 7px; margin-right: :10px; margin-left: 20px">
                         <div class="card-body">
                           <form action="" method="post">
                               <?php
                               include 'koneksi.php';
-                              $query = mysqli_query($koneksi,"SELECT * FROM pendaftaran ORDER BY nomor_pendaftaran DESC LIMIT 1 ");
+                              $query = mysqli_query($koneksi,"SELECT * FROM peserta ORDER BY nomor_peserta DESC LIMIT 1 ");
                               $tgl_pendaftaran = date("Y-m-d H:i:s");
                               $row = mysqli_num_rows($query);
                               $rows = mysqli_fetch_array($query);
                               if ($row <= 0) {
-                                $nomor_pendaftaran = 1;
+                                $nomor_peserta = 1;
                               }
                               else {
-                                $nomor_pendaftaran = $rows['nomor_pendaftaran'] + 1;
+                                $nomor_peserta = $rows['nomor_peserta'] + 1;
                               }
                               $nik = $_POST['nik'];
                               $nama = $_POST['nama'];
@@ -76,50 +76,51 @@
                               $kabupaten = $_POST['kabupaten'];
                               $no_telp = $_POST['no_telp'];
                               if($koneksi){
-                                echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </h3></center> ";
-                                echo "<p>";
+                                echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </center> ";
+                                echo "<pre>";
                                 echo "<br>";
-                                echo "NIK          : $nik";
+                                echo "NIK              : $nik";
                                 echo "<br>";
-                                echo "Nama          : $nama";
+                                echo "Nama             : $nama";
                                 echo "<br>";
-                                echo "umur          : $umur";
+                                echo "umur             : $umur";
                                 echo "<br>";
-                                echo "Tanggal Lahir : $tgl_lahir";
+                                echo "Tanggal          : $tgl_lahir";
                                 echo "<br>";
-                                echo "Pendidikan    : $pendidikan";
+                                echo "Pendidikan       : $pendidikan";
                                 echo "<br>";
-                                echo "Tahun Lulus   : $tahun_lulus";
+                                echo "Tahun Lulus      : $tahun_lulus";
                                 echo "<br>";
-                                echo "Agama         : $agama";
+                                echo "Agama            : $agama";
                                 echo "<br>";
-                                echo "Jenis Kelamin : $jenis_kelamin";
+                                echo "Jenis Kelamin    : $jenis_kelamin";
                                 echo "<br>";
-                                echo "Tinggi Badan  : $tinggi_badan";
+                                echo "Tinggi Badan     : $tinggi_badan";
                                 echo "<br>";
-                                echo "Berat Badan   : $berat_badan";
+                                echo "Berat Badan      : $berat_badan";
                                 echo "<br>";
-                                echo "Alamat Rumah  : $alamat_rumah";
+                                echo "Alamat Rumah     : $alamat_rumah";
                                 echo "<br>";
-                                echo "Kabupaten/Kota  : $kabupaten";
+                                echo "Kabupaten/Kota   : $kabupaten";
                                 echo "<br>";
-                                echo "Nomor Telepon : $no_telp";
+                                echo "Nomor Telepon    : $no_telp";
                                 echo "<br>";
-                                echo "</p>";
-                                $query1 ="insert into pendaftaran (nomor_pendaftaran, tgl_pendaftaran, nik, nama, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
-                                VALUES ('$nomor_pendaftaran','$tgl_pendaftaran','$nik', '$nama', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')";
+
+                                $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
+                                VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')";
                                 $hasil = mysqli_query($koneksi,$query1);
                                 echo "<br>";
                                 echo "<br>";
-                                echo "Nomor Pendaftaran Anda Adalah : $nomor_pendaftaran";
+                                echo "Nomor Pendaftaran Anda Adalah : $nomor_peserta";
                                 echo "<br>";
-                                echo "Pelaksanaan Tes Tulis dan Wawancara akan diinfokan lebih lanjut melalui sms";
+                                echo "Pelaksanaan Tes Tulis dan Wawancara akan diinfokan lebih lanjut melalui sms</h3>";
                                 echo "<br>";
                                 echo " ";
                                 mysqli_close($koneksi);
                               }else{
                                 echo "Server Not Connected";
                               }
+                                echo "</pre>";
                                ?>
                                </form>
                                 <div class="text-center py-4 mt-3">

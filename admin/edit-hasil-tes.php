@@ -88,7 +88,15 @@
         <li>
           <a href="lihat-peserta.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
-            <i class="fa fa-bar-chart"></i> <span>Data Peserta</span>
+            <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
+          </a>
+        </li>
+        <li>
+          <a href="soal-tes.php">
+            <i class="fa fa-table"></i>
+            <span>Soal Tes Peserta</span>
+            <span class="pull-right-container">
+            </span>
           </a>
         </li>
         <li class="treeview">
@@ -100,11 +108,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes Peserta</a></li>
+            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes</a></li>
             <li><a href="hasil-tes.php"> Hasil Tes Peserta</a></li>
           </ul>
         </li>
-      </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -114,54 +121,45 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Pendaftaran
+       Hasil Tes Peserta
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Tambah Hasil Tes</li>
-      </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="col-md-6">
-        <div class="box box-default">
-          <div class="box-header with-border">
-            <h3 class="box-title">Data Peserta : <?php echo $row['nomor_peserta']; ?></h3>
-          </div>
-            <form action="proses-tambah-hasil-tes.php" method="post">
-              <div class="box-body">
-                <input type="hidden" name="id_peserta" value="<?php echo $row['id_peserta'];?>">
-                <!-- <div class="form-group">
-                  <label>Nomor Pendaftaran</label>
-                  <input type="number" class="form-control" name="nomor_pendaftaran" value="<?php echo $row['nomor_peserta']; ?>" disabled>
-                </div> -->
-                <div class="form-group">
-                  <label>Nama</label>
-                  <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?> ">
-                </div>
-                <div class="form-group">
-                  <label>Nilai Tes Tulis</label>
-                  <input type="number" class="form-control" name="nilai_tulis" id="nilaiTesTulis" onkeyup="sum();">
-                </div>
-                <div class="form-group">
-                  <label>Nilai Tes Wawancara</label>
-                  <input type="number" class="form-control" name="nilai_wawancara" id="nilaiTesWawancara" onkeyup="sum();">
-                </div>
-                <div class="form-group">
-                  <label>Total Nilai</label>
-                  <input type="number" class="form-control" name="total_nilai" id="totalNilai">
-                </div>
-                <div class="form-group">
-                  <label>Status</label>
-                  <input type="text" class="form-control" name="status" id="statusNilai">
-                </div>
-                <button type="button" class="btn btn-default" name="button" onclick="window.location='tambah-hasil-tes.php'">Kembali</button>
-                <input type="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">
+      <div class="box box-default">
+        <div class="box-header with-border">
+        </div>
+          <form action="proses-edit-pendaftara.php" method="post">
+            <div class="box-body">
+              <input type="hidden" name="id" value="<?php echo $row['id'];?>">
+              <div class="form-group">
+                <label>Nama</label>
+                <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?> ">
               </div>
-            </form>
-          </div>
-      </div>
+              <div class="form-group">
+                <label>Nilai Tes Tulis</label>
+                <input type="number" class="form-control" name="nilai_tulis" id="nilaiTesTulis" onkeyup="sum();">
+              </div>
+              <div class="form-group">
+                <label>Nilai Tes Wawancara</label>
+                <input type="number" class="form-control" name="nilai_wawancara" id="nilaiTesWawancara" onkeyup="sum();">
+              </div>
+              <div class="form-group">
+                <label>Total Nilai</label>
+                <input type="number" class="form-control" name="total_nilai" id="totalNilai" disabled>
+              </div>
+              <div class="form-group">
+                <label>Status</label>
+                <input type="text" class="form-control" name="status" id="statusNilai" disabled>
+              </div>
+              <button type="button" class="btn btn-default" name="button" onclick="window.location='tambah-hasil-tes.php'">Kembali</button>
+              <input type="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">
+            </div>
+          </form>
+        </div>
+    </div>
+
       <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -175,34 +173,23 @@
   </footer>
   <div class="control-sidebar-bg"></div>
 </div>
-<script>
-  function sum() {
-      var nilaiTesTulis = document.getElementById('nilaiTesTulis').value;
-      var nilaiTesWawancara = document.getElementById('nilaiTesWawancara').value;
-      var result = (parseInt(nilaiTesTulis) + parseInt(nilaiTesWawancara)) / 2;
-      var ket = ("");
-      document.getElementById('totalNilai').value = result;
-      var ket = ("");
-      if (result == 100) {
-        ket = ("lulus");
-      }else if (result >= 80) {
-        ket = ("Lulus");
-      }
-      else if (result < 80) {
-        ket = ("Tidak Lulus");
-      }
 
-      document.getElementById('statusNilai').value = ket;
-  }
-</script>
+<!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<!-- page script -->
 <script>
   $(function () {
     $('#example1').DataTable()

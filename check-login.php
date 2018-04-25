@@ -1,21 +1,21 @@
 <?php
 session_start();
-if( !isset($_POST['email']) ) { header('location:index.php'); exit(); }
+if( !isset($_POST['username']) ) { header('location:index.php'); exit(); }
 $error = '';
 require ( 'config.php' );
-$email = trim( $_POST['email'] );
+$username = trim( $_POST['username'] );
 $password = trim( $_POST['password'] );
-if( strlen($email) < 2 )
+if( strlen($username) < 2 )
 {
-    $error = 'Email tidak boleh kosong';
+    $error = 'username tidak boleh kosong';
 }else if( strlen($password) < 2 )
 {
     $error = 'Password Tidak boleh kosong';
 }else{
-    $email = $koneksi->escape_string($email);
+    $username = $koneksi->escape_string($username);
     $password = $koneksi->escape_string($password);
     $password = md5($password);
-    $sql = "SELECT * FROM users WHERE email='$email' AND password='$password' LIMIT 1";
+    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
     $query = $koneksi->query($sql);
     if( !$query )
     {
@@ -25,7 +25,7 @@ if( strlen($email) < 2 )
     {
         $row =$query->fetch_assoc();
         $_SESSION['nama_user'] = $row['nama'];
-        $_SESSION['email_user'] = $row['email'];
+        $_SESSION['username_user'] = $row['username'];
         $_SESSION['akses'] = $row['hak_akses'];
 
         if( $row['hak_akses'] == 'admin')
@@ -39,7 +39,7 @@ if( strlen($email) < 2 )
         exit();
 
     }else{
-        $error = 'Email dan Password Tidak ditemukan';
+        $error = 'Username dan Password Tidak ditemukan';
     }
 
 }
