@@ -1,15 +1,3 @@
-<?php
-session_start();
-
-if( !isset($_SESSION['session_kepalakantor']) )
-{
-    header('location:./../'.$_SESSION['akses']);
-    exit();
-}
-$username = $_SESSION['username_user'];
-$nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,10 +50,6 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
         <div class="pull-left image">
           <img src="dinas11.png" class="img-responsive">
         </div>
-        <div class="pull-left info">
-          <p>Selamat Datang</p>
-          <p><?php echo $nama; ?></p>
-        </div>
       </div>
 
       <!-- /.search form -->
@@ -81,11 +65,11 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
           <a href="#">
             <i class="fa fa-bar-chart"></i>
             <span>Laporan</span>
-            <span class="pull-right-container">
+            <span class="pull-righ">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
+              <ul class="treeview-menu">
             <li><a href="laporan-peserta.php"> Laporan Data Peserta</a></li>
             <li><a href="laporan-umur.php"> Laporan Data Umur </a></li>
             <li><a href="laporan-jk.php"> Laporan Data Jenis Kelamin </a></li>
@@ -104,11 +88,7 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
     <section class="content">
       <div class="row">
         <div class="text-center">
-          <h1>Selamat Datang di Sistem Informasi Eksekutif Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provinsi Bali</h1>
-          <p style="margin-top: 100px; margin-bottom: 250px;">
-            <img src="dinasku.png" alt="DISNAKER Prov Bali" height="400px" width="400px">
-          </p>
-        </div>
+          <h3>Laporan Data Peserta</h3>
       </div>
     </section>
 
