@@ -132,10 +132,10 @@
             <form action="proses-tambah-hasil-tes.php" method="post">
               <div class="box-body">
                 <input type="hidden" name="id_peserta" value="<?php echo $row['id_peserta'];?>">
-                <!-- <div class="form-group">
-                  <label>Nomor Pendaftaran</label>
-                  <input type="number" class="form-control" name="nomor_pendaftaran" value="<?php echo $row['nomor_peserta']; ?>" disabled>
-                </div> -->
+                <div class="form-group">
+                  <label>Nomor Peserta</label>
+                  <input type="text" class="form-control" name="nomor_peserta" value="<?php echo $row['nomor_peserta']; ?>">
+                </div>
                 <div class="form-group">
                   <label>Nama</label>
                   <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?> ">

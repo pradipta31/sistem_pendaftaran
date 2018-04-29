@@ -56,12 +56,18 @@
                               $tgl_pendaftaran = date("Y-m-d H:i:s");
                               $row = mysqli_num_rows($query);
                               $rows = mysqli_fetch_array($query);
-                              if ($row <= 0) {
-                                $nomor_peserta = 1;
-                              }
-                              else {
-                                $nomor_peserta = $rows['nomor_peserta'] + 1;
-                              }
+
+                              $tahun_pendaftaran = $rows['nomor_peserta'];
+                              $nomorBaru = (int) substr($tahun_pendaftaran, 3, 3);
+                              $char = "2018";
+                              $nomor_peserta = $char . sprintf(".%03s", $nomorBaru+1);
+
+                              // if ($row <= 0) {
+                              //   $nomor_peserta = 1;
+                              // }
+                              // else {
+                              //   $nomor_peserta = $rows['nomor_peserta'] + 1;
+                              // }
                               $nik = $_POST['nik'];
                               $nama = $_POST['nama'];
                               $umur = $_POST['umur'];
