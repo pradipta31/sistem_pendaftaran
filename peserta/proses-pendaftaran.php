@@ -59,8 +59,10 @@
 
                               $tahun_pendaftaran = $rows['nomor_peserta'];
                               $nomorBaru = (int) substr($tahun_pendaftaran, 3, 3);
+                              $nomorBaru +1;
+
                               $char = "2018";
-                              $nomor_peserta = $char . sprintf(".%03s", $nomorBaru+1);
+                              $nomor_peserta = $char . sprintf(".%03s", $nomorBaru);
 
                               // if ($row <= 0) {
                               //   $nomor_peserta = 1;
