@@ -59,39 +59,31 @@
                     <div class="form-input">
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
-                                <form  name="form" method="post" action="proses-hasil.php" onsubmit="return validasi_input(this)">
                                   <?php
                                   include 'koneksi.php';
-
-                                  $q = "SELECT * from hasil_tes where nama like '%$nama%' "; //query to get the search result
+                                  $nama= $_POST['nama']; //get the nama value from form
+                                  $q = "SELECT * from hasil-tes where nama like '%$nama%' "; //query to get the search result
                                   $result = mysql_query($q); //execute the query $q
-                                  $name = $_POST['nama']; //get the nama value from form
                                   echo "<center>";
                                   echo "<h2> Hasil Searching </h2>";
-                                  echo "<table border='1' cellpadding='5' cellspacing='8'>";
+                                  echo "<table'>";
                                   echo "
-                                  <tr bgcolor='orange'>
+                                  <tr>
                                   <td>Nama Peserta</td>
                                   <td>Status</td>
                                   </tr>";
                                   while ($data = mysql_fetch_array($result)) {  //fetch the result from query into an array
                                   echo "
                                   <tr>
-                                  <td>".$data['name']."</td>
+                                  <td>".$data['nama']."</td>
                                   <td>".$data['status']."</td>
                                   </tr>";
                                   }
                                   echo "</table>";
                                   ?>
-                                  ?>
-
-
-
-                                    <h3><p><center>Data Tidak Ditemukan</p></center></h3>
-                                    <br>
 
                                     <div class="text-center py-4 mt-3">
-                                        <button  name="close" class="btn btn-primary btn-lg" onclick="window.location.href='hasil.php'" style="padding: 10px 25px; border-radius:7px" type="close">OK</button>
+                                        <button  name="close" class="btn btn-primary btn-lg" onclick="window.location.href='form-hasil.php'" style="padding: 10px 25px; border-radius:7px" type="close">OK</button>
                                     </div>
                                 </form>
                             </div>

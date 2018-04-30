@@ -61,44 +61,17 @@
                     <div class="form-input">
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
-                                <form  name="form" method="get" onsubmit="return validasi_input(this)">
+                              <form name="formcari" method="post" action="proses-hasil.php">
                                     <p class="h1 text-center py-1">Form Input</p>
                                     <label style="font-size: 14px">Cari Nama</label>
-                                    <input type="text" class="form-control" name="cari">
+                                    <input type="text" class="form-control" name="nama">
                                     <p>*)isi kolom dengan Nama</p>
                                     <br>
 
                                     <div class="text-center py-4 mt-3">
-                                        <button class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px" type="submit">Cari Hasil</button>
+                                        <button class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px"value="search" type="submit">Cari Hasil</button>
                                     </div>
                                 </form>
-                                <?php
-                                include 'koneksi.php';
-
-                                if(isset($_GET['cari'])){
-                                	$cari = $_GET['cari'];
-                                	echo "<b>Hasil pencarian : ".$cari."</b>";
-                                  echo "<br>";
-                                }
-                                ?>
-
-
-                                	<?php
-                                	if(isset($_GET['cari'])){
-                                		$cari = $_GET['cari'];
-                                		$data = mysqli_query($koneksi,"select * from hasil_tes where nama like '%".$cari."%'");
-                                	}else{
-                                		$data = mysqli_query($koneksi,"select * from hasil_tes");
-                                	}
-
-                                	while($d = mysqli_fetch_array($data)){
-                                	?>
-
-                                		<?php echo $d['nama'];
-                                      echo ",";
-                                    ?>
-
-                                	<?php } ?>
                                 </table>
                             </div>
                         </div>
