@@ -139,24 +139,28 @@
             <div class="box-body">
               <input type="hidden" name="id" value="<?php echo $row['id'];?>">
               <div class="form-group">
+                <label>Nomor Peserta</label>
+                <input type="text" class="form-control" name="nomor_peserta" value="<?php echo $row['nomor_peserta']; ?>">
+              </div>
+              <div class="form-group">
                 <label>Nama</label>
                 <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?>">
               </div>
               <div class="form-group">
                 <label>Nilai Tes Tulis</label>
-                <input type="number" class="form-control" name="nilai_tulis" value="<?php echo $row['nilai_tulis']; ?>">
+                <input type="number" class="form-control" name="nilai_tulis" id="nilaiTesTulis" onkeyup="sum();" value="<?php echo $row['nilai_tulis']; ?>">
               </div>
               <div class="form-group">
                 <label>Nilai Tes Wawancara</label>
-                <input type="number" class="form-control" name="nilai_wawancara" value="<?php echo $row['nilai_wawancara']; ?>">
+                <input type="number" class="form-control" name="nilai_wawancara" id="nilaiTesWawancara" onkeyup="sum();" value="<?php echo $row['nilai_wawancara']; ?>">
               </div>
               <div class="form-group">
                 <label>Total Nilai</label>
-                <input type="number" class="form-control" name="total_nilai" value="<?php echo $row['total_nilai']; ?>">
+                <input type="number" class="form-control" name="total_nilai" id="totalNilai" value="<?php echo $row['total_nilai']; ?>">
               </div>
               <div class="form-group">
                 <label>Status</label>
-                <input type="text" class="form-control" name="status" value="<?php echo $row['status']; ?>">
+                <input type="text" class="form-control" name="status" id="statusNilai" value="<?php echo $row['status']; ?>">
               </div>
 
               <button type="button" class="btn btn-default" name="button" onclick="window.location='hasil-tes.php'">Kembali</button>
@@ -177,6 +181,27 @@
   </footer>
   <div class="control-sidebar-bg"></div>
 </div>
+
+<script>
+  function sum() {
+      var nilaiTesTulis = document.getElementById('nilaiTesTulis').value;
+      var nilaiTesWawancara = document.getElementById('nilaiTesWawancara').value;
+      var result = (parseInt(nilaiTesTulis) + parseInt(nilaiTesWawancara)) / 2;
+      var ket = ("");
+      document.getElementById('totalNilai').value = result;
+      var ket = ("");
+      if (result == 100) {
+        ket = ("lulus");
+      }else if (result >= 80) {
+        ket = ("Lulus");
+      }
+      else if (result < 80) {
+        ket = ("Tidak Lulus");
+      }
+
+      document.getElementById('statusNilai').value = ket;
+  }
+</script>
 
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>

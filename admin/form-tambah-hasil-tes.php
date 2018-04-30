@@ -132,10 +132,10 @@
             <form action="proses-tambah-hasil-tes.php" method="post">
               <div class="box-body">
                 <input type="hidden" name="id_peserta" value="<?php echo $row['id_peserta'];?>">
-                <!-- <div class="form-group">
-                  <label>Nomor Pendaftaran</label>
-                  <input type="number" class="form-control" name="nomor_pendaftaran" value="<?php echo $row['nomor_peserta']; ?>" disabled>
-                </div> -->
+                <div class="form-group">
+                  <label>Nomor Peserta</label>
+                  <input type="text" class="form-control" name="nomor_peserta" value="<?php echo $row['nomor_peserta']; ?>">
+                </div>
                 <div class="form-group">
                   <label>Nama</label>
                   <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?> ">
@@ -195,23 +195,14 @@
       document.getElementById('statusNilai').value = ket;
   }
 </script>
-
-<!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- DataTables -->
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<!-- page script -->
 <script>
   $(function () {
     $('#example1').DataTable()
