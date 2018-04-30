@@ -42,7 +42,7 @@
                             <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="pendaftaran.php">Pendaftaran</a></li>
-                                <li><a href="hasil.php" class="active">Hasil Tes</a></li>
+                                <li><a href="form-hasil.php" class="active">Hasil Tes</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -62,7 +62,27 @@
                                 <form  name="form" method="post" action="proses-hasil.php" onsubmit="return validasi_input(this)">
                                   <?php
                                   include 'koneksi.php';
-                                  $query = mysqli_query($koneksi,"SELECT * FROM hasil_tes");
+
+                                  $q = "SELECT * from hasil_tes where nama like '%$nama%' "; //query to get the search result
+                                  $result = mysql_query($q); //execute the query $q
+                                  $name = $_POST['nama']; //get the nama value from form
+                                  echo "<center>";
+                                  echo "<h2> Hasil Searching </h2>";
+                                  echo "<table border='1' cellpadding='5' cellspacing='8'>";
+                                  echo "
+                                  <tr bgcolor='orange'>
+                                  <td>Nama Peserta</td>
+                                  <td>Status</td>
+                                  </tr>";
+                                  while ($data = mysql_fetch_array($result)) {  //fetch the result from query into an array
+                                  echo "
+                                  <tr>
+                                  <td>".$data['name']."</td>
+                                  <td>".$data['status']."</td>
+                                  </tr>";
+                                  }
+                                  echo "</table>";
+                                  ?>
                                   ?>
 
 

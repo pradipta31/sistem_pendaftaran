@@ -30,7 +30,7 @@
         <div class="header-bg">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-5 col-md-6 col-sm-4 site-name-container">
+                    <div class="col-lg-3 col-md-4 col-sm-4 site-name-container">
                         <img src="img/dinas11.png" alt="site-logo" class="site-logo">
                         <h1 class="site-name"></h1>
                     </div>
@@ -40,7 +40,7 @@
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="pendaftaran.php" class="active">Pendaftaran</a></li>
                                   <li><a href="tes.php">Tes</a></li>
-                                <li><a href="hasil.php">Hasil Tes</a></li>
+                                <li><a href="form-hasil.php">Hasil Tes</a></li>
                             </ul>
                         </nav>
                     </div>
