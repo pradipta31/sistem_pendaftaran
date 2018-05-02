@@ -148,7 +148,7 @@
               </div>
               <div class="form-group">
                 <label>Umur</label>
-                <input type="text" class="form-control" name="umur" value="<?php echo $row['umur']; ?>">
+                <input type="text" class="form-control" name="umur"value="<?php echo $row['umur']; ?>">
               </div>
               <div class="form-group">
                 <label>Tanggal Lahir</label>
