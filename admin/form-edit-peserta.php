@@ -148,7 +148,21 @@
               </div>
               <div class="form-group">
                 <label>Umur</label>
-                <input type="text" class="form-control" name="umur" value="<?php echo $row['umur']; ?>">
+                <select class="form-control" name="umur" value="<?php echo $row['umur'] ?>">
+                  <option value="18" <?= ($row['umur'] == 18) ? 'selected' : '' ; ?>>18 Tahun</option>
+                  <option value="19" <?= ($row['umur'] == 19) ? 'selected' : '' ; ?>>19 Tahun</option>
+                  <option value="20" <?= ($row['umur'] == 20) ? 'selected' : '' ; ?>>20 Tahun</option>
+                  <option value="21" <?= ($row['umur'] == 21) ? 'selected' : '' ; ?>>21 Tahun</option>
+                  <option value="22" <?= ($row['umur'] == 22) ? 'selected' : '' ; ?>>22 Tahun</option>
+                  <option value="23" <?= ($row['umur'] == 23) ? 'selected' : '' ; ?>>23 Tahun</option>
+                  <option value="24" <?= ($row['umur'] == 24) ? 'selected' : '' ; ?>>24 Tahun</option>
+                  <option value="25" <?= ($row['umur'] == 25) ? 'selected' : '' ; ?>>25 Tahun</option>
+                  <option value="26" <?= ($row['umur'] == 26) ? 'selected' : '' ; ?>>26 Tahun</option>
+                  <option value="27" <?= ($row['umur'] == 27) ? 'selected' : '' ; ?>>27 Tahun</option>
+                  <option value="28" <?= ($row['umur'] == 28) ? 'selected' : '' ; ?>>28 Tahun</option>
+                  <option value="29" <?= ($row['umur'] == 29) ? 'selected' : '' ; ?>>29 Tahun</option>
+                  <option value="30" <?= ($row['umur'] == 30) ? 'selected' : '' ; ?>>30 Tahun</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>Tanggal Lahir</label>
@@ -168,7 +182,10 @@
               </div>
               <div class="form-group">
                 <label>Jenis Kelamin</label>
-                <input type="text" class="form-control" name="jenis_kelamin" value="<?php echo $row['jenis_kelamin']; ?>">
+                <select class="form-control" name="jenis_kelamin" value="<?php echo $row['jenis_kelamin'] ?>">
+                  <option value="pria" <?= ($row['jenis_kelamin'] == 'pria') ? 'selected' : '' ; ?>>Pria</option>
+                  <option value="wanita" <?= ($row['jenis_kelamin'] == 'wanita') ? 'selected' : '' ; ?>>Wanita</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>Tinggi Badan</label>
