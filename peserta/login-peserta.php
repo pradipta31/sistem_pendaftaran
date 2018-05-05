@@ -26,6 +26,75 @@
 
     </head>
     <body class="templatemo-container">
+      <style media="screen">
+      body {
+        background: white;
+        font-family: 'Open Sans', sans-serif;
+        }
+        .login {
+        width: 400px;
+        margin: 16px auto;
+        font-size: 16px;
+        }
+        /* Reset top and bottom margins from certain elements */
+        .login-header,
+        .login p {
+        margin-top: 0;
+        margin-bottom: 0;
+        }
+        .login-header {
+        background: gray;
+        padding: 20px;
+        font-size: 1.4em;
+        font-weight: normal;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+        }
+        .login-container {
+        background: #ebebeb;
+        padding: 12px;
+        }
+        /* Every row inside .login-container is defined with p tags */
+        .login p {
+        padding: 12px;
+        }
+        .login input {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        border-width: 1px;
+        border-style: solid;
+        padding: 16px;
+        outline: 0;
+        font-family: inherit;
+        font-size: 0.95em;
+        }
+        .login input[type="email"],
+        .login input[type="password"] {
+        background: #fff;
+        border-color: #bbb;
+        color: #555;
+        }
+        /* Text fields' focus effect */
+        .login input[type="email"]:focus,
+        .login input[type="password"]:focus {
+        border-color: #888;
+        }
+        .login input[type="submit"] {
+        background: gray;
+        border-color: transparent;
+        color: #fff;
+        cursor: pointer;
+        }
+        .login input[type="submit"]:hover {
+        background: #17c;
+        }
+        /* Buttons' focus effect */
+        .login input[type="submit"]:focus {
+        border-color: #05a;
+        }
+      </style>
         <!-- header -->
         <div class="header-bg">
             <div class="container">
@@ -40,9 +109,9 @@
                     <div class="col-lg-9 col-md-8 col-sm-8 templatemo-nav-container">
                         <nav class="templatemo-nav">
                             <ul>
-                                <li><a href="index.php" class="active">Home</a></li>
+                                <li><a href="index.php">Home</a></li>
                                 <li><a href="pendaftaran.php">Pendaftaran</a></li>
-                                <li><a href="login-peserta.php">Tes</a></li>
+                                <li><a href="tes.php" class="active">Tes</a></li>
                                 <li><a href="form-hasil.php">Hasil Tes</a></li>
                             </ul>
                         </nav>
@@ -50,32 +119,21 @@
                 </div>
             </div>
         </div>
-        <section class="templatemo-container background-image-logo section-shadow-bottom">
-            <div class="container">
-                <div class="row section-title-container">
-                    <div class="col-lg-12 text-uppercase text-center">
-                        <h2 class="section-title-2">Welcome To Pendaftaran Pelatihan Kapal Pesiar DISNAKER ESDM Provinsi Bali</h2>
-                        <div class="section-title-underline"></div>
-                        <hr class="section-title-underline">
-                    </div>
-                    <ol>
-                      <h3>A. Persyaratan Pendaftaran</h3>
-                      <h4>
-                      <li>Mengisi Formulir Pendaftaran</li>
-                      <li>Pria dan Wanita, Warga Negara Indonesia</li>
-                      <li>Lulusan minimal SMP,SMA/SMK sederajat</li>
-                      <li>Umur minimal 18 tahun dan maksimal 30 tahun</li>
-                      <li>Tinggi badan minimal 155 cm untuk wanita dan 165 cm untuk pria</li>
-                      <li>Berat badab ideal</li>
-                      <li>Berbahasa inggris lancar baik secara lisan maupun tulisan</li>
-                      <li>Rambut rapi dan tidak diwarnai, gigi bagus(tanpa kawat gigi)</li>
-                      <li>Tidak mempunyai tanda tatto pada tanggan, kaki, maupun leher</li>
-                      <li>Dapat bekerja dalam kelompok dan dalam waktu yang lama</li>
-                      <li>Tidak menderita ketergantungan narkoba dan alkohol</li>
-                    </h4>
-                      </ol>
-
-            </div>
+        <section>
+          <div class="login">
+              <h5 class="login-header" style="font-size: 15px"><b>Sebelum melakukan tes secara online, harap melakukan login terlebih dahulu</b></h5>
+                  <form class="login-container" action="proses-login.php" method="post">
+                      <p>
+                          <input type="text" placeholder="Email" name="email">
+                      </p>
+                      <p>
+                          <input type="text" placeholder="Nomor Peserta" name="nomor_peserta">
+                      </p>
+                      <p>
+                          <input type="submit" value="Masuk" name="submit">
+                      </p>
+                  </form>
+          </div>
         </section>
         <!-- Blog -->
 
@@ -83,7 +141,7 @@
 
 
 
-        <footer class="text-center">
+        <footer class="text-center" style="margin-top: 81px">
             <p class="small copyright-text">Copyright &copy; 2084 Company Name</p>
         </footer>
 

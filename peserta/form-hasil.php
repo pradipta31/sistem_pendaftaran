@@ -43,7 +43,7 @@
                             <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="pendaftaran.php">Pendaftaran</a></li>
-                                  <li><a href="tes.php">Tes</a></li>
+                                  <li><a href="login-peserta.php">Tes</a></li>
                                 <li><a href="form-hasil.php" class="active">Hasil Tes</a></li>
                             </ul>
                         </nav>
@@ -60,20 +60,53 @@
                     </div>
                     <div class="form-input">
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
-                            <div class="card-body">
-                              <form name="formcari" method="get" action="proses-hasil.php">
-                                    <p class="h1 text-center py-1">Form Input</p>
-                                    <label style="font-size: 14px">Cari Nama</label>
-                                    <input type="text" class="form-control" name="nama">
-                                    <p>*)isi kolom dengan Nama</p>
-                                    <br>
+                          <div class="card-body">
+                              <form  name="form" method="get" onsubmit="return validasi_input(this)">
+                                  <p class="h1 text-center py-1">Form Input</p>
+                                  <label style="font-size: 14px">Cari Nama</label>
+                                  <input type="text" class="form-control" name="cari">
+                                  <p>*)isi kolom dengan Nama</p>
+                                  <br>
 
-                                    <div class="text-center py-4 mt-3">
-                                        <button class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px"value="search" type="submit">Cari Hasil</button>
-                                    </div>
-                                </form>
-                                </table>
-                            </div>
+                                  <div class="text-center py-4 mt-3">
+                                      <button class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px" type="submit">Cari Hasil</button>
+                                  </div>
+                              </form>
+                              <?php
+                              include 'koneksi.php';
+
+                              if(isset($_GET['cari'])){
+                                $cari = $_GET['cari'];
+                                echo "<b>Hasil pencarian : ".$cari."</b>";
+                                echo "<br>";
+                              }
+                              ?>
+
+
+
+                                <?php
+                                if(isset($_GET['cari'])){
+                                  $cari = $_GET['cari'];
+                                  $data = mysqli_query($koneksi,"select * from hasil_tes where nama like '%".$cari."%'");
+                                }else{
+                                  $data = mysqli_query($koneksi,"select * from hasil_tes");
+                                }
+                                ?>
+                                <table class="table table-bordered">
+                                  <tr>
+                                    <th>Nama</th>
+                                    <th>Status</th>
+                                  </tr>
+                                <?php
+                                while($d = mysqli_fetch_array($data)){
+                                ?>
+                                <tr>
+                                  <td><?= $d['nama'];?></td>
+                                  <td><?= $d['status'];?></td>
+                                </tr>
+                                <?php } ?>
+                              </table>
+                          </div>
                         </div>
                     </div>
                   </div>

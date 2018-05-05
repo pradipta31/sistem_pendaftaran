@@ -65,9 +65,9 @@
             </a>
           </li>
           <li>
-            <a href="soal-tes.php">
+            <a href="nilai-online.php">
               <i class="fa fa-table"></i>
-              <span>Soal Tes Peserta</span>
+              <span>Nilai Tes Online</span>
               <span class="pull-right-container">
               </span>
             </a>

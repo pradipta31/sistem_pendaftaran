@@ -72,11 +72,10 @@
           </a>
         </li>
         <li class="treeview">
-          <a href="#">
+          <a href="nilai-online.php">
             <i class="fa fa-table"></i>
-            <span>Hasil Tes Peserta</span>
+            <span>Nilai Tes Online</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">

@@ -26,7 +26,6 @@
 
     </head>
     <body class="templatemo-container">
-        <!-- header -->
         <div class="header-bg">
             <div class="container">
               <div class="row">
@@ -50,24 +49,77 @@
                 </div>
             </div>
         </div>
-        <section class="templatemo-container background-image-logo section-shadow-bottom">
-            <div class="container">
-                <div class="row section-title-container">
-                    <div class="col-lg-12 text-uppercase text-center">
-                        <h2 class="section-title-2">Tes Online Peserta Pelatihan Kapal Pesiar</h2>
-                        <hr class="section-title-underline">
-                    </div>
-                    <div class="form-input">
-                        <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
-                            <div class="card-body">
-                                <form  name="form" method="post" action="proses-pendaftaran.php" onsubmit="return validasi_input(this)">
+        <section>
+          <?php
+mysql_connect("localhost","root","");
+mysql_select_db("db_soal");
+    echo "<h3>selamat mengerjakan :)</h3>
+    <b>Ujian Online Pilihan Ganda</b>";
+echo "<div style='width:100%; border: 1px solid #EBEBEB; overflow:scroll;height:700px;'>";
+ echo '<table width="100%" border="0">';
 
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
+        $hasil=mysql_query("select * from tbl_soal WHERE aktif='Y' ORDER BY RAND ()");
+        $jumlah=mysql_num_rows($hasil);
+        $urut=0;
+        while($row =mysql_fetch_array($hasil))
+        {
+            $id=$row["id_soal"];
+            $pertanyaan=$row["soal"];
+            $pilihan_a=$row["a"];
+            $pilihan_b=$row["b"];
+            $pilihan_c=$row["c"];
+            $pilihan_d=$row["d"];
+
+            ?>
+            <form name="form1" method="post" action="jawab.php">
+            <input type="hidden" name="id[]" value=<?php echo $id; ?>>
+            <input type="hidden" name="jumlah" value=<?php echo $jumlah; ?>>
+            <tr>
+                <td width="17"><font color="#000000"><?php echo $urut=$urut+1; ?></font></td>
+                <td width="430"><font color="#000000"><?php echo "$pertanyaan"; ?></font></td>
+            </tr>
+            <?php
+                if (!empty($row["gambar"])) {
+                    echo "<tr><td></td><td><img src='foto/$row[gambar]' width='200' hight='200'></td></tr>";
+                }
+            ?>
+            <tr>
+                <td height="21"><font color="#000000">&nbsp;</font></td>
+              <td><font color="#000000">
+             A.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
+              <?php echo "$pilihan_a";?></font> </td>
+            </tr>
+            <tr>
+                <td><font color="#000000">&nbsp;</font></td>
+              <td><font color="#000000">
+             B. <input name="pilihan[<?php echo $id; ?>]" type="radio" value="B">
+              <?php echo "$pilihan_b";?></font> </td>
+            </tr>
+            <tr>
+                <td><font color="#000000">&nbsp;</font></td>
+              <td><font color="#000000">
+            C.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="C">
+              <?php echo "$pilihan_c";?></font> </td>
+            </tr>
+            <tr>
+                <td><font color="#000000">&nbsp;</font></td>
+              <td><font color="#000000">
+            D.   <input name="pilihan[<?php echo $id; ?>]" type="radio" value="D">
+              <?php echo "$pilihan_d";?></font> </td>
+            </tr>
+
+        <?php
+        }
+        ?>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" name="submit" value="Jawab" onclick="return confirm('Apakah Anda yakin dengan jawaban Anda?')"></td>
+            </tr>
+            </table>
+</form>
+        </p>
+</div>
+
         </section>
         <!-- Blog -->
 
@@ -75,7 +127,7 @@
 
 
 
-        <footer class="text-center">
+        <footer class="text-center" style="margin-top: 81px">
             <p class="small copyright-text">Copyright &copy; 2084 Company Name</p>
         </footer>
 

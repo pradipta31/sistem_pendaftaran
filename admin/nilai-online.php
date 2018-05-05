@@ -67,9 +67,9 @@
           </a>
         </li>
         <li>
-          <a href="soal-tes.php">
+          <a href="nilai-online.php">
             <i class="fa fa-table"></i>
-            <span>Nilai Tes Tulis Online</span>
+            <span>Nilai Tes Online</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -90,6 +90,8 @@
     </section>
     <!-- /.sidebar -->
   </aside>
+    <!-- /.sidebar -->
+
   <div class="content-wrapper">
     <section class="content">
       <div class="row">
@@ -142,7 +144,7 @@
       </div>
     </section>
 
-  <div class="control-sidebar-bg"></div>
+
 
 </div>
 <footer class="main-footer">
@@ -151,3 +153,23 @@
   </div>
   <strong>Copyright &copy; 2016-2017 <a href="#">DISNAKER Prov. Bali</a>.</strong> All rights
   reserved.
+</footer>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- ChartJS -->
+<script src="../bower_components/Chart.js/Chart.js"></script>
+<!-- FastClick -->
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>

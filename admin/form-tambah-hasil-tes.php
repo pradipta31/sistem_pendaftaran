@@ -92,6 +92,14 @@
           </a>
         </li>
         <li class="treeview">
+          <a href="nilai-online.php">
+            <i class="fa fa-table"></i>
+            <span>Nilai Tes Online</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
             <span>Hasil Tes Peserta</span>
@@ -100,7 +108,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes Peserta</a></li>
+            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes</a></li>
             <li><a href="hasil-tes.php"> Hasil Tes Peserta</a></li>
           </ul>
         </li>
