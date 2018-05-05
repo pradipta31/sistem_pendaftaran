@@ -109,9 +109,9 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th><center>ID Peserta</center></th>
                     <th><center>Nomor Peserta</center></th>
                     <th><center>Tanggal Pendaftaran</center></th>
+                    <th><center>Nama Peserta</center></th>
                     <th><center>Opsi</center></th>
                   </tr>
                   </thead>
@@ -122,9 +122,9 @@
                       while($row = mysqli_fetch_assoc($query)){
                         ?>
                           <tr>
-                            <td><center><?php echo $row['id']; ?></center></td>
                             <td><center><?php echo $row['nomor_peserta']; ?></center></td>
                             <td><center> <?php echo $row['tgl_pendaftaran']; ?> </center></td>
+                            <td><center><?php echo $row['nama']; ?></center></td>
                             <td><center>
                               <a href="proses-lihat-peserta.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-eye"></i></a>
                               <a href="form-edit-peserta.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-edit"></i></a>

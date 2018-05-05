@@ -61,18 +61,18 @@
                             <div class="card-body">
                                   <?php
                                   include 'koneksi.php';
-                                  $nama= $_POST['nama']; //get the nama value from form
-                                  $q = "SELECT * from hasil-tes where nama like '%$nama%' "; //query to get the search result
+                                  $nama= $_GET['nama']; //get the nama value from form
+                                  $q = "SELECT * from hasil_tes where nama like '%$nama%' "; //query to get the search result
                                   $result = mysql_query($q); //execute the query $q
                                   echo "<center>";
-                                  echo "<h2> Hasil Searching </h2>";
-                                  echo "<table'>";
+                                  echo "<h2> Hasil Pencarian </h2>";
+                                  echo "<table>";
                                   echo "
                                   <tr>
                                   <td>Nama Peserta</td>
                                   <td>Status</td>
                                   </tr>";
-                                  while ($data = mysql_fetch_array($result)) {  //fetch the result from query into an array
+                                  while ($data = mysqli_fetch_array($result)) {  //fetch the result from query into an array
                                   echo "
                                   <tr>
                                   <td>".$data['nama']."</td>

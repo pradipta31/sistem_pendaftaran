@@ -81,7 +81,7 @@
                                         <option value="28">28 tahun</option>
                                         <option value="29">29 tahun</option>
                                         <option value="30">30 tahun</option>
-                                      </select>
+                                    </select>
                                     <br>
                                     <label style="font-size: 14px">Tanggal Lahir</label>
                                     <input type="date" class="form-control" name="tgl_lahir">

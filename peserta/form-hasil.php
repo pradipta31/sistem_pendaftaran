@@ -61,7 +61,7 @@
                     <div class="form-input">
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
-                              <form name="formcari" method="post" action="proses-hasil.php">
+                              <form name="formcari" method="get" action="proses-hasil.php">
                                     <p class="h1 text-center py-1">Form Input</p>
                                     <label style="font-size: 14px">Cari Nama</label>
                                     <input type="text" class="form-control" name="nama">

@@ -69,7 +69,7 @@
         <li>
           <a href="soal-tes.php">
             <i class="fa fa-table"></i>
-            <span>Soal Tes Peserta</span>
+            <span>Nilai Tes Tulis Online</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -90,82 +90,56 @@
     </section>
     <!-- /.sidebar -->
   </aside>
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content">
       <div class="row">
+        <div class="col-md-6">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Tambah Hasil Tes</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
 
-        <?php
-        include "koneksi.php";
-        $query = mysqli_query($koneksi, "SELECT * FROM soal");
-        echo "<h3></h3>
-            <b>Ujian Online Pilihan Ganda</b>";
-        echo "<div style='width:100%; border: 1px solid #EBEBEB; overflow:scroll;height:700px;'>";
-         echo '<table width="100%" border="0">';
-
-                $hasil=mysql_query("select * from soal WHERE aktif='Y' ORDER BY RAND ()");
-                $jumlah=mysql_num_rows($hasil);
-                $urut=0;
-                while($row =mysql_fetch_array($hasil))
-                {
-                    $id=$row["id_soal"];
-                    $pertanyaan=$row["soal"];
-                    $pilihan_a=$row["a"];
-                    $pilihan_b=$row["b"];
-                    $pilihan_c=$row["c"];
-                    $pilihan_d=$row["d"];
-
+                <tr>
+                  <th style="width: 10px"><center>No</center></th>
+                  <th><center>Nomor Peserta</center></th>
+                  <th><center>Nama</center></th>
+                  <th><center>Nilai Tes Tulis</center></th>
+                </tr>
+                <?php
+                  include "koneksi.php";
+                  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes");
+                  $no = 1;
+                  while($row = mysqli_fetch_assoc($query)){
                     ?>
-                    <form name="form1" method="post" action="jawab.php">
-                    <input type="hidden" name="id[]" value=<?php echo $id; ?>>
-                    <input type="hidden" name="jumlah" value=<?php echo $jumlah; ?>>
-                    <tr>
-                          <td width="17"><font color="#000000"><?php echo $urut=$urut+1; ?></font></td>
-                          <td width="430"><font color="#000000"><?php echo "$pertanyaan"; ?></font></td>
-                    </tr>
-                    <?php
-                        if (!empty($row["gambar"])) {
-                            echo "<tr><td></td><td><img src='foto/$row[gambar]' width='200' hight='200'></td></tr>";
-                        }
-                    ?>
-                    <tr>
-                          <td height="21"><font color="#000000">&nbsp;</font></td>
-                        <td><font color="#000000">
-                       A.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
-                        <?php echo "$pilihan_a";?></font> </td>
-                    </tr>
-                    <tr>
-                          <td><font color="#000000">&nbsp;</font></td>
-                        <td><font color="#000000">
-                       B. <input name="pilihan[<?php echo $id; ?>]" type="radio" value="B">
-                        <?php echo "$pilihan_b";?></font> </td>
-                    </tr>
-                    <tr>
-                          <td><font color="#000000">&nbsp;</font></td>
-                        <td><font color="#000000">
-                      C.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="C">
-                        <?php echo "$pilihan_c";?></font> </td>
-                    </tr>
-                    <tr>
-                        <td><font color="#000000">&nbsp;</font></td>
-                        <td><font color="#000000">
-                      D.   <input name="pilihan[<?php echo $id; ?>]" type="radio" value="D">
-                        <?php echo "$pilihan_d";?></font> </td>
-                    </tr>
-
+                <tr>
+                  <td><?php echo $no++;?></td>
+                  <td><center><?php echo $row['nomor_peserta']; ?></a></center></td>
+                  <td><?php echo $row['nama'];?></td>
+                  <td><center><?php echo $row['nilai_tulis'];?></center></td>
+                </tr>
                 <?php
                 }
-                ?>
-                    <tr>
-                        <td>&nbsp;</td>
-                          <td><input type="submit" name="submit" value="Jawab" onclick="return confirm('Apakah Anda yakin dengan jawaban Anda?')"></td>
-                    </tr>
-                    </table>
-        </form>
-                </p>
+              ?>
+              </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <!-- <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul> -->
+            </div>
+          </div>
+
+          <!-- /.box -->
         </div>
+      </div>
     </section>
 
   <div class="control-sidebar-bg"></div>
