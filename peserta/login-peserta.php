@@ -141,7 +141,7 @@
 
 
 
-        <footer class="text-center" style="margin-top: 81px">
+        <footer class="text-center" style="margin-top: 72px">
             <p class="small copyright-text">Copyright &copy; 2084 Company Name</p>
         </footer>
 

@@ -143,6 +143,8 @@
                 </br>
                 <label>Nama</label>
                 </br>
+                <label>Email</label>
+                </br>
                 <label>Umur</label>
                 </br>
                 <label>Tanggal Lahir</label>
@@ -172,6 +174,8 @@
                 <label>: <?php echo $row['nik']; ?></label>
                 </br>
                 <label>: <?php echo $row['nama']; ?></label>
+                </br>
+                <label>: <?php echo $row['email']; ?></label>
                 </br>
                 <label>: <?php echo $row['umur']; ?></label>
                 </br>

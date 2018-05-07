@@ -147,6 +147,10 @@
                 <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?>">
               </div>
               <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email" value="<?php echo $row['email']; ?>">
+              </div>
+              <div class="form-group">
                 <label>Umur</label>
                 <select class="form-control" name="umur" value="<?php echo $row['umur'] ?>">
                   <option value="18" <?= ($row['umur'] == 18) ? 'selected' : '' ; ?>>18 Tahun</option>

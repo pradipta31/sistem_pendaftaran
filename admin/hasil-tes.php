@@ -64,9 +64,9 @@
           </a>
         </li>
         <li>
-          <a href="soal-tes.php">
+          <a href="nilai-online.php">
             <i class="fa fa-table"></i>
-            <span>Soal Tes Peserta</span>
+            <span>Nilai Tes Online</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -74,7 +74,7 @@
         <li class="treeview">
           <a href="nilai-online.php">
             <i class="fa fa-table"></i>
-            <span>Nilai Tes Online</span>
+            <span>Hasil Tes Peserta</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -102,7 +102,7 @@
                   <th><center>Nomor Peserta</center></th>
                   <th><center>Nama</center></th>
                   <th><center>Total Nilai</center></th>
-                  <th><center>status</center></th>
+                  <th><center>Status</center></th>
                   <th><center>Opsi</center></th>
                 </tr>
                 <?php

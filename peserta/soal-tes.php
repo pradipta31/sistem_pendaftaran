@@ -51,14 +51,13 @@
         </div>
         <section>
           <?php
-mysql_connect("localhost","root","");
-mysql_select_db("db_soal");
+include "koneksi.php";
     echo "<h3>selamat mengerjakan :)</h3>
     <b>Ujian Online Pilihan Ganda</b>";
 echo "<div style='width:100%; border: 1px solid #EBEBEB; overflow:scroll;height:700px;'>";
  echo '<table width="100%" border="0">';
 
-        $hasil=mysql_query("select * from tbl_soal WHERE aktif='Y' ORDER BY RAND ()");
+        $hasil=mysql_query("select * from soal WHERE aktif='Y' ORDER BY id_soal ()");
         $jumlah=mysql_num_rows($hasil);
         $urut=0;
         while($row =mysql_fetch_array($hasil))

@@ -72,6 +72,7 @@
                               // }
                               $nik = $_POST['nik'];
                               $nama = $_POST['nama'];
+                              $email = $_POST['email'];
                               $umur = $_POST['umur'];
                               $tgl_lahir = date($_POST['tgl_lahir']);
                               $pendidikan = $_POST['pendidikan'];
@@ -91,9 +92,11 @@
                                 echo "<br>";
                                 echo "Nama             : $nama";
                                 echo "<br>";
-                                echo "umur             : $umur";
+                                echo "Email            : $email";
                                 echo "<br>";
-                                echo "Tanggal          : $tgl_lahir";
+                                echo "Umur             : $umur";
+                                echo "<br>";
+                                echo "Tanggal Lahir    : $tgl_lahir";
                                 echo "<br>";
                                 echo "Pendidikan       : $pendidikan";
                                 echo "<br>";
@@ -114,8 +117,8 @@
                                 echo "Nomor Telepon    : $no_telp";
                                 echo "<br>";
 
-                                $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
-                                VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')";
+                                $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
+                                VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')";
                                 $hasil = mysqli_query($koneksi,$query1);
                                 echo "<br>";
                                 echo "<br>";

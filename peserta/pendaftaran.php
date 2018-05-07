@@ -65,6 +65,9 @@
                                     <label style="font-size: 14px">Nama Lengkap</label>
                                     <input type="text" class="form-control" name="nama">
                                     <br>
+                                    <label style="font-size: 14px">Email</label>
+                                    <input type="email" class="form-control" name="email">
+                                    <br>
                                     <label style="font-size: 14px">Umur</label>
                                     <select name="umur" class="form-control" style="height: 36px" >
                                         <option value="All">-- Pilih  Umur--</option>
@@ -146,6 +149,10 @@
           }else if (form.nama.value=="") {
             alert("Kolom nama masih kosong");
             form.nama.focus();
+            return (false);
+          }else if (form.email.value=="") {
+            alert("Kolom email masih kosong");
+            form.email.focus();
             return (false);
           }else if (form.umur.value=="All") {
             alert("Kolom umur belum dipilih");

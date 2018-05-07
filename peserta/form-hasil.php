@@ -63,9 +63,9 @@
                           <div class="card-body">
                               <form  name="form" method="get" onsubmit="return validasi_input(this)">
                                   <p class="h1 text-center py-1">Form Input</p>
-                                  <label style="font-size: 14px">Cari Nama</label>
+                                  <label style="font-size: 14px">Cari Nomor Peserta</label>
                                   <input type="text" class="form-control" name="cari">
-                                  <p>*)isi kolom dengan Nama</p>
+                                  <p>*)isi kolom dengan Nomor Peserta</p>
                                   <br>
 
                                   <div class="text-center py-4 mt-3">
@@ -85,22 +85,27 @@
 
 
                                 <?php
+                                $no= 1;
                                 if(isset($_GET['cari'])){
                                   $cari = $_GET['cari'];
-                                  $data = mysqli_query($koneksi,"select * from hasil_tes where nama like '%".$cari."%'");
+                                  $data = mysqli_query($koneksi,"select * from hasil_tes where nomor_peserta like '%".$cari."%'");
                                 }else{
                                   $data = mysqli_query($koneksi,"select * from hasil_tes");
                                 }
                                 ?>
                                 <table class="table table-bordered">
                                   <tr>
-                                    <th>Nama</th>
-                                    <th>Status</th>
+                                    <th><center>No</center></th>
+                                    <th><center>Nomor Peserta</center></th>
+                                    <th><center>Nama</center></th>
+                                    <th><center>Status</center></th>
                                   </tr>
                                 <?php
                                 while($d = mysqli_fetch_array($data)){
                                 ?>
                                 <tr>
+                                  <td><center><?php echo $no++;?></center></td>
+                                  <td><center><?= $d['nomor_peserta'];?></center></td>
                                   <td><?= $d['nama'];?></td>
                                   <td><?= $d['status'];?></td>
                                 </tr>
@@ -114,16 +119,16 @@
         </section>
         <script type="text/javascript">
         function validasi_input(form){
-          if (form.hasil.value == ""){
-            alert("kolom hasil kosong!");
-            form.hasil.focus();
+          if (form.cari.value == ""){
+            alert("Kolom Nomor Peserta Masih Kosong!");
+            form.cari.focus();
             return (false);
           }
-          return (true);
-          }
-          </script>
+        return (true);
+        }
+        </script>
 
-        <footer class="text-center">
+      <footer class="text-center" style="margin-top: 5px">
             <p class="small copyright-text">Copyright &copy; 2084 Company Name</p>
         </footer>
 
