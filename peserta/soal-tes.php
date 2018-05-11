@@ -24,24 +24,21 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-    </head>
-    <body class="templatemo-container">
+      </head>
+      <body class="templatemo-container">
         <div class="header-bg">
             <div class="container">
-              <div class="row">
-                  <div class="col-lg-3 col-md-4 col-sm-4 site-name-container">
-                      <img src="img/dinas11.png" alt="site-logo" class="site-logo">
-                      <h1 class="site-name"></h1>
-                  </div>
-                    <div class="mobile-menu-icon">
-                        <i class="fa fa-bars"></i>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-4 site-name-container">
+                        <img src="img/dinas11.png" alt="site-logo" class="site-logo">
+                        <h1 class="site-name"></h1>
                     </div>
                     <div class="col-lg-9 col-md-8 col-sm-8 templatemo-nav-container">
                         <nav class="templatemo-nav">
                             <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="pendaftaran.php">Pendaftaran</a></li>
-                                <li><a href="tes.php" class="active">Tes</a></li>
+                                <li><a href="login-peserta.php" class="active">Tes</a></li>
                                 <li><a href="form-hasil.php">Hasil Tes</a></li>
                             </ul>
                         </nav>
@@ -49,18 +46,26 @@
                 </div>
             </div>
         </div>
-        <section>
+        <section class="templatemo-container background-image-logo section-shadow-bottom">
+            <div class="container">
+                <div class="row section-title-container">
+                    <div class="col-lg-12 text-uppercase text-center">
+                        <h5 class="section-title-2">Soal Ujian Online</h5>
+                        <hr class="section-title-underline">
+                    </div>
+                    <div class="form-input">
+                        <div class="card mx-xl-5" style="width: 700px; border-radius: 7px; margin-right: :10px; margin-left: 20px">
+                            <div class="card-body">
           <?php
 include "koneksi.php";
-    echo "<h3>selamat mengerjakan :)</h3>
-    <b>Ujian Online Pilihan Ganda</b>";
+echo "<h4>";
 echo "<div style='width:100%; border: 1px solid #EBEBEB; overflow:scroll;height:700px;'>";
  echo '<table width="100%" border="0">';
 
-        $hasil=mysql_query("select * from soal WHERE aktif='Y' ORDER BY id_soal ()");
-        $jumlah=mysql_num_rows($hasil);
+        $hasil=mysqli_query($koneksi, "select * from soal WHERE aktif='Y' ORDER BY id_soal");
+        $jumlah= mysqli_num_rows($hasil);
         $urut=0;
-        while($row =mysql_fetch_array($hasil))
+        while($row =mysqli_fetch_array($hasil))
         {
             $id=$row["id_soal"];
             $pertanyaan=$row["soal"];
@@ -77,11 +82,6 @@ echo "<div style='width:100%; border: 1px solid #EBEBEB; overflow:scroll;height:
                 <td width="17"><font color="#000000"><?php echo $urut=$urut+1; ?></font></td>
                 <td width="430"><font color="#000000"><?php echo "$pertanyaan"; ?></font></td>
             </tr>
-            <?php
-                if (!empty($row["gambar"])) {
-                    echo "<tr><td></td><td><img src='foto/$row[gambar]' width='200' hight='200'></td></tr>";
-                }
-            ?>
             <tr>
                 <td height="21"><font color="#000000">&nbsp;</font></td>
               <td><font color="#000000">
@@ -107,18 +107,20 @@ echo "<div style='width:100%; border: 1px solid #EBEBEB; overflow:scroll;height:
               <?php echo "$pilihan_d";?></font> </td>
             </tr>
 
+
         <?php
         }
         ?>
-            <tr>
+        <br>
+            <tr class="text-center py-4 mt-3">
                 <td>&nbsp;</td>
-                <td><input type="submit" name="submit" value="Jawab" onclick="return confirm('Apakah Anda yakin dengan jawaban Anda?')"></td>
+                <td><input type="submit" name="submit" value="Jawab" class="btn btn-primary btn-lg" onclick="return confirm('Apakah Anda yakin dengan jawaban Anda?')"></td>
             </tr>
             </table>
 </form>
         </p>
 </div>
-
+</h4>
         </section>
         <!-- Blog -->
 

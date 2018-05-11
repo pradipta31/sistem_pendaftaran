@@ -54,12 +54,16 @@
             <div class="container">
                 <div class="row section-title-container">
                     <div class="col-lg-12 text-uppercase text-center">
-                        <h2 class="section-title-2">Welcome To Pendaftaran Pelatihan Kapal Pesiar DISNAKER ESDM Provinsi Bali</h2>
+                        <h2 class="section-title-2">Selamat Datang pada Pendaftaran Pelatihan Kapal Pesiar Dinas tenaga kerja dan energi sumber daya mineral provinsi bali</h2>
                         <div class="section-title-underline"></div>
                         <hr class="section-title-underline">
-                    </div>
+                      </div>
+                      <div class="form-input">
+                          <div class="card mx-xl-5" style="width: 600px; border-radius: 7px; margin-left:20px">
+                              <div class="card-body">
                     <ol>
-                      <h3>A. Persyaratan Pendaftaran</h3>
+                      <h3><center><b>Persyaratan Pendaftaran<b></h3></center>
+                        <br>
                       <h4>
                       <li>Mengisi Formulir Pendaftaran</li>
                       <li>Pria dan Wanita, Warga Negara Indonesia</li>
@@ -76,6 +80,9 @@
                       </ol>
 
             </div>
+          </div>
+        </div>
+
         </section>
         <!-- Blog -->
 
@@ -83,7 +90,7 @@
 
 
 
-        <footer class="text-center" style="margin-top: 37px">
+        <footer class="text-center">
             <p class="small copyright-text">Copyright &copy; 2084 Company Name</p>
         </footer>
 
