@@ -51,14 +51,14 @@
             <div class="container">
                 <div class="row section-title-container">
                     <div class="col-lg-12 text-uppercase text-center">
-                        <h2 class="section-title-2">Form Pendaftaran Pelatihan Kapal Pesiar DISNAKER ESDM Provinsi Bali</h2>
+                        <h2 class="section-title-2">Formulir pendaftaran</h2>
                         <hr class="section-title-underline">
                     </div>
                     <div class="form-input">
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
                                 <form  name="form" method="post" action="proses-pendaftaran.php" onsubmit="return validasi_input(this)">
-                                    <p class="h1 text-center py-1">PENDAFTARAN DISNAKER </p>
+                                  <p>*) Mohon isi data sesuai dengan identitas diri</p>
                                     <label style="font-size: 14px">NIK</label>
                                     <input type="number" class="form-control" name="nik">
                                     <br>
@@ -205,7 +205,7 @@
 
 
         <footer class="text-center">
-            <p class="small copyright-text">Copyright &copy; 2084 Company Name</p>
+            <p class="medium copyright-text">Dinas Tenaga Kerja dan Energi Sumber Daya Mineral Provinsi Bali</p>
         </footer>
 
         <!-- JS -->
