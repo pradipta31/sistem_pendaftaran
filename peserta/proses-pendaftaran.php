@@ -57,19 +57,28 @@
                               $row = mysqli_num_rows($query);
                               $rows = mysqli_fetch_array($query);
 
-                              $tahun_pendaftaran = $rows['nomor_peserta'];
-                              $nomorBaru = (int) substr($tahun_pendaftaran, 3, 3);
-                              $nomorBaru +1;
+                              // jika $datakode
+                              if ($rows) {
+                               // membuat variabel baru untuk mengambil kode barang mulai dari 1
+                               $nilaikode = substr($rows['0'], 1);
+                               // menjadikan $nilaikode ( int )
+                               $kode = (int) $nilaikode;
+                               // setiap $kode di tambah 1
+                               $kode = $kode + 1;
+                               // hasil untuk menambahkan kode
+                               // angka 3 untuk menambahkan tiga angka setelah B dan angka 0 angka yang berada di tengah
+                               // atau angka sebelum $kode
+                               $nomor_peserta = "2018.".str_pad($kode, 3, "0", STR_PAD_LEFT);
+                              } else {
+                               $nomor_peserta = "2018.001";
+                              }
 
-                              $char = "2018";
-                              $nomor_peserta = $char . sprintf(".%03s", $nomorBaru);
+                              // $tahun_pendaftaran = $rows['nomor_peserta'];
+                              // $nomorBaru = (int) substr($tahun_pendaftaran, 3, 3);
+                              //
+                              // $char = "2018";
+                              // $nomor_peserta = $char . sprintf(".%03s", $nomorBaru +1);
 
-                              // if ($row <= 0) {
-                              //   $nomor_peserta = 1;
-                              // }
-                              // else {
-                              //   $nomor_peserta = $rows['nomor_peserta'] + 1;
-                              // }
                               $nik = $_POST['nik'];
                               $nama = $_POST['nama'];
                               $email = $_POST['email'];

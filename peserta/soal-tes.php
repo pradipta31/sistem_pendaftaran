@@ -57,10 +57,10 @@ include "koneksi.php";
 echo "<div style='width:100%; border: 1px solid #EBEBEB; overflow:scroll;height:700px;'>";
  echo '<table width="100%" border="0">';
 
-        $hasil=mysql_query("select * from soal WHERE aktif='Y' ORDER BY id_soal ()");
-        $jumlah=mysql_num_rows($hasil);
-        $urut=0;
-        while($row =mysql_fetch_array($hasil))
+        $hasil = mysqli_query($koneksi,"select * from soal WHERE aktif='Y' ORDER BY id_soal");
+        $jumlah = mysqli_num_rows($hasil);
+        $urut = 0;
+        while($row = mysqli_fetch_array($hasil))
         {
             $id=$row["id_soal"];
             $pertanyaan=$row["soal"];
