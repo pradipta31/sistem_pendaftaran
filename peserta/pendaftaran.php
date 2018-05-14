@@ -39,7 +39,8 @@
                             <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="pendaftaran.php" class="active">Pendaftaran</a></li>
-                                <li><a href="hasil.php">Hasil Tes</a></li>
+                                  <li><a href="login-peserta.php">Tes</a></li>
+                                <li><a href="form-hasil.php">Hasil Tes</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -50,19 +51,22 @@
             <div class="container">
                 <div class="row section-title-container">
                     <div class="col-lg-12 text-uppercase text-center">
-                        <h2 class="section-title-2">Form Pendaftaran Pelatihan Kapal Pesiar DISNAKER ESDM Provinsi Bali</h2>
+                        <h2 class="section-title-2">Formulir pendaftaran</h2>
                         <hr class="section-title-underline">
                     </div>
                     <div class="form-input">
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
                                 <form  name="form" method="post" action="proses-pendaftaran.php" onsubmit="return validasi_input(this)">
-                                    <p class="h1 text-center py-1">PENDAFTARAN DISNAKER </p>
+                                  <p>*) Mohon isi data sesuai dengan identitas diri</p>
                                     <label style="font-size: 14px">NIK</label>
                                     <input type="number" class="form-control" name="nik">
                                     <br>
                                     <label style="font-size: 14px">Nama Lengkap</label>
                                     <input type="text" class="form-control" name="nama">
+                                    <br>
+                                    <label style="font-size: 14px">Email</label>
+                                    <input type="email" class="form-control" name="email">
                                     <br>
                                     <label style="font-size: 14px">Umur</label>
                                     <select name="umur" class="form-control" style="height: 36px" >
@@ -80,7 +84,7 @@
                                         <option value="28">28 tahun</option>
                                         <option value="29">29 tahun</option>
                                         <option value="30">30 tahun</option>
-                                      </select>
+                                    </select>
                                     <br>
                                     <label style="font-size: 14px">Tanggal Lahir</label>
                                     <input type="date" class="form-control" name="tgl_lahir">
@@ -146,6 +150,10 @@
             alert("Kolom nama masih kosong");
             form.nama.focus();
             return (false);
+          }else if (form.email.value=="") {
+            alert("Kolom email masih kosong");
+            form.email.focus();
+            return (false);
           }else if (form.umur.value=="All") {
             alert("Kolom umur belum dipilih");
             form.umur.focus();
@@ -197,7 +205,7 @@
 
 
         <footer class="text-center">
-            <p class="small copyright-text">Copyright &copy; 2084 Company Name</p>
+            <p class="medium copyright-text">Dinas Tenaga Kerja dan Energi Sumber Daya Mineral Provinsi Bali</p>
         </footer>
 
         <!-- JS -->

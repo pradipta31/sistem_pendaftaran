@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -42,7 +43,8 @@
                             <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="pendaftaran.php">Pendaftaran</a></li>
-                                <li><a href="hasil.php" class="active">Hasil Tes</a></li>
+                                  <li><a href="login-peserta.php">Tes</a></li>
+                                <li><a href="form-hasil.php" class="active">Hasil Tes</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -58,19 +60,58 @@
                     </div>
                     <div class="form-input">
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
-                            <div class="card-body">
-                                <form  name="form" method="post" action="proses-hasil.php" onsubmit="return validasi_input(this)">
-                                    <p class="h1 text-center py-1">Form Input</p>
-                                    <label style="font-size: 14px">Nomor Pendaftaran</label>
-                                    <input type="text" class="form-control" name="hasil">
-                                    <p>*)isi kolom dengan nomor pendaftaran</p>
-                                    <br>
+                          <div class="card-body">
+                              <form  name="form" method="get" onsubmit="return validasi_input(this)">
+                                  <p class="h1 text-center py-1">Form Input</p>
+                                  <label style="font-size: 14px">Cari Nomor Peserta</label>
+                                  <input type="text" class="form-control" name="cari">
+                                  <p>*)isi kolom dengan Nomor Peserta</p>
+                                  <br>
 
-                                    <div class="text-center py-4 mt-3">
-                                        <button class="btn btn-primary btn-lg" name="submit" style="padding: 10px 25px; border-radius:7px" type="submit">Hasil</button>
-                                    </div>
-                                </form>
-                            </div>
+                                  <div class="text-center py-4 mt-3">
+                                      <button class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px" type="submit">Cari Hasil</button>
+                                  </div>
+                              </form>
+                              <?php
+                              include 'koneksi.php';
+
+                              if(isset($_GET['cari'])){
+                                $cari = $_GET['cari'];
+                                echo "<b>Hasil pencarian : ".$cari."</b>";
+                                echo "<br>";
+                              }
+                              ?>
+
+
+
+                                <?php
+                                $no= 1;
+                                if(isset($_GET['cari'])){
+                                  $cari = $_GET['cari'];
+                                  $data = mysqli_query($koneksi,"select * from hasil_tes where nomor_peserta like '%".$cari."%'");
+                                }else{
+                                  $data = mysqli_query($koneksi,"select * from hasil_tes");
+                                }
+                                ?>
+                                <table class="table table-bordered">
+                                  <tr>
+                                    <th><center>No</center></th>
+                                    <th><center>Nomor Peserta</center></th>
+                                    <th><center>Nama</center></th>
+                                    <th><center>Status</center></th>
+                                  </tr>
+                                <?php
+                                while($d = mysqli_fetch_array($data)){
+                                ?>
+                                <tr>
+                                  <td><center><?php echo $no++;?></center></td>
+                                  <td><center><?= $d['nomor_peserta'];?></center></td>
+                                  <td><?= $d['nama'];?></td>
+                                  <td><?= $d['status'];?></td>
+                                </tr>
+                                <?php } ?>
+                              </table>
+                          </div>
                         </div>
                     </div>
                   </div>
@@ -78,16 +119,16 @@
         </section>
         <script type="text/javascript">
         function validasi_input(form){
-          if (form.hasil.value == ""){
-            alert("kolom hasil kosong!");
-            form.hasil.focus();
+          if (form.cari.value == ""){
+            alert("Kolom Nomor Peserta Masih Kosong!");
+            form.cari.focus();
             return (false);
           }
-          return (true);
-          }
-          </script>
+        return (true);
+        }
+        </script>
 
-        <footer class="text-center">
+      <footer class="text-center" style="margin-top: 5px">
             <p class="small copyright-text">Copyright &copy; 2084 Company Name</p>
         </footer>
 

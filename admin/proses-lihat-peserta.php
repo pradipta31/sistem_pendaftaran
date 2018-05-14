@@ -1,7 +1,7 @@
 <?php
   include "koneksi.php";
   $id = $_GET['id'];
-  $query = "SELECT * FROM pendaftaran WHERE id='$id'";
+  $query = "SELECT * FROM peserta WHERE id='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
 ?>
@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Data Pendaftaran</title>
+  <title>Data Peserta</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -41,58 +41,26 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="../../index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-right">
-                  <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-
-  <!-- Left side column. contains the logo and sidebar -->
+  <style media="screen">
+    .style-judul{
+      color: #fff;
+      margin-top: 5px;
+      font-style: normal;
+      position: absolute;
+    }
+  </style>
+    <header class="main-header">
+      <nav class="navbar navbar-static-top" style="margin-left: -220px;">
+        <b class="style-judul" style="margin-left: 230px; font-size:25px;">SISTEM INFORMASI EKSEKUTIF PESERTA PELATIHAN KAPAL PESIAR</b>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="user user-menu">
+              <a href="../logout.php" onclick="return confirm('Yakin ingin Logout ?')"><b>Logout</b></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -107,47 +75,42 @@
 
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MENU</li>
-        <li>
-          <a href="index.php">
-            <i class="fa fa-home"></i> <span>Home</span>
-          </a>
-        </li>
-        <li>
-          <a href="lihat-pendaftaran.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
-            <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i>
-            <span>Hasil Pendaftaran</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Pendaftaran</a></li>
-            <li><a href="hasil-tes.php"> Hasil Pendaftaran</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-newspaper-o"></i>
-            <span>Laporan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"> Tambah Laporan</a></li>
-            <li><a href="pages/charts/morris.html"> Laporan</a></li>
-          </ul>
-        </li>
-      </ul>
-    </section>
+          <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MENU</li>
+            <li>
+              <a href="index.php">
+                <i class="fa fa-home"></i> <span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="lihat-peserta.php">
+              <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
+                <i class="fa fa-newspaper-o"></i> <span>Data Peserta</span>
+              </a>
+            </li>
+            <li>
+              <a href="nilai-online.php">
+                <i class="fa fa-table"></i>
+                <span>Nilai Tes Online</span>
+                <span class="pull-right-container">
+                </span>
+              </a>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-table"></i>
+                <span>Hasil Tes Peserta</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes</a></li>
+                <li><a href="hasil-tes.php"> Hasil Tes Peserta</a></li>
+              </ul>
+            </li>
+        </section>
     <!-- /.sidebar -->
     <!-- /.sidebar -->
   </aside>
@@ -157,7 +120,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Pendaftaran
+        Data Peserta
       </h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -169,7 +132,7 @@
     <section class="content">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">Nomor Pendaftaran : <?php echo $row['nomor_pendaftaran']; ?></h3>
+          <h3 class="box-title">Nomor Peserta : <?php echo $row['nomor_peserta']; ?></h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -179,6 +142,8 @@
                 <label>NIK </label>
                 </br>
                 <label>Nama</label>
+                </br>
+                <label>Email</label>
                 </br>
                 <label>Umur</label>
                 </br>
@@ -210,6 +175,8 @@
                 </br>
                 <label>: <?php echo $row['nama']; ?></label>
                 </br>
+                <label>: <?php echo $row['email']; ?></label>
+                </br>
                 <label>: <?php echo $row['umur']; ?></label>
                 </br>
                 <label>: <?php echo $row['tgl_lahir']; ?></label>
@@ -236,7 +203,7 @@
             </div>
             <!-- /.col -->
           </div>
-          <button type="button" class="btn btn-default" name="button" onclick="window.location='lihat-pendaftaran.php'">Kembali</button>
+          <button type="button" class="btn btn-default" name="button" onclick="window.location='lihat-peserta.php'">Kembali</button>
         </div>
       </div>
       <!-- /.row -->

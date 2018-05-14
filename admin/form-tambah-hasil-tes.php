@@ -1,7 +1,7 @@
 <?php
   include "koneksi.php";
   $id = $_GET['id'];
-  $query = "SELECT * FROM pendaftaran WHERE id='$id'";
+  $query = "SELECT * FROM peserta WHERE id='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
 ?>
@@ -41,55 +41,26 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="../../index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-right">
-                  <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <style media="screen">
+    .style-judul{
+      color: #fff;
+      margin-top: 5px;
+      font-style: normal;
+      position: absolute;
+    }
+  </style>
+    <header class="main-header">
+      <nav class="navbar navbar-static-top" style="margin-left: -220px;">
+        <b class="style-judul" style="margin-left: 230px; font-size:25px;">SISTEM INFORMASI EKSEKUTIF PESERTA PELATIHAN KAPAL PESIAR</b>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="user user-menu">
+              <a href="../logout.php" onclick="return confirm('Yakin ingin Logout ?')"><b>Logout</b></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
   <!-- Left side column. contains the logo and sidebar -->
 
   <!-- Left side column. contains the logo and sidebar -->
@@ -115,35 +86,30 @@
           </a>
         </li>
         <li>
-          <a href="lihat-pendaftaran.php">
+          <a href="lihat-peserta.php">
           <!-- <a href="pendaftaranV2/lihat-pendaftaran.php"> -->
-            <i class="fa fa-bar-chart"></i> <span>Pendaftaran</span>
+            <i class="fa fa-bar-chart"></i> <span>Data Peserta</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="nilai-online.php">
+            <i class="fa fa-table"></i>
+            <span>Nilai Tes Online</span>
+            <span class="pull-right-container">
+            </span>
           </a>
         </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
-            <span>Hasil Pendaftaran</span>
+            <span>Hasil Tes Peserta</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Pendaftaran</a></li>
-            <li><a href="hasil-tes.php"> Hasil Pendaftaran</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-newspaper-o"></i>
-            <span>Laporan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"> Tambah Laporan</a></li>
-            <li><a href="pages/charts/morris.html"> Laporan</a></li>
+            <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes</a></li>
+            <li><a href="hasil-tes.php"> Hasil Tes Peserta</a></li>
           </ul>
         </li>
       </ul>
@@ -169,18 +135,18 @@
       <div class="col-md-6">
         <div class="box box-default">
           <div class="box-header with-border">
-            <h3 class="box-title">Data Pendaftaran : <?php echo $row['nomor_pendaftaran']; ?></h3>
+            <h3 class="box-title">Data Peserta : <?php echo $row['nomor_peserta']; ?></h3>
           </div>
             <form action="proses-tambah-hasil-tes.php" method="post">
               <div class="box-body">
-                <input type="hidden" name="id_pendaftaran" value="<?php echo $row['id_pendaftaran'];?>">
-                <!-- <div class="form-group">
-                  <label>Nomor Pendaftaran</label>
-                  <input type="number" class="form-control" name="nomor_pendaftaran" value="<?php echo $row['nomor_pendaftaran']; ?>" disabled>
-                </div> -->
+                <input type="hidden" name="id_peserta" value="<?php echo $row['id_peserta'];?>">
+                <div class="form-group">
+                  <label>Nomor Peserta</label>
+                  <input type="text" class="form-control" name="nomor_peserta" value="<?php echo $row['nomor_peserta']; ?>">
+                </div>
                 <div class="form-group">
                   <label>Nama</label>
-                  <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?>">
+                  <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?> ">
                 </div>
                 <div class="form-group">
                   <label>Nilai Tes Tulis</label>
@@ -192,11 +158,11 @@
                 </div>
                 <div class="form-group">
                   <label>Total Nilai</label>
-                  <input type="number" class="form-control" name="total_nilai" id="totalNilai" disabled>
+                  <input type="number" class="form-control" name="total_nilai" id="totalNilai">
                 </div>
                 <div class="form-group">
                   <label>Status</label>
-                  <input type="text" class="form-control" name="status" id="statusNilai" disabled>
+                  <input type="text" class="form-control" name="status" id="statusNilai">
                 </div>
                 <button type="button" class="btn btn-default" name="button" onclick="window.location='tambah-hasil-tes.php'">Kembali</button>
                 <input type="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">
@@ -231,29 +197,20 @@
         ket = ("Lulus");
       }
       else if (result < 80) {
-        ket = ("TidakLulus");
+        ket = ("Tidak Lulus");
       }
 
       document.getElementById('statusNilai').value = ket;
   }
 </script>
-
-<!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- DataTables -->
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<!-- page script -->
 <script>
   $(function () {
     $('#example1').DataTable()

@@ -32,7 +32,7 @@
                         <ul>
                             <li><a href="index.php">Home</a></li>
                             <li><a href="pendaftaran.php" class="active">Pendaftaran</a></li>
-                            <li><a href="hasil.php">Hasil Tes</a></li>
+                            <li><a href="form-hasil.php">Hasil Tes</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -47,23 +47,32 @@
                     <hr class="section-title-underline">
                 </div>
                 <div class="form-input">
-                    <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
+                    <div class="card mx-xl-5" style="width: 700px; border-radius: 7px; margin-right: :10px; margin-left: 20px">
                         <div class="card-body">
                           <form action="" method="post">
                               <?php
                               include 'koneksi.php';
-                              $query = mysqli_query($koneksi,"SELECT * FROM pendaftaran ORDER BY nomor_pendaftaran DESC LIMIT 1 ");
+                              $query = mysqli_query($koneksi,"SELECT * FROM peserta ORDER BY nomor_peserta DESC LIMIT 1 ");
                               $tgl_pendaftaran = date("Y-m-d H:i:s");
                               $row = mysqli_num_rows($query);
                               $rows = mysqli_fetch_array($query);
-                              if ($row <= 0) {
-                                $nomor_pendaftaran = 1;
-                              }
-                              else {
-                                $nomor_pendaftaran = $rows['nomor_pendaftaran'] + 1;
-                              }
+
+                              $tahun_pendaftaran = $rows['nomor_peserta'];
+                              $nomorBaru = (int) substr($tahun_pendaftaran, 3, 3);
+                              $nomorBaru +1;
+
+                              $char = "2018";
+                              $nomor_peserta = $char . sprintf(".%03s", $nomorBaru);
+
+                              // if ($row <= 0) {
+                              //   $nomor_peserta = 1;
+                              // }
+                              // else {
+                              //   $nomor_peserta = $rows['nomor_peserta'] + 1;
+                              // }
                               $nik = $_POST['nik'];
                               $nama = $_POST['nama'];
+                              $email = $_POST['email'];
                               $umur = $_POST['umur'];
                               $tgl_lahir = date($_POST['tgl_lahir']);
                               $pendidikan = $_POST['pendidikan'];
@@ -76,50 +85,53 @@
                               $kabupaten = $_POST['kabupaten'];
                               $no_telp = $_POST['no_telp'];
                               if($koneksi){
-                                echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </h3></center> ";
-                                echo "<p>";
+                                echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </center> ";
+                                echo "<pre>";
                                 echo "<br>";
-                                echo "NIK          : $nik";
+                                echo "NIK              : $nik";
                                 echo "<br>";
-                                echo "Nama          : $nama";
+                                echo "Nama             : $nama";
                                 echo "<br>";
-                                echo "umur          : $umur";
+                                echo "Email            : $email";
                                 echo "<br>";
-                                echo "Tanggal Lahir : $tgl_lahir";
+                                echo "Umur             : $umur";
                                 echo "<br>";
-                                echo "Pendidikan    : $pendidikan";
+                                echo "Tanggal Lahir    : $tgl_lahir";
                                 echo "<br>";
-                                echo "Tahun Lulus   : $tahun_lulus";
+                                echo "Pendidikan       : $pendidikan";
                                 echo "<br>";
-                                echo "Agama         : $agama";
+                                echo "Tahun Lulus      : $tahun_lulus";
                                 echo "<br>";
-                                echo "Jenis Kelamin : $jenis_kelamin";
+                                echo "Agama            : $agama";
                                 echo "<br>";
-                                echo "Tinggi Badan  : $tinggi_badan";
+                                echo "Jenis Kelamin    : $jenis_kelamin";
                                 echo "<br>";
-                                echo "Berat Badan   : $berat_badan";
+                                echo "Tinggi Badan     : $tinggi_badan";
                                 echo "<br>";
-                                echo "Alamat Rumah  : $alamat_rumah";
+                                echo "Berat Badan      : $berat_badan";
                                 echo "<br>";
-                                echo "Kabupaten/Kota  : $kabupaten";
+                                echo "Alamat Rumah     : $alamat_rumah";
                                 echo "<br>";
-                                echo "Nomor Telepon : $no_telp";
+                                echo "Kabupaten/Kota   : $kabupaten";
                                 echo "<br>";
-                                echo "</p>";
-                                $query1 ="insert into pendaftaran (nomor_pendaftaran, tgl_pendaftaran, nik, nama, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
-                                VALUES ('$nomor_pendaftaran','$tgl_pendaftaran','$nik', '$nama', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')";
+                                echo "Nomor Telepon    : $no_telp";
+                                echo "<br>";
+
+                                $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
+                                VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')";
                                 $hasil = mysqli_query($koneksi,$query1);
                                 echo "<br>";
                                 echo "<br>";
-                                echo "Nomor Pendaftaran Anda Adalah : $nomor_pendaftaran";
+                                echo "Nomor Pendaftaran Anda Adalah : $nomor_peserta";
                                 echo "<br>";
-                                echo "Pelaksanaan Tes Tulis dan Wawancara akan diinfokan lebih lanjut melalui sms";
+                                echo "Pelaksanaan Tes Tulis dan Wawancara akan diinfokan lebih lanjut melalui sms</h3>";
                                 echo "<br>";
                                 echo " ";
                                 mysqli_close($koneksi);
                               }else{
                                 echo "Server Not Connected";
                               }
+                                echo "</pre>";
                                ?>
                                </form>
                                 <div class="text-center py-4 mt-3">
@@ -131,5 +143,29 @@
               </div>
             </div>
     </section>
-  </body>
-</html>
+
+            <footer class="text-center" style="margin-top: 81px">
+                <p class="small copyright-text">Copyright &copy; 2084 Company Name</p>
+            </footer>
+
+            <!-- JS -->
+            <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+            <script type="text/javascript" src="js/responsiveCarousel.min.js"></script>      <!-- Carousel -->
+            <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+            <script>
+
+                $(function() {
+                    $('.crsl-items').carousel({
+                        visible: 1,
+                        itemMinWidth: 320,
+                        itemEqualHeight: 320,
+                        itemMargin: 9,
+                    });
+                    $(".crsl-nav a[href=#]").on('click', function(e) {
+                        e.preventDefault();
+                    });
+                });
+
+            </script>
+        </body>
+    </html>
