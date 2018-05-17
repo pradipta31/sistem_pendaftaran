@@ -1,8 +1,8 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Pendaftaran Sukses</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,28 +50,35 @@
                     <div class="card mx-xl-5" style="width: 700px; border-radius: 7px; margin-right: :10px; margin-left: 20px">
                         <div class="card-body">
                           <form action="" method="post">
+
                               <?php
                               include 'koneksi.php';
                               $query = mysqli_query($koneksi,"SELECT * FROM peserta ORDER BY nomor_peserta DESC LIMIT 1 ");
                               $tgl_pendaftaran = date("Y-m-d H:i:s");
                               $row = mysqli_num_rows($query);
                               $rows = mysqli_fetch_array($query);
+                              $nomorBaru = $rows['nomor_peserta'];
 
-                              // jika $datakode
                               if ($rows) {
                                // membuat variabel baru untuk mengambil kode barang mulai dari 1
-                               $nilaikode = substr($rows['0'], 1);
-                               // menjadikan $nilaikode ( int )
-                               $kode = (int) $nilaikode;
-                               // setiap $kode di tambah 1
-                               $kode = $kode + 1;
-                               // hasil untuk menambahkan kode
-                               // angka 3 untuk menambahkan tiga angka setelah B dan angka 0 angka yang berada di tengah
-                               // atau angka sebelum $kode
-                               $nomor_peserta = "2018.".str_pad($kode, 3, "0", STR_PAD_LEFT);
-                              } else {
-                               $nomor_peserta = "2018.001";
-                              }
+                               $kodeawal = (int) substr($nomorBaru, 3, 4);
+                               $char = "2018";
+                               if ($kodeawal > 0) {
+                                 $nomor_peserta = $char . sprintf(".%03s", $kodeawal +1);
+                               }else {
+                                 $nomor_peserta = '2018.'.$kodeawal+1;
+                               }
+                             }
+                              //  $kode = (int) $nilaikode;
+                              //  // setiap $kode di tambah 1
+                              //  $kode = $kode + 1;
+                              //  // hasil untuk menambahkan kode
+                              //  // angka 3 untuk menambahkan tiga angka setelah B dan angka 0 angka yang berada di tengah
+                              //  // atau angka sebelum $kode
+                              //  $nomor_peserta = "2018.".str_pad($kode, 3, "0", STR_PAD_LEFT);
+                              // } else {
+                              //  $nomor_peserta = "2018.001";
+                              // }
 
                               // $tahun_pendaftaran = $rows['nomor_peserta'];
                               // $nomorBaru = (int) substr($tahun_pendaftaran, 3, 3);
@@ -93,7 +100,14 @@
                               $alamat_rumah = $_POST['alamat'];
                               $kabupaten = $_POST['kabupaten'];
                               $no_telp = $_POST['no_telp'];
-                              if($koneksi){
+
+                              //cek data nik
+                              // $cekdata = "SELECT nik FROM peserta where nik = '$nik'";
+                              // $ada = mysqli_query($koneksi, $cekdata) or die(mysqli_error($koneksi));
+
+                              if(!$koneksi){
+                                echo "GAGAL KONEKSI";
+                              }else{
                                 echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </center> ";
                                 echo "<pre>";
                                 echo "<br>";
@@ -137,10 +151,7 @@
                                 echo "<br>";
                                 echo " ";
                                 mysqli_close($koneksi);
-                              }else{
-                                echo "Server Not Connected";
                               }
-                                echo "</pre>";
                                ?>
                                </form>
                                 <div class="text-center py-4 mt-3">
