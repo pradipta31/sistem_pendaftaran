@@ -132,7 +132,6 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="col-md-6">
         <div class="box box-default">
           <div class="box-header with-border">
             <h3 class="box-title">Data Peserta : <?php echo $row['nomor_peserta']; ?></h3>
@@ -169,7 +168,6 @@
               </div>
             </form>
           </div>
-      </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -181,7 +179,6 @@
     <strong>Copyright &copy; 2016-2017 <a href="#">DISNAKER Prov. Bali</a>.</strong> All rights
     reserved.
   </footer>
-  <div class="control-sidebar-bg"></div>
 </div>
 <script>
   function sum() {

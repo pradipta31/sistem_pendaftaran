@@ -1,8 +1,9 @@
 <?php
-include "koneksi.php";
+
+  include "koneksi.php";
        if(isset($_POST['submit'])){
-            $pilihan=$_POST["pilihan"];
-            $id_soal=$_POST["id"];
+            $pilihan=$_POST['pilihan'];
+            $id_soal=$_POST['id'];
             $jumlah=$_POST['jumlah'];
 
             $score=0;
@@ -28,10 +29,10 @@ include "koneksi.php";
 
                     if($cek){
                         //jika jawaban cocok (benar)
-                        $benar++;
+                        $salah++;
                     }else{
                         //jika salah
-                        $salah++;
+                        $benar++;
                     }
 
                 }
@@ -46,11 +47,18 @@ include "koneksi.php";
                 $hasil = number_format($score,1);
             }
         }
+        session_start();
+        if( !isset($_SESSION['nama_user']) )
+        {
+            exit();
+        }
+        $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
+        $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
 
-        //Lakukan Penyimpanan Kedalam Database
-      echo "
-         <tr><td>Jumlah Jawaban Benar</td><td> : $benar </td></tr>
-         <tr><td>Jumlah Jawaban Salah</td><td> : $salah</td></tr>
-         <tr><td>Jumlah Jawaban Kosong</td><td>: $kosong</td></tr>
-        </table></div>";
-        ?>
+        $query = "INSERT INTO hasil_tes (nomor_peserta,nama,nilai_tulis) VALUES ('$nomor','$nama','$score')";
+        $syntax = mysqli_query($koneksi,$query);
+        echo "<script>alert('Jawaban anda berhasil disimpan!');
+          window.location.href='index.php';
+        </script>";
+
+?>

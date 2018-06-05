@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if( !isset($_POST['email']) ) { header('location:login-peserta.php'); exit(); }
 $error = '';
 require ( 'koneksi.php' );
@@ -23,11 +23,15 @@ if( strlen($email) < 2 )
     if( $query->num_rows == 1 )
     {
         $row =$query->fetch_assoc();
+        $_SESSION['nama_user'] = $row['nama'];
+        $_SESSION['nomor'] = $row['nomor_peserta'];
         header('location: soal-tes.php');
         exit();
 
     }else{
-        $error = 'Username dan Password Tidak ditemukan';
+        echo "<script>alert('Email atau password salah!');
+          window.location.href='login-peserta.php';
+        </script>";
     }
 
 }

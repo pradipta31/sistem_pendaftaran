@@ -15,7 +15,7 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Data Pendaftaran</title>
+  <title>Data Soal</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
@@ -49,20 +49,22 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
         </div>
       </nav>
     </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="dinas11.png" class="img-responsive">
+    <aside class="main-sidebar">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+          <div class="pull-left image">
+            <img src="dinas11.png" class="img-responsive">
+          </div>
+          <div class="pull-left info">
+            <p>Selamat Datang</p>
+            <p><?php echo $nama; ?></p>
+          </div>
         </div>
-        <div class="pull-left info">
-          <p>Selamat Datang</p>
-          <p><?php echo $nama; ?></p>
-        </div>
-      </div>
+
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MENU</li>
           <li>
@@ -77,12 +79,20 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
             </a>
           </li>
           <li>
-            <a href="nilai-online.php">
-              <i class="fa fa-table"></i>
-              <span>Nilai Tes Online</span>
-              <span class="pull-right-container">
-              </span>
-            </a>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-table"></i>
+                <span>Soal dan Nilai Tes</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="tambah-soal.php"> Tambah Soal Tes</a></li>
+                <li><a href="soal-tes.php"> Soal Tes</a></li>
+                <li><a href="nilai-tes-online.php"> Nilai Tes Online</a></li>
+              </ul>
+            </li>
           </li>
           <li class="treeview">
             <a href="#">
@@ -98,15 +108,19 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
             </ul>
           </li>
       </section>
-    <!-- /.sidebar -->
-  </aside>
+      <!-- /.sidebar -->
+    </aside>
   <div class="content-wrapper">
     <section class="content">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-xs-12">
           <div class="box">
+
             <div class="box-header with-border">
-              <h3 class="box-title">Tambah Hasil Tes</h3>
+              <h3 class="box-title">Data Soal Tes Peserta Online</h3>
+            </div>
+            <div class="btn btn-lg">
+              <a href="tambah-soal.php" class="btn btn-primary">Tambah Soal</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -114,43 +128,45 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 
                 <tr>
                   <th style="width: 10px"><center>No</center></th>
-                  <th><center>Nomor Peserta</center></th>
-                  <th><center>Nama</center></th>
+                  <th><center>Soal</center></th>
+                  <th><center>A</center></th>
+                  <th><center>B</center></th>
+                  <th><center>C</center></th>
+                  <th><center>D</center></th>
+                  <th><center>Kunci Jawaban</center></th>
+                  <th><center>Status</center></th>
+                  <th><center>Opsi</center></th>
                 </tr>
                 <?php
                   include "koneksi.php";
-                  $query = mysqli_query($koneksi, "SELECT * FROM peserta");
+                  $query = mysqli_query($koneksi, "SELECT * FROM soal");
                   $no = 1;
                   while($row = mysqli_fetch_assoc($query)){
                     ?>
+
                 <tr>
                   <td><?php echo $no++;?></td>
-                  <td><center><a href="form-tambah-hasil-tes.php?id=<?php echo "$row[id]"; ?>"><?php echo $row['nomor_peserta']; ?></a></center></td>
-                  <td><?php echo $row['nama'];?></td>
+                  <td><center><?php echo $row['soal']; ?></center></td>
+                  <td><center><?php echo $row['a']; ?></center></td>
+                  <td><center><?php echo $row['b']; ?></center></td>
+                  <td><center><?php echo $row['c']; ?></center></td>
+                  <td><center><?php echo $row['d']; ?></center></td>
+                  <td><center> <?php echo $row['knc_jawaban']; ?> </center></td>
+                  <td><?php echo $row['aktif'];?></td>
+                  <td> <a href="form-edit-soal.php?id=<?php echo "$row[id_soal]"; ?>"><i class="fa fa-edit"></i></a>
+                  <a href="hapus-soal.php?id=<?php echo "$row[id_soal]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
+                </td>
                 </tr>
                 <?php
                 }
               ?>
               </table>
             </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <!-- <ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">&raquo;</a></li>
-              </ul> -->
-            </div>
           </div>
-
-          <!-- /.box -->
         </div>
       </div>
     </section>
   </div>
-
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
@@ -168,5 +184,18 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
 <script src="../dist/js/adminlte.min.js"></script>
 <script src="../dist/js/demo.js"></script>
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
 </body>
 </html>

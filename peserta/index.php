@@ -62,7 +62,7 @@
                           <div class="card mx-xl-5" style="width: 600px; border-radius: 7px; margin-left:20px">
                               <div class="card-body">
                     <ol>
-                      <h3><center><b>Persyaratan Pendaftaran<b></h3></center>
+                      <h3 class="text-uppercase"><center><b>Persyaratan Pendaftaran<b></h3></center>
                         <br>
                       <h4>
                       <li>Mengisi Formulir Pendaftaran</li>
@@ -70,7 +70,7 @@
                       <li>Lulusan minimal SMP,SMA/SMK sederajat</li>
                       <li>Umur minimal 18 tahun dan maksimal 30 tahun</li>
                       <li>Tinggi badan minimal 155 cm untuk wanita dan 165 cm untuk pria</li>
-                      <li>Berat badab ideal</li>
+                      <li>Berat badan ideal</li>
                       <li>Berbahasa inggris lancar baik secara lisan maupun tulisan</li>
                       <li>Rambut rapi dan tidak diwarnai, gigi bagus(tanpa kawat gigi)</li>
                       <li>Tidak mempunyai tanda tatto pada tanggan, kaki, maupun leher</li>

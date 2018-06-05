@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  if( !isset($_SESSION['nama_user']) )
+  {
+      exit();
+  }
+  $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
+  $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,6 +20,7 @@
         Multi Profile
         http://www.templatemo.com/preview/templatemo_457_multi_profile
         -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -53,75 +63,114 @@
                         <h5 class="section-title-2">Soal Ujian Online</h5>
                         <hr class="section-title-underline">
                     </div>
-                    <div class="form-input">
-                        <div class="card mx-xl-5" style="width: 700px; border-radius: 7px; margin-right: :10px; margin-left: 20px">
-                            <div class="card-body">
-          <?php
-include "koneksi.php";
-echo "<h4>";
-echo "<div style='width:100%; border: 1px solid #EBEBEB; overflow:scroll;height:700px;'>";
- echo '<table width="100%" border="0">';
-
-        $hasil = mysqli_query($koneksi,"select * from soal WHERE aktif='Y' ORDER BY id_soal");
-        $jumlah = mysqli_num_rows($hasil);
-        $urut = 0;
-        while($row = mysqli_fetch_array($hasil))
-        {
-            $id=$row["id_soal"];
-            $pertanyaan=$row["soal"];
-            $pilihan_a=$row["a"];
-            $pilihan_b=$row["b"];
-            $pilihan_c=$row["c"];
-            $pilihan_d=$row["d"];
-
-            ?>
-            <form name="form1" method="post" action="jawab.php">
-            <input type="hidden" name="id[]" value=<?php echo $id; ?>>
-            <input type="hidden" name="jumlah" value=<?php echo $jumlah; ?>>
-            <tr>
-                <td width="17"><font color="#000000"><?php echo $urut=$urut+1; ?></font></td>
-                <td width="430"><font color="#000000"><?php echo "$pertanyaan"; ?></font></td>
-            </tr>
-            <tr>
-                <td height="21"><font color="#000000">&nbsp;</font></td>
-              <td><font color="#000000">
-             A.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
-              <?php echo "$pilihan_a";?></font> </td>
-            </tr>
-            <tr>
-                <td><font color="#000000">&nbsp;</font></td>
-              <td><font color="#000000">
-             B. <input name="pilihan[<?php echo $id; ?>]" type="radio" value="B">
-              <?php echo "$pilihan_b";?></font> </td>
-            </tr>
-            <tr>
-                <td><font color="#000000">&nbsp;</font></td>
-              <td><font color="#000000">
-            C.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="C">
-              <?php echo "$pilihan_c";?></font> </td>
-            </tr>
-            <tr>
-                <td><font color="#000000">&nbsp;</font></td>
-              <td><font color="#000000">
-            D.   <input name="pilihan[<?php echo $id; ?>]" type="radio" value="D">
-              <?php echo "$pilihan_d";?></font> </td>
-            </tr>
+                </div>
+                <style media="screen">
+                  .soal{
+                    margin-left: 150px;
+                    margin-top: -50px;
+                    line-height: 2;
+                  }
+                  .font-soal{
+                    font-size: 25px;
+                  }
+                  .font-jawab{
+                    font-size: 15px;
+                  }
+                </style>
+                <div class="soal">
+                  <div style="width:100%; overflow:scroll;height:700px;">
+                    <form class="form-group" action="jawab.php" method="post">
+                  <?php
+                    include 'koneksi.php';
+                    $query = mysqli_query($koneksi,"SELECT * FROM soal WHERE aktif='Y' ORDER BY RAND()");
+                    $jumlah = mysqli_num_rows($query);
+                    $urut = 0;
+                    while ($row = mysqli_fetch_array($query)) {
+                      $id = $row['id_soal'];
+                      $soal = $row['soal'];
+                      $a = $row['a'];
+                      $b = $row['b'];
+                      $c = $row['c'];
+                      $d = $row['d'];
+                      ?>
 
 
-        <?php
-        }
-        ?>
-        <br>
-            <tr class="text-center py-4 mt-3">
-                <td>&nbsp;</td>
-                <td><input type="submit" name="submit" value="Jawab" class="btn btn-primary btn-lg" onclick="return confirm('Apakah Anda yakin dengan jawaban Anda?')"></td>
-            </tr>
-            </table>
-</form>
-        </p>
-</div>
-</h4>
+                        <table width="100%" border="0">
+                        <input type="hidden" name="id[]" value=<?php echo $id;?>>
+                        <input type="hidden" name="jumlah" value=<?php echo $jumlah;?>>
+                        <input type="hidden" name="nomor_peserta" value=<?php echo $nomor; ?>>
+                        <input type="hidden" name="nama" value=<?php echo $nama; ?>>
+                          <tr>
+                                <td width="17"><font color="#000000" class="font-soal"><?php echo $urut=$urut+1; ?>.</font></td>
+                                <td><font color="#000000" class="font-soal"><?php echo "$soal"; ?></font></td>
+                          </tr>
+                        <br>
+                          <tr>
+                              <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
+                              <td><font color="#000000" class="font-jawab">
+                             A.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
+                              <?php echo "$a";?></font> </td>
+                          </tr>
+                          <tr>
+                              <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
+                              <td><font color="#000000" class="font-jawab">
+                             B.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
+                              <?php echo "$b";?></font> </td>
+                          </tr>
+                          <tr>
+                              <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
+                              <td><font color="#000000" class="font-jawab">
+                             C.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
+                              <?php echo "$c";?></font> </td>
+                          </tr>
+                          <tr>
+                              <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
+                              <td><font color="#000000" class="font-jawab">
+                             D.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
+                              <?php echo "$d";?></font> </td>
+                          </tr>
+                      </table>
+
+
+
+                      <?php
+                    }
+                  ?>
+
+                  <tr>
+                  <td>&nbsp;</td>
+                    <td><button type="button" data-toggle="modal" data-target="#jawabModal" class="btn btn-lg btn-primary" style="padding: 10px 30px; font-size: 20px; margin-left: 350px; margin-top: 50px; margin-bottom: 10px; border-radius:5px;">SIMPAN JAWABAN</button></td>
+                  </tr>
+                  <style media="screen">
+                    .font-type{
+                      font-size: 15px;
+                    }
+                  </style>
+                  <div class="modal fade" id="jawabModal" tabindex="-1" role="dialog" aria-labelledby="jawabModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content" style="border-radius: 5px">
+                        <div class="modal-header">
+                          <h5 class="modal-title font-type" id="jawabModalTitle">Yakin jawaban yang anda input sudah benar ?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body font-type">
+                          Jawaban akan disimpan jika memilih tombol simpan
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary font-type" data-dismiss="modal">Kembali</button>
+                          <input type="submit" name="submit" class="btn btn-primary font-type" value="Simpan">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </form>
+                  </div>
+                </div>
+            </div>
         </section>
+
         <!-- Blog -->
 
         <!-- Features -->
@@ -133,6 +182,8 @@ echo "<div style='width:100%; border: 1px solid #EBEBEB; overflow:scroll;height:
         </footer>
 
         <!-- JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
         <script type="text/javascript" src="js/responsiveCarousel.min.js"></script>      <!-- Carousel -->
         <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
