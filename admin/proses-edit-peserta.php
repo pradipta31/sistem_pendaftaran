@@ -21,6 +21,6 @@
   agama = '$agama', jenis_kelamin = '$jenis_kelamin', tinggi_badan = '$tinggi_badan', berat_badan = '$berat_badan',
   alamat='$alamat', kabupaten = '$kabupaten', no_telp='$no_telp' WHERE id = '$id'";
 
-  mysqli_query($koneksi,$query);
+  $result = mysqli_query($koneksi,$query);
   header ("location: lihat-peserta.php");
  ?>

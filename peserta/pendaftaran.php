@@ -58,7 +58,19 @@
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
                                 <form  name="form" method="post" action="proses-pendaftaran.php" onsubmit="return validasi_input(this)">
+                                  <?php
+                                      $connection = mysqli_connect('localhost','root','','sistem_informasi_eksekutif');
+                                      $query = mysqli_query($connection,'SELECT nomor_peserta FROM peserta order by id DESC LIMIT 1');
+                                      $a = mysqli_fetch_assoc($query);
+                                      $b = substr($a['nomor_peserta'],5,8);
+                                      $c = $b+1;
+                                      $d = "00".$c;
+                                      $e = date("Y").".".substr($d,-3,10);
+                                   ?>
+
+
                                   <p style="font-size: 15px">*) Mohon isi data sesuai dengan identitas diri</p>
+                                  <input type="text" name="nomor_peserta" value="<?php echo $e; ?>" class="form-control" style="font-size:15px" readonly>
                                     <label style="font-size: 14px">NIK</label>
                                       <input type="number" class="form-control" name="nik" id="nik" style="font-size: 15px" />
                                       <span id="data"></span>

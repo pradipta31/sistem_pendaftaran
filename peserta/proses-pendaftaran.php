@@ -55,37 +55,8 @@
                               include 'koneksi.php';
                               $query = mysqli_query($koneksi,"SELECT * FROM peserta ORDER BY nomor_peserta DESC LIMIT 1 ");
                               $tgl_pendaftaran = date("Y-m-d H:i:s");
-                              $row = mysqli_num_rows($query);
-                              $rows = mysqli_fetch_array($query);
-                              $nomorBaru = $rows['nomor_peserta'];
 
-                              if ($rows) {
-                               // membuat variabel baru untuk mengambil kode barang mulai dari 1
-                               $kodeawal = (int) substr($nomorBaru, 3, 4);
-                               $char = "2018";
-                               if ($kodeawal > 0) {
-                                 $nomor_peserta = $char . sprintf(".%03s", $kodeawal +1);
-                               }else {
-                                 $nomor_peserta = '2018.'.$kodeawal+1;
-                               }
-                             }
-                              //  $kode = (int) $nilaikode;
-                              //  // setiap $kode di tambah 1
-                              //  $kode = $kode + 1;
-                              //  // hasil untuk menambahkan kode
-                              //  // angka 3 untuk menambahkan tiga angka setelah B dan angka 0 angka yang berada di tengah
-                              //  // atau angka sebelum $kode
-                              //  $nomor_peserta = "2018.".str_pad($kode, 3, "0", STR_PAD_LEFT);
-                              // } else {
-                              //  $nomor_peserta = "2018.001";
-                              // }
-
-                              // $tahun_pendaftaran = $rows['nomor_peserta'];
-                              // $nomorBaru = (int) substr($tahun_pendaftaran, 3, 3);
-                              //
-                              // $char = "2018";
-                              // $nomor_peserta = $char . sprintf(".%03s", $nomorBaru +1);
-
+                              $nomor_peserta = $_POST['nomor_peserta'];
                               $nik = $_POST['nik'];
                               $nama = $_POST['nama'];
                               $email = $_POST['email'];
