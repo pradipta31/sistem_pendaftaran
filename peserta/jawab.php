@@ -29,10 +29,10 @@
 
                     if($cek){
                         //jika jawaban cocok (benar)
-                        $salah++;
+                        $benar++;
                     }else{
                         //jika salah
-                        $benar++;
+                        $salah++;
                     }
 
                 }
@@ -57,6 +57,10 @@
 
         $query = "INSERT INTO hasil_tes (nomor_peserta,nama,nilai_tulis) VALUES ('$nomor','$nama','$score')";
         $syntax = mysqli_query($koneksi,$query);
+
+        session_start();
+        session_destroy();
+
         echo "<script>alert('Jawaban anda berhasil disimpan!');
           window.location.href='index.php';
         </script>";

@@ -1,93 +1,38 @@
 <?php
-  include 'koneksi.php';
-  $query = "SELECT COUNT(jenis_kelamin) FROM peserta WHERE jenis_kelamin = 'pria'";
-  $hasil = mysqli_query($koneksi,$query);
-  $pria = mysqli_num_rows($hasil);
-
-  $query1 = "SELECT COUNT(jenis_kelamin) FROM peserta WHERE jenis_kelamin = 'wanita'";
-  $hasil1 = mysqli_query($koneksi,$query1);
-  $wanita = mysqli_fetch_assoc($hasil1);
-
-  echo $pria;
-
-
-?>
-<!DOCTYPE html>
-<html>
-<head>
-<script>
-window.onload = function () {
-
-var chart = new CanvasJS.Chart("chartContainer", {
-
-	animationEnabled: true,
-	title:{
-		text: "Jumlah Pendaftaran Menurut Jenis Kelamin"
-	},
-	subtitles: [{
-		text: "DINAS Tenanga Kerja ESDM "
-	}],
-	axisX: {
-		title: "Jenis Kelamin"
-	},
-	axisY: {
-		title: "Jumlah Data",
-		titleFontColor: "#4F81BC",
-		lineColor: "#4F81BC",
-		labelFontColor: "#4F81BC",
-		tickColor: "#4F81BC"
-	},
-
-	toolTip: {
-		shared: true
-	},
-
-	data: [{
-		type: "column",
-		name: "Pria",
-		showInLegend: true,
-		yValueFormatString: "#,##0.# Orang",
-		dataPoints: [
-
-			{ label: "2017",  y: 1 },
-			{ label: "2018", y: 49 },
-			{ label: "2019", y: 35 },
-			{ label: "2020",  y: 50 },
-		]
-	},
-	{
-		type: "column",
-		name: "Wanita",
-
-		showInLegend: true,
-		yValueFormatString: "#,##0.# Orang",
-		dataPoints: [
-			{ label: "2017", y: 1 },
-			{ label: "2018", y: 19 },
-			{ label: "2019", y: 20 },
-			{ label: "2020", y: 23 },
-		]
-	}]
-});
-chart.render();
-
-function toggleDataSeries(e) {
-	if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-		e.dataSeries.visible = false;
-	} else {
-		e.dataSeries.visible = true;
-	}
-	e.chart.render();
-}
-
-}
-</script>
-</head>
-<body>
-<div id="chartContainer" style="height: 500px; width: 100%;"></div>
-<?php
-  include 'bawah.php';
+$conn = new mysqli("localhost","root","","sistem_informasi_eksekutif");
+$pria = $conn->query("SELECT * FROM peserta WHERE jenis_kelamin ='Pria'");
+$wanita = $conn->query("SELECT * FROM peserta WHERE jenis_kelamin ='wanita'");
+$jumlah_pria= mysqli_num_rows($pria);
+$jumlah_wanita= mysqli_num_rows($wanita);
  ?>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-</body>
+
+<html>
+  <head>
+    <script type="text/javascript" src="loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Pria',     <?php echo $jumlah_pria;?>],
+          ['Wanita',      <?php echo $jumlah_wanita;?>],
+
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  </body>
 </html>
