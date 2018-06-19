@@ -57,13 +57,9 @@ include "kiri.php";
 
 
 </div>
-<footer class="main-footer">
-  <div class="pull-right hidden-xs">
-    <b>Version</b> 1.0.0
-  </div>
-  <strong>Copyright &copy; 2016-2017 <a href="#">DISNAKER Prov. Bali</a>.</strong> All rights
-  reserved.
-</footer>
+<?php
+  include 'bawah.php';
+ ?>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>

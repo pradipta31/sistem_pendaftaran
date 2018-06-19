@@ -24,3 +24,7 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
         </div>
       </div>
     </section>
+  </div>
+  <?php
+    include 'bawah.php';
+   ?>
