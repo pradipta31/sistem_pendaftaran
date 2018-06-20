@@ -30,11 +30,11 @@
                 <input type="hidden" name="id_peserta" value="<?php echo $row['id_peserta'];?>">
                 <div class="form-group">
                   <label>Nomor Peserta</label>
-                  <input type="text" class="form-control" name="nomor_peserta" value="<?php echo $row['nomor_peserta']; ?>">
+                  <input type="text" class="form-control" name="nomor_peserta" value="<?php echo $row['nomor_peserta']; ?>" readonly>
                 </div>
                 <div class="form-group">
                   <label>Nama</label>
-                  <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?> ">
+                  <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?> " readonly>
                 </div>
                 <div class="form-group">
                   <label>Nilai Tes Tulis</label>
@@ -46,11 +46,11 @@
                 </div>
                 <div class="form-group">
                   <label>Total Nilai</label>
-                  <input type="number" class="form-control" name="total_nilai" id="totalNilai">
+                  <input type="number" class="form-control" name="total_nilai" id="totalNilai" readonly>
                 </div>
                 <div class="form-group">
                   <label>Status</label>
-                  <input type="text" class="form-control" name="status" id="statusNilai">
+                  <input type="text" class="form-control" name="status" id="statusNilai" readonly>
                 </div>
                 <button type="button" class="btn btn-default" name="button" onclick="window.location='tambah-hasil-tes.php'">Kembali</button>
                 <input type="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">

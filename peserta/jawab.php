@@ -29,10 +29,10 @@
 
                     if($cek){
                         //jika jawaban cocok (benar)
-                        $salah++;
+                        $benar++;
                     }else{
                         //jika salah
-                        $benar++;
+                        $salah++;
                     }
 
                 }
@@ -60,7 +60,7 @@
 
         session_start();
         session_destroy();
-        
+
         echo "<script>alert('Jawaban anda berhasil disimpan!');
           window.location.href='index.php';
         </script>";

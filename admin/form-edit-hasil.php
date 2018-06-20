@@ -33,11 +33,11 @@ include "kiri.php";
               <input type="hidden" name="id" value="<?php echo $row['id'];?>">
               <div class="form-group">
                 <label>Nomor Peserta</label>
-                <input type="text" class="form-control" name="nomor_peserta" value="<?php echo $row['nomor_peserta']; ?>">
+                <input type="text" class="form-control" name="nomor_peserta" value="<?php echo $row['nomor_peserta']; ?>" readonly>
               </div>
               <div class="form-group">
                 <label>Nama</label>
-                <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?>">
+                <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?>" readonly>
               </div>
               <div class="form-group">
                 <label>Nilai Tes Tulis</label>
@@ -49,11 +49,11 @@ include "kiri.php";
               </div>
               <div class="form-group">
                 <label>Total Nilai</label>
-                <input type="number" class="form-control" name="total_nilai" id="totalNilai" value="<?php echo $row['total_nilai']; ?>">
+                <input type="number" class="form-control" name="total_nilai" id="totalNilai" value="<?php echo $row['total_nilai']; ?>" readonly>
               </div>
               <div class="form-group">
                 <label>Status</label>
-                <input type="text" class="form-control" name="status" id="statusNilai" value="<?php echo $row['status']; ?>">
+                <input type="text" class="form-control" name="status" id="statusNilai" value="<?php echo $row['status']; ?>" readonly>
               </div>
 
               <button type="button" class="btn btn-default" name="button" onclick="window.location='hasil-tes.php'">Kembali</button>
