@@ -14,7 +14,7 @@ include "kiripeserta.php";
             <div class="container">
                 <div class="row section-title-container">
                     <div class="col-lg-12 text-uppercase text-center">
-                        <h5 class="section-title-2">Soal Ujian Online</h5>
+                        <h5 class="section-title-2">Soal Ujian Onlin</h5>
                         <hr class="section-title-underline">
                     </div>
                 </div>
@@ -50,7 +50,7 @@ include "kiripeserta.php";
 
 
                         <table width="100%" border="0">
-                        <input type="hidden" name="id[]" value=<?php echo $id;?>>
+                        <input type="hidden" name="id_soal[]" value=<?php echo $id;?>>
                         <input type="hidden" name="jumlah" value=<?php echo $jumlah;?>>
                         <input type="hidden" name="nomor_peserta" value=<?php echo $nomor; ?>>
                         <input type="hidden" name="nama" value=<?php echo $nama; ?>>
@@ -68,19 +68,19 @@ include "kiripeserta.php";
                           <tr>
                               <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
                               <td><font color="#000000" class="font-jawab">
-                             B.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
+                             B.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="B">
                               <?php echo "$b";?></font> </td>
                           </tr>
                           <tr>
                               <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
                               <td><font color="#000000" class="font-jawab">
-                             C.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
+                             C.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="C">
                               <?php echo "$c";?></font> </td>
                           </tr>
                           <tr>
                               <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
                               <td><font color="#000000" class="font-jawab">
-                             D.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
+                             D.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="D">
                               <?php echo "$d";?></font> </td>
                           </tr>
                       </table>
@@ -124,6 +124,8 @@ include "kiripeserta.php";
                 </div>
             </div>
         </section>
+
+
 
         <?php
         include "bawahpeserta.php";
