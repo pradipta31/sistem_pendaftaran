@@ -80,10 +80,10 @@
       if (result == 100) {
         ket = ("lulus");
       }else if (result >= 80) {
-        ket = ("Lulus");
+        ket = ("lulus");
       }
       else if (result < 80) {
-        ket = ("Tidak Lulus");
+        ket = ("tidak_lulus");
       }
 
       document.getElementById('statusNilai').value = ket;
