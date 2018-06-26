@@ -74,7 +74,6 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="tambah-soal.php"> Tambah Soal Tes</a></li>
                 <li><a href="soal-tes.php"> Soal Tes</a></li>
                 <li><a href="nilai-online.php"> Nilai Tes Online</a></li>
               </ul>

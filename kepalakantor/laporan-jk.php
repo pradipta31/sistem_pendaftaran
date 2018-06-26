@@ -47,10 +47,15 @@ $jumlah_wanita= mysqli_num_rows($wanita);
         <div class="box-body">
           <div class="form-group">
             <select name="umur" class="form-control">
-                <option value="All">-- Pilih  Tahun--</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
+<?php
+$mulai= date('Y') - 10;
+for($i = $mulai;$i<$mulai + 50;$i++){
+    $sel = $i == date('Y') ? ' selected="selected"' : '';
+    echo '<option value="'.$i.'"'.$sel.'>'.$i.'</option>';
+}
+?>
+</select>
+
             </select>
           </div>
         </div>
