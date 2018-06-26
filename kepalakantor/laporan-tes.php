@@ -72,7 +72,7 @@ $jumlah_tidaklulus= mysqli_num_rows($tdklulus);
 </select> -->
   <section class="content">
     <div class="row">
-      <div id="piechart" style="width: 100%; height: 640px; margin-left: 150px">
+      <div id="piechart" style="width: 100%; height: 640px; margin-left: 150px; margin-top: 30px">
       </div>
     </div>
   </section>

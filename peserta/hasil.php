@@ -1,5 +1,16 @@
 <?php
-include "kiripeserta.php";
+include "kiripeserta1.php";
+include "koneksi.php";
+session_start();
+if( !isset($_SESSION['nama_user']) )
+{
+    exit();
+}elseif ( isset($_SESSION['nama_user'])) {
+  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes");
+  $row = mysqli_fetch_assoc($query);
+}
+$nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
+$nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
 ?>
         <section class="templatemo-container background-image-logo section-shadow-bottom">
             <div class="container">
@@ -11,17 +22,16 @@ include "kiripeserta.php";
                     <div class="form-input">
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
-                                <form>
-                                    <p class="h1 text-center py-1">Form Input</p>
-                                    <label style="font-size: 14px">Nomor Pendaftaran</label>
-                                    <input type="text" class="form-control">
-                                    <p>*)isi kolom dengan nomor pendaftaran</p>
-                                    <br>
+                              <form>
+                                <div class="form-group" style="font-size: 17px; text-align: left">
+                              
+                                  <label>    Hasil       : <?php echo $row['status']; ?></label>
+                                  </br>
+                                </div>
+                              </div>
 
-                                    <div class="text-center py-4 mt-3">
-                                        <button class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px"value="search" type="submit">Hasil</button>
-                                    </div>
-                                </form>
+                              </form>
+
                             </div>
                         </div>
                     </div>

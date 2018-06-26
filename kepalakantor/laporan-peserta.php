@@ -1,12 +1,12 @@
 <?php
 include "kiri.php";
 include "koneksi.php";
-$tahun18 = $koneksi->query("SELECT * FROM peserta");
-$jumlah_18= mysqli_fetch_assoc($tahun18);
-$data = explode("-", $jumlah_18['tgl_pendaftaran']);
-// $tahun = $data[0];
-$query = mysqli_query($koneksi,"SELECT * FROM peserta WHERE tgl_pendaftaran = '$data'");
-$result = mysqli_fetch_assoc($query);
+// $tahun18 = $koneksi->query("SELECT * FROM peserta");
+// $jumlah_18= mysqli_fetch_assoc($tahun18);
+// $data = explode("-", $jumlah_18['tgl_pendaftaran']);
+// // $tahun = $data[0];
+// $query = mysqli_query($koneksi,"SELECT * FROM peserta WHERE tgl_pendaftaran = '$data'");
+// $result = mysqli_fetch_assoc($query);
 
  ?>
 
@@ -42,10 +42,8 @@ $result = mysqli_fetch_assoc($query);
 <div class="content-wrapper" style="background-color: white">
   <!-- Content Header (Page header) -->
   <div class="text-center" style="margin-top: -20px">
-      <h2>Laporan Data Jenis Kelamin</h2>
-      <?php
-        print_r($data);
-       ?>
+      <h2>Laporan Data Peserta</h2>
+    
   </div>
 
   <section class="content">

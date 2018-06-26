@@ -64,6 +64,7 @@ $jumlah_klungkung= mysqli_num_rows($klungkung);
    }
    </script>
 </html>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper" style="background-color: white">
   <!-- Content Header (Page header) -->
@@ -90,12 +91,14 @@ $jumlah_klungkung= mysqli_num_rows($klungkung);
   </div>
   <section class="content">
     <div class="row">
-      <div id="columnchart_values" style="width: 100%; height: 640px; margin-left: 10px">
+      <div id="columnchart_values" style="width: 100%; height: 640px; margin-left: 10px; margin-top: 30px">
       </div>
+
+      <a href="#" onclick="window.print()"> Print </a>
+
     </div>
   </section>
 </div>
-
 <footer class="main-footer">
 <div class="pull-right hidden-xs">
   <b>Version</b> 1.0.0

@@ -25,7 +25,7 @@ if( strlen($email) < 2 )
         $row =$query->fetch_assoc();
         $_SESSION['nama_user'] = $row['nama'];
         $_SESSION['nomor'] = $row['nomor_peserta'];
-        header('location: soal-tes.php');
+        header('location: profil-peserta.php');
         exit();
 
     }else{

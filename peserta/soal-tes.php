@@ -8,7 +8,7 @@
   $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
 ?>
 <?php
-include "kiripeserta.php";
+include "kiripeserta1.php";
 ?>
         <section class="templatemo-container background-image-logo section-shadow-bottom">
             <div class="container">
@@ -68,19 +68,19 @@ include "kiripeserta.php";
                           <tr>
                               <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
                               <td><font color="#000000" class="font-jawab">
-                             B.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
+                             B.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="B">
                               <?php echo "$b";?></font> </td>
                           </tr>
                           <tr>
                               <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
                               <td><font color="#000000" class="font-jawab">
-                             C.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
+                             C.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="C">
                               <?php echo "$c";?></font> </td>
                           </tr>
                           <tr>
                               <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
                               <td><font color="#000000" class="font-jawab">
-                             D.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
+                             D.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="D">
                               <?php echo "$d";?></font> </td>
                           </tr>
                       </table>
