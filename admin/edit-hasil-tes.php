@@ -55,14 +55,9 @@
     </section>
     <!-- /.content -->
   </div>
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; 2016-2017 <a href="#">DISNAKER Prov. Bali</a>.</strong> All rights
-    reserved.
-  </footer>
-  <div class="control-sidebar-bg"></div>
+  <?php
+    include 'bawah.php';
+   ?>
 </div>
 
 <!-- jQuery 3 -->

@@ -5,6 +5,9 @@
   $query = "SELECT * FROM peserta WHERE id='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
+  $query1 = "SELECT * FROM hasil_tes WHERE id = '$id'";
+  $hasil1 = mysqli_query($koneksi,$query1);
+  $rows = mysqli_fetch_array($hasil1);
 ?>
 
   <div class="content-wrapper">
@@ -38,7 +41,7 @@
                 </div>
                 <div class="form-group">
                   <label>Nilai Tes Tulis</label>
-                  <input type="number" class="form-control" name="nilai_tulis" id="nilaiTesTulis" onkeyup="sum();">
+                  <input type="number" class="form-control" name="nilai_tulis" id="nilaiTesTulis" onkeyup="sum();" value="<?php echo $rows['nilai_tulis'];?>">
                 </div>
                 <div class="form-group">
                   <label>Nilai Tes Wawancara</label>

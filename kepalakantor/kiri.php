@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+=======
+<?php
+session_start();
+
+if( !isset($_SESSION['session_kepalakantor']) )
+{
+    header('location:./../'.$_SESSION['akses']);
+    exit();
+}
+$username = $_SESSION['username_user'];
+$nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
+ ?>
+>>>>>>> fab0ff35c83a3017281daea3c3e7fa9ca6847475
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,6 +64,13 @@
         <div class="pull-left image">
           <img src="dinas11.png" class="img-responsive">
         </div>
+<<<<<<< HEAD
+=======
+        <div class="pull-left info">
+          <p>Selamat Datang</p>
+          <p><?php echo $nama; ?></p>
+        </div>
+>>>>>>> fab0ff35c83a3017281daea3c3e7fa9ca6847475
       </div>
 
       <!-- /.search form -->
@@ -65,11 +86,19 @@
           <a href="#">
             <i class="fa fa-bar-chart"></i>
             <span>Laporan</span>
+<<<<<<< HEAD
             <span class="pull-righ">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
               <ul class="treeview-menu">
+=======
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+>>>>>>> fab0ff35c83a3017281daea3c3e7fa9ca6847475
             <li><a href="laporan-peserta.php"> Laporan Data Peserta</a></li>
             <li><a href="laporan-umur.php"> Laporan Data Umur </a></li>
             <li><a href="laporan-jk.php"> Laporan Data Jenis Kelamin </a></li>
@@ -81,3 +110,25 @@
     </section>
     <!-- /.sidebar -->
   </aside>
+<<<<<<< HEAD
+=======
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button);
+  </script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="../dist/js/demo.js"></script>
+</body>
+</html>
+>>>>>>> fab0ff35c83a3017281daea3c3e7fa9ca6847475

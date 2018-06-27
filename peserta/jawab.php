@@ -1,52 +1,68 @@
 <?php
 
-  include "koneksi.php";
-       if(isset($_POST['submit'])){
-            $pilihan=$_POST['pilihan'];
-            $id_soal=$_POST['id'];
-            $jumlah=$_POST['jumlah'];
+$koneksi = mysqli_connect('localhost', 'root', '', 'sistem_informasi_eksekutif');
 
-            $score=0;
-            $benar=0;
-            $salah=0;
-            $kosong=0;
+     if(isset($_POST['submit'])){
+          $pilihan=$_POST["pilihan"];
+          $id_soal=$_POST["id_soal"];
+          $jumlah=$_POST['jumlah'];
 
-            for ($i=0;$i<$jumlah;$i++){
-                //id nomor soal
-                $nomor=$id_soal[$i];
+          // $query1 = mysqli_query($koneksi,"SELECT * FROM soal");
+          // $result = mysqli_fetch_array($query1);
+          // $id_soal1 = $result['id_soal'];
+          $score=0;
+          $benar=0;
+          $salah=0;
+          $kosong=0;
 
-                //jika user tidak memilih jawaban
-                if (empty($pilihan[$nomor])){
-                    $kosong++;
+          for ($i=0;$i<$jumlah;$i++){
+              //id nomor soal
+
+              $nomor=$id_soal[$i];
+
+              //jika user tidak memilih jawaban
+              if ($pilihan[$nomor]){
+                $jawaban=$pilihan[$nomor];
+
+                //cocokan jawaban user dengan jawaban di database
+                $query=mysqli_query($koneksi,"select * from soal where id_soal='$nomor' and knc_jawaban='$jawaban'");
+                $cek = mysqli_num_rows($query);
+
+                if($cek){
+                    //jika jawaban cocok (benar)
+                    $benar ++;
                 }else{
-                    //jawaban dari user
-                    $jawaban=$pilihan[$nomor];
-
-                    //cocokan jawaban user dengan jawaban di database
-                    $query=mysqli_query($koneksi, "select * from soal where id_soal='$nomor' and knc_jawaban='$jawaban'");
-
-                    $cek=mysqli_num_rows($query);
-
-                    if($cek){
-                        //jika jawaban cocok (benar)
-                        $benar++;
-                    }else{
-                        //jika salah
-                        $salah++;
-                    }
-
+                    //jika salah
+                    $salah++;
                 }
-                /*RUMUS
-                Jika anda ingin mendapatkan Nilai 100, berapapun jumlah soal yang ditampilkan
-                hasil= 100 / jumlah soal * jawaban yang benar
-                */
 
-                $result=mysqli_query($koneksi, "select * from soal WHERE aktif='Y'");
-                $jumlah_soal=mysqli_num_rows($result);
-                $score = 100/$jumlah_soal*$benar;
-                $hasil = number_format($score,1);
-            }
-        }
+              }elseif(empty($pilihan[$nomor])){
+                $kosong++;
+              }
+              /*RUMUS
+              Jika anda ingin mendapatkan Nilai 100, berapapun jumlah soal yang ditampilkan
+              hasil= 100 / jumlah soal * jawaban yang benar
+              */
+
+              $result=mysqli_query($koneksi,"select * from soal WHERE aktif='Y'");
+              $jumlah_soal=mysqli_num_rows($result);
+              $score = 100/$jumlah_soal*$benar;
+              $hasil = number_format($score,1);
+          }
+      }
+        // echo "<br>";
+        // echo "Score : $score";
+        // echo "<br>";
+        // echo "Benar : $benar";
+        // echo "<br>";
+        // echo "Salah : $salah";
+        // echo "<br>";
+        // echo "Jumlah Soal : $jumlah";
+        // echo "<br>";
+        // echo "Kosong : $kosong";
+        // echo "<br>";
+        // echo "Cek : $cek";
+        // echo "<br>";
         session_start();
         if( !isset($_SESSION['nama_user']) )
         {

@@ -14,7 +14,7 @@ include "kiripeserta1.php";
             <div class="container">
                 <div class="row section-title-container">
                     <div class="col-lg-12 text-uppercase text-center">
-                        <h5 class="section-title-2">Soal Ujian Online</h5>
+                        <h5 class="section-title-2">Soal Ujian Onlin</h5>
                         <hr class="section-title-underline">
                     </div>
                 </div>
@@ -50,7 +50,7 @@ include "kiripeserta1.php";
 
 
                         <table width="100%" border="0">
-                        <input type="hidden" name="id[]" value=<?php echo $id;?>>
+                        <input type="hidden" name="id_soal[]" value=<?php echo $id;?>>
                         <input type="hidden" name="jumlah" value=<?php echo $jumlah;?>>
                         <input type="hidden" name="nomor_peserta" value=<?php echo $nomor; ?>>
                         <input type="hidden" name="nama" value=<?php echo $nama; ?>>
@@ -124,6 +124,8 @@ include "kiripeserta1.php";
                 </div>
             </div>
         </section>
+
+
 
         <?php
         include "bawahpeserta.php";
