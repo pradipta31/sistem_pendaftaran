@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 session_start();
 
@@ -9,6 +10,8 @@ if( !isset($_SESSION['session_kepalakantor']) )
 $username = $_SESSION['username_user'];
 $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
  ?>
+=======
+>>>>>>> 7b88d0f3e1d976d03c9894adfe3de12d896d6272
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,10 +64,13 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
         <div class="pull-left image">
           <img src="dinas11.png" class="img-responsive">
         </div>
+<<<<<<< HEAD
         <div class="pull-left info">
           <p>Selamat Datang</p>
           <p><?php echo $nama; ?></p>
         </div>
+=======
+>>>>>>> 7b88d0f3e1d976d03c9894adfe3de12d896d6272
       </div>
 
       <!-- /.search form -->
@@ -80,11 +86,19 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
           <a href="#">
             <i class="fa fa-bar-chart"></i>
             <span>Laporan</span>
+<<<<<<< HEAD
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
+=======
+            <span class="pull-righ">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+              <ul class="treeview-menu">
+>>>>>>> 7b88d0f3e1d976d03c9894adfe3de12d896d6272
             <li><a href="laporan-peserta.php"> Laporan Data Peserta</a></li>
             <li><a href="laporan-umur.php"> Laporan Data Umur </a></li>
             <li><a href="laporan-jk.php"> Laporan Data Jenis Kelamin </a></li>
@@ -96,6 +110,7 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
     </section>
     <!-- /.sidebar -->
   </aside>
+<<<<<<< HEAD
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
@@ -115,3 +130,5 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
   <script src="../dist/js/demo.js"></script>
 </body>
 </html>
+=======
+>>>>>>> 7b88d0f3e1d976d03c9894adfe3de12d896d6272

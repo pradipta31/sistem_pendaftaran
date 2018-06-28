@@ -19,6 +19,8 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
           <div class="box">
 
             <div class="box-header with-border">
+              <ul class="nav nav-tabs">
+
               <h3 class="box-title">Data Soal Tes Peserta Online</h3>
             </div>
             <div class="btn btn-lg">
@@ -55,8 +57,8 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
                   <td><center><?php echo $row['d']; ?></center></td>
                   <td><center> <?php echo $row['knc_jawaban']; ?> </center></td>
                   <td><?php echo $row['aktif'];?></td>
-                  <td> <a href="form-edit-soal.php?id=<?php echo "$row[id_soal]"; ?>"><i class="fa fa-edit"></i></a>
-                  <a href="hapus-soal.php?id=<?php echo "$row[id_soal]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
+                  <td> <a href="form-edit-soal.php?id_soal=<?php echo "$row[id_soal]"; ?>"><i class="fa fa-edit"></i></a>
+                  <a href="hapus-soal.php?id_soal=<?php echo "$row[id_soal]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
                 </td>
                 </tr>
                 <?php

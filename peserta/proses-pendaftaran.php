@@ -79,9 +79,6 @@ include "kiripeserta.php";
                                 echo "<br>";
                                 echo "<br>";
                                 echo "Nomor Pendaftaran Anda Adalah : $nomor_peserta";
-                                echo "<br>";
-                                echo "Pelaksanaan Tes Tulis dan Wawancara akan diinfokan lebih lanjut melalui sms</h3>";
-                                echo "<br>";
                                 echo " ";
                                 mysqli_close($koneksi);
                               }

@@ -57,7 +57,7 @@ include "kiri.php";
                   <select class="form-control" name="aktif">
                     <option value="F">Pilih Status Soal</option>
                     <option value="Y">Aktif</option>
-                    <option value="T">Tidak Aktif</option>
+                    <option value="N">Tidak Aktif</option>
                   </select>
                 </div>
                 <button type="button" class="btn btn-default" name="button" onclick="window.location='tambah-soal.php'">Kembali</button>
