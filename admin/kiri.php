@@ -79,19 +79,26 @@
               </ul>
             </li>
           </li>
-          <li class="treeview">
-            <a href="#">
+          <!-- <li>
+            <a href="hasil-tes.php">
+              <i class="fa fa-table"></i> <span>Hasil Tes Peserta</span>
+            </a>
+          </li> -->
+
+          <li>
+            <a href="hasil-tes.php">
               <i class="fa fa-table"></i>
               <span>Hasil Tes Peserta</span>
-              <span class="pull-right-container">
+              <!-- <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
-              </span>
+              </span> -->
             </a>
-            <ul class="treeview-menu">
+            <!-- <ul class="treeview-menu">
               <li><a href="tambah-hasil-tes.php"> Tambah Hasil Tes</a></li>
               <li><a href="hasil-tes.php"> Hasil Tes Peserta</a></li>
-            </ul>
+            </ul> -->
           </li>
+
       </section>
       <!-- /.sidebar -->
   </aside>

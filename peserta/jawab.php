@@ -48,21 +48,31 @@
             }
         }
         session_start();
-        if( !isset($_SESSION['nama_user']) )
+        if( !isset($_SESSION['email_user']) )
         {
             exit();
         }
-        $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
+        $email = ( isset($_SESSION['email_user']) ) ? $_SESSION['email_user'] : '';
         $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
+        $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 
-        $query = "INSERT INTO hasil_tes (nomor_peserta,nama,nilai_tulis) VALUES ('$nomor','$nama','$score')";
-        $syntax = mysqli_query($koneksi,$query);
+        $cek = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE nomor_peserta='$nomor'");
+        if (mysqli_num_rows($cek) == 0) {
+          $query = "INSERT INTO hasil_tes (nomor_peserta,nama,nilai_tulis) VALUES ('$nomor','$nama','$score')";
+          $syntax = mysqli_query($koneksi,$query);
 
-        session_start();
-        session_destroy();
+          session_start();
+          session_destroy();
 
-        echo "<script>alert('Jawaban anda berhasil disimpan!');
-          window.location.href='index.php';
-        </script>";
+          echo "<script>alert('Jawaban anda berhasil disimpan!');
+            window.location.href='index.php';
+          </script>";
+          // echo "Jawaban berhasil disimpan";
+        }else{
+          echo "<script>alert('Anda telah melakukan tes sebelumnya!');
+            window.location.href='profil-peserta.php';
+          </script>";
+        }
+
 
 ?>

@@ -1,11 +1,11 @@
 <?php
-  session_start();
-  if( !isset($_SESSION['nama_user']) )
-  {
-      exit();
+session_start();
+if( !isset($_SESSION['email_user']) )
+{
+    exit();
   }
-  $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
-  $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
+$email = ( isset($_SESSION['email_user']) ) ? $_SESSION['email_user'] : '';
+$nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
 ?>
 <?php
 include "kiripeserta1.php";
@@ -53,7 +53,7 @@ include "kiripeserta1.php";
                         <input type="hidden" name="id[]" value=<?php echo $id;?>>
                         <input type="hidden" name="jumlah" value=<?php echo $jumlah;?>>
                         <input type="hidden" name="nomor_peserta" value=<?php echo $nomor; ?>>
-                        <input type="hidden" name="nama" value=<?php echo $nama; ?>>
+                        <input type="hidden" name="email" value=<?php echo $email; ?>>
                           <tr>
                                 <td width="17"><font color="#000000" class="font-soal"><?php echo $urut=$urut+1; ?>.</font></td>
                                 <td><font color="#000000" class="font-soal"><?php echo "$soal"; ?></font></td>
