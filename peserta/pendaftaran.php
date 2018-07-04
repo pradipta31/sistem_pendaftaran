@@ -56,6 +56,7 @@ include "kiripeserta.php";
                                         <option value="30">30 tahun</option>
                                     </select>
                                     <br>
+                                    
                                     <label style="font-size: 14px">Tanggal Lahir</label>
                                     <input type="date" class="form-control" name="tgl_lahir" style="font-size: 15px">
                                     <br>
@@ -63,8 +64,9 @@ include "kiripeserta.php";
                                     <input type="text" class="form-control" name="pendidikan" style="font-size: 15px">
                                     <br>
                                     <label style="font-size: 14px">Tahun Lulus</label>
-                                    <input type="number" class="form-control" name="tahun_lulus" style="font-size: 15px">
+                                    <input type="number" class="form-control" name="tahun_lulus" style="font-size: 15px" id="tahun_lulus">
                                     <br>
+                                    <span id="cek_tahunLulus"></span>
                                     <label style="font-size: 14px">Agama</label>
                                     <input type="text" class="form-control" name="agama" style="font-size: 15px">
                                     <br>
@@ -76,10 +78,10 @@ include "kiripeserta.php";
                                     </select>
                                     <br>
                                     <label style="font-size: 14px">Tinggi Badan (cm)</label>
-                                    <input type="text" class="form-control" name="tinggi_badan" style="font-size: 15px">
+                                    <input type="number" class="form-control" name="tinggi_badan" style="font-size: 15px">
                                     <br>
                                     <label style="font-size: 14px">Berat Badan (kg)</label>
-                                    <input type="text" class="form-control" name="berat_badan" style="font-size: 15px">
+                                    <input type="number" class="form-control" name="berat_badan" style="font-size: 15px">
                                     <br>
                                     <label style="font-size: 14px">Alamat Rumah</label>
                                     <input type="text" class="form-control" name="alamat" style="font-size: 15px">
