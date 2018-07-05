@@ -1,4 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b34e241dcca4c0f4fa24c7c956ad6b1a7772ba32
 <?php
 session_start();
 
@@ -10,8 +14,12 @@ if( !isset($_SESSION['session_kepalakantor']) )
 $username = $_SESSION['username_user'];
 $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
  ?>
+<<<<<<< HEAD
+>>>>>>> fab0ff35c83a3017281daea3c3e7fa9ca6847475
+=======
 =======
 >>>>>>> 7b88d0f3e1d976d03c9894adfe3de12d896d6272
+>>>>>>> b34e241dcca4c0f4fa24c7c956ad6b1a7772ba32
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,12 +73,20 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
           <img src="dinas11.png" class="img-responsive">
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b34e241dcca4c0f4fa24c7c956ad6b1a7772ba32
         <div class="pull-left info">
           <p>Selamat Datang</p>
           <p><?php echo $nama; ?></p>
         </div>
+<<<<<<< HEAD
+>>>>>>> fab0ff35c83a3017281daea3c3e7fa9ca6847475
+=======
 =======
 >>>>>>> 7b88d0f3e1d976d03c9894adfe3de12d896d6272
+>>>>>>> b34e241dcca4c0f4fa24c7c956ad6b1a7772ba32
       </div>
 
       <!-- /.search form -->
@@ -87,6 +103,20 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
             <i class="fa fa-bar-chart"></i>
             <span>Laporan</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
+            <span class="pull-righ">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+              <ul class="treeview-menu">
+=======
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+>>>>>>> fab0ff35c83a3017281daea3c3e7fa9ca6847475
+=======
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -99,6 +129,7 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
           </a>
               <ul class="treeview-menu">
 >>>>>>> 7b88d0f3e1d976d03c9894adfe3de12d896d6272
+>>>>>>> b34e241dcca4c0f4fa24c7c956ad6b1a7772ba32
             <li><a href="laporan-peserta.php"> Laporan Data Peserta</a></li>
             <li><a href="laporan-umur.php"> Laporan Data Umur </a></li>
             <li><a href="laporan-jk.php"> Laporan Data Jenis Kelamin </a></li>
@@ -111,6 +142,10 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
     <!-- /.sidebar -->
   </aside>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b34e241dcca4c0f4fa24c7c956ad6b1a7772ba32
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
@@ -130,5 +165,9 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
   <script src="../dist/js/demo.js"></script>
 </body>
 </html>
+<<<<<<< HEAD
+>>>>>>> fab0ff35c83a3017281daea3c3e7fa9ca6847475
+=======
 =======
 >>>>>>> 7b88d0f3e1d976d03c9894adfe3de12d896d6272
+>>>>>>> b34e241dcca4c0f4fa24c7c956ad6b1a7772ba32
