@@ -10,3 +10,4 @@ mengikuti tes wawancara.
 
 soal tes -> http://suckittrees.com/artikel-434/membuat-soal-pilihan-ganda-php-mysql.html
 tahun pada grafik :http://suckittrees.com/artikel-236/cara-menampilkan-data-di-database-berdasarkan-bulan-dan-tahun-.html
+ print https://www.root93.co.id/2017/05/cara-mudah-print-tabel-data-mysql.html

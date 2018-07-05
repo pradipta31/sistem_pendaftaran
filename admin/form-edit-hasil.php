@@ -41,7 +41,7 @@ include "kiri.php";
               </div>
               <div class="form-group">
                 <label>Nilai Tes Tulis</label>
-                <input type="number" class="form-control" name="nilai_tulis" id="nilaiTesTulis" onkeyup="sum();" value="<?php echo $row['nilai_tulis']; ?>">
+                <input type="number" class="form-control" name="nilai_tulis" id="nilaiTesTulis" onkeyup="sum();" value="<?php echo $row['nilai_tulis']; ?>" readonly>
               </div>
               <div class="form-group">
                 <label>Nilai Tes Wawancara</label>

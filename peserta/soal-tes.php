@@ -18,6 +18,7 @@ include "kiripeserta1.php";
                         <hr class="section-title-underline">
                     </div>
                 </div>
+                <a href="#" onclick="window.print()"> Print </a>
                 <style media="screen">
                   .soal{
                     margin-left: 150px;

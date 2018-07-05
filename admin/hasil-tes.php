@@ -10,8 +10,13 @@ include "kiri.php";
               <h3 class="box-title">Hasil Tes Peserta</h3>
             </div>
             <!-- /.box-header -->
+            <div class="btn btn-lg">
+              <a href="print-hasil.php" class="btn btn-primary">Cetak Data</a>
+            </div>
             <div class="box-body">
+
               <table class="table table-bordered">
+
 
                 <tr>
                   <th style="width: 10px"><center>No</center></th>
@@ -36,6 +41,7 @@ include "kiri.php";
                   <td><?php echo $row['status'];?></td>
                   <td> <a href="form-edit-hasil.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-edit"></i></a>
                   <a href="hapus-hasil.php?id=<?php echo "$row[id]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
+                 <a href="print.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-print"></i></a>
                 </td>
                 </tr>
                 <?php
