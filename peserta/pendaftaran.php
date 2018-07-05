@@ -1,8 +1,7 @@
 <?php
 include "kiripeserta.php";
 ?>
-
-        <section class="templatemo-container background-image-logo section-shadow-bottom">
+<section class="templatemo-container background-image-logo section-shadow-bottom">
             <div class="container">
                 <div class="row section-title-container">
                     <div class="col-lg-12 text-uppercase text-center">
@@ -38,7 +37,7 @@ include "kiripeserta.php";
                                     <input type="email" class="form-control" name="email" id="email" style="font-size: 15px">
                                     <span id="cek-email"></span>
                                     <br>
-                                    <label style="font-size: 14px">Umur</label>
+                                    <!-- <label style="font-size: 14px">Umur</label>
                                     <select name="umur" class="form-control" style="font-size: 15px; height: 36px" >
                                         <option value="All">-- Pilih  Umur--</option>
                                         <option value="18">18 tahun</option>
@@ -55,7 +54,7 @@ include "kiripeserta.php";
                                         <option value="29">29 tahun</option>
                                         <option value="30">30 tahun</option>
                                     </select>
-                                    <br>
+                                    <br> -->
                                     
                                     <label style="font-size: 14px">Tanggal Lahir</label>
                                     <input type="date" class="form-control" name="tgl_lahir" style="font-size: 15px">
