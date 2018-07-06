@@ -12,13 +12,14 @@ include "kiripeserta.php";
                     <div class="card mx-xl-5" style="width: 700px; border-radius: 7px; margin-right: :10px; margin-left: 20px">
                         <div class="card-body">
                           <form action="" method="post">
-
                               <?php
                               include 'koneksi.php';
                               $query = mysqli_query($koneksi,"SELECT * FROM peserta ORDER BY nomor_peserta DESC LIMIT 1 "); //menampilkan data pada tabel peserta dengan mengurutkan data nomor peserta dari yang paling bawah
                               $tgl_pendaftaran = date("Y-m-d H:i:s"); // menampilkan tanggal pendaftaran peserta hari ini
 
+                              $id_peserta = $_POST['id_peserta'];
                               $nomor_peserta = $_POST['nomor_peserta']; //mengambil data nomor peserta
+                              $jurusan = $_POST['jurusan'];
                               $nik = $_POST['nik']; //mengambil data nik
                               $nama = $_POST['nama']; //mengambil data nama
                               $email = $_POST['email']; //mengambil data email
@@ -49,9 +50,13 @@ include "kiripeserta.php";
                                 }else{
                                   $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
                                   VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')"; //menambah data
+                                    $query2 = "insert into jurusan (jurusan) values ('$jurusan')";
                                   $hasil = mysqli_query($koneksi,$query1); // menjalankan query
+                                  $hasil2 = mysqli_query($koneksi, $query2);
                                   echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </center> ";
                                   echo "<pre>";
+                                  echo "<br>";
+                                  echo "Jurusan          : $jurusan";
                                   echo "<br>";
                                   echo "NIK              : $nik";
                                   echo "<br>";

@@ -12,6 +12,7 @@ include "kiripeserta.php";
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
                                 <form  name="form" method="post" action="proses-pendaftaran.php" onsubmit="return validasi_input(this)">
+                                  <input type="hidden" name="id_peserta">
                                   <?php
                                       include  "koneksi.php";
                                       $query = mysqli_query($koneksi,'SELECT nomor_peserta FROM peserta order by id DESC LIMIT 1'); // menampilkan data nomor peserta pada tabel peserta dengan mengurutkan id dari yang terbawah
@@ -26,6 +27,14 @@ include "kiripeserta.php";
 
                                   <p style="font-size: 15px">*) Mohon isi data sesuai dengan identitas diri</p>
                                   <input type="text" name="nomor_peserta" value="<?php echo $e; ?>" class="form-control" style="font-size:15px" readonly>
+                                  <label style="font-size: 14px">Jurusan</label>
+                                  <select name="jurusan" class="form-control" style="font-size: 15px; height: 36px" />
+                                    <option value="pl">-- Pilih Jurusan --</option>
+                                    <option value="Tata Graha">Tata Graha</option>
+                                    <option value="Tata Hidangan">Tata Hidangan</option>
+                                    <option value="Tata Boga">Tata Boga</option>
+                                  </select>
+                                  <br>
                                     <label style="font-size: 14px">NIK</label>
                                       <input type="number" class="form-control" name="nik" id="nik" style="font-size: 15px" />
                                       <span id="data"></span>
