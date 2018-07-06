@@ -34,7 +34,6 @@ if( strlen($email) < 2 )
             header('location: profil-peserta.php');
         }
         exit();
-
     }else{
         echo "<script>alert('Email atau password salah!');
           window.location.href='login-peserta.php';

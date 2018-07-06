@@ -10,8 +10,6 @@ include 'koneksi.php';
   $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
   $query = mysqli_query($koneksi, "SELECT * FROM peserta WHERE email = '$email'");
   $row = mysqli_fetch_assoc($query);
-
-
 ?>
 
 <section class="templatemo-container background-image-logo section-shadow-bottom">

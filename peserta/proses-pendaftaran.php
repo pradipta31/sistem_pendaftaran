@@ -47,6 +47,10 @@ include "kiripeserta.php";
                                   echo "<script>alert('Umur Anda tidak cukup untuk melakukan pendaftaran!');
                                   window.location.href='index.php';
                                 </script>";
+                                }elseif ($umur > 30) {
+                                  echo "<script>alert('Umur Anda tidak dapat terdaftar karena batas 30 tahun!');
+                                  window.location.href='index.php';
+                                </script>";
                                 }else{
                                   $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
                                   VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')"; //menambah data

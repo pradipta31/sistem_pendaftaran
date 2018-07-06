@@ -20,9 +20,9 @@ include "kiripeserta1.php";
                 </div>
                 <style media="screen">
                   .soal{
-                    margin-left: 150px;
+                    margin-left: 100px;
                     margin-top: -50px;
-                    line-height: 2;
+                    line-height: 1;
                   }
                   .font-soal{
                     font-size: 25px;

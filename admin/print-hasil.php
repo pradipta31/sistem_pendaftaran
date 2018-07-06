@@ -27,7 +27,6 @@
               <td><center><?php echo $result['nama']; ?></center></td>
               <td><center><?php echo $result['total_nilai']; ?></center></td>
               <td><center> <?php echo $result['status']; ?> </center></td>
-
             </tr>
             <?php
             }
