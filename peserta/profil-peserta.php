@@ -2,15 +2,14 @@
 include "kiripeserta1.php";
 include 'koneksi.php';
   session_start();
-  if( !isset($_SESSION['nama_user']) )
+  if( !isset($_SESSION['email_user']) )
   {
       exit();
-  }elseif ( isset($_SESSION['nama_user'])) {
-    $query = mysqli_query($koneksi, "SELECT * FROM peserta");
-    $row = mysqli_fetch_assoc($query);
-  }
-  $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
+    }
+  $email = ( isset($_SESSION['email_user']) ) ? $_SESSION['email_user'] : '';
   $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
+  $query = mysqli_query($koneksi, "SELECT * FROM peserta WHERE email = '$email'");
+  $row = mysqli_fetch_assoc($query);
 
 
 ?>

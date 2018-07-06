@@ -14,7 +14,7 @@ if( strlen($email) < 2 )
 }else{
     $email = $koneksi->escape_string($email);
     $nomor_peserta = $koneksi->escape_string($nomor_peserta);
-    $sql = "SELECT * FROM peserta WHERE email='$email' AND nomor_peserta='$nomor_peserta' LIMIT 1";
+    $sql = "SELECT * FROM peserta WHERE email='$email' AND nomor_peserta='$nomor_peserta'";
     $query = $koneksi->query($sql);
     if( !$query )
     {
@@ -23,8 +23,9 @@ if( strlen($email) < 2 )
     if( $query->num_rows == 1 )
     {
         $row =$query->fetch_assoc();
-        $_SESSION['nama_user'] = $row['nama'];
+        $_SESSION['email_user'] = $row['email'];
         $_SESSION['nomor'] = $row['nomor_peserta'];
+        $_SESSION['nama_user'] = $row['nama'];
         header('location: profil-peserta.php');
         exit();
 

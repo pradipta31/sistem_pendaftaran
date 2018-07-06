@@ -20,15 +20,7 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 
             <div class="box-header with-border">
               <ul class="nav nav-tabs">
-<!-- Untuk Semua Tab.. pastikan a href=”#nama_id” sama dengan nama id di “Tap Pane” dibawah-->
-  <li class="active"><a href="#tambah-soal.php" data-toggle="tab">Tambah Soal</a></li> <!-- Untuk Tab pertama berikan li class=”active” agar pertama kali halaman di load tab langsung active-->
-  <li><a href="#soal-tes.php" data-toggle="tab">Soal</a></li>
-</ul>
-<!-- Tab panes, ini content dari tab di atas -->
-<div class="tab-content">
-  <div class="tab-pane" id="tambah-soal.php"><img src="/img/emoticon/smile.gif"></div>
-  <div class="tab-pane" id="soal-tes.php"></div>
-</div>
+
               <h3 class="box-title">Data Soal Tes Peserta Online</h3>
             </div>
             <div class="btn btn-lg">
@@ -65,8 +57,8 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
                   <td><center><?php echo $row['d']; ?></center></td>
                   <td><center> <?php echo $row['knc_jawaban']; ?> </center></td>
                   <td><?php echo $row['aktif'];?></td>
-                  <td> <a href="form-edit-soal.php?id=<?php echo "$row[id_soal]"; ?>"><i class="fa fa-edit"></i></a>
-                  <a href="hapus-soal.php?id=<?php echo "$row[id_soal]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
+                  <td> <a href="form-edit-soal.php?id_soal=<?php echo "$row[id_soal]"; ?>"><i class="fa fa-edit"></i></a>
+                  <a href="hapus-soal.php?id_soal=<?php echo "$row[id_soal]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
                 </td>
                 </tr>
                 <?php
