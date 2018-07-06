@@ -13,7 +13,6 @@
   ?>
 
   <table border="1" style="font-size : 16px">
-    <thead>
     <tr>
       <th><center>No</center></th>
       <th><center>No Peserta</center></th>
@@ -22,12 +21,11 @@
       <th><center>Status</center></th>
     </tr>
           <tr>
-            <td><center><?php echo $no['no++']; ?></center></td>
+            <td><center><?php echo $no++; ?></center></td>
               <td><center><?php echo $result['nomor_peserta']; ?></center></td>
               <td><center><?php echo $result['nama']; ?></center></td>
               <td><center><?php echo $result['total_nilai']; ?></center></td>
               <td><center> <?php echo $result['status']; ?> </center></td>
-              <td><center>
 
             </tr>
             <?php
