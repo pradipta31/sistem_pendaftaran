@@ -14,13 +14,13 @@ include "kiripeserta.php";
                                 <form  name="form" method="post" action="proses-pendaftaran.php" onsubmit="return validasi_input(this)">
                                   <?php
                                       include  "koneksi.php";
-                                      $query = mysqli_query($koneksi,'SELECT nomor_peserta FROM peserta order by id DESC LIMIT 1');
-                                      $a = mysqli_fetch_assoc($query);
+                                      $query = mysqli_query($koneksi,'SELECT nomor_peserta FROM peserta order by id DESC LIMIT 1'); // menampilkan data nomor peserta pada tabel peserta dengan mengurutkan id dari yang terbawah
+                                      $a = mysqli_fetch_assoc($query); // menampilkan data nomor peserta
                 
-                                      $b = substr($a['nomor_peserta'],5,8);
-                                      $c = $b+1;
-                                      $d = "00".$c;
-                                      $e = date("Y").".".substr($d,-3,10);
+                                      $b = substr($a['nomor_peserta'],5,8); // memotong string dan mengambil nomor peserta yaitu urutan 5 dan 8
+                                      $c = $b+1; // nomor peserta akan bertambah jika terdapat data sebelumnya
+                                      $d = "00".$c; // untuk menggabungkan tahun
+                                      $e = date("Y").".".substr($d,-3,10); // penggabungan antara tahun sekarang dan mengambil data nomor peserta kecuali 7 huruf terakhir
                                    ?>
 
 
@@ -55,10 +55,11 @@ include "kiripeserta.php";
                                         <option value="30">30 tahun</option>
                                     </select>
                                     <br> -->
-                                    
+
                                     <label style="font-size: 14px">Tanggal Lahir</label>
-                                    <input type="date" class="form-control" name="tgl_lahir" style="font-size: 15px">
+                                    <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir" style="font-size: 15px">
                                     <br>
+                                    
                                     <label style="font-size: 14px">Pendidikan/Ijazah</label>
                                     <input type="text" class="form-control" name="pendidikan" style="font-size: 15px">
                                     <br>

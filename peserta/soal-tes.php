@@ -143,11 +143,11 @@ include "kiripeserta1.php";
         ?>
 
         <script>
-        var seconds = 10;
-        var form = document.getElementById('formSoal');
-          function secondPassed() {
-              var minutes = Math.round((seconds - 30)/60),
-                  remainingSeconds = seconds % 60;
+        var seconds = 3600; // 3600 detik / 60 menit
+        var form = document.getElementById('formSoal'); // mengambil id dari form
+          function secondPassed() { // membuat function secondPassed
+              var minutes = Math.round((seconds - 30)/60), // mengembalikan bilangan bulat kebilangan bulat terdekat
+                  remainingSeconds = seconds % 60; // waktu = seconds mod 60
 
               if (remainingSeconds < 10) {
                   remainingSeconds = "0" + remainingSeconds;
