@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group">
                   <label>Nilai Tes Tulis</label>
-                  <input type="number" class="form-control" name="nilai_tulis" id="nilaiTesTulis" onkeyup="sum();" <?php echo $rows['nilai_tulis'];?>>
+                  <input type="number" class="form-control" name="nilai_tulis" id="nilaiTesTulis" onkeyup="sum();" value="<?php echo $rows['nilai_tulis'];?>">
                 </div>
                 <div class="form-group">
                   <label>Nilai Tes Wawancara</label>

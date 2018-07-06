@@ -34,54 +34,54 @@ include "kiripeserta.php";
                               $kabupaten = $_POST['kabupaten'];
                               $no_telp = $_POST['no_telp'];
 
-                              //cek data nik
-                              // $cekdata = "SELECT nik FROM peserta where nik = '$nik'";
-                              // $ada = mysqli_query($koneksi, $cekdata) or die(mysqli_error($koneksi));
+                              $cek = mysqli_query($koneksi, "SELECT * FROM peserta WHERE nik='$nik'");
+                              if (mysqli_num_rows($cek) == 0) {
+                                  $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
+                                  VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')";
+                                  $hasil = mysqli_query($koneksi,$query1);
+                                  echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </center> ";
+                                  echo "<pre>";
+                                  echo "<br>";
+                                  echo "NIK              : $nik";
+                                  echo "<br>";
+                                  echo "Nama             : $nama";
+                                  echo "<br>";
+                                  echo "Email            : $email";
+                                  echo "<br>";
+                                  echo "Umur             : $umur";
+                                  echo "<br>";
+                                  echo "Tanggal Lahir    : $tgl_lahir";
+                                  echo "<br>";
+                                  echo "Pendidikan       : $pendidikan";
+                                  echo "<br>";
+                                  echo "Tahun Lulus      : $tahun_lulus";
+                                  echo "<br>";
+                                  echo "Agama            : $agama";
+                                  echo "<br>";
+                                  echo "Jenis Kelamin    : $jenis_kelamin";
+                                  echo "<br>";
+                                  echo "Tinggi Badan     : $tinggi_badan";
+                                  echo "<br>";
+                                  echo "Berat Badan      : $berat_badan";
+                                  echo "<br>";
+                                  echo "Alamat Rumah     : $alamat_rumah";
+                                  echo "<br>";
+                                  echo "Kabupaten/Kota   : $kabupaten";
+                                  echo "<br>";
+                                  echo "Nomor Telepon    : $no_telp";
+                                  echo "<br>";
+                                  echo "<br>";
+                                  echo "<br>";
+                                  echo "Nomor Pendaftaran Anda Adalah : $nomor_peserta";
+                                  echo " ";
+                                  mysqli_close($koneksi);
 
-                              if(!$koneksi){
-                                echo "GAGAL KONEKSI";
                               }else{
-                                echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </center> ";
-                                echo "<pre>";
-                                echo "<br>";
-                                echo "NIK              : $nik";
-                                echo "<br>";
-                                echo "Nama             : $nama";
-                                echo "<br>";
-                                echo "Email            : $email";
-                                echo "<br>";
-                                echo "Umur             : $umur";
-                                echo "<br>";
-                                echo "Tanggal Lahir    : $tgl_lahir";
-                                echo "<br>";
-                                echo "Pendidikan       : $pendidikan";
-                                echo "<br>";
-                                echo "Tahun Lulus      : $tahun_lulus";
-                                echo "<br>";
-                                echo "Agama            : $agama";
-                                echo "<br>";
-                                echo "Jenis Kelamin    : $jenis_kelamin";
-                                echo "<br>";
-                                echo "Tinggi Badan     : $tinggi_badan";
-                                echo "<br>";
-                                echo "Berat Badan      : $berat_badan";
-                                echo "<br>";
-                                echo "Alamat Rumah     : $alamat_rumah";
-                                echo "<br>";
-                                echo "Kabupaten/Kota   : $kabupaten";
-                                echo "<br>";
-                                echo "Nomor Telepon    : $no_telp";
-                                echo "<br>";
-
-                                $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
-                                VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')";
-                                $hasil = mysqli_query($koneksi,$query1);
-                                echo "<br>";
-                                echo "<br>";
-                                echo "Nomor Pendaftaran Anda Adalah : $nomor_peserta";
-                                echo " ";
-                                mysqli_close($koneksi);
+                                echo "<script>alert('Anda telah melakukan sudah melakukan pendaftaran!');
+                                  window.location.href='index.php';
+                                </script>";
                               }
+
                                ?>
                                </form>
                                 <div class="text-center py-4 mt-3">

@@ -31,11 +31,19 @@ include "kiripeserta1.php";
                   .font-jawab{
                     font-size: 15px;
                   }
-
+                  .timer {
+                    font-size: 4.5em;
+                    text-align: center;
+                    color: green;
+                    margin-left: -150px;
+                  }
                 </style>
                 <div class="soal">
+                <div class="timer">
+                    <time id="countdown"></time>
+                </div>
                   <div style="width:100%; overflow:scroll;height:700px;">
-                    <form class="form-group" action="jawab.php" method="post">
+                    <form class="form-group" action="jawab.php" method="post" id="formSoal" name="formSoal">
                   <?php
                     include 'koneksi.php';
                     $query = mysqli_query($koneksi,"SELECT * FROM soal WHERE aktif='Y' ORDER BY RAND()");
@@ -52,7 +60,7 @@ include "kiripeserta1.php";
 
 
                         <table width="100%" border="0">
-                        <input type="hidden" name="id[]" value=<?php echo $id;?>>
+                        <input type="hidden" name="id_soal[]" value=<?php echo $id;?>>
                         <input type="hidden" name="jumlah" value=<?php echo $jumlah;?>>
                         <input type="hidden" name="nomor_peserta" value=<?php echo $nomor; ?>>
                         <input type="hidden" name="email" value=<?php echo $email; ?>>
@@ -95,9 +103,10 @@ include "kiripeserta1.php";
 
                   <tr>
                   <td>&nbsp;</td>
-                    <td><button type="button" data-toggle="modal" data-target="#jawabModal" class="btn btn-lg btn-primary" style="padding: 10px 30px; font-size: 20px; margin-left: 350px; margin-top: 50px; margin-bottom: 10px; border-radius:5px;">SIMPAN JAWABAN</button></td>
+                    <!-- <button type="button" class="btn btn-secondary font-type" onclick="window.location = ''">Kembali</button> -->
+                    <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Simpan" style="padding: 8px 20px; font-size: 15px; margin-left: 400px; margin-top: 50px; margin-bottom: 20px">
                   </tr>
-                  <style media="screen">
+                  <!-- <style media="screen">
                     .font-type{
                       font-size: 15px;
                     }
@@ -116,17 +125,42 @@ include "kiripeserta1.php";
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary font-type" data-dismiss="modal">Kembali</button>
-                          <input type="submit" name="submit" class="btn btn-primary font-type" value="Simpan">
+                          <input type="submit" name="submit" class="btn btn-primary font-type" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')" value="Simpan">
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   </form>
                   </div>
                 </div>
             </div>
         </section>
 
+
+
         <?php
         include "bawahpeserta.php";
         ?>
+
+        <script>
+        var seconds = 10;
+        var form = document.getElementById('formSoal');
+          function secondPassed() {
+              var minutes = Math.round((seconds - 30)/60),
+                  remainingSeconds = seconds % 60;
+
+              if (remainingSeconds < 10) {
+                  remainingSeconds = "0" + remainingSeconds;
+              }
+
+              document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
+              if (seconds == 0) {
+                  clearInterval(countdownTimer);
+                 //form1 is your form name
+                  document.getElementById('submit').click();
+              } else {
+                  seconds--;
+              }
+          }
+          var countdownTimer = setInterval('secondPassed()', 1000);
+        </script>
