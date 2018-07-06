@@ -46,7 +46,7 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'sistem_informasi_eksekutif')
 
               $result=mysqli_query($koneksi,"select * from soal WHERE aktif='Y'");
               $jumlah_soal=mysqli_num_rows($result);
-              $score = 100/$jumlah_soal*$benar;
+              $score = $benar * 2;
               $hasil = number_format($score,1);
           }
       }
