@@ -26,6 +26,9 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
             <div class="btn btn-lg">
               <a href="tambah-soal.php" class="btn btn-primary">Tambah Soal</a>
             </div>
+            <div class="btn btn-lg">
+              <a href="print-soal.php" class="btn btn-primary">Print Soal</a>
+            </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table class="table table-bordered">

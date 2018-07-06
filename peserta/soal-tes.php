@@ -18,6 +18,7 @@ include "kiripeserta1.php";
                         <hr class="section-title-underline">
                     </div>
                 </div>
+                <a href="#" onclick="window.print()"> Print </a>
                 <style media="screen">
                   .soal{
                     margin-left: 150px;
@@ -30,6 +31,7 @@ include "kiripeserta1.php";
                   .font-jawab{
                     font-size: 15px;
                   }
+
                 </style>
                 <div class="soal">
                   <div style="width:100%; overflow:scroll;height:700px;">
