@@ -63,6 +63,12 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'sistem_informasi_eksekutif')
         // echo "<br>";
         // echo "Cek : $cek";
         // echo "<br>";
+                $result=mysqli_query($koneksi, "select * from soal WHERE aktif='Y'");
+                $jumlah_soal=mysqli_num_rows($result);
+                $score = $benar*2;
+                $hasil = number_format($score,1);
+            }
+        }
         session_start();
         if( !isset($_SESSION['email_user']) )
         {

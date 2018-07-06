@@ -15,30 +15,41 @@ include "kiripeserta.php";
 
                               <?php
                               include 'koneksi.php';
-                              $query = mysqli_query($koneksi,"SELECT * FROM peserta ORDER BY nomor_peserta DESC LIMIT 1 ");
-                              $tgl_pendaftaran = date("Y-m-d H:i:s");
+                              $query = mysqli_query($koneksi,"SELECT * FROM peserta ORDER BY nomor_peserta DESC LIMIT 1 "); //menampilkan data pada tabel peserta dengan mengurutkan data nomor peserta dari yang paling bawah
+                              $tgl_pendaftaran = date("Y-m-d H:i:s"); // menampilkan tanggal pendaftaran peserta hari ini
 
-                              $nomor_peserta = $_POST['nomor_peserta'];
-                              $nik = $_POST['nik'];
-                              $nama = $_POST['nama'];
-                              $email = $_POST['email'];
-                              $umur = $_POST['umur'];
-                              $tgl_lahir = date($_POST['tgl_lahir']);
-                              $pendidikan = $_POST['pendidikan'];
-                              $tahun_lulus = $_POST['tahun_lulus'];
-                              $agama = $_POST['agama'];
-                              $jenis_kelamin = $_POST['jenis_kelamin'];
-                              $tinggi_badan = $_POST['tinggi_badan'];
-                              $berat_badan = $_POST['berat_badan'];
-                              $alamat_rumah = $_POST['alamat'];
-                              $kabupaten = $_POST['kabupaten'];
-                              $no_telp = $_POST['no_telp'];
+                              $nomor_peserta = $_POST['nomor_peserta']; //mengambil data nomor peserta
+                              $nik = $_POST['nik']; //mengambil data nik
+                              $nama = $_POST['nama']; //mengambil data nama
+                              $email = $_POST['email']; //mengambil data email
+                              $lahir = new DateTime($_POST['tgl_lahir']); //membuat baru format tanggal sekaligus mengambil data tanggal lahir
+                              $today = new DateTime(); // membuat data tanggal hari ini
+                              $calculate_umur = $today->diff($lahir); // pengurangan umur yaitu tanggal lahir - hari ini
+                              $umur = $calculate_umur->y; // menampilkan tahun
+                              // $bulan = $calculate_umur->m; // menampilkan bulan
+                              // $hari = $calculate_umur->d; // menampilkan hari
+                              $tgl_lahir = date($_POST['tgl_lahir']); // mengambil data tanggal lahir dengan format date
+                              $pendidikan = $_POST['pendidikan']; //mengambil data pendidikan
+                              $tahun_lulus = $_POST['tahun_lulus']; //mengambil data tahun lulus
+                              $agama = $_POST['agama']; //mengambil data agama
+                              $jenis_kelamin = $_POST['jenis_kelamin']; //mengambil data jenis kelamin
+                              $tinggi_badan = $_POST['tinggi_badan']; //mengambil data tinggi badan
+                              $berat_badan = $_POST['berat_badan']; //mengambil data berat badan
+                              $alamat_rumah = $_POST['alamat']; //mengambil data alamat
+                              $kabupaten = $_POST['kabupaten']; //mengambil data kabupaten
+                              $no_telp = $_POST['no_telp']; //mengambil data nomor telepon
 
-                              $cek = mysqli_query($koneksi, "SELECT * FROM peserta WHERE nik='$nik'");
-                              if (mysqli_num_rows($cek) == 0) {
+
+                              $cek = mysqli_query($koneksi, "SELECT * FROM peserta WHERE nik='$nik'"); // mengecek apakah data nik pada tabel peserta
+                              if (mysqli_num_rows($cek) == 0) { // mengecek data nik dengan variabel cek apakah nik belum terpakai
+                                if ($umur < 18) { // mengecek umur
+                                  echo "<script>alert('Umur Anda tidak cukup untuk melakukan pendaftaran!');
+                                  window.location.href='index.php';
+                                </script>";
+                                }else{
                                   $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
-                                  VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')";
-                                  $hasil = mysqli_query($koneksi,$query1);
+                                  VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')"; //menambah data
+                                  $hasil = mysqli_query($koneksi,$query1); // menjalankan query
                                   echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </center> ";
                                   echo "<pre>";
                                   echo "<br>";
@@ -75,9 +86,9 @@ include "kiripeserta.php";
                                   echo "Nomor Pendaftaran Anda Adalah : $nomor_peserta";
                                   echo " ";
                                   mysqli_close($koneksi);
-
+                                }
                               }else{
-                                echo "<script>alert('Anda telah melakukan sudah melakukan pendaftaran!');
+                                echo "<script>alert('Anda sudah melakukan pendaftaran sebelumnya!');
                                   window.location.href='index.php';
                                 </script>";
                               }
@@ -85,7 +96,7 @@ include "kiripeserta.php";
                                ?>
                                </form>
                                 <div class="text-center py-4 mt-3">
-                                    <button  name="close" class="btn btn-primary btn-lg" onclick="window.location.href='pendaftaran.php'" style="padding: 10px 25px; border-radius:7px" type="close">Tutup</button>
+                                    <button class="btn btn-primary btn-lg" onclick="window.location.href='index.php'" style="padding: 10px 25px; border-radius:7px">Tutup</button>
                                 </div>
                         </div>
                     </div>
