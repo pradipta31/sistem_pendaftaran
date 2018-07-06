@@ -67,8 +67,6 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'sistem_informasi_eksekutif')
                 $jumlah_soal=mysqli_num_rows($result);
                 $score = $benar*2;
                 $hasil = number_format($score,1);
-            }
-        }
         session_start();
         if( !isset($_SESSION['email_user']) )
         {
