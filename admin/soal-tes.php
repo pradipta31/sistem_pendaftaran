@@ -1,15 +1,7 @@
 <?php
 
 include "kiri.php";
-session_start();
 
-if( !isset($_SESSION['session_admin']) )
-{
-    header('location:./../'.$_SESSION['akses']);
-    exit();
-}
-$username = $_SESSION['username_user'];
-$nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 
 ?>
   <div class="content-wrapper">
@@ -53,11 +45,11 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 
                 <tr>
                   <td><?php echo $no++;?></td>
-                  <td><center><?php echo $row['soal']; ?></center></td>
-                  <td><center><?php echo $row['a']; ?></center></td>
-                  <td><center><?php echo $row['b']; ?></center></td>
-                  <td><center><?php echo $row['c']; ?></center></td>
-                  <td><center><?php echo $row['d']; ?></center></td>
+                  <td><?php echo $row['soal']; ?></td>
+                  <td><?php echo $row['a']; ?></td>
+                  <td><?php echo $row['b']; ?></td>
+                  <td><?php echo $row['c']; ?></td>
+                  <td><?php echo $row['d']; ?></td>
                   <td><center> <?php echo $row['knc_jawaban']; ?> </center></td>
                   <td><?php echo $row['aktif'];?></td>
                   <td> <a href="form-edit-soal.php?id_soal=<?php echo "$row[id_soal]"; ?>"><i class="fa fa-edit"></i></a>
