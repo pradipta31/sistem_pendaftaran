@@ -39,9 +39,9 @@ include "kiri.php";
                             <td><center> <?php echo $row['tgl_pendaftaran']; ?> </center></td>
                             <td><center><?php echo $row['nama']; ?></center></td>
                             <td><center>
-                              <a href="proses-lihat-peserta.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-eye"></i></a>
-                              <a href="form-edit-peserta.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-edit"></i></a>
-                              <a href="hapus-peserta.php?id=<?php echo "$row[id]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
+                              <a href="proses-lihat-peserta.php?id_peserta=<?php echo "$row[id_peserta]"; ?>"><i class="fa fa-eye"></i></a>
+                              <a href="form-edit-peserta.php?id_peserta=<?php echo "$row[id_peserta]"; ?>"><i class="fa fa-edit"></i></a>
+                              <a href="hapus-peserta.php?id_peserta=<?php echo "$row[id_peserta]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
                             </center></td>
                           </tr>
                           <?php

@@ -60,22 +60,25 @@ $jumlah_umur5= mysqli_num_rows($umur5);
   <!-- Content Header (Page header) -->
   <div class="text-center" style="margin-top: -20px">
       <h2>Laporan Data Umur Peserta</h2>
-  </div>
-  <div class="col-md-12">
-    <div class="col-md-2">
-      <div class="box-default">
-        <div class="box-body">
-          <div class="form-group">
-            <select name="umur" class="form-control">
-                <option value="All">-- Pilih  Tahun--</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-            </select>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-2">
+        <div class="box-default">
+          <div class="box-body">
+            <div class="form-group">
+              <select name="tahun" class="form-control">
+                <?php
+                $mulai= date('Y') - 10;
+                for($i = $mulai;$i<$mulai + 50;$i++){
+                    $sel = $i == date('Y') ? ' selected="selected"' : '';
+                    echo '<option value="'.$i.'"'.$sel.'>'.$i.'</option>';
+                }
+                ?>
+              </select>
+            </div>
           </div>
         </div>
       </div>
-    </div>
       <div class="col-md-2">
       </div>
   </div>
@@ -94,28 +97,3 @@ $jumlah_umur5= mysqli_num_rows($umur5);
 <strong>Copyright &copy; 2016-2017 <a href="#">DISNAKER Prov. Bali</a>.</strong> All rights
 reserved.
 </footer>
-<!-- ./wrapper -->
-
-<!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-$.widget.bridge('uibutton', $.ui.button);
-</script>
-<!-- Bootstrap 3.3.7 -->
-<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- ChartJS -->
-<script src="../bower_components/Chart.js/Chart.js"></script>
-<!-- FastClick -->
-<script src="../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
-
-</body>
-</html>

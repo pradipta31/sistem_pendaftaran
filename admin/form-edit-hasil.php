@@ -3,8 +3,8 @@
 include "kiri.php";
 
   include "koneksi.php";
-  $id = $_GET['id'];
-  $query = "SELECT * FROM hasil_tes WHERE id='$id'";
+  $id = $_GET['id_hasil_tes'];
+  $query = "SELECT * FROM hasil_tes WHERE id_hasil_tes='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
 ?>
@@ -30,7 +30,7 @@ include "kiri.php";
         </div>
           <form action="proses-edit-hasil.php" method="post">
             <div class="box-body">
-              <input type="hidden" name="id" value="<?php echo $row['id'];?>">
+              <input type="hidden" name="id_hasil_tes" value="<?php echo $row['id_hasil_tes'];?>">
               <div class="form-group">
                 <label>Nomor Peserta</label>
                 <input type="text" class="form-control" name="nomor_peserta" value="<?php echo $row['nomor_peserta']; ?>" readonly>

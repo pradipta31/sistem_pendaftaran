@@ -2,15 +2,10 @@
 include "kiripeserta1.php";
 include "koneksi.php";
 session_start();
-if( !isset($_SESSION['nama_user']) )
-{
-    exit();
-}elseif ( isset($_SESSION['nama_user'])) {
-  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes");
+  $nomor_pesertaa = ( isset($_SESSION['nomor_peserta']) ) ? $_SESSION['nomor_peserta'] : '';
+  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE nomor_peserta='$nomor_pesertaa'");
   $row = mysqli_fetch_assoc($query);
-}
-$nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
-$nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
+
 ?>
         <section class="templatemo-container background-image-logo section-shadow-bottom">
             <div class="container">
@@ -24,7 +19,7 @@ $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
                             <div class="card-body">
                               <form>
                                 <div class="form-group" style="font-size: 17px; text-align: left">
-                                  
+
                                   <label>    Hasil       : <?php echo $row['status']; ?></label>
                                   </br>
                                 </div>

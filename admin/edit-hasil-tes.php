@@ -1,8 +1,8 @@
 <?php
   include "kiri.php";
   include "koneksi.php";
-  $id = $_GET['id'];
-  $query = "SELECT * FROM peserta WHERE id='$id'";
+  $id = $_GET['id_hasil_tes'];
+  $query = "SELECT * FROM peserta WHERE id_hasil_tes='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
 ?>
@@ -23,7 +23,7 @@
         </div>
           <form action="proses-edit-pendaftara.php" method="post">
             <div class="box-body">
-              <input type="hidden" name="id" value="<?php echo $row['id'];?>">
+              <input type="hidden" name="id_hasil_tes" value="<?php echo $row['id_hasil_tes'];?>">
               <div class="form-group">
                 <label>Nama</label>
                 <input type="text" class="form-control" name="nama" value="<?php echo $row['nama']; ?> ">

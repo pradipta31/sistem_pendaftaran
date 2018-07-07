@@ -1,6 +1,6 @@
 <?php
   include "koneksi.php";
-  $id = $_POST['id'];
+  $id = $_POST['id_peserta'];
   $nik = $_POST['nik'];
   $nama = $_POST['nama'];
   $email = $_POST['email'];
@@ -19,7 +19,7 @@
   $query = "UPDATE peserta SET nik='$nik', nama='$nama', email='$email', umur = '$umur',
   tgl_lahir = '$tgl_lahir', pendidikan = '$pendidikan', tahun_lulus = '$tahun_lulus',
   agama = '$agama', jenis_kelamin = '$jenis_kelamin', tinggi_badan = '$tinggi_badan', berat_badan = '$berat_badan',
-  alamat='$alamat', kabupaten = '$kabupaten', no_telp='$no_telp' WHERE id = '$id'";
+  alamat='$alamat', kabupaten = '$kabupaten', no_telp='$no_telp' WHERE id_peserta = '$id'";
 
   $result = mysqli_query($koneksi,$query);
   header ("location: lihat-peserta.php");

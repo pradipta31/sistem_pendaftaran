@@ -1,8 +1,8 @@
 <?php
 include "kiri.php";
   include "koneksi.php";
-  $id = $_GET['id'];
-  $query = "SELECT * FROM peserta WHERE id='$id'";
+  $id = $_GET['id_peserta'];
+  $query = "SELECT * FROM peserta WHERE id_peserta='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
 ?>
