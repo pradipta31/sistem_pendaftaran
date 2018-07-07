@@ -64,7 +64,7 @@ include "kiripeserta1.php";
                         <input type="hidden" name="nomor_peserta" value=<?php echo $nomor; ?>>
                         <input type="hidden" name="email" value=<?php echo $email; ?>>
                           <tr>
-                                <td width="17"><font color="#000000" class="font-soal"><?php echo $urut=$urut+1; ?>.</font></td>
+                                <td width="21" height="21"><font color="#000000" class="font-soal"><?php echo $urut=$urut+1; ?>.</font></td>
                                 <td><font color="#000000" class="font-soal"><?php echo "$soal"; ?></font></td>
                           </tr>
                         <br>
