@@ -22,13 +22,18 @@ if( strlen($email) < 2 )
     }
     if( $query->num_rows == 1 )
     {
-        $row =$query->fetch_assoc();
-        $_SESSION['email_user'] = $row['email'];
-        $_SESSION['nomor'] = $row['nomor_peserta'];
-        $_SESSION['nama_user'] = $row['nama'];
-        header('location: profil-peserta.php');
+        if ($_SESSION['email_user']) {
+            echo "<script>alert('Akun anda sedang Aktif!');
+              window.location.href='login-peserta.php';
+            </script>";
+        }else{
+            $row =$query->fetch_assoc();
+            $_SESSION['email_user'] = $row['email'];
+            $_SESSION['nomor'] = $row['nomor_peserta'];
+            $_SESSION['nama_user'] = $row['nama'];
+            header('location: profil-peserta.php');
+        }
         exit();
-
     }else{
         echo "<script>alert('Email atau password salah!');
           window.location.href='login-peserta.php';
