@@ -24,7 +24,7 @@ $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
                             <div class="card-body">
                               <form>
                                 <div class="form-group" style="font-size: 17px; text-align: left">
-                                  
+
                                   <label>    Hasil       : <?php echo $row['status']; ?></label>
                                   </br>
                                 </div>

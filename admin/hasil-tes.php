@@ -39,9 +39,9 @@ include "kiri.php";
                   <td><center><?php echo $row['nama']; ?></center></td>
                   <td><center> <?php echo $row['total_nilai']; ?> </center></td>
                   <td><?php echo $row['status'];?></td>
-                  <td> <a href="form-edit-hasil.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-edit"></i></a>
-                  <a href="hapus-hasil.php?id=<?php echo "$row[id]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
-                 <a href="print.php?id=<?php echo "$row[id]"; ?>"><i class="fa fa-print"></i></a>
+                  <td> <a href="form-edit-hasil.php?id_hasil_tes=<?php echo "$row[id_hasil_tes]"; ?>"><i class="fa fa-edit"></i></a>
+                  <a href="hapus-hasil.php?id_hasil_tes=<?php echo "$row[id_hasil_tes]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
+                 <a href="print.php?id_hasil_tes=<?php echo "$row[id_hasil_tes]"; ?>"><i class="fa fa-print"></i></a>
                 </td>
                 </tr>
                 <?php

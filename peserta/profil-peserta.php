@@ -9,6 +9,8 @@ include 'koneksi.php';
   $email = ( isset($_SESSION['email_user']) ) ? $_SESSION['email_user'] : '';
   $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
   $query = mysqli_query($koneksi, "SELECT * FROM peserta WHERE email = '$email'");
+  $query1 = mysqli_query($koneksi, "SELECT * FROM jurusan");
+  $row1 = mysqli_fetch_assoc($query1);
   $row = mysqli_fetch_assoc($query);
 
 
@@ -27,6 +29,8 @@ include 'koneksi.php';
                         <form>
                           <div class="form-group" style="font-size: 17px; text-align: left">
                             <pre style="text-align: left; line-height: 0.5;">
+                            <label>Jurusan        : <?php echo $row1['jurusan']; ?></label>
+                            </br>
                             <label>NIK            : <?php echo $row['nik']; ?></label>
                             </br>
                             <label>Nama           : <?php echo $row['nama']; ?></label>
