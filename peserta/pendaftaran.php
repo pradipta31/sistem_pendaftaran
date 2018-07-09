@@ -16,7 +16,7 @@ include "kiripeserta.php";
                                   
                                   <?php
                                       include  "koneksi.php";
-                                      $query = mysqli_query($koneksi,'SELECT nomor_peserta FROM peserta order by id DESC LIMIT 1'); // menampilkan data nomor peserta pada tabel peserta dengan mengurutkan id dari yang terbawah
+                                      $query = mysqli_query($koneksi,'SELECT nomor_peserta FROM peserta order by id_peserta DESC LIMIT 1'); // menampilkan data nomor peserta pada tabel peserta dengan mengurutkan id dari yang terbawah
                                       $a = mysqli_fetch_assoc($query); // menampilkan data nomor peserta
                                       $b = substr($a['nomor_peserta'],5,8); // memotong string dan mengambil nomor peserta yaitu urutan 5 dan 8
                                       $c = $b+1; // nomor peserta akan bertambah jika terdapat data sebelumnya

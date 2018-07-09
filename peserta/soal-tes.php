@@ -30,6 +30,22 @@ include "kiripeserta1.php";
                   .font-jawab{
                     font-size: 15px;
                   }
+                  input[value="A"]{
+                    margin-left: 1px;
+                  }
+                  input[value="B"]{
+                    margin-left: 3px;
+                  }
+                  input[value="C"]{
+                    margin-left: 2px;
+                  }
+                  input[value="D"]{
+                    margin-left: 1px;
+                  }
+                  td{
+                    line-height: 20px;
+                  }
+
                   .timer {
                     font-size: 5em;
                     text-align: center;
@@ -70,25 +86,25 @@ include "kiripeserta1.php";
                           </tr>
                         <br>
                           <tr>
-                              <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
+                              <td><font color="#000000" class="font-jawab">&nbsp;</font></td>
                               <td><font color="#000000" class="font-jawab">
                              A.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="A">
                               <?php echo "$a";?></font> </td>
                           </tr>
                           <tr>
-                              <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
+                              <td><font color="#000000" class="font-jawab">&nbsp;</font></td>
                               <td><font color="#000000" class="font-jawab">
                              B.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="B">
                               <?php echo "$b";?></font> </td>
                           </tr>
                           <tr>
-                              <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
+                              <td><font color="#000000" class="font-jawab">&nbsp;</font></td>
                               <td><font color="#000000" class="font-jawab">
                              C.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="C">
                               <?php echo "$c";?></font> </td>
                           </tr>
                           <tr>
-                              <td height="21"><font color="#000000" class="font-jawab">&nbsp;</font></td>
+                              <td><font color="#000000" class="font-jawab">&nbsp;</font></td>
                               <td><font color="#000000" class="font-jawab">
                              D.  <input name="pilihan[<?php echo $id; ?>]" type="radio" value="D">
                               <?php echo "$d";?></font> </td>
@@ -106,29 +122,7 @@ include "kiripeserta1.php";
                     <!-- <button type="button" class="btn btn-secondary font-type" onclick="window.location = ''">Kembali</button> -->
                     <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Simpan" style="padding: 8px 20px; font-size: 15px; margin-left: 400px; margin-top: 50px; margin-bottom: 20px">
                   </tr>
-                  <?php
-                    $query_createTemporaryTable = "CREATE TEMPORARY TABLE `temp_jawaban` (temp_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                                                       id_soal INT, pilihan VARCHAR(30))";
-
-                     $result_createtemptable = mysqli_query($koneksi, $query_createTemporaryTable);
-
-                     // $query_insertintotable = "INSERT INTO `temp_jawaban` (id_soal, pilihan)
-                     //                                VALUES ('$id_soal', '$pilihan')";
-
-                     // $result_insertintotable = mysqli_query($koneksi, $query_insertintotable);
-
-                     $query_selecttemptable = "SELECT id_soal, pilihan FROM `temp_jawaban`";
-                     $result_selecttemptable = mysqli_query($koneksi, $query_selecttemptable);
-
-                     while($row_selecttemptable = mysqli_fetch_array($result_selecttemptable)){
-                        echo $row_selecttemptable['id_soal'], ' - ',
-                             $row_selecttemptable['jawaban'], '<br />';
-                     }
-
-                     $delete_temptable = "DROP TABLE `temp_jawaban`";
-                     $result_temptable = mysqli_query($koneksi, $delete_temptable);
-                     mysqli_close($koneksi);
-                  ?>
+                  
                   <!-- <style media="screen">
                     .font-type{
                       font-size: 15px;

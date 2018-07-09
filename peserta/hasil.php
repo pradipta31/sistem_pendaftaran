@@ -1,9 +1,13 @@
 <?php
 include "kiripeserta1.php";
 include "koneksi.php";
-session_start();
-  $nomor_pesertaa = ( isset($_SESSION['nomor_peserta']) ) ? $_SESSION['nomor_peserta'] : '';
-  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE nomor_peserta='$nomor_pesertaa'");
+  session_start();
+  if( !isset($_SESSION['email_user']) )
+  {
+      exit();
+    }
+  $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
+  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE nomor_peserta = '$nomor'");
   $row = mysqli_fetch_assoc($query);
 
 ?>
@@ -15,7 +19,7 @@ session_start();
                         <hr class="section-title-underline">
                     </div>
                     <div class="form-input">
-                        <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
+                        <div class="card mx-xl-5" style="width: 550px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
                               <form>
                                 <div class="form-group" style="font-size: 17px; text-align: left">

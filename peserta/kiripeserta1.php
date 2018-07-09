@@ -44,7 +44,7 @@
                                 <li><a href="profil-peserta.php">Profil</a></li>
                                 <li><a href="soal-tes.php">Tes</a></li>
                                 <li><a href="hasil.php">Hasil Tes</a></li>
-                                <li><a href="logout.php" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')">Logout</a></li>
+                                <li><a href="logout.php" onclick="return confirm ('Yakin Ingin Logout ?')">Logout</a></li>
                             </ul>
                         </nav>
                     </div>
