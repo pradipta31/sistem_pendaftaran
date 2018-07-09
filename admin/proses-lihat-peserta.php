@@ -1,10 +1,13 @@
 <?php
 include "kiri.php";
   include "koneksi.php";
-  $id = $_GET['id_peserta'];
-  $query = "SELECT * FROM peserta WHERE id_peserta='$id'";
+  $id = $_GET['id'];
+  $query = "SELECT * FROM peserta WHERE id='$id'";
+  $query1 = "SELECT * FROM jurusan WHERE id_peserta='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
+  $hasil1 = mysqli_query($koneksi,$query1);
+  $row1 = mysqli_fetch_array($hasil1);
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -32,6 +35,8 @@ include "kiri.php";
             <div class="col-md-2">
               <div class="form-group">
                 <label>NIK </label>
+                </br>
+                <label>Jurusan </label>
                 </br>
                 <label>Nama</label>
                 </br>
@@ -64,6 +69,8 @@ include "kiri.php";
             <div class="col-md-5">
               <div class="form-group">
                 <label>: <?php echo $row['nik']; ?></label>
+                </br>
+                <label>: <?php echo $row1['jurusan']; ?></label>
                 </br>
                 <label>: <?php echo $row['nama']; ?></label>
                 </br>

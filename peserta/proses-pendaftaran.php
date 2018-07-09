@@ -17,7 +17,6 @@ include "kiripeserta.php";
                               $query = mysqli_query($koneksi,"SELECT * FROM peserta ORDER BY nomor_peserta DESC LIMIT 1 "); //menampilkan data pada tabel peserta dengan mengurutkan data nomor peserta dari yang paling bawah
                               $tgl_pendaftaran = date("Y-m-d H:i:s"); // menampilkan tanggal pendaftaran peserta hari ini
 
-                              $id_peserta = $_POST['id_peserta'];
                               $nomor_peserta = $_POST['nomor_peserta']; //mengambil data nomor peserta
                               $jurusan = $_POST['jurusan'];
                               $nik = $_POST['nik']; //mengambil data nik
@@ -40,6 +39,9 @@ include "kiripeserta.php";
                               $kabupaten = $_POST['kabupaten']; //mengambil data kabupaten
                               $no_telp = $_POST['no_telp']; //mengambil data nomor telepon
 
+                              // echo $jurusan;
+                              // echo $id_peserta;
+
 
                               $cek = mysqli_query($koneksi, "SELECT * FROM peserta WHERE nik='$nik'"); // mengecek apakah data nik pada tabel peserta
                               if (mysqli_num_rows($cek) == 0) { // mengecek data nik dengan variabel cek apakah nik belum terpakai
@@ -54,7 +56,7 @@ include "kiripeserta.php";
                                 }else{
                                   $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
                                   VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')"; //menambah data
-                                    $query2 = "insert into jurusan (jurusan) values ('$jurusan')";
+                                  $query2 = "insert into jurusan (nomor_peserta,jurusan) values ('$nomor_peserta','$jurusan')";
                                   $hasil = mysqli_query($koneksi,$query1); // menjalankan query
                                   $hasil2 = mysqli_query($koneksi, $query2);
                                   echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </center> ";
@@ -105,7 +107,7 @@ include "kiripeserta.php";
                                ?>
                                </form>
                                 <div class="text-center py-4 mt-3">
-                                    <button class="btn btn-primary btn-lg" onclick="window.location.href='index.php'" style="padding: 10px 25px; border-radius:7px">Tutup</button>
+                                    <a href="index.php" class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px">Tutup</a>
                                 </div>
                         </div>
                     </div>
