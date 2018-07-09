@@ -107,17 +107,15 @@ include "kiripeserta1.php";
                     <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Simpan" style="padding: 8px 20px; font-size: 15px; margin-left: 400px; margin-top: 50px; margin-bottom: 20px">
                   </tr>
                   <?php
-                    $pilihan=$_POST["pilihan"];
-                    $id_soal=$_POST["id_soal"];
                     $query_createTemporaryTable = "CREATE TEMPORARY TABLE `temp_jawaban` (temp_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
                                                        id_soal INT, pilihan VARCHAR(30))";
 
                      $result_createtemptable = mysqli_query($koneksi, $query_createTemporaryTable);
 
-                     $query_insertintotable = "INSERT INTO `temp_jawaban` (id_soal, pilihan)
-                                                    VALUES ('$id_soal', '$pilihan')";
+                     // $query_insertintotable = "INSERT INTO `temp_jawaban` (id_soal, pilihan)
+                     //                                VALUES ('$id_soal', '$pilihan')";
 
-                     $result_insertintotable = mysqli_query($koneksi, $query_insertintotable);
+                     // $result_insertintotable = mysqli_query($koneksi, $query_insertintotable);
 
                      $query_selecttemptable = "SELECT id_soal, pilihan FROM `temp_jawaban`";
                      $result_selecttemptable = mysqli_query($koneksi, $query_selecttemptable);
