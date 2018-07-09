@@ -22,7 +22,7 @@
   agama = '$agama', jenis_kelamin = '$jenis_kelamin', tinggi_badan = '$tinggi_badan', berat_badan = '$berat_badan',
   alamat='$alamat', kabupaten = '$kabupaten', no_telp='$no_telp' WHERE id = '$id'";
 
-  $query1 = "UPDATE jurusan SET jurusan='$jurusan' WHERE id_peserta='$id'";
+  $query1 = "UPDATE jurusan SET jurusan='$jurusan' WHERE id='$id'";
   $result1 = mysqli_query($koneksi,$query1);
   $result = mysqli_query($koneksi,$query);
   header ("location: lihat-peserta.php");

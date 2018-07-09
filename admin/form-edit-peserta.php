@@ -3,7 +3,7 @@ include "kiri.php";
   include "koneksi.php";
   $id = $_GET['id'];
   $query = "SELECT * FROM peserta WHERE id='$id'";
-  $query1 = "SELECT * FROM jurusan WHERE id_peserta='$id'";
+  $query1 = "SELECT * FROM jurusan WHERE id='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $hasil1 = mysqli_query($koneksi,$query1);
   $row = mysqli_fetch_array($hasil);
@@ -30,13 +30,13 @@ include "kiri.php";
         </div>
           <form action="proses-edit-peserta.php" method="post">
             <div class="box-body">
-              <input type="hidden" name="id_peserta" value="<?php echo $row['id_peserta'];?>">
+              <input type="hidden" name="id" value="<?php echo $row['id'];?>">
               <div class="form-group">
               <label>Jurusan</label>
                 <select class="form-control" name="jurusan" value="<?php echo $row1['jurusan'];?>">
-                  <option value="tatagraha" <?= ($row1['jurusan'] == 'tatagraha') ? 'selected' : '' ; ?>>Tata Graha</option>
-                  <option value="tatahidangan" <?= ($row1['jurusan'] == 'tatahidangan') ? 'selected' : '' ; ?>>Tata Hidangan</option>
-                  <option value="tataboga" <?= ($row1['jurusan'] == 'tataboga') ? 'selected' : '' ; ?>>Tata Boga</option>
+                  <option value="Tata Graha" <?= ($row1['jurusan'] == 'Tata Graha') ? 'selected' : '' ; ?>>Tata Graha</option>
+                  <option value="Tata Hidangan" <?= ($row1['jurusan'] == 'Tata Hidangan') ? 'selected' : '' ; ?>>Tata Hidangan</option>
+                  <option value="Tata Boga" <?= ($row1['jurusan'] == 'Tata Boga') ? 'selected' : '' ; ?>>Tata Boga</option>
                 </select>
                 </div>
                 <div class="form-group">

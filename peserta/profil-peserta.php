@@ -10,7 +10,7 @@ include 'koneksi.php';
   $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
   $id = ( isset($_SESSION['id_user']) ) ? $_SESSION['id_user'] : '';
   $query = mysqli_query($koneksi, "SELECT * FROM peserta WHERE nomor_peserta = '$nomor'");
-  $query1 = mysqli_query($koneksi, "SELECT * FROM jurusan WHERE id_peserta = '$id'");
+  $query1 = mysqli_query($koneksi, "SELECT * FROM jurusan WHERE id = '$id'");
   $row1 = mysqli_fetch_array($query1);
   $row = mysqli_fetch_assoc($query);
 ?>

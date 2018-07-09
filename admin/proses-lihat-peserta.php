@@ -3,7 +3,7 @@ include "kiri.php";
   include "koneksi.php";
   $id = $_GET['id'];
   $query = "SELECT * FROM peserta WHERE id='$id'";
-  $query1 = "SELECT * FROM jurusan WHERE id_peserta='$id'";
+  $query1 = "SELECT * FROM jurusan WHERE id='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
   $hasil1 = mysqli_query($koneksi,$query1);
