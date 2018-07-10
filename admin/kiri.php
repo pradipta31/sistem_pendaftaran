@@ -65,18 +65,18 @@
             </a>
           </li>
           <li>
-            <li class="treeview">
-              <a href="#">
+            <!-- <li class="treeview"> -->
+              <a href="soal-tes.php">
                 <i class="fa fa-table"></i>
-                <span>Soal dan Nilai Tes</span>
-                <span class="pull-right-container">
+                <span>Soal Tes</span>
+                <!-- <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
-                </span>
+                </span> -->
               </a>
-              <ul class="treeview-menu">
+              <!-- <ul class="treeview-menu">
                 <li><a href="soal-tes.php"> Soal Tes</a></li>
                 <li><a href="nilai-online.php"> Nilai Tes Online</a></li>
-              </ul>
+              </ul> -->
             </li>
           </li>
           <!-- <li>

@@ -8,7 +8,7 @@ include "kiri.php";
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Pendaftaran
+        Data Soal
       </h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
