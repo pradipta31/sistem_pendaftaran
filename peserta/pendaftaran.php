@@ -12,8 +12,8 @@ include "kiripeserta.php";
                         <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
                                 <form  name="form" method="post" action="proses-pendaftaran.php" onsubmit="return validasi_input(this)">
-                                  
-                                  
+
+
                                   <?php
                                       include  "koneksi.php";
                                       $query = mysqli_query($koneksi,'SELECT nomor_peserta FROM peserta order by id_peserta DESC LIMIT 1'); // menampilkan data nomor peserta pada tabel peserta dengan mengurutkan id dari yang terbawah

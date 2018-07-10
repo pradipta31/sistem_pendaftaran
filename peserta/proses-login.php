@@ -30,7 +30,7 @@ if( strlen($email) < 2 )
             $row =$query->fetch_assoc();
             $_SESSION['email_user'] = $row['email'];
             $_SESSION['nomor'] = $row['nomor_peserta'];
-            $_SESSION['nama_user'] = $row['nama'];
+            $_SESSION['nama_user'] = $row['nama'];//khusus untuk jawab soal
             $_SESSION['id_user'] = $row['id_peserta'];
             header('location: profil-peserta.php');
         }

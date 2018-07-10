@@ -1,7 +1,7 @@
 <?php
   include "koneksi.php";
-  $id = $_POST['id'];
   $jurusan = $_POST['jurusan'];
+  $nomor_peserta = $_POST['nomor_peserta'];
   $nik = $_POST['nik'];
   $nama = $_POST['nama'];
   $email = $_POST['email'];
@@ -22,7 +22,7 @@
   agama = '$agama', jenis_kelamin = '$jenis_kelamin', tinggi_badan = '$tinggi_badan', berat_badan = '$berat_badan',
   alamat='$alamat', kabupaten = '$kabupaten', no_telp='$no_telp' WHERE id = '$id'";
 
-  $query1 = "UPDATE jurusan SET jurusan='$jurusan' WHERE id='$id'";
+  $query1 = "UPDATE jurusan SET nomor_peserta='$nomor_peserta', jurusan='$jurusan' WHERE nomor_peserta='$nomor_peserta'";
   $result1 = mysqli_query($koneksi,$query1);
   $result = mysqli_query($koneksi,$query);
   header ("location: lihat-peserta.php");
