@@ -2,8 +2,8 @@
 include "kiripeserta1.php";
 include "koneksi.php";
 session_start();
-  $nomor_pesertaa = ( isset($_SESSION['nomor_peserta']) ) ? $_SESSION['nomor_peserta'] : '';
-  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE nomor_peserta='$nomor_pesertaa'");
+  $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
+  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE nomor_peserta='$nomor'");
   $row = mysqli_fetch_assoc($query);
 
 ?>
@@ -34,7 +34,7 @@ session_start();
                 </div>
         </section>
 
-        <footer class="text-center" style="margin-top: 168px">
+        <footer class="text-center" style="margin-top: 244px">
               <p class="small copyright-text">Copyright &copy; 2084 Company Name</p>
           </footer>
 
@@ -44,34 +44,6 @@ session_start();
           <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
           <script type="text/javascript" src="js/responsiveCarousel.min.js"></script>      <!-- Carousel -->
           <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
-          <script>
-              // All images are loaded. Call isotope
-              $(window).load(function() {
-                   var $container = $('#folio-container');
-                  // init
-                  $container.isotope({
-                  // options
-                  itemSelector: '.folio-item',
-                  animationOptions: {
-                          duration: 750,
-                          easing: 'linear',
-                          queue: false
-                      },
-                  });
 
-                  // filter items when filter link is clicked
-                  jQuery('#filters a').click(function(){
-                      var selector = $(this).attr('data-filter');
-                      $container.isotope({ filter: selector });
-                      return false;
-                  });
-
-                  jQuery('#filters li a').click(function(){
-
-                      jQuery('#filters li').removeClass('current');
-                      jQuery(this).parent().addClass('current');
-                  });
-              });
-          </script>
       </body>
   </html>

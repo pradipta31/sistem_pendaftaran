@@ -1,14 +1,14 @@
 <?php
 include "kiri.php";
   include "koneksi.php";
-  $id = $_GET['id'];
-  $query = "SELECT * FROM peserta WHERE id='$id'";
-  $query1 = "SELECT * FROM jurusan WHERE id='$id'";
+  $id = $_GET['id_peserta'];
+  $query = "SELECT * FROM peserta WHERE id_peserta='$id'";
   $hasil = mysqli_query($koneksi,$query);
-  $hasil1 = mysqli_query($koneksi,$query1);
   $row = mysqli_fetch_array($hasil);
+  $nomor_peserta = $row['nomor_peserta'];
+  $query1 = "SELECT * FROM jurusan WHERE nomor_peserta='$nomor_peserta'";
+  $hasil1 = mysqli_query($koneksi,$query1);
   $row1 = mysqli_fetch_array($hasil1);
-
 ?>
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -30,7 +30,7 @@ include "kiri.php";
         </div>
           <form action="proses-edit-peserta.php" method="post">
             <div class="box-body">
-              <input type="hidden" name="id" value="<?php echo $row['id'];?>">
+              <input type="hidden" name="nomor_peserta" value="<?php echo $row['nomor_peserta'];?>">
               <div class="form-group">
               <label>Jurusan</label>
                 <select class="form-control" name="jurusan" value="<?php echo $row1['jurusan'];?>">

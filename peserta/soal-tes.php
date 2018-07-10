@@ -4,7 +4,6 @@ if( !isset($_SESSION['email_user']) )
 {
     exit();
   }
-$email = ( isset($_SESSION['email_user']) ) ? $_SESSION['email_user'] : '';
 $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
 ?>
 <?php
@@ -63,7 +62,6 @@ include "kiripeserta1.php";
                         <input type="hidden" name="id_soal[]" value=<?php echo $id;?>>
                         <input type="hidden" name="jumlah" value=<?php echo $jumlah;?>>
                         <input type="hidden" name="nomor_peserta" value=<?php echo $nomor; ?>>
-                        <input type="hidden" name="email" value=<?php echo $email; ?>>
                           <tr>
                                 <td width="21" height="21"><font color="#000000" class="font-soal"><?php echo $urut=$urut+1; ?>.</font></td>
                                 <td><font color="#000000" class="font-soal"><?php echo "$soal"; ?></font></td>
@@ -106,30 +104,7 @@ include "kiripeserta1.php";
                     <!-- <button type="button" class="btn btn-secondary font-type" onclick="window.location = ''">Kembali</button> -->
                     <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Simpan" style="padding: 8px 20px; font-size: 15px; margin-left: 400px; margin-top: 50px; margin-bottom: 20px">
                   </tr>
-                  <?php
-                    $query_createTemporaryTable = "CREATE TEMPORARY TABLE `temp_jawaban` (temp_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                                                       id_soal INT, pilihan VARCHAR(30))";
-
-                     $result_createtemptable = mysqli_query($koneksi, $query_createTemporaryTable);
-
-                     // $query_insertintotable = "INSERT INTO `temp_jawaban` (id_soal, pilihan)
-                     //                                VALUES ('$id_soal', '$pilihan')";
-
-                     // $result_insertintotable = mysqli_query($koneksi, $query_insertintotable);
-
-                     $query_selecttemptable = "SELECT id_soal, pilihan FROM `temp_jawaban`";
-                     $result_selecttemptable = mysqli_query($koneksi, $query_selecttemptable);
-
-                     while($row_selecttemptable = mysqli_fetch_array($result_selecttemptable)){
-                        echo $row_selecttemptable['id_soal'], ' - ',
-                             $row_selecttemptable['jawaban'], '<br />';
-                     }
-
-                     $delete_temptable = "DROP TABLE `temp_jawaban`";
-                     $result_temptable = mysqli_query($koneksi, $delete_temptable);
-                     mysqli_close($koneksi);
-                  ?>
-                  <!-- <style media="screen">
+                ?                  <!-- <style media="screen">
                     .font-type{
                       font-size: 15px;
                     }

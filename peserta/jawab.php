@@ -24,7 +24,7 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'sistem_informasi_eksekutif')
               if ($pilihan[$nomor]){
                 $jawaban=$pilihan[$nomor];
 
-                //cocokan jawaban user dengan jawaban di database
+                //mencocokan jawaban user dengan jawaban di database
                 $query=mysqli_query($koneksi,"select * from soal where id_soal='$nomor' and knc_jawaban='$jawaban'");
                 $cek = mysqli_num_rows($query);
 
@@ -41,38 +41,19 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'sistem_informasi_eksekutif')
               }
               /*RUMUS
               Jika anda ingin mendapatkan Nilai 100, berapapun jumlah soal yang ditampilkan
-              hasil= 100 / jumlah soal * jawaban yang benar
+              hasil= jawaban benar x 2
               */
 
-              $result=mysqli_query($koneksi,"select * from soal WHERE aktif='Y'");
-              $jumlah_soal=mysqli_num_rows($result);
-              $score = $benar * 2;
-              $hasil = number_format($score,1);
+
           }
       }
-        // echo "<br>";
-        // echo "Score : $score";
-        // echo "<br>";
-        // echo "Benar : $benar";
-        // echo "<br>";
-        // echo "Salah : $salah";
-        // echo "<br>";
-        // echo "Jumlah Soal : $jumlah";
-        // echo "<br>";
-        // echo "Kosong : $kosong";
-        // echo "<br>";
-        // echo "Cek : $cek";
-        // echo "<br>";
+
                 $result=mysqli_query($koneksi, "select * from soal WHERE aktif='Y'");
                 $jumlah_soal=mysqli_num_rows($result);
                 $score = $benar*2;
-                $hasil = number_format($score,1);
-        session_start();
-        if( !isset($_SESSION['email_user']) )
-        {
-            exit();
-        }
-        $email = ( isset($_SESSION['email_user']) ) ? $_SESSION['email_user'] : '';
+
+        session_start();//
+
         $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
         $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 
@@ -82,7 +63,7 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'sistem_informasi_eksekutif')
           $syntax = mysqli_query($koneksi,$query);
 
           session_start();
-          session_destroy();
+          session_destroy();//auto logout
 
           echo "<script>alert('Jawaban anda berhasil disimpan!');
             window.location.href='index.php';

@@ -1,11 +1,12 @@
 <?php
 include "kiri.php";
   include "koneksi.php";
-  $id = $_GET['id'];
-  $query = "SELECT * FROM peserta WHERE id='$id'";
-  $query1 = "SELECT * FROM jurusan WHERE id='$id'";
+  $id = $_GET['id_peserta'];
+  $query = "SELECT * FROM peserta WHERE id_peserta='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
+  $nomor_peserta = $row['nomor_peserta'];
+  $query1 = "SELECT * FROM jurusan WHERE nomor_peserta='$nomor_peserta'";
   $hasil1 = mysqli_query($koneksi,$query1);
   $row1 = mysqli_fetch_array($hasil1);
 ?>
