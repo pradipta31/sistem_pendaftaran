@@ -1,6 +1,6 @@
 <?php
 session_start();
-if( !isset($_POST['email']) ) { header('location:login-peserta.php'); exit(); }
+if( !isset($_POST['email']) ) { header('location:login.php'); exit(); }
 $error = '';
 require ( 'koneksi.php' );
 $email = $_POST['email'];
@@ -24,7 +24,7 @@ if( strlen($email) < 2 )
     {
         if ($_SESSION['email_user']) {
             echo "<script>alert('Akun anda sedang Aktif!');
-              window.location.href='login-peserta.php';
+              window.location.href='login.php';
             </script>";
         }else{
             $row =$query->fetch_assoc();
@@ -32,12 +32,12 @@ if( strlen($email) < 2 )
             $_SESSION['nomor'] = $row['nomor_peserta'];
             $_SESSION['nama_user'] = $row['nama'];//khusus untuk jawab soal
             $_SESSION['id_user'] = $row['id_peserta'];
-            header('location: profil-peserta.php');
+            header('location: profil.php');
         }
         exit();
     }else{
-        echo "<script>alert('Email atau password salah!');
-          window.location.href='login-peserta.php';
+        echo "<script>alert('Email atau Nomor Peserta salah!');
+          window.location.href='login.php';
         </script>";
     }
 
@@ -46,7 +46,7 @@ if( strlen($email) < 2 )
 if( !empty($error) )
 {
     $_SESSION['error'] = $error;
-    header('location: login-peserta.php');
+    header('location: login.php');
     exit();
 }
 ?>

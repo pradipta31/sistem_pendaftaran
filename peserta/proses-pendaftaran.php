@@ -1,7 +1,7 @@
 <?php
-include "kiripeserta.php";
+  include 'atas.php';
 ?>
-    <section class="templatemo-container background-image-logo section-shadow-bottom">
+<section class="templatemo-container background-image-logo section-shadow-bottom">
         <div class="container">
             <div class="row section-title-container">
                 <div class="col-lg-12 text-uppercase text-center">
@@ -14,7 +14,6 @@ include "kiripeserta.php";
                           <form action="" method="post">
                               <?php
                               include 'koneksi.php';
-                              $query = mysqli_query($koneksi,"SELECT * FROM peserta ORDER BY nomor_peserta DESC LIMIT 1 "); //menampilkan data pada tabel peserta dengan mengurutkan data nomor peserta dari yang paling bawah
                               $tgl_pendaftaran = date("Y-m-d H:i:s"); // menampilkan tanggal pendaftaran peserta hari ini
 
                               $nomor_peserta = $_POST['nomor_peserta']; //mengambil data nomor peserta
@@ -38,11 +37,10 @@ include "kiripeserta.php";
                               $alamat_rumah = $_POST['alamat']; //mengambil data alamat
                               $kabupaten = $_POST['kabupaten']; //mengambil data kabupaten
                               $no_telp = $_POST['no_telp']; //mengambil data nomor telepon
-
-                              // echo $jurusan;
-                              // echo $id_peserta;
-
-
+                              $lokasi_file = $_FILES['file']['tmp_name'];
+                              $tipe_file = $_FILES['file']['type'];
+                              $nama_file = $_FILES['file']['name'];
+                              $direktori = "images/$nama_file";
                               $cek = mysqli_query($koneksi, "SELECT * FROM peserta WHERE nik='$nik'"); // mengecek apakah data nik pada tabel peserta
                               if (mysqli_num_rows($cek) == 0) { // mengecek data nik dengan variabel cek apakah nik belum terpakai
                                 if ($umur < 18) { // mengecek umur
@@ -53,9 +51,10 @@ include "kiripeserta.php";
                                   echo "<script>alert('Umur Anda tidak dapat terdaftar karena batas 30 tahun!');
                                   window.location.href='index.php';
                                 </script>";
-                                }else{
-                                  $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp)
-                                  VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp')"; //menambah data
+                              }elseif(!empty($lokasi_file)){
+                                  move_uploaded_file($lokasi_file,$direktori);
+                                  $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp,file)
+                                  VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp','$nama_file')"; //menambah data
                                   $query2 = "insert into jurusan (nomor_peserta,jurusan) values ('$nomor_peserta','$jurusan')";
                                   $hasil = mysqli_query($koneksi,$query1); // menjalankan query
                                   $hasil2 = mysqli_query($koneksi, $query2);
@@ -103,18 +102,17 @@ include "kiripeserta.php";
                                   window.location.href='index.php';
                                 </script>";
                               }
-
-                               ?>
-                               </form>
-                                <div class="text-center py-4 mt-3">
-                                    <a href="index.php" class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px">Tutup</a>
-                                </div>
+                            ?>
+                          </form>
+                          <div class="text-center py-4 mt-3">
+                            <a href="index.php" class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px">Tutup</a>
+                          </div>
                         </div>
                     </div>
                 </div>
               </div>
             </div>
     </section>
-    <?php
-    include "bawahpeserta.php";
-    ?>
+<?php
+  include 'bawah.php';
+?>

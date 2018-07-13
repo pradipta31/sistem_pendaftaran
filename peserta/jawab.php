@@ -1,6 +1,6 @@
 <?php
 
-$koneksi = mysqli_connect('localhost', 'root', '', 'sistem_informasi_eksekutif');
+include 'koneksi.php';
 
      if(isset($_POST['submit'])){
           $pilihan=$_POST["pilihan"];
@@ -70,7 +70,7 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'sistem_informasi_eksekutif')
           // echo "Jawaban berhasil disimpan";
         }else{
           echo "<script>alert('Anda telah melakukan tes sebelumnya!');
-            window.location.href='profil-peserta.php';
+            window.location.href='profil.php';
           </script>";
         }
 
