@@ -47,7 +47,7 @@ hr {
 /* 2. Site Name and Navigation */
 .header-bg {
 	/*http://www.cssmatic.com/gradient-generator*/
-	background: rgb(8,41,43);
+	background: white;
 	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(8,41,43,1)), color-stop(50%, rgba(8,41,43,1)), color-stop(51%, rgba(27,67,76,1)), color-stop(100%, rgba(27,67,76,1)));
 	background: -webkit-gradient(linear, left top, right top, from(rgba(8,41,43,1)), color-stop(50%, rgba(8,41,43,1)), color-stop(51%, rgba(27,67,76,1)), to(rgba(27,67,76,1)));
 	background: -webkit-linear-gradient(left, rgba(8,41,43,1) 0%, rgba(8,41,43,1) 50%, rgba(27,67,76,1) 51%, rgba(27,67,76,1) 100%);
@@ -62,7 +62,7 @@ hr {
 	height: 90px;
 }
 .site-name-container {
-	background: #08292b url(../img/header-lines.jpg) right center no-repeat;
+	background: white url(../img/header-lines.jpg) right center no-repeat;
 }
 .site-name {
 	color: #428d89;
@@ -78,7 +78,7 @@ hr {
 }
 .mobile-menu-icon { display: none; }
 .templatemo-nav-container {
-	background-color: #1b434c;
+	background-color: lightblue;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: -webkit-box;
@@ -99,7 +99,7 @@ hr {
 	font-weight: 700;
 }
 .templatemo-nav li a {
-	color: #386771;
+	color: white;
 	display: block;
 	height: 60px;
 	width: 162px;

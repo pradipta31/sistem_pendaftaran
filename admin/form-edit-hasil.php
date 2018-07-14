@@ -26,7 +26,7 @@ include "kiri.php";
     <section class="content">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">Nomor Peserta : <?php echo $row['nomor_peserta']; ?></h3>
+          <h3 class="box-title"></h3>
         </div>
           <form action="proses-edit-hasil.php" method="post">
             <div class="box-body">
