@@ -1,6 +1,6 @@
 <?php
 
-$koneksi = mysqli_connect('localhost', 'root', '', 'sistem_informasi_eksekutif');
+include 'koneksi.php';
 
      if(isset($_POST['submit'])){
           $pilihan=$_POST["pilihan"];
@@ -62,8 +62,7 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'sistem_informasi_eksekutif')
           $query = "INSERT INTO hasil_tes (nomor_peserta,nama,nilai_tulis) VALUES ('$nomor','$nama','$score')";
           $syntax = mysqli_query($koneksi,$query);
 
-          session_start();
-          session_destroy();//auto logout
+          session_destroy();
 
           echo "<script>alert('Jawaban anda berhasil disimpan!');
             window.location.href='index.php';
@@ -71,7 +70,7 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'sistem_informasi_eksekutif')
           // echo "Jawaban berhasil disimpan";
         }else{
           echo "<script>alert('Anda telah melakukan tes sebelumnya!');
-            window.location.href='profil-peserta.php';
+            window.location.href='profil.php';
           </script>";
         }
 

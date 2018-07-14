@@ -15,7 +15,7 @@ session_start();
                         <hr class="section-title-underline">
                     </div>
                     <div class="form-input">
-                        <div class="card mx-xl-5" style="width: 500px; border-radius: 7px; margin-left:20px">
+                        <div class="card mx-xl-5" style="width: 550px; border-radius: 7px; margin-left:20px">
                             <div class="card-body">
                               <form>
                                 <div class="form-group" style="font-size: 17px; text-align: left">

@@ -1,8 +1,8 @@
 <?php
 include "kiri.php";
 include "koneksi.php";
-$umur1 = $koneksi->query("SELECT * FROM peserta WHERE umur<20");
-$umur2 = $koneksi->query("SELECT * FROM peserta WHERE umur=21 AND umur<23");
+$umur1 = $koneksi->query("SELECT * FROM peserta WHERE umur=20");
+$umur2 = $koneksi->query("SELECT * FROM peserta WHERE umur<21 AND umur<23");
 $umur3 = $koneksi->query("SELECT * FROM peserta WHERE umur=24 AND umur<26");
 $umur4 = $koneksi->query("SELECT * FROM peserta WHERE umur=27 AND umur<29");
 $umur5 = $koneksi->query("SELECT * FROM peserta WHERE umur=30");

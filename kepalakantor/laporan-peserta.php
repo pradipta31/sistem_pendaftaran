@@ -1,39 +1,38 @@
 <?php
-include "kiri.php";
-include "koneksi.php";
-// $tahun18 = $koneksi->query("SELECT * FROM peserta");
-// $jumlah_18= mysqli_fetch_assoc($tahun18);
-// $data = explode("-", $jumlah_18['tgl_pendaftaran']);
-// // $tahun = $data[0];
-// $query = mysqli_query($koneksi,"SELECT * FROM peserta WHERE tgl_pendaftaran = '$data'");
-// $result = mysqli_fetch_assoc($query);
+  include "kiri.php";
+  include "koneksi.php";
 
- ?>
-
+?>
 <html>
-    <script type="text/javascript" src="loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['2017',     <?php echo $tahun;?>],
-          ['2018',      <?php echo $tahun;?>],
-
-        ]);
-
-        var options = {
-          title: 'Laporan Data Jenis Kelamin'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data);
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
+           <script type="text/javascript">
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+ 
+function drawChart() {
+ 
+    var data = google.visualization.arrayToDataTable([
+      ['Language', 'Rating'],
+      <?php
+      if($result->num_rows > 0){
+          while($row = $result->fetch_assoc()){
+            echo "['".$row['name']."', ".$row['rating']."],";
+          }
       }
-    </script>
+      ?>
+    ]);
+    
+    var options = {
+        title: 'Most Popular Social Media',
+        width: 900,
+        height: 500,
+    };
+    
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    
+    chart.draw(data, options);
+}
+</script>
   <body>
 
   </body>
@@ -48,7 +47,7 @@ include "koneksi.php";
       <div class="col-md-2">
         <div class="box-default">
           <div class="box-body">
-            <div class="form-group">
+            <!-- <div class="form-group">
               <select name="tahun" class="form-control">
                 <?php
                 $mulai= date('Y') - 10;
@@ -58,7 +57,12 @@ include "koneksi.php";
                 }
                 ?>
               </select>
-            </div>
+              <?php
+                echo $result['tgl_pendaftaran'];
+                echo $tahun18;
+                print_r($result);
+              ?>
+            </div> -->
           </div>
         </div>
       </div>
@@ -66,10 +70,7 @@ include "koneksi.php";
   </div>
 
   <section class="content">
-    <div class="row">
-      <div id="piechart" style="width: 100%; height: 640px; margin-left: 150px">
-      </div>
-    </div>
+    <div id="piechart"></div>
   </section>
 </div>
 
@@ -80,3 +81,4 @@ include "koneksi.php";
 <strong>Copyright &copy; 2016-2017 <a href="#">DISNAKER Prov. Bali</a>.</strong> All rights
 reserved.
 </footer>
+
