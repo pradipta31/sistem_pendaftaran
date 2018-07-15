@@ -3,10 +3,9 @@
   session_start();
   $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
 ?>
-<section class="templatemo-container background-image-logo section-shadow-bottom">
-          <div class="container">
+          <section id="content">
               <div class="row section-title-container">
-                  <div class="col-lg-12 text-uppercase text-center">
+                  <div class="col-md-12 text-uppercase text-center">
                       <h1 class="section-title-2">Soal Ujian Online</h1>
                       <hr class="colorgraph">
                   </div>
@@ -48,6 +47,7 @@
                   margin-bottom: 20px;
                 }
               </style>
+          <div class="container">
               <div class="soal">
               <div class="timer">
                   <time id="countdown"></time>
@@ -117,6 +117,7 @@
                 </tr>
                 </form>
                 </div>
+              </div>
               </div>
           </div>
       </section>

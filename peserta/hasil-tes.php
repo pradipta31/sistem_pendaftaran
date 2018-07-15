@@ -9,8 +9,13 @@
 
   <section id="content">
     <div class="container">
+        <div class="row">
+          <div class="text-center">
+            <hr class="colorgraph">
+            <h1 style="color: black">Hasil Tes</h2>
+          </div>
       <div class="form-input">
-        <div class="card mx-xl-5" style="width: 870px; border-radius: 7px; margin-left:300px">
+        <div class="card mx-xl-5" style="width: 870px; height: 200px; border-radius: 7px; margin-left:300px">
           <div class="card-body">
             <div class="form-group">
               <select class="form-control" name="tahun">
@@ -24,7 +29,8 @@
       </div>
     </div>
   </section>
-
+  <div class="container">
+    </div>
 <?php
   include 'bawah.php';
 ?>
