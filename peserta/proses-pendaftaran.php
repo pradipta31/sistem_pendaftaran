@@ -1,7 +1,7 @@
 <?php
   include 'atas.php';
 ?>
-<section class="templatemo-container background-image-logo section-shadow-bottom">
+<section id="content">
         <div class="container">
             <div class="row section-title-container">
                 <div class="col-lg-12 text-uppercase text-center">
@@ -9,7 +9,7 @@
                     <hr class="section-title-underline">
                 </div>
                 <div class="form-input">
-                    <div class="card mx-xl-5" style="width: 700px; border-radius: 7px; margin-right: :10px; margin-left: 20px">
+                    <div class="card mx-xl-5" style="width: 700px;height: 300px;border-radius: 7px; margin-right: :10px; margin-left: 20px">
                         <div class="card-body">
                           <form action="" method="post">
                               <?php

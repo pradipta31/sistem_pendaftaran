@@ -22,8 +22,18 @@
                 <option>2018</option>
                 <option>2019</option>
               </select>
-              <label> HASIL : <?php echo $row['status'];?></label>
+              <div style="color : black">
+
+
+              <label> Nomor Peseta <b style="margin-left : 100px">: <?php echo $row['nomor_peserta'];?></label><br></b>
+              <label> Nama   <b style="margin-left : 155px">: <?php echo $row['nama'];?></label><br></b>
+              <label> Nilai Tes Online <b style="margin-left : 90px"> : <?php echo $row['nilai_tulis'];?></label><br></b>
+              <label> Nilai Tes Wawancara  <b style="margin-left : 58px">: <?php echo $row['nilai_wawancara'];?></label><br></b>
+              <label> Total Nilai <b style="margin-left : 130px"> : <?php echo $row['total_nilai'];?></label><br></b>
+              <label> Hasil  <b style="margin-left : 161px">: <?php echo $row['status'];?></label><br></b>
             </div>
+              </div>
+           </div>
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@
     <div class="row">
       <div class="text-center">
         <hr class="colorgraph">
-        <h1 style="color: black">Data Peserta (<?php echo $row['nomor_peserta'];?>)</h2>
+        <h1 style="color: black">Data Peserta (<?php echo $row['nomor_peserta'];?>)</h1>
       </div>
       <div class="col-md-12">
         <div class="col-md-2">
