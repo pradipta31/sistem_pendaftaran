@@ -5,12 +5,13 @@
         <div class="container">
             <div class="row section-title-container">
                 <div class="col-lg-12 text-uppercase text-center">
-                    <h5 class="section-title-2">Formulir Pendaftaran</h5>
+                    <h3 style="color : black">Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </h3>
                     <hr class="section-title-underline">
                 </div>
+                </div>
                 <div class="form-input">
-                    <div class="card mx-xl-5" style="width: 700px;height: 300px;border-radius: 7px; margin-right: :10px; margin-left: 20px">
-                        <div class="card-body">
+                    <div class="card mx-xl-5" style="width: 700px;height: 600px;border-radius: 7px; margin-right: :10px; margin-left: 300px">
+                        <div class="card-body" style="color : black">
                           <form action="" method="post">
                               <?php
                               include 'koneksi.php';
@@ -58,51 +59,46 @@
                                   $query2 = "insert into jurusan (nomor_peserta,jurusan) values ('$nomor_peserta','$jurusan')";
                                   $hasil = mysqli_query($koneksi,$query1); // menjalankan query
                                   $hasil2 = mysqli_query($koneksi, $query2);
-                                  echo "<h3><center>Data Peserta Pelatihan Kapal Pesiar Pada Disnaker ESDM Provini Bali </center> ";
-                                  echo "<pre>";
-                                  echo "<br>";
-                                  echo "Jurusan          : $jurusan";
-                                  echo "<br>";
-                                  echo "NIK              : $nik";
-                                  echo "<br>";
-                                  echo "Nama             : $nama";
-                                  echo "<br>";
-                                  echo "Email            : $email";
-                                  echo "<br>";
-                                  echo "Umur             : $umur";
-                                  echo "<br>";
-                                  echo "Tanggal Lahir    : $tgl_lahir";
-                                  echo "<br>";
-                                  echo "Pendidikan       : $pendidikan";
-                                  echo "<br>";
-                                  echo "Tahun Lulus      : $tahun_lulus";
-                                  echo "<br>";
-                                  echo "Agama            : $agama";
-                                  echo "<br>";
-                                  echo "Jenis Kelamin    : $jenis_kelamin";
-                                  echo "<br>";
-                                  echo "Tinggi Badan     : $tinggi_badan";
-                                  echo "<br>";
-                                  echo "Berat Badan      : $berat_badan";
-                                  echo "<br>";
-                                  echo "Alamat Rumah     : $alamat_rumah";
-                                  echo "<br>";
-                                  echo "Kabupaten/Kota   : $kabupaten";
-                                  echo "<br>";
-                                  echo "Nomor Telepon    : $no_telp";
-                                  echo "<br>";
-                                  echo "<br>";
-                                  echo "<br>";
-                                  echo "Nomor Pendaftaran Anda Adalah : $nomor_peserta";
-                                  echo " ";
-                                  mysqli_close($koneksi);
                                 }
-                              }else{
-                                echo "<script>alert('Anda sudah melakukan pendaftaran sebelumnya!');
-                                  window.location.href='index.php';
-                                </script>";
-                              }
-                            ?>
+                                    ?>
+                                  <div class="col-md-12">
+                                    <div class="col-md-8">
+                                      <label>Jurusan        <b style="margin-left: 85px">:</b> <?php echo $jurusan; ?></label><br>
+                                      <label>NIK            <b style="margin-left: 115px">:</b> <?php echo $nik; ?></label><br>
+                                      <label>Nama           <b style="margin-left: 99px">:</b> <?php echo $nama; ?></label><br>
+                                      <label>Email          <b style="margin-left: 103px">:</b> <?php echo $email; ?></label><br>
+                                      <label>Umur           <b style="margin-left: 102px">:</b> <?php echo $umur; ?></label><br>
+                                      <label>Tanggal Lahir  <b style="margin-left: 48px">:</b> <?php echo $tgl_lahir; ?></label><br>
+                                      <label>Pendidikan     <b style="margin-left: 63px">:</b> <?php echo $pendidikan; ?></label><br>
+                                      <label>Tahun Lulus    <b style="margin-left: 57px">:</b> <?php echo $tahun_lulus; ?></label><br>
+                                      <label>Agama          <b style="margin-left: 95px">:</b> <?php echo $agama; ?></label><br>
+                                      <label>Jenis Kelamin            <b style="margin-left: 49px">:</b> <?php echo $jenis_kelamin; ?></label><br>
+                                      <label>Tinggi Badan            <b style="margin-left: 55px">:</b> <?php echo $tinggi_badan; ?></label><br>
+                                      <label>Berat Badan            <b style="margin-left: 59px">:</b> <?php echo $berat_badan; ?></label><br>
+                                      <label>Alamat           <b style="margin-left: 95px">:</b> <?php echo $alamat_rumah; ?></label><br>
+                                      <label>Kabupaten            <b style="margin-left: 70px">:</b> <?php echo $kabupaten; ?></label><br>
+                                      <label>Nomor Telepon            <b style="margin-left: 38px">:</b> <?php echo $no_telp; ?></label><br>
+                                      <label>Nomor Pendaftaran Anda Adalah          :</b> <?php echo $nomor_peserta; ?></label><br>
+                                    </div>
+
+                                    <div class="col-md-2 text-center">
+                                      <?php
+                                        if ($nama_file == null) {
+                                          echo '<img src="images/peserta.png" height="150px" width="150px" style="border-radius: 5px">';
+                                        }else{ ?>
+                                          <img src="images/<?= $nama_file;?>" height="150px" width="150px" style="border-radius: 5px">
+                                      <?php
+                                        }
+                                      ?>
+                                      <?php
+                                    }else{
+                                      echo "<script>alert('Anda sudah melakukan pendaftaran sebelumnya!');
+                                        window.location.href='index.php';
+                                      </script>";
+                                    }
+                                ?>
+                              </div>
+                                  </div>
                           </form>
                           <div class="text-center py-4 mt-3">
                             <a href="index.php" class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px">Tutup</a>

@@ -1,19 +1,19 @@
 <?php
 include "kiri.php";
 include "koneksi.php";
-$umur1 = $koneksi->query("SELECT * FROM peserta WHERE umur=20");
-$umur2 = $koneksi->query("SELECT * FROM peserta WHERE umur=21 AND umur<23");
-$umur3 = $koneksi->query("SELECT * FROM peserta WHERE umur=24 AND umur<26");
-$umur4 = $koneksi->query("SELECT * FROM peserta WHERE umur=27 AND umur<29");
-$umur5 = $koneksi->query("SELECT * FROM peserta WHERE umur=30");
+$nilai1 = $koneksi->query("SELECT * FROM hasil_tes WHERE nilai_tulis>=0 AND nilai_tulis<=20");
+$nilai2 = $koneksi->query("SELECT * FROM hasil_tes WHERE nilai_tulis>=21 AND nilai_tulis<=40");
+$nilai3 = $koneksi->query("SELECT * FROM hasil_tes WHERE nilai_tulis>=41 AND nilai_tulis<=60");
+$nilai4 = $koneksi->query("SELECT * FROM hasil_tes WHERE nilai_tulis>=61 AND nilai_tulis<=80");
+$nilai5 = $koneksi->query("SELECT * FROM hasil_tes WHERE nilai_tulis>=81 AND nilai_tulis<=100");
 
 
 
-$jumlah_umur1= mysqli_num_rows($umur1);
-$jumlah_umur2= mysqli_num_rows($umur2);
-$jumlah_umur3= mysqli_num_rows($umur3);
-$jumlah_umur4= mysqli_num_rows($umur4);
-$jumlah_umur5= mysqli_num_rows($umur5);
+$jumlah_nilai1= mysqli_num_rows($nilai1);
+$jumlah_nilai2= mysqli_num_rows($nilai2);
+$jumlah_nilai3= mysqli_num_rows($nilai3);
+$jumlah_nilai4= mysqli_num_rows($nilai4);
+$jumlah_nilai5= mysqli_num_rows($nilai5);
 
 
  ?>
@@ -27,11 +27,11 @@ $jumlah_umur5= mysqli_num_rows($umur5);
      function drawChart() {
        var data = google.visualization.arrayToDataTable([
          ["Element", "Jumlah", { role: "style" } ],
-         ['Umur<20',     <?php echo $jumlah_umur1;?>, 'color: gray'],
-         ['Umur<23',      <?php echo $jumlah_umur2;?>, 'color: #76A7FA'],
-         ['Umur<26',     <?php echo $jumlah_umur3;?>, 'color: black'],
-         ['Umur<28',      <?php echo $jumlah_umur4;?>, 'color: #76A7FA'],
-         ['Umur<30',     <?php echo $jumlah_umur5;?>, 'color: black'],
+         ['Nilai<20',     <?php echo $jumlah_nilai1;?>, 'color: gray'],
+         ['Nilai<40',      <?php echo $jumlah_nilai2;?>, 'color: #76A7FA'],
+         ['Nilai<60',     <?php echo $jumlah_nilai3;?>, 'color: black'],
+         ['Nilai<80',      <?php echo $jumlah_nilai4;?>, 'color: #76A7FA'],
+         ['Nilai<100',     <?php echo $jumlah_nilai5;?>, 'color: black'],
 
        ]);
 
@@ -59,7 +59,7 @@ $jumlah_umur5= mysqli_num_rows($umur5);
 <div class="content-wrapper" style="background-color: white">
   <!-- Content Header (Page header) -->
   <div class="text-center" style="margin-top: -20px">
-      <h2>Laporan Data Umur Peserta</h2>
+      <h2>Laporan Data Nilai</h2>
     </div>
     <div class="col-md-12">
       <div class="col-md-2">
