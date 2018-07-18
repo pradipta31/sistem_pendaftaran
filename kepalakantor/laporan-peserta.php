@@ -47,7 +47,7 @@ function drawChart() {
       <div class="col-md-2">
         <div class="box-default">
           <div class="box-body">
-            <!-- <div class="form-group">
+            <div class="form-group">
               <select name="tahun" class="form-control">
                 <?php
                 $mulai= date('Y') - 10;
@@ -62,7 +62,7 @@ function drawChart() {
                 echo $tahun18;
                 print_r($result);
               ?>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>

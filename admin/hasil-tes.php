@@ -1,6 +1,56 @@
 <?php
 include "kiri.php";
 ?>
+<?php
+  include 'koneksi.php';
+  $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
+
+  $query = "SELECT DISTINCT tahun FROM hasil_tes ORDER BY tahun ASC";
+
+  $statement = $connect->prepare($query);
+
+  $statement->execute();
+
+  $result = $statement->fetchAll();
+  // function fill_Peserta($koneksi){
+  //   $output = '';
+  //   $sql = "SELECT * FROM peserta";
+  //   $hasil = mysqli_query($koneksi,$sql);
+  //   while ($rowss = mysqli_fetch_assoc($hasil)) {
+  //     $tanggal = $rowss['tgl_pendaftaran'];
+  //     $tahun_extract = date("Y",strtotime($tanggal));
+  //     $output .= '<option value="'.$rowss["id_peserta"].'">'.$tahun_extract.'</option>';
+  //   }
+  //   return $output;
+  // }
+  //
+  // function fill_hasilTes($koneksi){
+  //   $output = '';
+  //   $sql = "SELECT * FROM hasil_tes";
+  //   $hasil = mysqli_query($koneksi,$sql);
+  //   $nomor = 1;
+  //   $output .= '<table class="table table-bordered">';
+  //   $output .= '<tr>';
+  //   $output .= '<th style="width: 20px"><center>No</center></th>';
+  //   $output .= '<th><center>Nomor Peserta</center></th>
+  //               <th><center>Nama Peserta</center></th>
+  //               <th><center>Total Nilai</center></th>
+  //               <th><center>Status</center></th>
+  //               <th><center>Opsi</center></th>';
+  //   while ($rowss = mysqli_fetch_assoc($hasil)) {
+  //     $output .= '<tr><td><center>'.$nomor++.'</center></td><td><center>'.$rowss['nomor_peserta'].'</center></td><td><center>'.$rowss['nama'].'</center></td><td><center>'.$rowss['total_nilai'].'</center></td>
+  //       <td><center>'.$rowss['status'].'</center></td>
+  //       <td><center>
+  //       <a href="form-edit-hasil.php?id_hasil_tes ='.$rowss['id_hasil_tes'].'"><i class="fa fa-edit"></i></a>
+  //       <a href="hapus-hasil.php?id_hasil_tes='.$rowss['id_hasil_tes'].'" onclick="return confirm ("Yakin Ingin Hapus Data Ini ?")"><i class="fa fa-trash"></i></a>
+  //       <a href="print.php?id_hasil_tes =' .$rowss['id_hasil_tes'].'"><i class="fa fa-print"></i></a></center></td>
+  //     </tr>';
+  //   }
+  //   $output .= '</tr>';
+  //   $output .= '</table>';
+  //   return $output;
+  // }
+?>
   <div class="content-wrapper">
     <section class="content">
       <div class="row">
@@ -13,88 +63,67 @@ include "kiri.php";
             <div class="btn btn-lg">
               <a href="print-hasil.php" class="btn btn-primary">Cetak Data</a>
             </div>
-            <div class="box-body">
-
-              <table class="table table-bordered">
-
-
-                <tr>
-                  <th style="width: 10px"><center>No</center></th>
-                  <th><center>Nomor Peserta</center></th>
-                  <th><center>Nama</center></th>
-                  <th><center>Total Nilai</center></th>
-                  <th><center>Status</center></th>
-                  <th><center>Opsi</center></th>
-                </tr>
-                <?php
-                  include "koneksi.php";
-                  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes");
-                  $no = 1;
-                  while($row = mysqli_fetch_assoc($query)){
-                    ?>
-
-                <tr>
-                  <td><?php echo $no++;?></td>
-                  <td><center><?php echo $row['nomor_peserta']; ?></center></td>
-                  <td><center><?php echo $row['nama']; ?></center></td>
-                  <td><center> <?php echo $row['total_nilai']; ?> </center></td>
-                  <td><?php echo $row['status'];?></td>
-                  <td> <a href="form-edit-hasil.php?id_hasil_tes=<?php echo "$row[id_hasil_tes]"; ?>"><i class="fa fa-edit"></i></a>
-                  <a href="hapus-hasil.php?id_hasil_tes=<?php echo "$row[id_hasil_tes]"; ?>" onclick="return confirm ('Yakin Ingin Hapus Data Ini ?')"><i class="fa fa-trash"></i></a>
-                 <a href="print.php?id_hasil_tes=<?php echo "$row[id_hasil_tes]"; ?>"><i class="fa fa-print"></i></a>
-                </td>
-                </tr>
-                <?php
-                }
-              ?>
-              </table>
+            <input type="hidden" name="hidden_hasil" id="hidden_hasil" />
+            <div class="btn btn-xs">
+              <select name="multi_search_filter" id="multi_search_filter" class="form-control">
+                <option value="tampil_semua">Tampilkan Semua</option>
+               <?php
+               foreach($result as $row)
+               {
+                echo '<option value="'.$row["tahun"].'">'.$row["tahun"].'</option>';
+               }
+               ?>
+               </select>
             </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <!-- <ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">&raquo;</a></li>
-              </ul> -->
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered">
+               <thead>
+                <tr>
+                 <th>No</th>
+                 <th>Nomor Peserta</th>
+                 <th>Nama Peserta</th>
+                 <th>Total Nilai</th>
+                 <th>Status</th>
+                 <th>Opsi</th>
+                </tr>
+               </thead>
+               <tbody>
+               </tbody>
+              </table>
+             <br />
+             <br />
+             <br />
             </div>
           </div>
-
-          <!-- /.box -->
         </div>
       </div>
     </section>
   </div>
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; 2016-2017 <a href="#">DISNAKER Prov. Bali</a>.</strong> All rights
-    reserved.
-  </footer>
-  <div class="control-sidebar-bg"></div>
-</div>
-<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="../bower_components/fastclick/lib/fastclick.js"></script>
-<script src="../dist/js/adminlte.min.js"></script>
-<script src="../dist/js/demo.js"></script>
-<script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
+  <script>
+    $(document).ready(function(){
+
+     load_data();
+
+     function load_data(query='')
+     {
+      $.ajax({
+       url:"tampil_data.php",
+       method:"POST",
+       data:{query:query},
+       success:function(data)
+       {
+        $('tbody').html(data);
+       }
+      })
+     }
+
+     $('#multi_search_filter').change(function(){
+      $('#hidden_hasil').val($('#multi_search_filter').val());
+      var query = $('#hidden_hasil').val();
+      load_data(query);
+     });
+    });
 </script>
-</body>
-</html>
+<?php
+  include 'bawah.php';
+?>

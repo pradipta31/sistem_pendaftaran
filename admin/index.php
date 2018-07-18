@@ -1,14 +1,8 @@
 <?php
-include "kiri.php";
-session_start();
-
-if( !isset($_SESSION['session_admin']) )
-{
-    header('location:./../'.$_SESSION['akses']);
-    exit();
-}
-$username = $_SESSION['username_user'];
-$nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
+  include 'kiri.php';
+  include 'koneksi.php';
+  session_start();
+  $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
 
 ?>
   <div class="content-wrapper">
