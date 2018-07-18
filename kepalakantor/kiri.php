@@ -92,6 +92,8 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
             <li><a href="laporan-jk.php"> Laporan Data Jenis Kelamin </a></li>
             <li><a href="laporan-wilayah.php"> Laporan Data Wilayah </a></li>
             <li><a href="laporan-tes.php"> Laporan Data Hasil Tes </a></li>
+            <li><a href="laporan-nilai-online.php"> Laporan Data Nilai </a></li>
+
           </ul>
         </li>
       </ul>
