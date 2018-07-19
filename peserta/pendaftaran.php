@@ -20,6 +20,7 @@
               $d = "00".$c; // untuk menggabungkan tahun
               $e = date("Y").".".substr($d,-3,10); // penggabungan antara tahun sekarang dan mengambil data nomor peserta kecuali 7 huruf terakhir
             ?>
+
             <p style="font-size: 15px">*) Mohon isi data sesuai dengan identitas diri</p>
             <input type="text" name="nomor_peserta" value="<?php echo $e; ?>" class="form-control" style="font-size:15px" readonly>
             <br>
