@@ -48,62 +48,56 @@
                               $tanggal = $putty['tgl_pendaftaran'];
                               $tahun = date("Y",strtotime($tanggal));
                               $cek_nik = $putty['nik'];
-                              if ($tahun != date("Y")) {
-                                if (mysqli_num_rows($cek) == 1) { // mengecek data nik dengan variabel cek apakah nik belum terpakai
-                                  if ($umur < 18) { // mengecek umur
-                                    echo "<script>alert('Umur Anda tidak cukup untuk melakukan pendaftaran!');
-                                    window.location.href='index.php';
-                                  </script>";
-                                  }elseif ($umur > 30) {
-                                    echo "<script>alert('Umur Anda tidak dapat terdaftar karena batas 30 tahun!');
-                                    window.location.href='index.php';
-                                  </script>";
-                                }elseif(!empty($lokasi_file)){
-                                    move_uploaded_file($lokasi_file,$direktori);
-                                    $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp,file)
-                                    VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp','$nama_file')"; //menambah data
-                                    $query2 = "insert into jurusan (nomor_peserta,jurusan) values ('$nomor_peserta','$jurusan')";
-                                    $hasil = mysqli_query($koneksi,$query1); // menjalankan query
-                                    $hasil2 = mysqli_query($koneksi, $query2);
-                                  }
-                                      ?>
-                                    <div class="col-md-12">
-                                      <div class="col-md-8">
-                                        <label>Jurusan        <b style="margin-left: 85px">:</b> <?php echo $jurusan; ?></label><br>
-                                        <label>NIK            <b style="margin-left: 115px">:</b> <?php echo $nik; ?></label><br>
-                                        <label>Nama           <b style="margin-left: 99px">:</b> <?php echo $nama; ?></label><br>
-                                        <label>Email          <b style="margin-left: 103px">:</b> <?php echo $email; ?></label><br>
-                                        <label>Umur           <b style="margin-left: 102px">:</b> <?php echo $umur; ?></label><br>
-                                        <label>Tanggal Lahir  <b style="margin-left: 48px">:</b> <?php echo $tgl_lahir; ?></label><br>
-                                        <label>Pendidikan     <b style="margin-left: 63px">:</b> <?php echo $pendidikan; ?></label><br>
-                                        <label>Tahun Lulus    <b style="margin-left: 57px">:</b> <?php echo $tahun_lulus; ?></label><br>
-                                        <label>Agama          <b style="margin-left: 95px">:</b> <?php echo $agama; ?></label><br>
-                                        <label>Jenis Kelamin            <b style="margin-left: 49px">:</b> <?php echo $jenis_kelamin; ?></label><br>
-                                        <label>Tinggi Badan            <b style="margin-left: 55px">:</b> <?php echo $tinggi_badan; ?></label><br>
-                                        <label>Berat Badan            <b style="margin-left: 59px">:</b> <?php echo $berat_badan; ?></label><br>
-                                        <label>Alamat           <b style="margin-left: 95px">:</b> <?php echo $alamat_rumah; ?></label><br>
-                                        <label>Kabupaten            <b style="margin-left: 70px">:</b> <?php echo $kabupaten; ?></label><br>
-                                        <label>Nomor Telepon            <b style="margin-left: 38px">:</b> <?php echo $no_telp; ?></label><br>
-                                        <label>Nomor Pendaftaran Anda Adalah          :</b> <?php echo $nomor_peserta; ?></label><br>
-                                      </div>
+                              if ($tahun != date("Y") AND mysqli_num_rows($cek) == 1 OR mysqli_num_rows($cek) == 0) {
+                                if ($umur < 18) { // mengecek umur
+                                  echo "<script>alert('Umur Anda tidak cukup untuk melakukan pendaftaran!');
+                                  window.location.href='index.php';
+                                </script>";
+                                }elseif ($umur > 30) {
+                                  echo "<script>alert('Umur Anda tidak dapat terdaftar karena batas 30 tahun!');
+                                  window.location.href='index.php';
+                                </script>";
+                              }elseif(!empty($lokasi_file)){
+                                  move_uploaded_file($lokasi_file,$direktori);
+                                  $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp,file)
+                                  VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp','$nama_file')"; //menambah data
+                                  $query2 = "insert into jurusan (nomor_peserta,jurusan) values ('$nomor_peserta','$jurusan')";
+                                  $hasil = mysqli_query($koneksi,$query1); // menjalankan query
+                                  $hasil2 = mysqli_query($koneksi, $query2);
+                                }
+                                    ?>
+                                  <div class="col-md-12">
+                                    <div class="col-md-8">
+                                      <label>Jurusan        <b style="margin-left: 85px">:</b> <?php echo $jurusan; ?></label><br>
+                                      <label>NIK            <b style="margin-left: 115px">:</b> <?php echo $nik; ?></label><br>
+                                      <label>Nama           <b style="margin-left: 99px">:</b> <?php echo $nama; ?></label><br>
+                                      <label>Email          <b style="margin-left: 103px">:</b> <?php echo $email; ?></label><br>
+                                      <label>Umur           <b style="margin-left: 102px">:</b> <?php echo $umur; ?></label><br>
+                                      <label>Tanggal Lahir  <b style="margin-left: 48px">:</b> <?php echo $tgl_lahir; ?></label><br>
+                                      <label>Pendidikan     <b style="margin-left: 63px">:</b> <?php echo $pendidikan; ?></label><br>
+                                      <label>Tahun Lulus    <b style="margin-left: 57px">:</b> <?php echo $tahun_lulus; ?></label><br>
+                                      <label>Agama          <b style="margin-left: 95px">:</b> <?php echo $agama; ?></label><br>
+                                      <label>Jenis Kelamin            <b style="margin-left: 49px">:</b> <?php echo $jenis_kelamin; ?></label><br>
+                                      <label>Tinggi Badan            <b style="margin-left: 55px">:</b> <?php echo $tinggi_badan; ?></label><br>
+                                      <label>Berat Badan            <b style="margin-left: 59px">:</b> <?php echo $berat_badan; ?></label><br>
+                                      <label>Alamat           <b style="margin-left: 95px">:</b> <?php echo $alamat_rumah; ?></label><br>
+                                      <label>Kabupaten            <b style="margin-left: 70px">:</b> <?php echo $kabupaten; ?></label><br>
+                                      <label>Nomor Telepon            <b style="margin-left: 38px">:</b> <?php echo $no_telp; ?></label><br>
+                                      <label>Nomor Pendaftaran Anda Adalah          :</b> <?php echo $nomor_peserta; ?></label><br>
+                                    </div>
 
-                                      <div class="col-md-2 text-center">
-                                        <?php
-                                          if ($nama_file == null) {
-                                            echo '<img src="images/peserta.png" height="150px" width="150px" style="border-radius: 5px">';
-                                          }else{ ?>
-                                            <img src="images/<?= $nama_file;?>" height="150px" width="150px" style="border-radius: 5px">
-                                        <?php
-                                          }
-                                        ?>
-                                        <?php
-                                      }else{
-                                        echo "<script>alert('Anda sudah melakukan pendaftaran sebelumnya!');
-                                          window.location.href='index.php';
-                                        </script>";
-                                      }
+                                    <div class="col-md-2 text-center">
+                                      <?php
+                                        if ($nama_file == null) {
+                                          echo '<img src="images/peserta.png" height="150px" width="150px" style="border-radius: 5px">';
+                                        }else{ ?>
+                                          <img src="images/<?= $nama_file;?>" height="150px" width="150px" style="border-radius: 5px">
+                                      <?php
+                                        }
+                                      ?>
+                                      <?php
                                     }else{
-                                      echo "<script>alert('Anda sudah melakukan pendaftaran Tahun ini!');
+                                      echo "<script>alert('Anda sudah melakukan pendaftaran sebelumnya!');
                                         window.location.href='index.php';
                                       </script>";
                                     }
