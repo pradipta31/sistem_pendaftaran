@@ -1,42 +1,8 @@
 <?php
-  include "kiri.php";
-  include "koneksi.php";
-
+include "kiri.php";
+include "koneksi.php";
 ?>
-<html>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-           <script type="text/javascript">
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
 
-function drawChart() {
-
-    var data = google.visualization.arrayToDataTable([
-      ['Language', 'Rating'],
-      <?php
-      if($result->num_rows > 0){
-          while($row = $result->fetch_assoc()){
-            echo "['".$row['name']."', ".$row['rating']."],";
-          }
-      }
-      ?>
-    ]);
-
-    var options = {
-        title: 'Most Popular Social Media',
-        width: 900,
-        height: 500,
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-    chart.draw(data, options);
-}
-</script>
-  <body>
-
-  </body>
-</html>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper" style="background-color: white">
   <!-- Content Header (Page header) -->
@@ -67,7 +33,8 @@ function drawChart() {
                 <!-- /.col-lg-6 (nested) -->
             </div>
       </div>
-
+      <div class="col-md-2">
+      </div>
   </div>
 </div>
 <script>

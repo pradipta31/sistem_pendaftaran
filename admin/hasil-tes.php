@@ -2,7 +2,6 @@
 include "kiri.php";
 ?>
 <?php
-  include 'koneksi.php';
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
 
   $query = "SELECT DISTINCT tahun FROM hasil_tes ORDER BY tahun ASC";
@@ -14,16 +13,22 @@ include "kiri.php";
   $result = $statement->fetchAll();
 ?>
   <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Hasil Tes
+      </h1>
+    </section>
+
     <section class="content">
       <div class="row">
         <div class="col-md-8">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Hasil Tes Peserta</h3>
+
             </div>
             <!-- /.box-header -->
             <div class="btn btn-lg">
-              <a href="print-hasil.php" class="btn btn-primary">Cetak Data</a>
+              <a href="print-hasil.php" class="btn btn-primary">Cetak Hasil Tes</a>
             </div>
             <input type="hidden" name="hidden_hasil" id="hidden_hasil" />
             <div class="btn btn-xs">

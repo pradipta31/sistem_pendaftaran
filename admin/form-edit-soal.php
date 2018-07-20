@@ -10,12 +10,8 @@ include "kiri.php";
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Peserta
+        Edit Soal Tes
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Data Peserta</li>
-      </ol>
     </section>
 
     <!-- Main content -->
