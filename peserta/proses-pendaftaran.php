@@ -114,6 +114,6 @@
               </div>
             </div>
     </section>
-<?php
-  include 'bawah.php';
-?>
+  <?php
+    include 'bawah.php';
+  ?>
