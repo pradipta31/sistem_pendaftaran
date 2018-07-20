@@ -19,9 +19,9 @@
               $c = $b+1; // nomor peserta akan bertambah jika terdapat data sebelumnya
               $d = "00".$c; // untuk menggabungkan tahun
               $e = date("Y").".".substr($d,-3,10); // penggabungan antara tahun sekarang dan mengambil data nomor peserta kecuali 7 huruf terakhir
-              $q = mysqli_query($koneksi, "SELECT YEAR(tgl_pendaftaran), COUNT(id_peserta) FROM peserta GROUP BY YEAR(tgl_pendaftaran)");
-              $fetch = mysqli_fetch_assoc($q);
             ?>
+            <div style="color:black">
+
 
             <p style="font-size: 15px">*) Mohon isi data sesuai dengan identitas diri</p>
             <input type="text" name="nomor_peserta" value="<?php echo $e; ?>" class="form-control" style="font-size:15px" readonly>
@@ -99,6 +99,7 @@
                   <button name="submit" class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px" type="submit" onclick="return confirm('Yakin data sudah benar diinputkan ?')">Simpan</button>
               </div>
             </form>
+            </div>
         </div>
       </div>
     </div>

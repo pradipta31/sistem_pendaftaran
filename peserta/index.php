@@ -7,9 +7,10 @@
 						<div class="card mx-xl-5" style="width: 870px; border-radius: 7px; margin-left:300px">
 								<div class="card-body">
 			<ol>
-				<h3 class="text-uppercase"><b>Persyaratan Pendaftaran<b></h3>
-					<br>
-				<h4>
+
+				<h3 style="color: black" class="text-uppercase"><b>Persyaratan Pendaftaran<b></h3>	<br>
+
+				<h4 style="color: black">
 				<li>Mengisi Formulir Pendaftaran</li>
 				<li>Pria dan Wanita, Warga Negara Indonesia</li>
 				<li>Lulusan minimal SMP,SMA/SMK sederajat</li>
@@ -23,6 +24,7 @@
 				<li>Tidak menderita ketergantungan narkoba dan alkohol</li>
 			</h4>
 				</ol>
+					</div>
 
 			</div>
 			</div>

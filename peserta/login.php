@@ -18,7 +18,7 @@
 							<br>
 							<div class="row">
 								<div class="col-xs-12 col-md-6">
-									<input type="submit" value="Sign in" class="btn btn-primary btn-block btn-lg" name="submit" tabindex="7">
+									<input type="submit" value="Login" class="btn btn-primary btn-block btn-lg" name="submit" tabindex="7">
 								</div>
 							</div>
 						</form>

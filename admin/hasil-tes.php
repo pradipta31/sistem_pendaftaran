@@ -8,7 +8,7 @@ include "kiri.php";
 
   $statement = $connect->prepare($query);
 
-  $statement->execute();
+  $statement->execute(); 
 
   $result = $statement->fetchAll();
 ?>

@@ -17,13 +17,13 @@
 				<div class="navbar navbar-default navbar-static-top">
 					<div class="container">
 						<div class="navbar-header">
-							<a class="navbar" href="index.html"><img src="img/dinas11.png"  width="80" height="70" /></a>
+							<a class="navbar" href="index.php"><img src="img/dinas11.png"  width="80" height="70" /></a>
 						</div>
 						<div class="navbar-collapse collapse ">
 							<ul class="nav navbar-nav">
-								<li><a href="index.php">Home</a></li>
-								<li><a href="pendaftaran.php">Pendaftaran</a></li>
-								<li><a href="login.php">Login</a></li>
+								<li><a href="index.php" style="font-size: 1.3em">Home</a></li>
+								<li><a href="pendaftaran.php"  style="font-size: 1.3em">Pendaftaran</a></li>
+								<li><a href="login.php"  style="font-size: 1.3em">Login</a></li>
 							</ul>
 						</div>
 					</div>
