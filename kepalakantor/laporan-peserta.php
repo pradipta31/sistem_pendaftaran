@@ -4,13 +4,13 @@
 
 ?>
 <html>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
            <script type="text/javascript">
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
- 
+
 function drawChart() {
- 
+
     var data = google.visualization.arrayToDataTable([
       ['Language', 'Rating'],
       <?php
@@ -21,15 +21,15 @@ function drawChart() {
       }
       ?>
     ]);
-    
+
     var options = {
         title: 'Most Popular Social Media',
         width: 900,
         height: 500,
     };
-    
+
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-    
+
     chart.draw(data, options);
 }
 </script>
@@ -45,40 +45,56 @@ function drawChart() {
     </div>
     <div class="col-md-12">
       <div class="col-md-2">
-        <div class="box-default">
-          <div class="box-body">
-            <div class="form-group">
-              <select name="tahun" class="form-control">
-                <?php
-                $mulai= date('Y') - 10;
-                for($i = $mulai;$i<$mulai + 50;$i++){
-                    $sel = $i == date('Y') ? ' selected="selected"' : '';
-                    echo '<option value="'.$i.'"'.$sel.'>'.$i.'</option>';
-                }
-                ?>
-              </select>
-              <?php
-                echo $result['tgl_pendaftaran'];
-                echo $tahun18;
-                print_r($result);
-              ?>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form method="post" action="grafik-pensiun.php">
+
+                        <div class="form-group">
+                            <label>Dari Tanggal</label>
+                            <input class="form-control" name="tgl_awal">
+                        </div>
+                        <div class="form-group">
+                            <label>Sampai Tanggal</label>
+                            <input class="form-control" name="tgl_akhir">
+                        </div>
+                        <button type="reset" class="btn btn-danger">Reset </button>
+                        <input type="submit" class="btn btn-primary" name="save">
+                    </form>
+                    </div>
+
+                </div>
+                <!-- /.col-lg-6 (nested) -->
             </div>
-          </div>
-        </div>
       </div>
 
   </div>
-
-  <section class="content">
-    <div id="piechart"></div>
-  </section>
 </div>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="tgl_awal"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'yyyy/mm/dd',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+    $(document).ready(function(){
+      var date_input=$('input[name="tgl_akhir"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'yyyy/mm/dd',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
 
-<footer class="main-footer">
-<div class="pull-right hidden-xs">
-  <b>Version</b> 1.0.0
-</div>
-<strong>Copyright &copy; 2016-2017 <a href="#">DISNAKER Prov. Bali</a>.</strong> All rights
-reserved.
-</footer>
-
+<?php
+  include 'bawah.php';
+?>

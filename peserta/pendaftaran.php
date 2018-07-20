@@ -24,18 +24,6 @@
             ?>
 
             <p style="font-size: 15px">*) Mohon isi data sesuai dengan identitas diri</p>
-            <?php
-              include 'koneksi.php';
-
-              $fff = "SELECT YEAR(tgl_pendaftaran), COUNT(*) FROM peserta";
-
-              $msad = mysqli_query($koneksi,$fff);
-              while ($row = mysqli_fetch_assoc($msad)) {
-                echo $msqsw['tgl_pendaftaran'];
-              }
-
-
-            ?>
             <input type="text" name="nomor_peserta" value="<?php echo $e; ?>" class="form-control" style="font-size:15px" readonly>
             <br>
             <label style="font-size: 14px">Jurusan</label>

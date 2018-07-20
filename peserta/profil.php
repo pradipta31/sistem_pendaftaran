@@ -81,9 +81,9 @@
         <div class="col-md-2 text-center">
           <?php
             if ($row['file'] == null) {
-              echo '<img src="images/peserta.png" height="150px" width="150px" style="border-radius: 5px">';
+              echo '<img src="images/peserta.png" height="227px" width="152px" style="border-radius: 5px">';
             }else{ ?>
-              <img src="images/<?= $row['file'];?>" height="150px" width="150px" style="border-radius: 5px">
+              <img src="images/<?= $row['file'];?>" height="227px" width="189px" style="border-radius: 5px">
           <?php
             }
           ?>
