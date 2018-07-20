@@ -1,6 +1,18 @@
 <?php
 include "kiri.php";
+
 include "koneksi.php";
+
+  $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
+
+  $query = "SELECT DISTINCT YEAR(tgl_pendaftaran) FROM peserta ORDER BY YEAR(tgl_pendaftaran) ASC";
+
+  $statement = $connect->prepare($query);
+
+  $statement->execute();
+
+  $result = $statement->fetchAll();
+
 $umur1 = $koneksi->query("SELECT * FROM peserta WHERE umur=20");
 $umur2 = $koneksi->query("SELECT * FROM peserta WHERE umur=21 AND umur<23");
 $umur3 = $koneksi->query("SELECT * FROM peserta WHERE umur=24 AND umur<26");
@@ -21,6 +33,7 @@ $jumlah_umur5= mysqli_num_rows($umur5);
  <html>
    <head>
      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
    <script type="text/javascript">
      google.charts.load("current", {packages:['corechart']});
      google.charts.setOnLoadCallback(drawChart);
@@ -66,15 +79,21 @@ $jumlah_umur5= mysqli_num_rows($umur5);
         <div class="box-default">
           <div class="box-body">
             <div class="form-group">
-              <select name="tahun" class="form-control">
-                <?php
-                $mulai= date('Y') - 10;
-                for($i = $mulai;$i<$mulai + 50;$i++){
-                    $sel = $i == date('Y') ? ' selected="selected"' : '';
-                    echo '<option value="'.$i.'"'.$sel.'>'.$i.'</option>';
-                }
-                ?>
-              </select>
+
+
+
+                  <select class="form-control">
+                    <option value="tampil_semua">Tampilkan Semua</option>
+                   <?php
+                   foreach($result as $row)
+                   {
+                    echo '<option value="'.$row["tahun"].'">'.print_r($row).'</option>';
+                   }
+                   ?>
+
+                   </select>
+
+
             </div>
           </div>
         </div>

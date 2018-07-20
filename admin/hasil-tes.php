@@ -2,7 +2,6 @@
 include "kiri.php";
 ?>
 <?php
-  include 'koneksi.php';
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
 
   $query = "SELECT DISTINCT tahun FROM hasil_tes ORDER BY tahun ASC";
