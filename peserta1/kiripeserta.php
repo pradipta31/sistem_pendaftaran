@@ -40,7 +40,7 @@
                     <div class="col-lg-9 col-md-8 col-sm-8 templatemo-nav-container">
                         <nav class="templatemo-nav">
                             <ul>
-                                <li><a href="index.php">Home</a></li>
+                                <li><a href="index.php"></a></li>
                                 <li><a href="pendaftaran.php">Pendaftaran</a></li>
                                   <li><a href="login-peserta.php">Login</a></li>
                             </ul>
