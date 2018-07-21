@@ -23,16 +23,11 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../bower_components/morris.js/morris.css">
-  <link href="vendor/morrisjs/morris.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <link rel="stylesheet" href="dist/css/bootstrap-datepicker3.css">
-  <link rel="stylesheet" href="dist/css/bootstrap-select.css">
-  <link rel="stylesheet" href="dist/css/bootstrap-select.min.css"/>
   <link rel="stylesheet" href="../bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="../bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <link href="js/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -79,28 +74,27 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
-        <li>
+        <li class="treeview">
           <a href="index.php">
             <i class="fa fa-home"></i> <span>Home</span>
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i>
-            <span>Laporan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="laporan-peserta.php"> Laporan Data Peserta</a></li>
-            <li><a href="laporan-umur.php"> Laporan Data Umur </a></li>
-            <li><a href="laporan-jk.php"> Laporan Data Jenis Kelamin </a></li>
-            <li><a href="laporan-wilayah.php"> Laporan Data Wilayah </a></li>
-            <li><a href="laporan-tes.php"> Laporan Data Hasil Tes </a></li>
-            <li><a href="laporan-nilai-online.php"> Laporan Data Nilai </a></li>
-
-          </ul>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-table"></i>
+              <span>Laporan</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+              <ul class="treeview-menu">
+                <li><a href="laporan-peserta.php"> Laporan Data Peserta</a></li>
+                <li><a href="laporan-umur.php"> Laporan Data Umur </a></li>
+                <li><a href="laporan-jk.php"> Laporan Data Jenis Kelamin </a></li>
+                <li><a href="laporan-wilayah.php"> Laporan Data Wilayah </a></li>
+                <li><a href="laporan-tes.php"> Laporan Data Hasil Tes </a></li>
+                <li><a href="laporan-nilai-online.php"> Laporan Data Nilai </a></li>
+              </ul>
         </li>
       </ul>
     </section>

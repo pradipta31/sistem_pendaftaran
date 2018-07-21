@@ -4,7 +4,7 @@ include "kiri.php";
 <?php
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
 
-  $query = "SELECT DISTINCT nik FROM peserta ORDER BY nik ASC";
+  $query = "SELECT DISTINCT tgl_pendaftaran FROM peserta as Year ORDER BY tgl_pendaftaran ASC";
 
   $statement = $connect->prepare($query);
 
@@ -37,7 +37,9 @@ include "kiri.php";
                <?php
                foreach($result as $row)
                {
-                echo '<option value="'.$row["nik"].'">'.$row["nik"].'</option>';
+                $date = $row['tgl_pendaftaran'];
+                $extract = date("Y", strtotime($date));
+                echo '<option value="'.$extract.'">'.$extract.'</option>';
                }
                ?>
                </select>

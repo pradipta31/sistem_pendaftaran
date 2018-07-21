@@ -1,7 +1,7 @@
 <?php
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
 
-  if($_POST["query"] != '')
+  if($_POST["query"] != 0)
   {
    $search_array = explode(",", $_POST["query"]);
    $search_text = "'" . implode("', '", $search_array) . "'";
