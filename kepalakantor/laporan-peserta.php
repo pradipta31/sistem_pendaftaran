@@ -1,121 +1,92 @@
 <?php
 include "kiri.php";
-include "koneksi.php";
+?>
+<?php
+  $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
 
+  $query = "SELECT DISTINCT tahun FROM hasil_tes ORDER BY tahun ASC";
 
+  $statement = $connect->prepare($query);
 
-$tahun = $koneksi->query("SELECT * FROM peserta WHERE tahun =''");
-$denpasar = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Denpasar'");
-$badung = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Badung'");
-$negara = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Negara'");
-$karangasem = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Karangasem'");
-$bangli = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Bangli'");
-$buleleng = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Buleleng'");
-$tabanan = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Tabanan'");
-$klungkung = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Klungkung'");
+  $statement->execute();
 
+  $result = $statement->fetchAll();
+?>
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Data Peserta
+      </h1>
+    </section>
 
-$jumlah_gianyar= mysqli_num_rows($gianyar);
-$jumlah_denpasar= mysqli_num_rows($denpasar);
-$jumlah_badung= mysqli_num_rows($badung);
-$jumlah_negara= mysqli_num_rows($negara);
-$jumlah_karangasem= mysqli_num_rows($karangasem);
-$jumlah_bangli= mysqli_num_rows($bangli);
-$jumlah_buleleng= mysqli_num_rows($buleleng);
-$jumlah_tabanan= mysqli_num_rows($tabanan);
-$jumlah_klungkung= mysqli_num_rows($klungkung);
-
- ?>
-
- <html>
-   <head>
-     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-   <script type="text/javascript">
-     google.charts.load("current", {packages:['corechart']});
-     google.charts.setOnLoadCallback(drawChart);
-     function drawChart() {
-       var data = google.visualization.arrayToDataTable([
-         ["Element", "Jumlah", { role: "style" } ],
-         ['Gianyar',     <?php echo $jumlah_gianyar;?>, 'color: gray'],
-         ['Denpasar',      <?php echo $jumlah_denpasar;?>, 'color: #76A7FA'],
-         ['Badung',     <?php echo $jumlah_badung;?>, 'color: black'],
-         ['Negara',      <?php echo $jumlah_negara;?>,'color: yellow' ],
-         ['Karangasem',     <?php echo $jumlah_karangasem;?>, 'color: black'],
-         ['Bangli',      <?php echo $jumlah_bangli;?>, 'color: black'],
-         ['Buleleng',     <?php echo $jumlah_buleleng;?>, 'color: black'],
-         ['Tabanan',      <?php echo $jumlah_tabanan;?>, 'color: black'],
-         ['Klungkung',     <?php echo $jumlah_klungkung;?>, 'color: black'],
-       ]);
-
-       var view = new google.visualization.DataView(data);
-       view.setColumns([0, 1,
-                        { calc: "stringify",
-                          sourceColumn: 1,
-                          type: "string",
-                          role: "annotation" },
-                        2]);
-
-       var options = {
-         title: "",
-         width: 1000,
-         height: 500,
-         bar: {groupWidth: "95%"},
-         legend: { position: "none" },
-       };
-       var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-       chart.draw(view, options);
-   }
-   </script>
-</html>
-
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="background-color: white">
-  <!-- Content Header (Page header) -->
-  <div class="text-center" style="margin-top: -20px">
-      <h2>Laporan Data Peserta</h2>
-    </div>
-    <div class="col-md-12">
-      <div class="col-md-2">
-        <div class="box-default">
-          <div class="box-body">
-            <div class="form-group">
-              <select name="tahun" class="form-control">
-                <?php
-                $mulai= date('Y') - 10;
-                for($i = $mulai;$i<$mulai + 50;$i++){
-                    $sel = $i == date('Y') ? ' selected="selected"' : '';
-                    echo '<option value="'.$i.'"'.$sel.'>'.$i.'</option>';
-                }
-                ?>
-              </select>
-
-              <?php
-              $fff = mysqli_query($koneksi, "SELECT COUNT(*),YEAR(tgl_pendaftaran) FROM peserta GROUP BY YEAR(tgl_pendaftaran)");
-              $asu = mysqli_fetch_assoc($fff);
-              print_r($asu);
-              ?>
-
+    <section class="content">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="box">
+            <div class="box-header with-border">
+              Data Peserta
+            </div>
+            <input type="hidden" name="hidden_peserta" id="hidden_peserta" />
+            <div class="btn btn-xs">
+              <select name="multi_search_filter" id="multi_search_filter" class="form-control">
+                <option value="tampil_semua">Tampilkan Semua</option>
+               <?php
+               foreach($result as $row)
+               {
+                echo '<option value="'.$row["tahun"].'">'.$row["tahun"].'</option>';
+               }
+               ?>
+               </select>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered">
+               <thead>
+                <tr>
+                 <th>No</th>
+                 <th>Nomor Peserta</th>
+                 <th>Nama Peserta</th>
+                 <th>Total Nilai</th>
+                 <th>Status</th>
+                 <th>Opsi</th>
+                </tr>
+               </thead>
+               <tbody>
+               </tbody>
+              </table>
+             <br />
+             <br />
+             <br />
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-2">
-      </div>
+    </section>
   </div>
-  <section class="content">
-    <div class="row">
-      <!-- <div id="columnchart_values" style="width: 100%; height: 640px; margin-left: 10px; margin-top: 30px">
-      </div> -->
+  <script>
+    $(document).ready(function(){
 
-      <a href="#" onclick="window.print()"> Print </a>
+     load_data();
 
-    </div>
-  </section>
-</div>
-<footer class="main-footer">
-<div class="pull-right hidden-xs">
-  <b>Version</b> 1.0.0
-</div>
-<strong>Copyright &copy; 2016-2017 <a href="#">DISNAKER Prov. Bali</a>.</strong> All rights
-reserved.
-</footer>
+     function load_data(query='')
+     {
+      $.ajax({
+       url:"load_data_peserta.php",
+       method:"POST",
+       data:{query:query},
+       success:function(data)
+       {
+        $('tbody').html(data);
+       }
+      })
+     }
+
+     $('#multi_search_filter').change(function(){
+      $('#hidden_hasil').val($('#multi_search_filter').val());
+      var query = $('#hidden_hasil').val();
+      load_data(query);
+     });
+    });
+</script>
+<?php
+  include 'bawah.php';
+?>

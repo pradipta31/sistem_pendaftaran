@@ -24,7 +24,6 @@
   <div class="container">
     <div class="row">
       <div class="text-center">
-        <hr class="colorgraph">
         <h1 style="color: black">Data Peserta (<?php echo $row['nomor_peserta'];?>)</h1>
       </div>
       <div class="col-md-12">
@@ -81,9 +80,9 @@
         <div class="col-md-2 text-center">
           <?php
             if ($row['file'] == null) {
-              echo '<img src="images/peserta.png" height="150px" width="150px" style="border-radius: 5px">';
+              echo '<img src="images/peserta.png" height="227px" width="152px" style="border-radius: 5px">';
             }else{ ?>
-              <img src="images/<?= $row['file'];?>" height="150px" width="150px" style="border-radius: 5px">
+              <img src="images/<?= $row['file'];?>" height="227px" width="189px" style="border-radius: 5px">
           <?php
             }
           ?>
@@ -92,7 +91,6 @@
         </div>
       </div>
     </div>
-    <hr class="colorgraph">
 
   </div>
 </section>

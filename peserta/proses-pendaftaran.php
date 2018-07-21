@@ -89,9 +89,9 @@
                                     <div class="col-md-2 text-center">
                                       <?php
                                         if ($nama_file == null) {
-                                          echo '<img src="images/peserta.png" height="150px" width="150px" style="border-radius: 5px">';
+                                          echo '<img src="images/peserta.png" height="227px" width="152px" style="border-radius: 5px">';
                                         }else{ ?>
-                                          <img src="images/<?= $nama_file;?>" height="150px" width="150px" style="border-radius: 5px">
+                                          <img src="images/<?php echo $nama_file; ?>" height="227px" width="189px" style="border-radius: 5px">
                                       <?php
                                         }
                                       ?>
@@ -105,8 +105,9 @@
                               </div>
                                   </div>
                           </form>
+
                           <div class="text-center py-4 mt-3">
-                            <a href="index.php" class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px">Tutup</a>
+                            <a href="index.php" class="btn btn-primary btn-lg" style="padding: 10px 25px; border-radius:7px; margin-top: 20px">Tutup</a>
                           </div>
                         </div>
                     </div>

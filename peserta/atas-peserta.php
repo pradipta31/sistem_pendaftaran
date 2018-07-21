@@ -21,7 +21,7 @@
 						</div>
 						<div class="navbar-collapse collapse ">
 							<ul class="nav navbar-nav">
-								<li><a href="profil.php"  style="font-size: 1.3em">Profile</a></li>
+								<li><a href="profil.php"  style="font-size: 1.3em">Profil</a></li>
 								<li><a href="tes.php" style="font-size: 1.3em">Tes</a></li>
 								<li><a href="hasil-tes.php" style="font-size: 1.3em">Hasil Tes</a></li>
                 <li><a href="logout.php" style="font-size: 1.3em">Logout</a></li>

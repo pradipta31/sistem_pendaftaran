@@ -7,7 +7,6 @@
               <div class="row section-title-container">
                   <div class="col-md-12 text-uppercase text-center">
                       <h1 class="section-title-2">Soal Ujian Online</h1>
-                      <hr class="colorgraph">
                   </div>
               </div>
               <style media="screen">
@@ -21,7 +20,7 @@
                   font-size: 25px;
                 }
                 .font-jawab{
-                  font-size: 15px;
+                  font-size: 19px;
                 }
                 input[value="A"]{
                   margin-left: 1px;
@@ -52,7 +51,7 @@
               <div class="timer">
                   <time id="countdown"></time>
               </div>
-                <div style="width:100%; height:100%;">
+                <div style="width:100%; height:100%">
                   <form class="form-group" action="jawab.php" method="post" id="formSoal" name="formSoal">
                 <?php
                   include 'koneksi.php';
@@ -75,7 +74,7 @@
                       <input type="hidden" name="nomor_peserta" value=<?php echo $nomor; ?>>
                         <tr>
                               <td width="21" height="21"><font color="#000000" class="font-soal"><?php echo $urut=$urut+1; ?>.</font></td>
-                              <td><font color="#000000" class="font-soal"><?php echo "$soal"; ?></font></td>
+                              <td><font color="black" class="font-soal"><?php echo "$soal"; ?></font></td>
                         </tr>
                       <br>
                         <tr>
