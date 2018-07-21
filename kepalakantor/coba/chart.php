@@ -1,42 +1,26 @@
 <?php
-//koneksi ke MySQL
-$conn = new mysqli('localhost', 'root', '', 'sistem_informasi_eksekutif');
+ $testid=0;
+$testid=$_REQUEST["q"];
+//echo $testid;
 
-//Query ke database
-$laki_laki = $conn->query("SELECT * FROM  peserta WHERE jenis_kelamin='pria'");
-$perempuan = $conn->query("SELECT * FROM  peserta WHERE jenis_kelamin='wanita'");
+$con = mysql_connect("localhost","root","","sistem_informasi_eksekutif");
+                if (!$con)
+                {
+                    die('Could not connect: ' . mysql_error());
+                }
+                // Select Database
+                mysql_select_db("mysql", $con) or die('Could not connect: ' . mysql_error());;
 
-$jumlah_laki_laki = mysqli_num_rows($laki_laki);
-$jumlah_perempuan = mysqli_num_rows($perempuan);
+                                    $qMostPopularItem = "SELECT COUNT(*) peserta WHERE jenis_kelamin = 'pria'";
 
-?>
+                                        $mpi = mysql_query($qMostPopularItem,$con) or die('Could not fetch MPI: ' . mysql_error());
 
-<html>
-  <head>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
+                                      while($infoMPISW = mysql_fetch_assoc($mpi))
+                                        {
+                                                
+                                                echo $infoMPISW['pdt_model_name'] ."',";
+                                                echo $infoMPISW['count'],"],";
 
-        var data = google.visualization.arrayToDataTable([
-          ['Jenis Kelamin', 'Jumlah'],
-          ['Laki-laki',     <?php echo $jumlah_laki_laki; ?>],
-          ['Perempuan',      <?php echo $jumlah_perempuan; ?>]
+                                        }
 
-        ]);
-
-        var options = {
-          title: 'Jumlah karyawan menurut jenis kelamin'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-  </head>
-  <body>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
-  </body>
-</html>
+                      ?>
