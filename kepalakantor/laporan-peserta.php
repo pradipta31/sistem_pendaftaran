@@ -3,19 +3,24 @@ include 'kiri.php';
 
 include "koneksi.php";
 
-$umur1 = $koneksi->query("SELECT COUNT(YEAR(tgl_pendaftaran)) FROM peserta WHERE YEAR(tgl_pendaftaran) = '2018'");
-$umur2 = $koneksi->query("SELECT COUNT(*) FROM peserta WHERE YEAR(tgl_pendaftaran) == '2018'");
-$umur3 = $koneksi->query("SELECT COUNT(*) FROM peserta WHERE YEAR(tgl_pendaftaran) = '2019'");
-$umur4 = $koneksi->query("SELECT COUNT(*) FROM peserta WHERE YEAR(tgl_pendaftaran) = '2020'");
-$umur5 = $koneksi->query("SELECT COUNT(*) FROM peserta WHERE YEAR(tgl_pendaftaran) = '2021'");
+$date = date_create("2017-12-31");
+$date_format = date_format($date,"Y/m/d");
+
+$tgl1 = $koneksi->query("SELECT * FROM peserta WHERE tgl_pendaftaran >= '2017-01-01' AND tgl_pendaftaran <= '2017-12-31'");
+$tgl2 = $koneksi->query("SELECT * FROM peserta WHERE tgl_pendaftaran >= '2018-01-01' AND tgl_pendaftaran <= '2018-12-31'");
+$tgl3 = $koneksi->query("SELECT * FROM peserta WHERE tgl_pendaftaran >= '2019-01-01' AND tgl_pendaftaran <= '2019-12-31'");
+$tgl4 = $koneksi->query("SELECT * FROM peserta WHERE tgl_pendaftaran >= '2020-01-01' AND tgl_pendaftaran <= '2020-12-31'");
+$tgl5 = $koneksi->query("SELECT * FROM peserta WHERE tgl_pendaftaran >= '2021-01-01' AND tgl_pendaftaran <= '2021-12-31'");
+$tgl6 = $koneksi->query("SELECT * FROM peserta WHERE tgl_pendaftaran >= '2022-01-01' AND tgl_pendaftaran <= '2022-12-31'");
+
+$count_tanggal1 = mysqli_num_rows($tgl1);
+$count_tanggal2 = mysqli_num_rows($tgl2);
+$count_tanggal3 = mysqli_num_rows($tgl3);
+$count_tanggal4 = mysqli_num_rows($tgl4);
+$count_tanggal5 = mysqli_num_rows($tgl5);
+$count_tanggal6 = mysqli_num_rows($tgl6);
 
 
-
-$jumlah_umur1= mysqli_num_rows($umur1);
-$jumlah_umur2= mysqli_num_rows($umur2);
-$jumlah_umur3= mysqli_num_rows($umur3);
-$jumlah_umur4= mysqli_num_rows($umur4);
-$jumlah_umur5= mysqli_num_rows($umur5);
  ?>
 
  <html>
@@ -28,11 +33,12 @@ $jumlah_umur5= mysqli_num_rows($umur5);
      function drawChart() {
        var data = google.visualization.arrayToDataTable([
          ["Element", "Jumlah", { role: "style" } ],
-         ['2017',     <?php echo $jumlah_umur1;?>, 'color: gray'],
-         ['2018',      <?php echo $jumlah_umur2;?>, 'color: #76A7FA'],
-         ['2019',     <?php echo $jumlah_umur3;?>, 'color: black'],
-         ['2020',      <?php echo $jumlah_umur4;?>, 'color: #76A7FA'],
-         ['2021',     <?php echo $jumlah_umur5;?>, 'color: black'],
+         ['2017',     <?php echo $count_tanggal1;?>, 'color: gray'],
+         ['2018',      <?php echo $count_tanggal2;?>, 'color: #76A7FA'],
+         ['2019',     <?php echo $count_tanggal3;?>, 'color: black'],
+         ['2020',      <?php echo $count_tanggal4;?>, 'color: #76A7FA'],
+         ['2021',     <?php echo $count_tanggal5;?>, 'color: black'],
+         ['2022',     <?php echo $count_tanggal6;?>, 'color: blue'],
 
        ]);
 

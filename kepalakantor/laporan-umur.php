@@ -1,10 +1,7 @@
 <?php
-include "kiri.php";
-?>
-<?php
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
 
-  $query = "SELECT DISTINCT tgl_pendaftaran FROM peserta as Year ORDER BY tgl_pendaftaran ASC";
+  $query = "SELECT tgl_pendaftaran FROM peserta GROUP BY tgl_pendaftaran DESC";
 
   $statement = $connect->prepare($query);
 
@@ -12,87 +9,106 @@ include "kiri.php";
 
   $result = $statement->fetchAll();
 ?>
-  <div class="content-wrapper">
-    <section class="content-header">
-      <h1>
-        Hasil Tes
-      </h1>
-    </section>
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>DISNAKER ESDM</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  </head>
+  <body>
+      <br /><br />
+      <div class="container">
+          <h3 align="center">Create Dynamic Column Chart using PHP Ajax with Google Charts</h3>
+          <br />
 
-    <section class="content">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="box">
-            <div class="box-header with-border">
-
-            </div>
-            <!-- /.box-header -->
-            <div class="btn btn-lg">
-              <a href="print-hasil.php" class="btn btn-primary">Cetak Hasil Tes</a>
-            </div>
-            <input type="hidden" name="hidden_peserta" id="hidden_peserta" />
-            <div class="btn btn-xs">
-              <select name="multi_search_filter" id="multi_search_filter" class="form-control">
-                <option value="tampil_semua">Tampilkan Semua</option>
-               <?php
-               foreach($result as $row)
-               {
-                $date = $row['tgl_pendaftaran'];
-                $extract = date("Y", strtotime($date));
-                echo '<option value="'.$extract.'">'.$extract.'</option>';
-               }
-               ?>
-               </select>
-            </div>
-            <div class="table-responsive">
-              <table class="table table-striped table-bordered">
-               <thead>
-                <tr>
-                 <th>No</th>
-                 <th>Nomor Peserta</th>
-                 <th>Nama Peserta</th>
-                 <th>NIK</th>
-                 <th>Tanggal Pendaftaran</th>
-                 <th>Opsi</th>
-                </tr>
-               </thead>
-               <tbody>
-               </tbody>
-              </table>
-             <br />
-             <br />
-             <br />
-            </div>
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <div class="row">
+                      <div class="col-md-9">
+                          <h3 class="panel-title">Month Wise Profit Data</h3>
+                      </div>
+                      <div class="col-md-3">
+                          <select name="year" class="form-control" id="year">
+                              <option value="">Select Year</option>
+                          <?php
+                          foreach($result as $row)
+                          {
+                              $r = $row['tgl_pendaftaran'];
+                              $d = date("Y", strtotime($r));
+                              echo '<option value="'.$d.'">'.$d.'</option>';
+                          }
+                          ?>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+              <div class="panel-body">
+                  <div id="chart_area" style="width: 1000px; height: 620px;"></div>
+              </div>
           </div>
-        </div>
       </div>
-    </section>
-  </div>
-  <script>
-    $(document).ready(function(){
+  </body>
+</html>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback();
 
-     load_data();
+function load_monthwise_data(year, title)
+{
+  var temp_title = title + ' '+year+'';
+  $.ajax({
+      url:"fetch.php",
+      method:"POST",
+      data:{year:year},
+      dataType:"JSON",
+      success:function(data)
+      {
+          drawMonthwiseChart(data, temp_title);
+      }
+  });
+}
 
-     function load_data(query='')
-     {
-      $.ajax({
-       url:"tampil-peserta.php",
-       method:"POST",
-       data:{query:query},
-       success:function(data)
-       {
-        $('tbody').html(data);
-       }
-      })
-     }
+function drawMonthwiseChart(chart_data, chart_main_title)
+{
+  var jsonData = chart_data;
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Umur');
+  data.addColumn('number', 'Jumlah');
+  $.each(jsonData, function(i, jsonData){
+      var umur = jsonData;
+      var profit = parseFloat($.trim(jsonData.profit));
+      data.addRows([[month, profit]]);
+  });
+  var options = {
+      title:chart_main_title,
+      hAxis: {
+          title: "Months"
+      },
+      vAxis: {
+          title: 'Profit'
+      }
+  };
 
-     $('#multi_search_filter').change(function(){
-      $('#hidden_peserta').val($('#multi_search_filter').val());
-      var query = $('#hidden_peserta').val();
-      load_data(query);
-     });
-    });
+  var chart = new google.visualization.ColumnChart(document.getElementById('chart_area'));
+  chart.draw(data, options);
+}
+
 </script>
-<?php
-  include 'bawah.php';
-?>
+
+<script>
+
+$(document).ready(function(){
+
+  $('#year').change(function(){
+      var year = $(this).val();
+      if(year != '')
+      {
+          load_monthwise_data(year, 'Month Wise Profit Data For');
+      }
+  });
+
+});
+
+</script>

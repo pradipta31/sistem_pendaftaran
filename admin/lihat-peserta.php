@@ -2,9 +2,10 @@
 include "kiri.php";
 ?>
 <?php
+  include 'koneksi.php';
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
 
-  $query = "SELECT DISTINCT tgl_pendaftaran FROM peserta as Year ORDER BY tgl_pendaftaran ASC";
+  $query = "SELECT DISTINCT tgl_pendaftaran as tgl_pendaftaran FROM peserta ORDER BY YEAR(tgl_pendaftaran) ASC";
 
   $statement = $connect->prepare($query);
 
@@ -37,18 +38,17 @@ include "kiri.php";
                foreach($result as $row)
                {
                 $date = $row['tgl_pendaftaran'];
-                $extract = date("Y", strtotime($date));
-                echo '<option value="'.$extract.'">'.$extract.'</option>';
+                $date = strftime("%Y", strtotime($date));
+                echo '<option value="'.$date.'">'.$date.'</option>';
                }
                ?>
                </select>
             </div>
-            <div class="btn btn-lg">
-              <?php foreach ($result as $key): ?>
-                <a href="print-semua-peserta.php?tgl_pendaftaran=<?php $b = $key['tgl_pendaftaran']; $a = date("Y", strtotime($b)); echo $a;?>" class="btn btn-primary">Cetak <?php echo $a;?></a>  
-              <?php endforeach; ?>
+            <div class="btn btn-lg" id="btn">
+
             </div>
-            <div class="table-responsive">
+
+            <div class="table-responsive" id="table">
               <table class="table table-striped table-bordered">
                <thead>
                 <tr>
@@ -75,6 +75,7 @@ include "kiri.php";
     $(document).ready(function(){
 
      load_data();
+     loadData();
 
      function load_data(query='')
      {
@@ -85,7 +86,19 @@ include "kiri.php";
        success:function(data)
        {
         $('tbody').html(data);
-       }
+      }
+      })
+     }
+     function loadData(query='')
+     {
+      $.ajax({
+       url:"ajax.php",
+       method:"POST",
+       data:{query:query},
+       success:function(data)
+       {
+        $('#btn').html(data);
+      }
       })
      }
 
@@ -93,6 +106,7 @@ include "kiri.php";
       $('#hidden_peserta').val($('#multi_search_filter').val());
       var query = $('#hidden_peserta').val();
       load_data(query);
+      loadData(query);
      });
     });
 </script>

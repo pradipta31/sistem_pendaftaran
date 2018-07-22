@@ -28,23 +28,11 @@
 
   if($total_row > 0)
   {
-   foreach($result as $row)
-   {
-    $output .= '
-
-    <tr>
-     <td><center>'.$no++.'</td></center>
-     <td><center>'.$row["nomor_peserta"].'</td></center>
-     <td><center>'.$row["tgl_pendaftaran"].'</td></center>
-     <td><center>'.$row["nama"].'</td></center>
-     <td><center>
-     <a href="proses-lihat-peserta.php?id_peserta='.$row["id_peserta"].'"><i class="fa fa-eye"></i></a>
-     <a href="form-edit-peserta.php?id_peserta='.$row["id_peserta"].'"><i class="fa fa-edit"></i></a>
-     <a href="hapus-peserta.php?id_peserta='.$row["id_peserta"].'"><i class="fa fa-trash"></i></a>
-     <a href="print-peserta.php?id_peserta='.$row["id_peserta"].'"><i class="fa fa-print"></i></a>
-    </tr></center>
-    ';
+   foreach($result as $row){
+     $date = $row['tgl_pendaftaran'];
+     $date = strftime("%Y", strtotime($date));
    }
+   $output .='<a href="print-semua-peserta.php?tgl_pendaftaran='.$date.'" class="btn btn-primary">Cetak Data Peserta</a>';
   }
   else
   {
