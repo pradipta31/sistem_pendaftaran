@@ -51,8 +51,8 @@ include "kiri.php";
                  <th>No</th>
                  <th>Nomor Peserta</th>
                  <th>Nama Peserta</th>
-                 <th>Total Nilai</th>
-                 <th>Status</th>
+                 <th>NIK</th>
+                 <th>Tanggal Pendaftaran</th>
                  <th>Opsi</th>
                 </tr>
                </thead>

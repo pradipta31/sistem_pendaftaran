@@ -16,8 +16,6 @@ $jumlah_umur2= mysqli_num_rows($umur2);
 $jumlah_umur3= mysqli_num_rows($umur3);
 $jumlah_umur4= mysqli_num_rows($umur4);
 $jumlah_umur5= mysqli_num_rows($umur5);
-
-
  ?>
 
  <html>

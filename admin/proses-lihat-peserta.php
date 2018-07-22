@@ -67,7 +67,7 @@ include "kiri.php";
                 </br>
               </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
               <div class="form-group">
                 <label>: <?php echo $row['nik']; ?></label>
                 </br>
@@ -99,6 +99,18 @@ include "kiri.php";
                 </br>
                 <label>: <?php echo $row['no_telp']; ?></label>
                 </br>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="form-group">
+                <?php
+                  if ($row['file'] == null) {
+                    echo '<img src="../peserta/images/peserta.png" height="227px" width="152px" style="border-radius: 5px" class="img-responsive">';
+                  }else{ ?>
+                    <img src="../peserta/images/<?= $row['file'];?>" height="227px" width="189px" style="border-radius: 5px" class="img-responsive">
+                <?php
+                  }
+                ?>
               </div>
             </div>
             <!-- /.col -->
