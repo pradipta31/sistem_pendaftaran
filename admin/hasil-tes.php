@@ -8,7 +8,7 @@ include "kiri.php";
 
   $statement = $connect->prepare($query);
 
-  $statement->execute(); 
+  $statement->execute();
 
   $result = $statement->fetchAll();
 ?>
@@ -21,7 +21,7 @@ include "kiri.php";
 
     <section class="content">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
 
@@ -46,12 +46,14 @@ include "kiri.php";
               <table class="table table-striped table-bordered">
                <thead>
                 <tr>
-                 <th>No</th>
-                 <th>Nomor Peserta</th>
-                 <th>Nama Peserta</th>
-                 <th>Total Nilai</th>
-                 <th>Status</th>
-                 <th>Opsi</th>
+                 <th><center>No</th>
+                 <th><center>Nomor Peserta</th></center>
+                 <th><center>Nama Peserta</th></center>
+                 <th><center>Nilai Tes Online</th></center>
+                 <th><center>Nilai Tes Wawancara</th></center>
+                 <th><center>Total Nilai</th></center>
+                 <th><center>Status</th></center>
+                 <th><center>Opsi</th></center>
                 </tr>
                </thead>
                <tbody>

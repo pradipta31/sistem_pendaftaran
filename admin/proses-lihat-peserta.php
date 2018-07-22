@@ -101,6 +101,19 @@ include "kiri.php";
                 </br>
               </div>
             </div>
+            <div class="col-md-5">
+              <div class="form-group">
+                <?php
+                  if ($row['file'] == null) {
+                    echo '<img src="images/peserta.png" height="227px" width="152px" style="border-radius: 5px">';
+                  }else{ ?>
+                    <img src="../peserta/images/<?= $row['file'];?>" height="227px" width="189px" style="border-radius: 5px" class="img-responsive">
+
+                <?php
+              }
+              ?>
+              </div>
+            </div>
             <!-- /.col -->
           </div>
           <button type="button" class="btn btn-default" name="button" onclick="window.location='lihat-peserta.php'">Kembali</button>

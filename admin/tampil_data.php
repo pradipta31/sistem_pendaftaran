@@ -31,14 +31,16 @@
     $output .= '
 
     <tr>
-     <td>'.$no++.'</td>
-     <td>'.$row["nomor_peserta"].'</td>
-     <td>'.$row["nama"].'</td>
-     <td>'.$row["total_nilai"].'</td>
-     <td>'.$row["status"].'</td>
-     <td><a href="form-edit-hasil.php?id_hasil_tes='.$row["id_hasil_tes"].'"><i class="fa fa-edit"></i></a>
+     <td><center>'.$no++.'</td></center>
+     <td><center>'.$row["nomor_peserta"].'</td></center>
+     <td><center>'.$row["nama"].'</td></center>
+     <td><center>'.$row["nilai_tulis"].'</td></center>
+     <td><center>'.$row["nilai_wawancara"].'</td></center>
+     <td><center>'.$row["total_nilai"].'</td></center>
+     <td><center>'.$row["status"].'</td></center>
+     <td><center><a href="form-edit-hasil.php?id_hasil_tes='.$row["id_hasil_tes"].'"><i class="fa fa-edit"></i></a>
      <a href="hapus-hasil.php?id_hasil_tes='.$row["id_hasil_tes"].'"><i class="fa fa-trash"></i></a>
-     <a href="print-semua-hasil.php?id_hasil_tes='.$row['id_hasil_tes'].'"><i class="fa fa-print"></i></a></td>
+     <a href="print-semua-hasil.php?id_hasil_tes='.$row['id_hasil_tes'].'"><i class="fa fa-print"></i></a></td><center>
     </tr>
     ';
    }
