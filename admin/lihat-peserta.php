@@ -11,6 +11,7 @@ include "kiri.php";
   $statement->execute();
 
   $result = $statement->fetchAll();
+
 ?>
   <div class="content-wrapper">
     <section class="content-header">
@@ -27,9 +28,7 @@ include "kiri.php";
 
             </div>
             <!-- /.box-header -->
-            <div class="btn btn-lg">
-              <a href="print-semua-peserta.php" class="btn btn-primary">Cetak Data Peserta</a>
-            </div>
+
             <input type="hidden" name="hidden_peserta" id="hidden_peserta" />
             <div class="btn btn-xs">
               <select name="multi_search_filter" id="multi_search_filter" class="form-control">
@@ -43,6 +42,11 @@ include "kiri.php";
                }
                ?>
                </select>
+            </div>
+            <div class="btn btn-lg">
+              <?php foreach ($result as $key): ?>
+                <a href="print-semua-peserta.php?tgl_pendaftaran=<?php $b = $key['tgl_pendaftaran']; $a = date("Y", strtotime($b)); echo $a;?>" class="btn btn-primary">Cetak <?php echo $a;?></a>  
+              <?php endforeach; ?>
             </div>
             <div class="table-responsive">
               <table class="table table-striped table-bordered">

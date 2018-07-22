@@ -17,6 +17,7 @@
       <th><center>Nama</center></th>
     </tr>
     <?php
+    $id = $_GET['id_peserta'];
   include "koneksi.php";
   $no = 1;
   $query = mysqli_query($koneksi, "SELECT * FROM peserta");

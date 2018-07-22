@@ -28,8 +28,10 @@
   {
    foreach($result as $row)
    {
+     $data = $row['tgl_pendaftaran'];
+     $tanggal = date("Y",strtotime($data));
     $output .= '
-
+    <a href="proses-lihat-peserta.php?tgl_pendaftaran='.$tanggal.'" class="btn btn-lg" value="Print"></a>
     <tr>
      <td><center>'.$no++.'</td></center>
      <td><center>'.$row["nomor_peserta"].'</td></center>
