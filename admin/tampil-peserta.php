@@ -31,17 +31,16 @@
     $output .= '
 
     <tr>
-     <td>'.$no++.'</td>
-     <td>'.$row["nomor_peserta"].'</td>
-     <td>'.$row["nama"].'</td>
-     <td>'.$row["nik"].'</td>
-     <td>'.$row["tgl_pendaftaran"].'</td>
-     <td>
+     <td><center>'.$no++.'</td></center>
+     <td><center>'.$row["nomor_peserta"].'</td></center>
+     <td><center>'.$row["tgl_pendaftaran"].'</td></center>
+     <td><center>'.$row["nama"].'</td></center>
+     <td><center>
      <a href="proses-lihat-peserta.php?id_peserta='.$row["id_peserta"].'"><i class="fa fa-eye"></i></a>
      <a href="form-edit-peserta.php?id_peserta='.$row["id_peserta"].'"><i class="fa fa-edit"></i></a>
      <a href="hapus-peserta.php?id_peserta='.$row["id_peserta"].'"><i class="fa fa-trash"></i></a>
-     <a href="print-semua-hasil.php?id_peserta='.$row['id_peserta'].'"><i class="fa fa-print"></i></a></td>
-    </tr>
+     <a href="print-peserta.php?id_peserta='.$row["id_peserta"].'"><i class="fa fa-print"></i></a>
+    </tr></center>
     ';
    }
   }

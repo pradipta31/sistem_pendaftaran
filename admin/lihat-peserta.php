@@ -15,20 +15,20 @@ include "kiri.php";
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Hasil Tes
+      Data Peserta
       </h1>
     </section>
 
     <section class="content">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
 
             </div>
             <!-- /.box-header -->
             <div class="btn btn-lg">
-              <a href="print-hasil.php" class="btn btn-primary">Cetak Hasil Tes</a>
+              <a href="print-semua-peserta.php" class="btn btn-primary">Cetak Data Peserta</a>
             </div>
             <input type="hidden" name="hidden_peserta" id="hidden_peserta" />
             <div class="btn btn-xs">
@@ -48,12 +48,11 @@ include "kiri.php";
               <table class="table table-striped table-bordered">
                <thead>
                 <tr>
-                 <th>No</th>
-                 <th>Nomor Peserta</th>
-                 <th>Nama Peserta</th>
-                 <th>NIK</th>
-                 <th>Tanggal Pendaftaran</th>
-                 <th>Opsi</th>
+                 <th><center>No</th></center>
+                 <th><center>Nomor Peserta</th></center>
+                 <th><center>Tanggal Pendaftaran</th></center>
+                 <th><center>Nama Peserta</th></center>
+                 <th><center>Opsi</th></center>
                 </tr>
                </thead>
                <tbody>
