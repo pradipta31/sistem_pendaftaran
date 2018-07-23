@@ -11,7 +11,7 @@
 
   <script
     type="text/javascript"
-    src="//code.jquery.com/jquery-3.1.1.js"
+    src="https://code.jquery.com/jquery-3.1.1.js"
 
   ></script>
 
@@ -30,21 +30,21 @@
 
 var jsonData = {
 "2017": [
-    { "x": "2016-6-25 12:58:52", "y": 10.22 },
-    { "x": "2016-7-25 13:33:23", "y": 11.14 },
-    { "x": "2016-8-25 13:49:18", "y": 13.58 },
-    { "x": "2016-9-25 13:55:01", "y": 15.25 },
-    { "x": "2016-10-25 14:00:15", "y": 17.25 },
+    { "x": "Umur < 20", "y": 10.22 },
+    { "x": "Umur < 20", "y": 11.14 },
+    { "x": "Umur < 20", "y": 13.58 },
+    { "x": "Umur < 20", "y": 15.25 },
+    { "x": "Umur < 20", "y": 17.25 },
 ],
 "2018": [
-     { "x": "2016-6-25 12:58:52", "y": 19.99 },
-     { "x": "2016-7-25 13:33:23", "y": 21.78 },
-     { "x": "2016-8-25 13:49:18", "y": 23.45 },
-     { "x": "2016-9-25 13:55:01", "y": 24.73 },
-     { "x": "2016-10-25 14:00:15", "y": 26.58 }
+     { "x": "Umur < 20", "y": 19.99 },
+     { "x": "Umur < 20", "y": 21.78 },
+     { "x": "Umur < 20", "y": 23.45 },
+     { "x": "Umur < 20", "y": 24.73 },
+     { "x": "Umur < 20", "y": 26.58 }
 ],
 "2019": [
-    { "x": "2016-6-25 12:58:52", "y": 27.66 },
+    { "x": "Umur < 20", "y": 27.66 },
     { "x": "2016-7-25 13:33:23", "y": 28.68 },
     { "x": "2016-8-25 13:49:18", "y": 30.73 },
     { "x": "2016-9-25 13:55:01", "y": 32.46 },
@@ -68,15 +68,12 @@ var dataPoints = [];
 var chart = new CanvasJS.Chart("chartContainer",
 {
 	axisX: {
-  	valueFormatString: "D/MM h:mm",
-    intervalType: 'month',
-    interval: 1
+  	valueFormatString: "Umur",
   },
 	data: [{
     showInLegend: true,
     type: 'column',
-    //xValueFormatString:"D MM h:mm",
-    xValueType: "dateTime",
+    xValueType: 'string',
     showInLegend: true,
     name: "series1",
     legendText: "EnergykWh",
@@ -92,7 +89,7 @@ $( ".dropdown" ).change(function() {
   dps = jsonData[selected];
   for(var i in dps) {
   	var xVal = dps[i].x;
-    chart.options.data[0].dataPoints.push({x: new Date(xVal), y: dps[i].y});
+    chart.options.data[0].dataPoints.push({x: new date(xVal), y: dps[i].y});
   }
   chart.render();
 });

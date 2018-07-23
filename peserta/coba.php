@@ -24,14 +24,14 @@ $result1 = mysqli_fetch_assoc($query1);
       color: rgb(0, 0, 0);
     }
   </style>
-  <img src="header.png" style="width:1080px; height: 195px; margin-left: 30px">
-  <label style="margin-left:50px;font-size:25px">Berikut merupakan hasil dariserangkaian pelaksanaan Tes Penerimaan Peserta </label>
-  <p style="margin-left:50px;font-size:25px"><label>Pelatihan Kapal Pesiar yaitu sebagai berikut : </label></p>
+  <img src="header.png" style="width:650px; height: 105px; margin-left: 30px">
+  <label style="margin-left:50px">Berikut merupakan hasil dariserangkaian pelaksanaan Tes Penerimaan Peserta </label>
+  <p style="margin-left:50px"><label>Pelatihan Kapal Pesiar yaitu sebagai berikut : </label></p>
     <div class="container">
       <div class="row">
         <!-- <div class="col-md-12"> -->
 
-          <div class="col-md-6 style-line">
+          <div class="col-md-5 style-line">
             <div class="form-group">
               <label>Nomor Peserta  <b style="margin-left: 35px">:</b> <?php echo $result['nomor_peserta']; ?></label>
             </div>
@@ -83,10 +83,10 @@ $result1 = mysqli_fetch_assoc($query1);
 
           </div>
           <div class="col-md-2">
-
-          </div>
-          <div class="col-md-2">
             <div class="form-group">
+            </br>
+            </br>
+            </br>
               <?php
                 if ($result['file'] == null) {
                   echo '<img src="images/peserta.png" height="227px" width="188px" style="border-radius: 5px">';
@@ -100,8 +100,8 @@ $result1 = mysqli_fetch_assoc($query1);
           </div>
 
         </div>
-        <br>
-      <div style=" margin-left: 600px">
+
+      <div style=" margin-left: 400px">
 
 
       <label>Plt. Kepala Dinas tenaga Kerja dan Energi</label><br>
