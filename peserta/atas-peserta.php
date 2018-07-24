@@ -1,3 +1,15 @@
+<?php
+  include 'koneksi.php';
+  session_start();
+  if( !isset($_SESSION['email_user']) )
+  {
+      exit();
+    }
+  $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
+  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE nomor_peserta = '$nomor'");
+  $row = mysqli_fetch_assoc($query);
+	$hasil = $row['']
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,114 +1,102 @@
 <?php
+include "kiri.php";
+?>
+<?php
+  include 'koneksi.php';
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
+  if(isset($_GET['tahun'])){
+    $year = date('Y');
+    $year = $_GET['tahun'];
+  }
+  $qGetDate = "SELECT DISTINCT tgl_pendaftaran as tgl_pendaftaran FROM peserta ORDER BY YEAR(tgl_pendaftaran) ASC";
 
-  $query = "SELECT tgl_pendaftaran FROM peserta GROUP BY tgl_pendaftaran DESC";
+  $qGetChartByYear = "SELECT SUM(CASE WHEN umur <= 20 THEN 1 ELSE 0 END) AS a,
+  SUM(CASE WHEN umur BETWEEN 21 AND 23 THEN 1 ELSE 0 END) AS b,
+  SUM(CASE WHEN umur BETWEEN 24 AND 26 THEN 1 ELSE 0 END) AS c,
+  SUM(CASE WHEN umur BETWEEN 27 AND 30 THEN 1 ELSE 0 END) AS d FROM peserta WHERE tgl_pendaftaran LIKE '$year%'";
 
-  $statement = $connect->prepare($query);
+  $rChart = $connect->query($qGetChartByYear);
 
+  $statement = $connect->prepare($qGetDate);
+  // $statement = $connect->prepare($qGetChartByYear);
   $statement->execute();
 
   $result = $statement->fetchAll();
+
 ?>
-<!DOCTYPE html>
-<html>
-  <head>
-      <title>DISNAKER ESDM</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  </head>
-  <body>
-      <br /><br />
-      <div class="container">
-          <h3 align="center">Create Dynamic Column Chart using PHP Ajax with Google Charts</h3>
-          <br />
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+      Data Peserta
+      </h1>
+    </section>
 
-          <div class="panel panel-default">
-              <div class="panel-heading">
-                  <div class="row">
-                      <div class="col-md-9">
-                          <h3 class="panel-title">Month Wise Profit Data</h3>
-                      </div>
-                      <div class="col-md-3">
-                          <select name="year" class="form-control" id="year">
-                              <option value="">Select Year</option>
-                          <?php
-                          foreach($result as $row)
-                          {
-                              $r = $row['tgl_pendaftaran'];
-                              $d = date("Y", strtotime($r));
-                              echo '<option value="'.$d.'">'.$d.'</option>';
-                          }
-                          ?>
-                          </select>
-                      </div>
-                  </div>
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Data Peserta Berdasarkan Umur</h3>
+            </div>
+
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-3">
+                  <form class="" action="" method="GET" id="frmTahun" name="frmTahun">
+                    <select class="form-control" name="tahun" id="getData">
+                      <option value="1" disabled>-- Pilih Tahun --</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <?php
+                      // foreach($result as $row)
+                      // {
+                      //  $date = $row['tgl_pendaftaran'];
+                      //  $date = date("Y", strtotime($date));
+                      //  echo '<option value="'.$date.'">'.$date.'</option>';
+                      // }
+                      ?>
+                    </select>
+                    <input type="submit" name="submit" id="submit" value="Generate">
+                  </form>
+                </div>
               </div>
-              <div class="panel-body">
-                  <div id="chart_area" style="width: 1000px; height: 620px;"></div>
-              </div>
+              <canvas id="chart"> </canvas>
+            </div>
           </div>
+        </div>
       </div>
-  </body>
-</html>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback();
+    </section>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script>
 
-function load_monthwise_data(year, title)
-{
-  var temp_title = title + ' '+year+'';
-  $.ajax({
-      url:"fetch.php",
-      method:"POST",
-      data:{year:year},
-      dataType:"JSON",
-      success:function(data)
-      {
-          drawMonthwiseChart(data, temp_title);
-      }
-  });
-}
+    $(function(){
+      var dataChart = JSON.parse('<?php echo json_encode($rChart->fetch(PDO::FETCH_ASSOC)); ?>');
+      var ctx = document.getElementById('chart').getContext('2d');
+      var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'bar',
 
-function drawMonthwiseChart(chart_data, chart_main_title)
-{
-  var jsonData = chart_data;
-  var data = new google.visualization.DataTable();
-  data.addColumn('string', 'Umur');
-  data.addColumn('number', 'Jumlah');
-  $.each(jsonData, function(i, jsonData){
-      var umur = jsonData;
-      var profit = parseFloat($.trim(jsonData.profit));
-      data.addRows([[month, profit]]);
-  });
-  var options = {
-      title:chart_main_title,
-      hAxis: {
-          title: "Months"
-      },
-      vAxis: {
-          title: 'Profit'
-      }
-  };
+          // The data for our dataset
+          data: {
+              labels: ["<20", "21 - 22", "23 - 26", "27 - 30"],
+              datasets: [{
+                  label: "Data Umur",
+                  backgroundColor: 'rgb(35, 13, 143)',
+                  borderColor: 'rgb(35, 13, 143)',
+                  data: [dataChart['a'],dataChart['b'],dataChart['c'],dataChart['d']],
+              }]
+          },
 
-  var chart = new google.visualization.ColumnChart(document.getElementById('chart_area'));
-  chart.draw(data, options);
-}
-
+          // Configuration options go here
+          options: {}
+      });
+    });
+    $('#getData').change(function(){
+      document.getElementById('submit').click();
+    });
 </script>
-
-<script>
-
-$(document).ready(function(){
-
-  $('#year').change(function(){
-      var year = $(this).val();
-      if(year != '')
-      {
-          load_monthwise_data(year, 'Month Wise Profit Data For');
-      }
-  });
-
-});
-
-</script>
+<?php
+  include 'bawah.php';
+?>

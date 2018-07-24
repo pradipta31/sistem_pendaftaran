@@ -1,107 +1,108 @@
 <?php
 include "kiri.php";
-include "koneksi.php";
-$gianyar = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Gianyar'");
-$denpasar = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Denpasar'");
-$badung = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Badung'");
-$negara = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Negara'");
-$karangasem = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Karangasem'");
-$bangli = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Bangli'");
-$buleleng = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Buleleng'");
-$tabanan = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Tabanan'");
-$klungkung = $koneksi->query("SELECT * FROM peserta WHERE kabupaten ='Klungkung'");
+?>
+<?php
+  include 'koneksi.php';
+  $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
+  if(isset($_GET['tahun'])){
+    $year = date('Y');
+    $year = $_GET['tahun'];
+  }
+  $qGetDate = "SELECT DISTINCT tgl_pendaftaran as tgl_pendaftaran FROM peserta ORDER BY YEAR(tgl_pendaftaran) ASC";
 
+  $qGetChartByYear = "SELECT SUM(CASE WHEN kabupaten = 'Gianyar' THEN 1 ELSE 0 END) AS a,
+  SUM(CASE WHEN kabupaten = 'Denpasar' THEN 1 ELSE 0 END) AS b,
+  SUM(CASE WHEN kabupaten = 'Badung' THEN 1 ELSE 0 END) AS c,
+  SUM(CASE WHEN kabupaten = 'Negara' THEN 1 ELSE 0 END) AS d,
+  SUM(CASE WHEN kabupaten = 'Karangasem' THEN 1 ELSE 0 END) AS e,
+  SUM(CASE WHEN kabupaten = 'Bangli' THEN 1 ELSE 0 END) AS f,
+  SUM(CASE WHEN kabupaten = 'Buleleng' THEN 1 ELSE 0 END) AS g,
+  SUM(CASE WHEN kabupaten = 'Tabanan' THEN 1 ELSE 0 END) AS h,
+  SUM(CASE WHEN kabupaten = 'Klungkung' THEN 1 ELSE 0 END) AS i FROM peserta WHERE tgl_pendaftaran LIKE '$year%'";
 
-$jumlah_gianyar= mysqli_num_rows($gianyar);
-$jumlah_denpasar= mysqli_num_rows($denpasar);
-$jumlah_badung= mysqli_num_rows($badung);
-$jumlah_negara= mysqli_num_rows($negara);
-$jumlah_karangasem= mysqli_num_rows($karangasem);
-$jumlah_bangli= mysqli_num_rows($bangli);
-$jumlah_buleleng= mysqli_num_rows($buleleng);
-$jumlah_tabanan= mysqli_num_rows($tabanan);
-$jumlah_klungkung= mysqli_num_rows($klungkung);
+  $rChart = $connect->query($qGetChartByYear);
 
- ?>
+  $statement = $connect->prepare($qGetDate);
+  // $statement = $connect->prepare($qGetChartByYear);
+  $statement->execute();
 
- <html>
-   <head>
-     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-   <script type="text/javascript">
-     google.charts.load("current", {packages:['corechart']});
-     google.charts.setOnLoadCallback(drawChart);
-     function drawChart() {
-       var data = google.visualization.arrayToDataTable([
-         ["Element", "Jumlah", { role: "style" } ],
-         ['Gianyar',     <?php echo $jumlah_gianyar;?>, 'color: gray'],
-         ['Denpasar',      <?php echo $jumlah_denpasar;?>, 'color: #76A7FA'],
-         ['Badung',     <?php echo $jumlah_badung;?>, 'color: black'],
-         ['Negara',      <?php echo $jumlah_negara;?>,'color: yellow' ],
-         ['Karangasem',     <?php echo $jumlah_karangasem;?>, 'color: black'],
-         ['Bangli',      <?php echo $jumlah_bangli;?>, 'color: black'],
-         ['Buleleng',     <?php echo $jumlah_buleleng;?>, 'color: black'],
-         ['Tabanan',      <?php echo $jumlah_tabanan;?>, 'color: black'],
-         ['Klungkung',     <?php echo $jumlah_klungkung;?>, 'color: black'],
-       ]);
+  $result = $statement->fetchAll();
 
-       var view = new google.visualization.DataView(data);
-       view.setColumns([0, 1,
-                        { calc: "stringify",
-                          sourceColumn: 1,
-                          type: "string",
-                          role: "annotation" },
-                        2]);
+?>
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+      Data Peserta
+      </h1>
+    </section>
 
-       var options = {
-         title: "",
-         width: 1000,
-         height: 500,
-         bar: {groupWidth: "95%"},
-         legend: { position: "none" },
-       };
-       var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-       chart.draw(view, options);
-   }
-   </script>
-</html>
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Data Wilayah Peserta</h3>
+            </div>
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="background-color: white">
-  <!-- Content Header (Page header) -->
-  <div class="text-center" style="margin-top: -20px">
-      <h2>Laporan Data Wilayah</h2>
-    </div>
-    <div class="col-md-12">
-      <div class="col-md-2">
-        <div class="box-default">
-          <div class="box-body">
-            <div class="form-group">
-              <select name="tahun" class="form-control">
-                <?php
-                $mulai= date('Y') - 10;
-                for($i = $mulai;$i<$mulai + 50;$i++){
-                    $sel = $i == date('Y') ? ' selected="selected"' : '';
-                    echo '<option value="'.$i.'"'.$sel.'>'.$i.'</option>';
-                }
-                ?>
-              </select>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-3">
+                  <form class="" action="" method="GET" id="frmTahun" name="frmTahun">
+                    <select class="form-control" name="tahun" id="getData">
+                      <option value="1" disabled>-- Pilih Tahun --</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <?php
+                      // foreach($result as $row)
+                      // {
+                      //  $date = $row['tgl_pendaftaran'];
+                      //  $date = date("Y", strtotime($date));
+                      //  echo '<option value="'.$date.'">'.$date.'</option>';
+                      // }
+                      ?>
+                    </select>
+                    <input type="submit" name="submit" id="submit" value="Generate">
+                  </form>
+                </div>
+              </div>
+              <canvas id="chart"> </canvas>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-2">
-      </div>
+    </section>
   </div>
-  <section class="content">
-    <div class="row">
-      <div id="columnchart_values" style="width: 100%; height: 640px; margin-left: 10px; margin-top: 30px">
-      </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script>
 
-      <a href="#" onclick="window.print()"> Print </a>
+    $(function(){
+      var dataChart = JSON.parse('<?php echo json_encode($rChart->fetch(PDO::FETCH_ASSOC)); ?>');
+      var ctx = document.getElementById('chart').getContext('2d');
+      var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'bar',
 
-    </div>
-  </section>
-</div>
+          // The data for our dataset
+          data: {
+              labels: ["Gianyar", "Denpasar", "Badung", "Negara", "Karangasem", "Bangli", "Buleleng", "Tabanan", "Klungkung"],
+              datasets: [{
+                  label: "Data Wilayah",
+                  backgroundColor: 'rgb(35, 13, 143)',
+                  borderColor: 'rgb(35, 13, 143)',
+                  data: [dataChart['a'],dataChart['b'],dataChart['c'],dataChart['d'],
+                  dataChart['e'],dataChart['f'],dataChart['g'],dataChart['h'],dataChart['i']],
+              }]
+          },
+
+          // Configuration options go here
+          options: {}
+      });
+    });
+    $('#getData').change(function(){
+      document.getElementById('submit').click();
+    });
+</script>
 <?php
   include 'bawah.php';
 ?>

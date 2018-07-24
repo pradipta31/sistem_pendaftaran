@@ -1,75 +1,99 @@
 <?php
 include "kiri.php";
-include "koneksi.php";
-$pria = $koneksi->query("SELECT * FROM peserta WHERE jenis_kelamin ='Pria'");
-$wanita = $koneksi->query("SELECT * FROM peserta WHERE jenis_kelamin ='wanita'");
-$jumlah_pria= mysqli_num_rows($pria);
-$jumlah_wanita= mysqli_num_rows($wanita);
- ?>
-
-<html>
-    <script type="text/javascript" src="loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Pria',     <?php echo $jumlah_pria;?>],
-          ['Wanita',      <?php echo $jumlah_wanita;?>],
-
-        ]);
-
-        var options = {
-          title: 'Laporan Data Jenis Kelamin'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data);
-      }
-    </script>
-  <body>
-
-  </body>
-</html>
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="background-color: white">
-  <!-- Content Header (Page header) -->
-  <div class="text-center" style="margin-top: -20px">
-      <h2>Laporan Data Jenis Kelamin</h2>
-  </div>
-  <div class="col-md-12">
-    <div class="col-md-2">
-      <div class="box-default">
-        <div class="box-body">
-          <div class="form-group">
-            <select name="umur" class="form-control">
-<?php
-$mulai= date('Y') - 10;
-for($i = $mulai;$i<$mulai + 50;$i++){
-    $sel = $i == date('Y') ? ' selected="selected"' : '';
-    echo '<option value="'.$i.'"'.$sel.'>'.$i.'</option>';
-}
 ?>
-</select>
+<?php
+  include 'koneksi.php';
+  $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
+  if(isset($_GET['tahun'])){
+    $year = date('Y');
+    $year = $_GET['tahun'];
+  }
+  $qGetDate = "SELECT DISTINCT tgl_pendaftaran as tgl_pendaftaran FROM peserta ORDER BY YEAR(tgl_pendaftaran) ASC";
 
-            </select>
+  $qGetChartByYear = "SELECT SUM(CASE WHEN jenis_kelamin = 'pria' THEN 1 ELSE 0 END) AS a, SUM(CASE WHEN jenis_kelamin = 'wanita' THEN 1 ELSE 0 END) AS b FROM peserta WHERE tgl_pendaftaran LIKE '$year%'";
+
+  $rChart = $connect->query($qGetChartByYear);
+
+  $statement = $connect->prepare($qGetDate);
+  // $statement = $connect->prepare($qGetChartByYear);
+  $statement->execute();
+
+  $result = $statement->fetchAll();
+
+?>
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+      Data Peserta
+      </h1>
+    </section>
+
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Data Jenis Kelamin Peserta</h3>
+            </div>
+
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-3">
+                  <form class="" action="" method="GET" id="frmTahun" name="frmTahun">
+                    <select class="form-control" name="tahun" id="getData">
+                      <option value="1" disabled>-- Pilih Tahun --</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <?php
+                      // foreach($result as $row)
+                      // {
+                      //  $date = $row['tgl_pendaftaran'];
+                      //  $date = date("Y", strtotime($date));
+                      //  echo '<option value="'.$date.'">'.$date.'</option>';
+                      // }
+                      ?>
+                    </select>
+                    <input type="submit" name="submit" id="submit" value="Generate">
+                  </form>
+                </div>
+              </div>
+              <canvas id="chart"> </canvas>
+              <br>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-      <div class="col-md-2">
-      </div>
+    </section>
   </div>
-  <section class="content">
-    <div class="row">
-      <div id="piechart" style="width: 100%; height: 640px; margin-left: 150px; margin-top: 35px">
-      </div>
-    </div>
-  </section>
-</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script>
+
+    $(function(){
+      var dataChart = JSON.parse('<?php echo json_encode($rChart->fetch(PDO::FETCH_ASSOC)); ?>');
+      var ctx = document.getElementById('chart').getContext('2d');
+      var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'pie',
+
+          // The data for our dataset
+          data: {
+              labels: ["Pria", "Wanita"],
+              datasets: [{
+                  label: "Data Jenis Kelamin",
+                  backgroundColor: ['blue','green'],
+                  data: [dataChart['a'],dataChart['b']],
+              }]
+          },
+
+          // Configuration options go here
+          options: {}
+      });
+    });
+    $('#getData').change(function(){
+      document.getElementById('submit').click();
+    });
+</script>
 <?php
   include 'bawah.php';
 ?>
