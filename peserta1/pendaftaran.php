@@ -28,7 +28,7 @@ include "kiripeserta.php";
                                   <p style="font-size: 15px">*) Mohon isi data sesuai dengan identitas diri</p>
                                   <input type="text" name="nomor_peserta" value="<?php echo $e; ?>" class="form-control" style="font-size:15px" readonly>
                                   <label style="font-size: 14px">Jurusan</label>
-                                  <select name="jurusan" class="form-control" style="font-size: 15px; height: 36px" />
+                                  <select name="jurusan" class="form-control"name="jurusan" id="jurusan" style="font-size: 15px; height: 36px" />
                                     <option>-- Pilih Jurusan --</option>
                                     <option value="Tata Graha">Tata Graha</option>
                                     <option value="Tata Hidangan">Tata Hidangan</option>
@@ -124,8 +124,12 @@ include "kiripeserta.php";
         </section>
         <script type="text/javascript">
         function validasi_input(form){
-          if (form.nik.value == ""){
-            alert("kolom NIK masih kosong!");
+          if (form.jurusan.value == ""){
+            alert("kolom jurusan belum dipilih!");
+            form.jurusan.focus();
+            return (false);
+          }else if (form.nik.value=="") {
+            alert("Kolom NIK masih kosong");
             form.nik.focus();
             return (false);
           }else if (form.nama.value=="") {

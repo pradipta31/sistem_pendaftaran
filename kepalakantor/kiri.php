@@ -64,10 +64,7 @@ $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
         <div class="pull-left image">
           <img src="dinas11.png" class="img-responsive">
         </div>
-        <div class="pull-left info">
-          <p>Selamat Datang</p>
-          <p><?php echo $nama; ?></p>
-        </div>
+
 
       </div>
 

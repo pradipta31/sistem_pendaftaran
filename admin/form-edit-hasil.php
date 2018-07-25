@@ -23,7 +23,7 @@ include "kiri.php";
       <div class="box box-default">
         <div class="box-header with-border">
         </div>
-          <form action="proses-edit-hasil.php" method="post">
+          <form name="form" action="proses-edit-hasil.php" method="post" onsubmit="return validasi_input(this)">
             <div class="box-body">
               <input type="hidden" name="id_hasil_tes" value="<?php echo $row['id_hasil_tes'];?>">
               <div class="form-group">
@@ -60,6 +60,17 @@ include "kiri.php";
     </section>
     <!-- /.content -->
   </div>
+
+  <script type="text/javascript">
+  function validasi_input(form){
+    if (form.nilaiTesWawancara.value == ""){
+      alert("kolom nilai wawancara masih kosong");
+      form.nilaiTesWawancara.focus();
+      return (false);
+    }
+  return (true);
+  }
+  </script>
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0

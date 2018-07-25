@@ -19,9 +19,10 @@
       <th><center>Status</center></th>
     </tr>
     <?php
+  $tahun = $_GET['tahun'];
   include "koneksi.php";
   $no = 1;
-  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes");
+  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE tahun='$tahun'");
   while ($result = mysqli_fetch_assoc($query)) {
   ?>
           <tr>
