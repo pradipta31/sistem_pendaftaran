@@ -4,9 +4,9 @@ include "kiri.php";
 <?php
   include 'koneksi.php';
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
-  if(isset($_GET['tahun'])){
-    $year = date('Y');
-    $year = $_GET['tahun'];
+  $year = date('Y');
+  if(isset($_POST['tahun'])){
+    $year = $_POST['tahun'];
   }
   $qGetDate = "SELECT DISTINCT tgl_pendaftaran as tgl_pendaftaran FROM peserta ORDER BY YEAR(tgl_pendaftaran) ASC";
 
@@ -39,26 +39,26 @@ include "kiri.php";
             <div class="box-body">
               <div class="row">
                 <div class="col-md-3">
-                  <form class="" action="" method="GET" id="frmTahun" name="frmTahun">
+                  <form class="" action="" method="POST" id="frmTahun" name="frmTahun">
                     <select class="form-control" name="tahun" id="getData">
                       <option value="1" disabled>-- Pilih Tahun --</option>
-                      <option value="2017">2017</option>
+                      <!-- <option value="2017">2017</option>
                       <option value="2018">2018</option>
-                      <option value="2019">2019</option>
+                      <option value="2019">2019</option> -->
                       <?php
-                      // foreach($result as $row)
-                      // {
-                      //  $date = $row['tgl_pendaftaran'];
-                      //  $date = date("Y", strtotime($date));
-                      //  echo '<option value="'.$date.'">'.$date.'</option>';
-                      // }
+                      foreach($result as $row)
+                      {
+                       $date = $row['tgl_pendaftaran'];
+                       $date = date("Y", strtotime($date));
+                       echo '<option value="'.$date.'">'.$date.'</option>';
+                      }
                       ?>
                     </select>
-                    <input type="submit" name="submit" id="submit" value="Generate">
+                    <!-- <input type="submit" name="submit" id="submit" value="Generate"> -->
                   </form>
                 </div>
               </div>
-              <canvas id="chart"> </canvas>
+              <canvas id="chart" height="100px"> </canvas>
               <br>
             </div>
           </div>
@@ -91,7 +91,7 @@ include "kiri.php";
       });
     });
     $('#getData').change(function(){
-      document.getElementById('submit').click();
+      $('#frmTahun').submit();
     });
 </script>
 <?php

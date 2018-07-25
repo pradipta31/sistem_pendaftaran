@@ -1,6 +1,6 @@
 <?php
-  include 'kiri.php';
- ?>
+include 'kiri.php';
+?>
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content">
@@ -13,8 +13,7 @@
         </div>
       </div>
     </section>
-
-</div>
-<?php
-  include 'bawah.php';
- ?>
+  </div>
+  <?php
+    include 'bawah.php';
+   ?>

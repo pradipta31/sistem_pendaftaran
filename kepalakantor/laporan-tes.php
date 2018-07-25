@@ -1,86 +1,95 @@
 <?php
 include "kiri.php";
-include "koneksi.php";
-$lulus = $koneksi->query("SELECT * FROM hasil_tes WHERE status ='Lulus'");
-$tdklulus = $koneksi->query("SELECT * FROM hasil_tes WHERE status ='Tidak Lulus'");
+?>
+<?php
+  include 'koneksi.php';
+  $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
+  $year = date('Y');
+  if(isset($_GET['tahun'])){
+    $year = $_GET['tahun'];
+  }
+  $qGetDate = "SELECT DISTINCT tahun as tahun FROM hasil_tes ORDER BY tahun ASC";
 
-$jumlah_lulus= mysqli_num_rows($lulus);
-$jumlah_tidaklulus= mysqli_num_rows($tdklulus);
+  $qGetChartByYear = "SELECT SUM(CASE WHEN status = 'Lulus' THEN 1 ELSE 0 END) AS a, SUM(CASE WHEN status = 'Tidak Lulus' THEN 1 ELSE 0 END) AS b FROM hasil_tes WHERE tahun LIKE '$year%'";
 
+  $rChart = $connect->query($qGetChartByYear);
 
- ?>
+  $statement = $connect->prepare($qGetDate);
+  // $statement = $connect->prepare($qGetChartByYear);
+  $statement->execute();
 
- <html>
-     <script type="text/javascript" src="loader.js"></script>
-     <script type="text/javascript">
-       google.charts.load('current', {'packages':['corechart']});
-       google.charts.setOnLoadCallback(drawChart);
+  $result = $statement->fetchAll();
 
-       function drawChart() {
+?>
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+      Data Peserta
+      </h1>
+    </section>
 
-         var data = google.visualization.arrayToDataTable([
-           ['Task', 'Hours per Day'],
-           ['Lulus',     <?php echo $jumlah_lulus;?>],
-           ['Tidak Lulus',      <?php echo $jumlah_tidaklulus;?>],
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Data Hasil Tes Peserta</h3>
+            </div>
 
-
-         ]);
-
-         var options = {
-           title: 'Laporan '
-         };
-
-         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-         chart.draw(data);
-       }
-     </script>
-   <body>
-
-   </body>
- </html>
-
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="background-color: white">
-  <!-- Content Header (Page header) -->
-  <div class="text-center" style="margin-top: -20px">
-      <h2>Laporan Data Hasil Peserta</h2>
-  </div>
-  <div class="col-md-12">
-    <div class="col-md-2">
-      <div class="box-default">
-        <div class="box-body">
-          <div class="form-group">
-            <select name="tahun" class="form-control">
-              <?php
-              $mulai= date('Y') - 10;
-              for($i = $mulai;$i<$mulai + 50;$i++){
-                  $sel = $i == date('Y') ? ' selected="selected"' : '';
-                  echo '<option value="'.$i.'"'.$sel.'>'.$i.'</option>';
-              }
-              ?>
-            </select>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-3">
+                  <form class="" action="" method="GET" id="frmTahun" name="frmTahun" enctype="multipart/form-data">
+                    <select class="form-control" name="tahun" id="getData">
+                      <option value="1" disabled>-- Pilih Tahun --</option>
+                      <!-- <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option> -->
+                      <?php
+                      foreach($result as $row)
+                      {
+                       echo '<option value="'.$row['tahun'].'">'.$row['tahun'].'</option>';
+                      }
+                      ?>
+                    </select>
+                  </form>
+                </div>
+              </div>
+              <canvas id="chart" height="100px"> </canvas>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-      <div class="col-md-2">
-      </div>
+    </section>
   </div>
-  <!-- <select class="form-control form-control-lg">
-  <option>Large select</option>
-</select>
-<select class="form-control">
-  <option>Default select</option>
-</select> -->
-  <section class="content">
-    <div class="row">
-      <div id="piechart" style="width: 100%; height: 640px; margin-left: 150px; margin-top: 30px">
-      </div>
-    </div>
-  </section>
-</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script>
 
+    $(function(){
+      var dataChart = JSON.parse('<?php echo json_encode($rChart->fetch(PDO::FETCH_ASSOC)); ?>');
+      var ctx = document.getElementById('chart').getContext('2d');
+      var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'pie',
+
+          // The data for our dataset
+          data: {
+              labels: ["Lulus", "Tidak Lulus"],
+              datasets: [{
+                  label: "Data Hasil Tes Peserta",
+                  backgroundColor: ['green','red'],
+                  data: [dataChart['a'],dataChart['b']],
+              }]
+          },
+
+          // Configuration options go here
+          options: {}
+      });
+    });
+    $('#getData').change(function(){
+      $('#frmTahun').submit();
+    });
+</script>
 <?php
   include 'bawah.php';
 ?>

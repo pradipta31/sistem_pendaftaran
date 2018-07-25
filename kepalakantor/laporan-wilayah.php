@@ -47,7 +47,7 @@ include "kiri.php";
             <div class="box-body">
               <div class="row">
                 <div class="col-md-3">
-                  <form class="" action="" method="GET" id="frmTahun" name="frmTahun">
+                  <form class="" action="" method="GET" id="frmTahun" name="frmTahun" enctype="multipart/form-data">
                     <select class="form-control" name="tahun" id="getData">
                       <option value="1" disabled>-- Pilih Tahun --</option>
                       <option value="2017">2017</option>
@@ -62,11 +62,11 @@ include "kiri.php";
                       // }
                       ?>
                     </select>
-                    <input type="submit" name="submit" id="submit" value="Generate">
+                    <!-- <input type="submit" name="submit" id="submit" value="Generate"> -->
                   </form>
                 </div>
               </div>
-              <canvas id="chart"> </canvas>
+              <canvas id="chart" height="100px"> </canvas>
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@ include "kiri.php";
       });
     });
     $('#getData').change(function(){
-      document.getElementById('submit').click();
+      $('#frmTahun').submit();
     });
 </script>
 <?php

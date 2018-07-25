@@ -1,95 +1,100 @@
 <?php
 include "kiri.php";
-include "koneksi.php";
-$nilai1 = $koneksi->query("SELECT * FROM hasil_tes WHERE nilai_tulis>=0 AND nilai_tulis<=20");
-$nilai2 = $koneksi->query("SELECT * FROM hasil_tes WHERE nilai_tulis>=21 AND nilai_tulis<=40");
-$nilai3 = $koneksi->query("SELECT * FROM hasil_tes WHERE nilai_tulis>=41 AND nilai_tulis<=60");
-$nilai4 = $koneksi->query("SELECT * FROM hasil_tes WHERE nilai_tulis>=61 AND nilai_tulis<=80");
-$nilai5 = $koneksi->query("SELECT * FROM hasil_tes WHERE nilai_tulis>=81 AND nilai_tulis<=100");
+?>
+<?php
+include 'koneksi.php';
+$connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
+$year = date('Y');
+if(isset($_GET['tahun'])){
+  $year = $_GET['tahun'];
+}
+$qGetDate = "SELECT DISTINCT tahun as tahun FROM hasil_tes ORDER BY tahun ASC";
 
+  $qGetChartByYear = "SELECT SUM(CASE WHEN nilai_tulis < 20 THEN 1 ELSE 0 END) AS a,
+  SUM(CASE WHEN nilai_tulis BETWEEN 21 AND 40 THEN 1 ELSE 0 END) AS b,
+  SUM(CASE WHEN nilai_tulis BETWEEN 41 AND 60 THEN 1 ELSE 0 END) AS c,
+  SUM(CASE WHEN nilai_tulis BETWEEN 61 AND 80 THEN 1 ELSE 0 END) AS d,
+  SUM(CASE WHEN nilai_tulis BETWEEN 81 AND 100 THEN 1 ELSE 0 END) AS e FROM hasil_tes WHERE tahun LIKE '$year%'";
 
+  $rChart = $connect->query($qGetChartByYear);
 
-$jumlah_nilai1= mysqli_num_rows($nilai1);
-$jumlah_nilai2= mysqli_num_rows($nilai2);
-$jumlah_nilai3= mysqli_num_rows($nilai3);
-$jumlah_nilai4= mysqli_num_rows($nilai4);
-$jumlah_nilai5= mysqli_num_rows($nilai5);
+  $statement = $connect->prepare($qGetDate);
+  // $statement = $connect->prepare($qGetChartByYear);
+  $statement->execute();
 
+  $result = $statement->fetchAll();
 
- ?>
+?>
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+      Data Peserta
+      </h1>
+    </section>
 
- <html>
-   <head>
-     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-   <script type="text/javascript">
-     google.charts.load("current", {packages:['corechart']});
-     google.charts.setOnLoadCallback(drawChart);
-     function drawChart() {
-       var data = google.visualization.arrayToDataTable([
-         ["Element", "Jumlah", { role: "style" } ],
-         ['Nilai<20',     <?php echo $jumlah_nilai1;?>, 'color: gray'],
-         ['Nilai<40',      <?php echo $jumlah_nilai2;?>, 'color: #76A7FA'],
-         ['Nilai<60',     <?php echo $jumlah_nilai3;?>, 'color: black'],
-         ['Nilai<80',      <?php echo $jumlah_nilai4;?>, 'color: #76A7FA'],
-         ['Nilai<100',     <?php echo $jumlah_nilai5;?>, 'color: black'],
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Data Nilai Tes Online Peserta</h3>
+            </div>
 
-       ]);
-
-       var view = new google.visualization.DataView(data);
-       view.setColumns([0, 1,
-                        { calc: "stringify",
-                          sourceColumn: 1,
-                          type: "string",
-                          role: "annotation" },
-                        2]);
-
-       var options = {
-         title: "",
-         width: 700,
-         height: 500,
-         bar: {groupWidth: "95%"},
-         legend: { position: "none" },
-       };
-       var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-       chart.draw(view, options);
-   }
-   </script>
-</html>
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="background-color: white">
-  <!-- Content Header (Page header) -->
-  <div class="text-center" style="margin-top: -20px">
-      <h2>Laporan Data Nilai</h2>
-    </div>
-    <div class="col-md-12">
-      <div class="col-md-2">
-        <div class="box-default">
-          <div class="box-body">
-            <div class="form-group">
-              <select name="tahun" class="form-control">
-                <?php
-                $mulai= date('Y') - 10;
-                for($i = $mulai;$i<$mulai + 50;$i++){
-                    $sel = $i == date('Y') ? ' selected="selected"' : '';
-                    echo '<option value="'.$i.'"'.$sel.'>'.$i.'</option>';
-                }
-                ?>
-              </select>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-3">
+                  <form class="" action="" method="GET" id="frmTahun" name="frmTahun" enctype="multipart/form-data">
+                    <select class="form-control" name="tahun" id="getData">
+                      <option value="1" disabled>-- Pilih Tahun --</option>
+                      <!-- <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option> -->
+                      <?php
+                      foreach($result as $row)
+                      {
+                       echo '<option value="'.$row['tahun'].'">'.$row['tahun'].'</option>';
+                      }
+                      ?>
+                    </select>
+                  </form>
+                </div>
+              </div>
+              <canvas id="chart" height="100px"> </canvas>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-2">
-      </div>
+    </section>
   </div>
-  <section class="content">
-    <div class="row">
-      <div id="columnchart_values" style="width: 100%; height: 640px; margin-left: 200px; margin-top: 30px">
-      </div>
-    </div>
-  </section>
-</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script>
 
+    $(function(){
+      var dataChart = JSON.parse('<?php echo json_encode($rChart->fetch(PDO::FETCH_ASSOC)); ?>');
+      var ctx = document.getElementById('chart').getContext('2d');
+      var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'bar',
+
+          // The data for our dataset
+          data: {
+              labels: ["0 - 20", "21 - 40", "41 - 60", "61 - 80", "81 - 100"],
+              datasets: [{
+                  label: "Data Nilai Tes Online",
+                  backgroundColor: 'rgb(35, 13, 143)',
+                  borderColor: 'rgb(35, 13, 143)',
+                  data: [dataChart['a'],dataChart['b'],dataChart['c'],dataChart['d'],dataChart['e']],
+              }]
+          },
+
+          // Configuration options go here
+          options: {}
+      });
+    });
+    $('#getData').change(function(){
+      $('#frmTahun').submit();
+    });
+</script>
 <?php
   include 'bawah.php';
 ?>
