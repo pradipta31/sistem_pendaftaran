@@ -2,9 +2,11 @@
   include 'atas-peserta.php';
   include 'koneksi.php';
   $query = mysqli_query($koneksi, "SELECT * FROM peserta WHERE nomor_peserta = '$nomor'");
-  $query1 = mysqli_query($koneksi, "SELECT * FROM jurusan WHERE nomor_peserta = '$nomor'");
-  $row1 = mysqli_fetch_array($query1);
   $row = mysqli_fetch_assoc($query);
+  $id = $row['id_peserta'];
+  $query1 = mysqli_query($koneksi, "SELECT * FROM jurusan WHERE id_peserta = '$id'");
+  $row1 = mysqli_fetch_array($query1);
+
 ?>
 <style media="screen">
   .style-line{

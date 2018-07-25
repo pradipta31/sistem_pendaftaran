@@ -1,5 +1,7 @@
 <?php
   include 'atas-peserta.php';
+  $q = mysqli_query($koneksi,"SELECT * FROM peserta WHERE nomor_peserta = '$nomor'");
+  $ro = mysqli_fetch_assoc($q);
 ?>
           <section id="content">
               <div class="row section-title-container">
@@ -69,7 +71,7 @@
                       <table width="100%" border="0">
                       <input type="hidden" name="id_soal[]" value=<?php echo $id;?>>
                       <input type="hidden" name="jumlah" value=<?php echo $jumlah;?>>
-                      <input type="hidden" name="nomor_peserta" value=<?php echo $nomor; ?>>
+                      <input type="hidden" name="id_peserta" value=<?php echo $ro['id_peserta']; ?>>
                         <tr>
                               <td width="21" height="21"><font color="#000000" class="font-soal"><?php echo $urut=$urut+1; ?>.</font></td>
                               <td><font color="black" class="font-soal"><?php echo "$soal"; ?></font></td>

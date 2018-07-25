@@ -61,9 +61,10 @@
                                   move_uploaded_file($lokasi_file,$direktori);
                                   $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp,file)
                                   VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp','$nama_file')"; //menambah data
-                                  $query2 = "insert into jurusan (nomor_peserta,jurusan) values ('$nomor_peserta','$jurusan')";
-                                  $hasil = mysqli_query($koneksi,$query1); // menjalankan query
-                                  $hasil2 = mysqli_query($koneksi, $query2);
+                                  $mysqli = $koneksi->query($query1);
+
+                                  $query2 = "insert into jurusan (id_peserta,jurusan) values ($koneksi->insert_id,'$jurusan')";
+                                  $mysqli1 = $koneksi->query($query2);
                                 }
                                     ?>
                                   <div class="col-md-12">

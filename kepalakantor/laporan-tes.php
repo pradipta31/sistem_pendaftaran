@@ -41,7 +41,7 @@ include "kiri.php";
                 <div class="col-md-3">
                   <form class="" action="" method="GET" id="frmTahun" name="frmTahun" enctype="multipart/form-data">
                     <select class="form-control" name="tahun" id="getData">
-                      <option value="1" disabled>-- Pilih Tahun --</option>
+                      <option>-- Pilih Tahun --</option>
                       <!-- <option value="2017">2017</option>
                       <option value="2018">2018</option>
                       <option value="2019">2019</option> -->
@@ -56,6 +56,10 @@ include "kiri.php";
                 </div>
               </div>
               <canvas id="chart" height="100px"> </canvas>
+              <br>
+              <div class="text-center">
+                <h4>Laporan Data Hasil Tes Peserta : <?php echo $row['tahun'];?></h4>
+              </div>
             </div>
           </div>
         </div>

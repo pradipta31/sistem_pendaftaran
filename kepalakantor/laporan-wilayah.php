@@ -49,17 +49,17 @@ include "kiri.php";
                 <div class="col-md-3">
                   <form class="" action="" method="GET" id="frmTahun" name="frmTahun" enctype="multipart/form-data">
                     <select class="form-control" name="tahun" id="getData">
-                      <option value="1" disabled>-- Pilih Tahun --</option>
-                      <option value="2017">2017</option>
+                      <option>-- Pilih Tahun --</option>
+                      <!-- <option value="2017">2017</option>
                       <option value="2018">2018</option>
-                      <option value="2019">2019</option>
+                      <option value="2019">2019</option> -->
                       <?php
-                      // foreach($result as $row)
-                      // {
-                      //  $date = $row['tgl_pendaftaran'];
-                      //  $date = date("Y", strtotime($date));
-                      //  echo '<option value="'.$date.'">'.$date.'</option>';
-                      // }
+                      foreach($result as $row)
+                      {
+                       $date = $row['tgl_pendaftaran'];
+                       $date = date("Y", strtotime($date));
+                       echo '<option value="'.$date.'">'.$date.'</option>';
+                      }
                       ?>
                     </select>
                     <!-- <input type="submit" name="submit" id="submit" value="Generate"> -->
@@ -87,7 +87,7 @@ include "kiri.php";
           data: {
               labels: ["Gianyar", "Denpasar", "Badung", "Negara", "Karangasem", "Bangli", "Buleleng", "Tabanan", "Klungkung"],
               datasets: [{
-                  label: "Data Wilayah",
+                  label: "Data Wilayah <?php echo $date; ?>",
                   backgroundColor: 'rgb(35, 13, 143)',
                   borderColor: 'rgb(35, 13, 143)',
                   data: [dataChart['a'],dataChart['b'],dataChart['c'],dataChart['d'],

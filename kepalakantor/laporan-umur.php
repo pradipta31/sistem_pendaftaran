@@ -81,7 +81,7 @@ include "kiri.php";
           data: {
               labels: ["<20", "21 - 23", "24 - 26", "27 - 30"],
               datasets: [{
-                  label: "Data Umur",
+                  label: "Data Umur <?php echo $date; ?>",
                   backgroundColor: 'rgb(35, 13, 143)',
                   borderColor: 'rgb(35, 13, 143)',
                   data: [dataChart['a'],dataChart['b'],dataChart['c'],dataChart['d']],
