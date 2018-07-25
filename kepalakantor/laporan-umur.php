@@ -8,7 +8,7 @@ include "kiri.php";
     $year = date('Y');
     $year = $_GET['tahun'];
   }
-  $qGetDate = "SELECT DISTINCT tgl_pendaftaran as tgl_pendaftaran FROM peserta ORDER BY YEAR(tgl_pendaftaran) ASC";
+  $qGetDate = "SELECT DISTINCT tgl_pendaftaran AS tgl_pendaftaran FROM peserta ORDER BY YEAR(tgl_pendaftaran) ASC";
 
   $qGetChartByYear = "SELECT SUM(CASE WHEN umur <= 20 THEN 1 ELSE 0 END) AS a,
   SUM(CASE WHEN umur BETWEEN 21 AND 23 THEN 1 ELSE 0 END) AS b,
@@ -44,15 +44,15 @@ include "kiri.php";
                 <div class="col-md-3">
                   <form class="" action="" method="GET" id="frmTahun" name="frmTahun">
                     <select class="form-control" name="tahun" id="getData">
-                      <option value="1" disabled>-- Pilih Tahun --</option>
+                      <option>-- Pilih Tahun --</option>
                       <!-- <option value="2017">2017</option>
                       <option value="2018">2018</option>
                       <option value="2019">2019</option> -->
                       <?php
                       foreach($result as $row)
                       {
-                       $date = $row['tgl_pendaftaran'];
-                       $date = date("Y", strtotime($date));
+                       $a = $row['tgl_pendaftaran'];
+                       $date = date('Y',strtotime($a));
                        echo '<option value="'.$date.'">'.$date.'</option>';
                       }
                       ?>
@@ -79,7 +79,7 @@ include "kiri.php";
 
           // The data for our dataset
           data: {
-              labels: ["<20", "21 - 22", "23 - 26", "27 - 30"],
+              labels: ["<20", "21 - 23", "24 - 26", "27 - 30"],
               datasets: [{
                   label: "Data Umur",
                   backgroundColor: 'rgb(35, 13, 143)',
