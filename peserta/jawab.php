@@ -62,14 +62,14 @@ include 'koneksi.php';
         $tanggal = $fetch['tgl_pendaftaran'];
         $nama = $fetch['nama'];
         $tahun = date("Y",strtotime($tanggal));
-        $implode_id_soal = implode(',',$id_soal);
+        // $implode_id_soal = implode(',',$id_soal);
         $implode_pilihan = implode(',',$pilihan);
 
         $cek = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE nomor_peserta='$nomor'");
         if (mysqli_num_rows($cek) == 0) {
           $query = "INSERT INTO hasil_tes (id_peserta,nomor_peserta,nama,tahun,nilai_tulis) VALUES ('$id_peserta','$nomor','$nama','$tahun','$score')";
           $syntax = mysqli_query($koneksi,$query);
-          $query1 = "INSERT INTO tes (id_peserta,id_hasil_tes,id_soal,pilihan,benar,salah,kosong) VALUES ('$id_peserta','$koneksi->insert_id','$implode_id_soal','$implode_pilihan','$benar','$salah','$kosong')";
+          $query1 = "INSERT INTO tes (id_peserta,id_hasil_tes,pilihan,benar,salah,kosong) VALUES ('$id_peserta','$koneksi->insert_id','$implode_pilihan','$benar','$salah','$kosong')";
           $syntax1 = mysqli_query($koneksi,$query1);
           echo "<script>alert('Jawaban anda berhasil disimpan!');
             window.location.href='profil.php';
