@@ -1,7 +1,5 @@
 <?php
   include 'atas-peserta.php';
-  session_start();
-  $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
 ?>
           <section id="content">
               <div class="row section-title-container">
