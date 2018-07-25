@@ -27,9 +27,6 @@ include "kiri.php";
 
             </div>
             <!-- /.box-header -->
-            <div class="btn btn-lg">
-              <a href="print-hasil.php" class="btn btn-primary">Cetak Hasil Tes</a>
-            </div>
             <input type="hidden" name="hidden_hasil" id="hidden_hasil" />
             <div class="btn btn-xs">
               <select name="multi_search_filter" id="multi_search_filter" class="form-control">
@@ -41,6 +38,9 @@ include "kiri.php";
                }
                ?>
                </select>
+            </div>
+            <div class="btn btn-lg" id="btn">
+
             </div>
             <div class="table-responsive">
               <table class="table table-striped table-bordered">
@@ -72,6 +72,7 @@ include "kiri.php";
     $(document).ready(function(){
 
      load_data();
+     loadData();
 
      function load_data(query='')
      {
@@ -85,11 +86,24 @@ include "kiri.php";
        }
       })
      }
+   function loadData(query='')
+   {
+    $.ajax({
+     url:"ajax-hasil.php",
+     method:"POST",
+     data:{query:query},
+     success:function(data)
+     {
+      $('#btn').html(data);
+    }
+    })
+   }
 
      $('#multi_search_filter').change(function(){
       $('#hidden_hasil').val($('#multi_search_filter').val());
       var query = $('#hidden_hasil').val();
       load_data(query);
+      loadData(query);
      });
     });
 </script>

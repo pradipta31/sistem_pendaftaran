@@ -37,7 +37,7 @@ if( strlen($username) < 2 )
         exit();
 
     }else{
-        $error = 'Username dan Password Tidak ditemukan';
+        $error = 'Login gagal';
     }
 
 }
