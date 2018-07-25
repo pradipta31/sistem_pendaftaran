@@ -56,6 +56,10 @@ include "kiri.php";
                 </div>
               </div>
               <canvas id="chart" height="100px"> </canvas>
+              <br>
+              <div class="text-center">
+                <h4>Laporan Data Hasil Tes Peserta : <?php echo $row['tahun'];?></h4>
+              </div>
             </div>
           </div>
         </div>

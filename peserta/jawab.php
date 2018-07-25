@@ -27,6 +27,7 @@ include 'koneksi.php';
                 //mencocokan jawaban user dengan jawaban di database
                 $query=mysqli_query($koneksi,"select * from soal where id_soal='$nomor' and knc_jawaban='$jawaban'");
                 $cek = mysqli_num_rows($query);
+                $a = mysqli_fetch_array($query);
 
                 if($cek){
                     //jika jawaban cocok (benar)
@@ -55,18 +56,21 @@ include 'koneksi.php';
         session_start();//
 
         $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
-        $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
         $sql = mysqli_query($koneksi, "SELECT * FROM peserta WHERE nomor_peserta = '$nomor'");
         $fetch = mysqli_fetch_assoc($sql);
+        $id_peserta = $fetch['id_peserta'];
         $tanggal = $fetch['tgl_pendaftaran'];
+        $nama = $fetch['nama'];
         $tahun = date("Y",strtotime($tanggal));
+        // $implode_id_soal = implode(',',$id_soal);
+        $implode_pilihan = implode(',',$pilihan);
 
         $cek = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE nomor_peserta='$nomor'");
         if (mysqli_num_rows($cek) == 0) {
-          $query = "INSERT INTO hasil_tes (nomor_peserta,nama,tahun,nilai_tulis) VALUES ('$nomor','$nama','$tahun','$score')";
+          $query = "INSERT INTO hasil_tes (id_peserta,nomor_peserta,nama,tahun,nilai_tulis) VALUES ('$id_peserta','$nomor','$nama','$tahun','$score')";
           $syntax = mysqli_query($koneksi,$query);
-
-
+          $query1 = "INSERT INTO tes (id_peserta,id_hasil_tes,pilihan,benar,salah,kosong) VALUES ('$id_peserta','$koneksi->insert_id','$implode_pilihan','$benar','$salah','$kosong')";
+          $syntax1 = mysqli_query($koneksi,$query1);
           echo "<script>alert('Jawaban anda berhasil disimpan!');
             window.location.href='profil.php';
           </script>";

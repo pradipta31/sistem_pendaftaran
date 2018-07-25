@@ -38,9 +38,14 @@
      <td><center>'.$row["nilai_wawancara"].'</td></center>
      <td><center>'.$row["total_nilai"].'</td></center>
      <td><center>'.$row["status"].'</td></center>
-     <td><center><a href="form-edit-hasil.php?id_hasil_tes='.$row["id_hasil_tes"].'"><i class="fa fa-edit"></i></a>
+     <td>
+     <center>
+     <a href="lihat-tes.php?id_hasil_tes='.$row["id_hasil_tes"].'"><i class="fa fa-eye"></i></a>
+     <a href="form-edit-hasil.php?id_hasil_tes='.$row["id_hasil_tes"].'"><i class="fa fa-edit"></i></a>
      <a href="hapus-hasil.php?id_hasil_tes='.$row["id_hasil_tes"].'"><i class="fa fa-trash"></i></a>
-     <a href="print-semua-hasil.php?id_hasil_tes='.$row['id_hasil_tes'].'"><i class="fa fa-print"></i></a></td><center>
+     <a href="print-semua-hasil.php?id_hasil_tes='.$row['id_hasil_tes'].'"><i class="fa fa-print"></i></a>
+     <center>
+     </td>
     </tr>
     ';
    }

@@ -87,7 +87,7 @@ include "kiri.php";
           data: {
               labels: ["Gianyar", "Denpasar", "Badung", "Negara", "Karangasem", "Bangli", "Buleleng", "Tabanan", "Klungkung"],
               datasets: [{
-                  label: "Data Wilayah",
+                  label: "Data Wilayah <?php echo $date; ?>",
                   backgroundColor: 'rgb(35, 13, 143)',
                   borderColor: 'rgb(35, 13, 143)',
                   data: [dataChart['a'],dataChart['b'],dataChart['c'],dataChart['d'],
