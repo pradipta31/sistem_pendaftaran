@@ -1,11 +1,7 @@
 <?php
 include 'kiri.php';
-
-include "koneksi.php";
-
-$date = date_create("2017-12-31");
-$date_format = date_format($date,"Y/m/d");
-
+include 'koneksi.php';
+$connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
 $tgl1 = $koneksi->query("SELECT * FROM peserta WHERE tgl_pendaftaran >= '2017-01-01' AND tgl_pendaftaran <= '2017-12-31'");
 $tgl2 = $koneksi->query("SELECT * FROM peserta WHERE tgl_pendaftaran >= '2018-01-01' AND tgl_pendaftaran <= '2018-12-31'");
 $tgl3 = $koneksi->query("SELECT * FROM peserta WHERE tgl_pendaftaran >= '2019-01-01' AND tgl_pendaftaran <= '2019-12-31'");
@@ -20,74 +16,70 @@ $count_tanggal4 = mysqli_num_rows($tgl4);
 $count_tanggal5 = mysqli_num_rows($tgl5);
 $count_tanggal6 = mysqli_num_rows($tgl6);
 
+$qGetChartByYear = "SELECT SUM(CASE WHEN tgl_pendaftaran BETWEEN = '2017-01-01' AND '2017-12-31' THEN 1 ELSE 0 END) AS a,
+SUM(CASE WHEN tgl_pendaftaran BETWEEN = '2018-01-01' AND '2018-12-31' THEN 1 ELSE 0 END) AS b,
+SUM(CASE WHEN tgl_pendaftaran BETWEEN = '2019-01-01' AND '2019-12-31' THEN 1 ELSE 0 END) AS c,
+SUM(CASE WHEN tgl_pendaftaran BETWEEN = '2020-01-01' AND '2020-12-31' THEN 1 ELSE 0 END) AS d,
+SUM(CASE WHEN tgl_pendaftaran BETWEEN = '2021-01-01' AND '2021-12-31' THEN 1 ELSE 0 END) AS e,
+SUM(CASE WHEN tgl_pendaftaran BETWEEN = '2022-01-01' AND '2022-12-31' THEN 1 ELSE 0 END) AS f,
+SUM(CASE WHEN tgl_pendaftaran BETWEEN = '2023-01-01' AND '2023-12-31' THEN 1 ELSE 0 END) AS g,
+SUM(CASE WHEN tgl_pendaftaran BETWEEN = '2024-01-01' AND '2024-12-31' THEN 1 ELSE 0 END) AS h FROM peserta";
 
+$rChart = $connect->query($qGetChartByYear);
  ?>
 
- <html>
-   <head>
-     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-   <script type="text/javascript">
-     google.charts.load("current", {packages:['corechart']});
-     google.charts.setOnLoadCallback(drawChart);
-     function drawChart() {
-       var data = google.visualization.arrayToDataTable([
-         ["Element", "Jumlah", { role: "style" } ],
-         ['2017',     <?php echo $count_tanggal1;?>, 'color: gray'],
-         ['2018',      <?php echo $count_tanggal2;?>, 'color: #76A7FA'],
-         ['2019',     <?php echo $count_tanggal3;?>, 'color: black'],
-         ['2020',      <?php echo $count_tanggal4;?>, 'color: #76A7FA'],
-         ['2021',     <?php echo $count_tanggal5;?>, 'color: black'],
-         ['2022',     <?php echo $count_tanggal6;?>, 'color: blue'],
+ <div class="content-wrapper">
+   <section class="content-header">
+     <h1>
+     Data Peserta
+     </h1>
+   </section>
 
-       ]);
+   <section class="content">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="box">
+           <div class="box-header with-border">
+             <h3 class="box-title">Laporan Data Peserta</h3>
+           </div>
 
-       var view = new google.visualization.DataView(data);
-       view.setColumns([0, 1,
-                        { calc: "stringify",
-                          sourceColumn: 1,
-                          type: "string",
-                          role: "annotation" },
-                        2]);
+           <div class="box-body">
+             <canvas id="chart" height="100px"> </canvas>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+ </div>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+ <script>
+ var ctx = document.getElementById('chart').getContext('2d');
+ var chart = new Chart(ctx, {
+     // The type of chart we want to create
+     type: 'bar',
 
-       var options = {
-         title: "",
-         width: 700,
-         height: 500,
-         bar: {groupWidth: "95%"},
-         legend: { position: "none" },
-       };
-       var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-       chart.draw(view, options);
-   }
-   </script>
-</html>
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="background-color: white">
-  <!-- Content Header (Page header) -->
-  <div class="text-center" style="margin-top: -20px">
-      <h2>Laporan Data Peserta</h2>
-    </div>
-    <div class="col-md-12">
-      <div class="col-md-2">
-        <div class="box-default">
-          <div class="box-body">
-            <div class="form-group">
+     // The data for our dataset
+     data: {
+         labels: ["2017", "2018", "2019", "2020", "2021", "2022", "2023"],
+         datasets: [{
+             label: "Data Peserta Per tahun",
+             backgroundColor: 'rgb(35, 13, 143)',
+             borderColor: 'rgb(35, 13, 143)',
+             data: [
+               <?= $count_tanggal1;?>,
+               <?= $count_tanggal2;?>,
+               <?= $count_tanggal3;?>,
+               <?= $count_tanggal4;?>,
+               <?= $count_tanggal5;?>,
+               <?= $count_tanggal6;?>
+             ],
+         }]
+     },
 
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-2">
-      </div>
-  </div>
-  <section class="content">
-    <div class="row">
-      <div id="columnchart_values" style="width: 100%; height: 640px; margin-left: 200px; margin-top: 30px">
-      </div>
-    </div>
-  </section>
-</div>
+     // Configuration options go here
+     options: {}
+ });
+</script>
 
 <?php
   include 'bawah.php';

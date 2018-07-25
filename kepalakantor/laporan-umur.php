@@ -45,23 +45,22 @@ include "kiri.php";
                   <form class="" action="" method="GET" id="frmTahun" name="frmTahun">
                     <select class="form-control" name="tahun" id="getData">
                       <option value="1" disabled>-- Pilih Tahun --</option>
-                      <option value="2017">2017</option>
+                      <!-- <option value="2017">2017</option>
                       <option value="2018">2018</option>
-                      <option value="2019">2019</option>
+                      <option value="2019">2019</option> -->
                       <?php
-                      // foreach($result as $row)
-                      // {
-                      //  $date = $row['tgl_pendaftaran'];
-                      //  $date = date("Y", strtotime($date));
-                      //  echo '<option value="'.$date.'">'.$date.'</option>';
-                      // }
+                      foreach($result as $row)
+                      {
+                       $date = $row['tgl_pendaftaran'];
+                       $date = date("Y", strtotime($date));
+                       echo '<option value="'.$date.'">'.$date.'</option>';
+                      }
                       ?>
                     </select>
-                    <input type="submit" name="submit" id="submit" value="Generate">
                   </form>
                 </div>
               </div>
-              <canvas id="chart"> </canvas>
+              <canvas id="chart" height="100px"> </canvas>
             </div>
           </div>
         </div>
@@ -94,7 +93,7 @@ include "kiri.php";
       });
     });
     $('#getData').change(function(){
-      document.getElementById('submit').click();
+      $('#frmTahun').submit();
     });
 </script>
 <?php
