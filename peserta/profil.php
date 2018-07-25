@@ -1,14 +1,6 @@
 <?php
   include 'atas-peserta.php';
   include 'koneksi.php';
-  session_start();
-  if( !isset($_SESSION['email_user']) )
-  {
-      exit();
-    }
-  $email = ( isset($_SESSION['email_user']) ) ? $_SESSION['email_user'] : '';
-  $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
-  $id = ( isset($_SESSION['id_user']) ) ? $_SESSION['id_user'] : '';
   $query = mysqli_query($koneksi, "SELECT * FROM peserta WHERE nomor_peserta = '$nomor'");
   $query1 = mysqli_query($koneksi, "SELECT * FROM jurusan WHERE nomor_peserta = '$nomor'");
   $row1 = mysqli_fetch_array($query1);

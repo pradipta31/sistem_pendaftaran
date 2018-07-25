@@ -1,8 +1,6 @@
 <?php
   include 'atas-peserta.php';
   include 'koneksi.php';
-  session_start();
-  $nomor = (isset($_SESSION['nomor'])) ? $_SESSION['nomor'] : '';
   $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE nomor_peserta='$nomor'");
   $row = mysqli_fetch_assoc($query);
 ?>
