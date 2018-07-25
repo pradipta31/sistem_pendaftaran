@@ -32,7 +32,7 @@ include "kiri.php";
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-      Data Peserta
+      Laporan Data Wilayah
       </h1>
     </section>
 
@@ -41,7 +41,7 @@ include "kiri.php";
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Data Wilayah Peserta</h3>
+              <h3 class="box-title"></h3>
             </div>
 
             <div class="box-body">
@@ -49,17 +49,17 @@ include "kiri.php";
                 <div class="col-md-3">
                   <form class="" action="" method="GET" id="frmTahun" name="frmTahun" enctype="multipart/form-data">
                     <select class="form-control" name="tahun" id="getData">
-                      <option value="1" disabled>-- Pilih Tahun --</option>
-                      <option value="2017">2017</option>
+                      <option>-- Pilih Tahun --</option>
+                      <!-- <option value="2017">2017</option>
                       <option value="2018">2018</option>
-                      <option value="2019">2019</option>
+                      <option value="2019">2019</option> -->
                       <?php
-                      // foreach($result as $row)
-                      // {
-                      //  $date = $row['tgl_pendaftaran'];
-                      //  $date = date("Y", strtotime($date));
-                      //  echo '<option value="'.$date.'">'.$date.'</option>';
-                      // }
+                       foreach($result as $row)
+                      {
+                       $date = $row['tgl_pendaftaran'];
+                      $date = date("Y", strtotime($date));
+                       echo '<option value="'.$date.'">'.$date.'</option>';
+                      }
                       ?>
                     </select>
                     <!-- <input type="submit" name="submit" id="submit" value="Generate"> -->

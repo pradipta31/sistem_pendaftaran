@@ -41,7 +41,7 @@ include "kiri.php";
                 <div class="col-md-3">
                   <form class="" action="" method="POST" id="frmTahun" name="frmTahun">
                     <select class="form-control" name="tahun" id="getData">
-                      <option value="1" disabled>-- Pilih Tahun --</option>
+                      <option>-- Pilih Tahun --</option>
                       <!-- <option value="2017">2017</option>
                       <option value="2018">2018</option>
                       <option value="2019">2019</option> -->

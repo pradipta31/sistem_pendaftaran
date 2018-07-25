@@ -10,7 +10,7 @@ if(isset($_GET['tahun'])){
 }
 $qGetDate = "SELECT DISTINCT tahun as tahun FROM hasil_tes ORDER BY tahun ASC";
 
-  $qGetChartByYear = "SELECT SUM(CASE WHEN nilai_tulis <= 20 THEN 1 ELSE 0 END) AS a,
+  $qGetChartByYear = "SELECT SUM(CASE WHEN nilai_tulis BETWEEN 1 AND 20 THEN 1 ELSE 0 END) AS a,
   SUM(CASE WHEN nilai_tulis BETWEEN 21 AND 40 THEN 1 ELSE 0 END) AS b,
   SUM(CASE WHEN nilai_tulis BETWEEN 41 AND 60 THEN 1 ELSE 0 END) AS c,
   SUM(CASE WHEN nilai_tulis BETWEEN 61 AND 80 THEN 1 ELSE 0 END) AS d,
@@ -28,7 +28,7 @@ $qGetDate = "SELECT DISTINCT tahun as tahun FROM hasil_tes ORDER BY tahun ASC";
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-      Data Peserta
+      Laporan Nilai Tes Online
       </h1>
     </section>
 
@@ -37,7 +37,7 @@ $qGetDate = "SELECT DISTINCT tahun as tahun FROM hasil_tes ORDER BY tahun ASC";
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Data Nilai Tes Online Peserta</h3>
+              <h3 class="box-title"></h3>
             </div>
 
             <div class="box-body">
@@ -72,6 +72,7 @@ $qGetDate = "SELECT DISTINCT tahun as tahun FROM hasil_tes ORDER BY tahun ASC";
     $(function(){
       var dataChart = JSON.parse('<?php echo json_encode($rChart->fetch(PDO::FETCH_ASSOC)); ?>');
       var ctx = document.getElementById('chart').getContext('2d');
+      console.log(dataChart);
       var chart = new Chart(ctx, {
           // The type of chart we want to create
           type: 'bar',
