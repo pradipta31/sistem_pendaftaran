@@ -116,9 +116,7 @@ include "kiri.php";
             <!-- /.col -->
           </div>
           <button type="button" class="btn btn-default" name="button" onclick="window.location='lihat-peserta.php'">Kembali</button>
-          <div class="btn btn-lg" class="btn btn-primary">
-            <a href="print-peserta.php?id=<?php echo "$row[id]"; ?>"><?php echo $row1['nomor']; ?>
-          </div>        </div>
+        </div>
       </div>
       <!-- /.row -->
     </section>
