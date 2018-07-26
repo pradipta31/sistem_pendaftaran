@@ -16,7 +16,7 @@
                               <?php
                               include 'koneksi.php';
                               $tgl_pendaftaran = date("Y-m-d"); // menampilkan tanggal pendaftaran peserta hari ini
-
+                              $d = date("Y");
                               $nomor_peserta = $_POST['nomor_peserta']; //mengambil data nomor peserta
                               $jurusan = $_POST['jurusan'];
                               $nik = $_POST['nik']; //mengambil data nik
@@ -59,8 +59,8 @@
                                 </script>";
                               }elseif(!empty($lokasi_file)){
                                   move_uploaded_file($lokasi_file,$direktori);
-                                  $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp,file)
-                                  VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp','$nama_file')"; //menambah data
+                                  $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, tahun, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp,file)
+                                  VALUES ('$nomor_peserta','$tgl_pendaftaran','$d','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp','$nama_file')"; //menambah data
                                   $mysqli = $koneksi->query($query1);
 
                                   $query2 = "insert into jurusan (id_peserta,jurusan) values (LAST_INSERT_ID(),'$jurusan')";

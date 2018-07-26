@@ -5,7 +5,7 @@
   {
    $search_array = explode(",", $_POST["query"]);
    $search_text = "'" . implode("', '", $search_array) . "'";
-   $query = "SELECT * FROM peserta WHERE YEAR(tgl_pendaftaran) IN (".$search_text.") ORDER BY YEAR(tgl_pendaftaran) DESC";
+   $query = "SELECT * FROM peserta WHERE tahun IN (".$search_text.") ORDER BY tahun DESC";
   }
   else
   {
