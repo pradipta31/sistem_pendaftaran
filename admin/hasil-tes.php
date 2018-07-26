@@ -45,25 +45,11 @@ include "kiri.php";
                ?>
                </select>
             </div>
-
-            <input type="hidden" name="hidden_status" value="hidden_status" />
-            <label>Pilih Status :</label>
-            <div class="btn btn-xs">
-              <select name="status" id="status" class="form-control">
-                <option value="tampil_semua">Tampilkan Semua</option>
-                <?php foreach($rows as $key){
-                    echo '<option value="'.$key['status'].'">';
-                    if ($key['status'] == 1) {
-                      echo "Lulus";
-                    }else{
-                      echo "Tidak Lulus";
-                    }
-                    echo '</option>';
-                }
-                ?>
-              </select>
-            </div>
             <div class="btn btn-lg" id="btn">
+
+            </div>
+
+            <div class="btn btn-lg" id="button_status">
 
             </div>
 
@@ -98,6 +84,7 @@ include "kiri.php";
 
      load_data();
      loadData();
+     ambil_data();
 
      function load_data(query='')
      {
@@ -124,38 +111,27 @@ include "kiri.php";
     })
    }
 
+   function ambil_data(query='')
+   {
+    $.ajax({
+     url:"tampil_status.php",
+     method:"POST",
+     data:{query:query},
+     success:function(data)
+     {
+      $('#button_status').html(data);
+     }
+    })
+   }
+
      $('#multi_search_filter').change(function(){
       $('#hidden_hasil').val($('#multi_search_filter').val());
       var query = $('#hidden_hasil').val();
       load_data(query);
       loadData(query);
+      ambil_data(query);
      });
     });
-</script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    ambil_data();
-
-    function ambil_data(query='')
-    {
-     $.ajax({
-      url:"tampil_status.php",
-      method:"POST",
-      data:{query:query},
-      success:function(data)
-      {
-       $('tbody').html(data);
-      }
-     })
-    }
-
-    $('#status').change(function(){
-     $('#hidden_status').val($('#status').val());
-     var query = $('#hidden_status').val();
-     ambil_data(query);
-    });
-   });
-  });
 </script>
 <?php
   include 'bawah.php';
