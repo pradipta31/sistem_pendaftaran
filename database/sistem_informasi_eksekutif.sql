@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 27, 2018 at 12:38 AM
+-- Generation Time: Jul 27, 2018 at 01:49 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.12
 
@@ -45,10 +45,10 @@ CREATE TABLE `hasil_tes` (
 --
 
 INSERT INTO `hasil_tes` (`id_hasil_tes`, `id_peserta`, `nomor_peserta`, `nama`, `tahun`, `nilai_tulis`, `nilai_wawancara`, `total_nilai`, `status`) VALUES
-(1, 6, '2018.006', 'I Gede Eden Hazard Saputra', '2018', '30', '100', '65', 'Tidak Lulus'),
-(4, 3, '2017.003', 'Ni Made Wahyu Cahyani', '2017', '20', '100', '60', 'Tidak Lulus'),
-(6, 5, '2017.005', 'I Putu Reus Mahatma', '2017', '28', '100', '64', 'Tidak Lulus'),
-(7, 7, '2018.007', 'Pande Putu Widya Oktapratama', '2018', '94', '80', '87', 'Lulus');
+(1, 6, '2018.006', 'I Gede Eden Hazard Saputra', '2018', '30', '100', '65', '0'),
+(4, 3, '2017.003', 'Ni Made Wahyu Cahyani', '2017', '20', '100', '60', '0'),
+(6, 5, '2017.005', 'I Putu Reus Mahatma', '2017', '28', '100', '64', '0'),
+(7, 7, '2018.007', 'Pande Putu Widya Oktapratama', '2018', '94', '80', '87', '1');
 
 -- --------------------------------------------------------
 
@@ -70,7 +70,8 @@ INSERT INTO `jurusan` (`id_jurusan`, `id_peserta`, `jurusan`) VALUES
 (3, 3, 'Tata Graha'),
 (5, 5, 'Tata Boga'),
 (6, 6, 'Tata Graha'),
-(7, 7, 'Tata Boga');
+(7, 7, 'Tata Boga'),
+(9, 9, 'Tata Boga');
 
 -- --------------------------------------------------------
 
@@ -82,6 +83,7 @@ CREATE TABLE `peserta` (
   `id_peserta` int(11) NOT NULL,
   `nomor_peserta` varchar(20) DEFAULT NULL,
   `tgl_pendaftaran` date DEFAULT NULL,
+  `tahun` varchar(10) NOT NULL,
   `nik` varchar(20) DEFAULT NULL,
   `nama` varchar(299) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
@@ -103,11 +105,12 @@ CREATE TABLE `peserta` (
 -- Dumping data for table `peserta`
 --
 
-INSERT INTO `peserta` (`id_peserta`, `nomor_peserta`, `tgl_pendaftaran`, `nik`, `nama`, `email`, `umur`, `tgl_lahir`, `pendidikan`, `tahun_lulus`, `agama`, `jenis_kelamin`, `tinggi_badan`, `berat_badan`, `alamat`, `kabupaten`, `no_telp`, `file`) VALUES
-(3, '2017.003', '2017-07-27', '150020007', 'Ni Made Wahyu Cahyani', 'cahyaniwahyu7@gmail.com', 20, '1997-05-03', 'Sarjana Komputer', 2015, 'Hindu', 'wanita', '154', '43', 'Br. Gumicik, Ketewel, Gianyar', 'Gianyar', '083114887626', '_MG_0916.JPG'),
-(5, '2017.005', '2017-07-26', '150012323', 'I Putu Reus Mahatma', 'reus@gmail.com', 18, '1998-11-09', 'Sarjana Komputer', 2015, 'Hindu', 'pria', '172', '65', 'Jl. Gunung Agung, Gang Bumi Ayu', 'Denpasar', '0989821931', 'E.Hazard.jpg'),
-(6, '2018.006', '2018-07-26', '1909092939', 'I Gede Eden Hazard Saputra', 'hazardeden@gmail.com', 23, '1994-11-08', 'Sekolah Tinggi Sepak Bola Belgia', 2015, 'Hindu', 'pria', '167', '67', 'Brussel, Belgium', 'Denpasar', '007123821', 'E.Hazard.jpg'),
-(7, '2018.007', '2018-07-26', '150030003', 'Pande Putu Widya Oktapratama', 'widya.oktapratama@gmail.com', 20, '1997-11-25', 'Sarajana Komputer', 2015, 'Hindu', 'pria', '165', '65', 'Jalan Gunung Agung, Gang Bumi Ayu R', 'Denpasar', '089781237412', 'IMG_1002.JPG');
+INSERT INTO `peserta` (`id_peserta`, `nomor_peserta`, `tgl_pendaftaran`, `tahun`, `nik`, `nama`, `email`, `umur`, `tgl_lahir`, `pendidikan`, `tahun_lulus`, `agama`, `jenis_kelamin`, `tinggi_badan`, `berat_badan`, `alamat`, `kabupaten`, `no_telp`, `file`) VALUES
+(3, '2017.003', '2017-07-27', '2017', '150020007', 'Ni Made Wahyu Cahyani', 'cahyaniwahyu7@gmail.com', 20, '1997-05-03', 'Sarjana Komputer', 2015, 'Hindu', 'wanita', '154', '43', 'Br. Gumicik, Ketewel, Gianyar', 'Gianyar', '083114887626', '_MG_0916.JPG'),
+(5, '2017.005', '2017-07-26', '2017', '150012323', 'I Putu Reus Mahatma', 'reus@gmail.com', 18, '1998-11-09', 'Sarjana Komputer', 2015, 'Hindu', 'pria', '172', '65', 'Jl. Gunung Agung, Gang Bumi Ayu', 'Denpasar', '0989821931', 'E.Hazard.jpg'),
+(6, '2018.006', '2018-07-26', '2018', '1909092939', 'I Gede Eden Hazard Saputra', 'hazardeden@gmail.com', 23, '1994-11-08', 'Sekolah Tinggi Sepak Bola Belgia', 2015, 'Hindu', 'pria', '167', '67', 'Brussel, Belgium', 'Denpasar', '007123821', 'E.Hazard.jpg'),
+(7, '2018.007', '2018-07-26', '2018', '150030003', 'Pande Putu Widya Oktapratama', 'widya.oktapratama@gmail.com', 20, '1997-11-25', 'Sarajana Komputer', 2015, 'Hindu', 'pria', '165', '65', 'Jalan Gunung Agung, Gang Bumi Ayu R', 'Denpasar', '089781237412', 'IMG_1002.JPG'),
+(9, '2018.008', '2018-07-27', '2018', '150030041', 'I Made Darma Setiawan', 'demardcl@gmail.com', 21, '1997-03-25', 'Sarajana Komputer', 2015, 'Hindu', 'pria', '156', '56', 'Semawang, Sanur', 'Denpasar', '085738756727', 'IMG_0956.JPG');
 
 -- --------------------------------------------------------
 
@@ -313,13 +316,13 @@ ALTER TABLE `hasil_tes`
 -- AUTO_INCREMENT for table `jurusan`
 --
 ALTER TABLE `jurusan`
-  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `peserta`
 --
 ALTER TABLE `peserta`
-  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `soal`
