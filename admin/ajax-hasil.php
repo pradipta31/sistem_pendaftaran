@@ -6,7 +6,7 @@
    $search_array = explode(",", $_POST["query"]);
    $search_text = "'" . implode("', '", $search_array) . "'";
    $query = "SELECT * FROM hasil_tes WHERE tahun IN (".$search_text.") ORDER BY tahun DESC";
-  }
+ }
   else
   {
    $query = "SELECT * FROM hasil_tes ORDER BY id_hasil_tes DESC";

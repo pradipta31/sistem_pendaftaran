@@ -32,31 +32,46 @@
         <!-- /.box-header -->
         <div class="box-body">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
               <?php
               $benar = 0;
               $salah = 0;
               $kosong = 0;
               $id_soal = $row['id_soal'];
-              $pilihan = $row['pilihan'];
               $benar = $row['benar'];
               $salah = $row['salah'];
               $kosong = $row['kosong'];
-              $nilai = $benar * 2;
-
+              $nilai = $benar*2;
+              $q = mysqli_query($koneksi,"SELECT *,LEFT(pilihan,49) pilihan FROM tes WHERE id_hasil_tes = '$id'");
+              $a = mysqli_fetch_assoc($q);
+              $q1 = mysqli_query($koneksi,"SELECT *,substr(pilihan, 51,98) pilihan FROM tes WHERE id_hasil_tes = '$id'");
+              $b = mysqli_fetch_assoc($q1);
+              $pilihan = $a['pilihan'];
+              $pilihan1 = $b['pilihan'];
+              $array1 = explode(",",$pilihan1);
               $array = explode(",",$pilihan);
               $no = 1;
+              $no1 = 26;
+              echo "<div class='col-md-3'>";
               foreach ($array as $key) {
                 echo
-                '<div class="col-md-1">
+                '
                   '.$no++.'.
-                </div>';
-                echo "<div class='col-md-1'></div>";
+                ';
                 echo
-                '<div class="col-md-2">
-                  '.$key.'
-                </div>';
+                ''.$key.'</br>';
               }
+              echo "</div>";
+              echo "<div class='col-md-2'>";
+              foreach ($array1 as $key1) {
+                echo
+                '
+                  '.$no1++.'.
+                ';
+                echo
+                ''.$key1.'</br>';
+              }
+              echo "</div>";
               ?>
 
             </div>

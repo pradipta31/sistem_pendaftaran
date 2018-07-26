@@ -42,6 +42,13 @@ include "kiri.php";
             <div class="btn btn-lg" id="btn">
 
             </div>
+            <div class="btn btn-xs">
+              <select name="status" id="status" class="form-control">
+                <option value="tampil_semua">Tampilkan Semua</option>
+                <option value="lulus" >Lulus</option>
+                <option value="Tidak Lulus" >Tidak Lulus</option>
+              </select>
+            </div>
             <div class="table-responsive">
               <table class="table table-striped table-bordered">
                <thead>
@@ -106,6 +113,24 @@ include "kiri.php";
       loadData(query);
      });
     });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){ /* PREPARE THE SCRIPT */
+    ambil_data();
+
+    function ambil_data(query='')
+    {
+     $.ajax({
+      url:"tampil_status.php",
+      method:"POST",
+      data:{query:query},
+      success:function(data)
+      {
+       $('tbody').html(data);
+      }
+     })
+    }
+  });
 </script>
 <?php
   include 'bawah.php';

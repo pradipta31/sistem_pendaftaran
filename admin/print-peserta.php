@@ -3,8 +3,7 @@ include "koneksi.php";
 $id=$_GET['id_peserta'];
 $query = mysqli_query($koneksi, "SELECT * FROM peserta WHERE id_peserta = '$id'");
 $result = mysqli_fetch_assoc($query);
-$nomor = $result['nomor_peserta'];
-$query1= mysqli_query($koneksi, "SELECT * FROM jurusan WHERE nomor_peserta = '$nomor'");
+$query1= mysqli_query($koneksi, "SELECT * FROM jurusan WHERE id_peserta = '$id'");
 $result1 = mysqli_fetch_assoc($query1);
 
 ?>

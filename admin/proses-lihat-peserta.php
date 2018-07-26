@@ -5,8 +5,7 @@ include "kiri.php";
   $query = "SELECT * FROM peserta WHERE id_peserta='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
-  $nomor_peserta = $row['nomor_peserta'];
-  $query1 = "SELECT * FROM jurusan WHERE nomor_peserta='$nomor_peserta'";
+  $query1 = "SELECT * FROM jurusan WHERE id_peserta='$id'";
   $hasil1 = mysqli_query($koneksi,$query1);
   $row1 = mysqli_fetch_array($hasil1);
 ?>
@@ -31,92 +30,95 @@ include "kiri.php";
           <h3 class="box-title">Nomor Peserta : <?php echo $row['nomor_peserta']; ?></h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body">
-          <div class="row">
-            <div class="col-md-2">
-              <div class="form-group">
-                <label>NIK </label>
-                </br>
-                <label>Jurusan </label>
-                </br>
-                <label>Nama</label>
-                </br>
-                <label>Email</label>
-                </br>
-                <label>Umur</label>
-                </br>
-                <label>Tanggal Lahir</label>
-                </br>
-                <label>Pendidikan</label>
-                </br>
-                <label>Tahun Lulus</label>
-                </br>
-                <label>Agama</label>
-                </br>
-                <label>Jenis Kelamin</label>
-                </br>
-                <label>Tinggi Badan</label>
-                </br>
-                <label>Berat Badan</label>
-                </br>
-                <label>Alamat</label>
-                </br>
-                <label>Kabupaten/Kota</label>
-                </br>
-                <label>Nomor Telepon</label>
-                </br>
+        <form class="" action="print-peserta.php" method="post">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label>NIK </label>
+                  </br>
+                  <label>Jurusan </label>
+                  </br>
+                  <label>Nama</label>
+                  </br>
+                  <label>Email</label>
+                  </br>
+                  <label>Umur</label>
+                  </br>
+                  <label>Tanggal Lahir</label>
+                  </br>
+                  <label>Pendidikan</label>
+                  </br>
+                  <label>Tahun Lulus</label>
+                  </br>
+                  <label>Agama</label>
+                  </br>
+                  <label>Jenis Kelamin</label>
+                  </br>
+                  <label>Tinggi Badan</label>
+                  </br>
+                  <label>Berat Badan</label>
+                  </br>
+                  <label>Alamat</label>
+                  </br>
+                  <label>Kabupaten/Kota</label>
+                  </br>
+                  <label>Nomor Telepon</label>
+                  </br>
+                </div>
               </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>: <?php echo $row['nik']; ?></label>
-                </br>
-                <label>: <?php echo $row1['jurusan']; ?></label>
-                </br>
-                <label>: <?php echo $row['nama']; ?></label>
-                </br>
-                <label>: <?php echo $row['email']; ?></label>
-                </br>
-                <label>: <?php echo $row['umur']; ?></label>
-                </br>
-                <label>: <?php echo $row['tgl_lahir']; ?></label>
-                </br>
-                <label>: <?php echo $row['pendidikan']; ?></label>
-                </br>
-                <label>: <?php echo $row['tahun_lulus']; ?></label>
-                </br>
-                <label>: <?php echo $row['agama']; ?></label>
-                </br>
-                <label>: <?php echo $row['jenis_kelamin']; ?></label>
-                </br>
-                <label>: <?php echo $row['tinggi_badan']; ?></label>
-                </br>
-                <label>: <?php echo $row['berat_badan']; ?></label>
-                </br>
-                <label>: <?php echo $row['alamat']; ?></label>
-                </br>
-                <label>: <?php echo $row['kabupaten']; ?></label>
-                </br>
-                <label>: <?php echo $row['no_telp']; ?></label>
-                </br>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>: <?php echo $row['nik']; ?></label>
+                  </br>
+                  <label>: <?php echo $row1['jurusan']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['nama']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['email']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['umur']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['tgl_lahir']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['pendidikan']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['tahun_lulus']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['agama']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['jenis_kelamin']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['tinggi_badan']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['berat_badan']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['alamat']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['kabupaten']; ?></label>
+                  </br>
+                  <label>: <?php echo $row['no_telp']; ?></label>
+                  </br>
+                </div>
               </div>
-            </div>
-            <div class="col-md-5">
-              <div class="form-group">
-                <?php
-                  if ($row['file'] == null) {
-                    echo '<img src="../peserta/images/peserta.png" height="227px" width="152px" style="border-radius: 5px" class="img-responsive">';
-                  }else{ ?>
-                    <img src="../peserta/images/<?= $row['file'];?>" height="227px" width="189px" style="border-radius: 5px" class="img-responsive">
-                <?php
-                  }
-                ?>
+              <div class="col-md-5">
+                <div class="form-group">
+                  <?php
+                    if ($row['file'] == null) {
+                      echo '<img src="../peserta/images/peserta.png" height="227px" width="152px" style="border-radius: 5px" class="img-responsive">';
+                    }else{ ?>
+                      <img src="../peserta/images/<?= $row['file'];?>" height="227px" width="189px" style="border-radius: 5px" class="img-responsive">
+                  <?php
+                    }
+                  ?>
+                </div>
               </div>
+              <!-- /.col -->
             </div>
-            <!-- /.col -->
+            <button type="button" class="btn btn-default" name="button" onclick="window.location='lihat-peserta.php'">Kembali</button>
+            <a href="print-peserta.php?id_peserta=<?= $id; ?>" class="btn btn-primary">Print</a>
           </div>
-          <button type="button" class="btn btn-default" name="button" onclick="window.location='lihat-peserta.php'">Kembali</button>
-        </div>
+        </form>
       </div>
       <!-- /.row -->
     </section>

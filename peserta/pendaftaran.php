@@ -93,6 +93,7 @@
               <input type="number" class="form-control" name="no_telp" id="no_telp" style="font-size: 15px">
               <span id="cek-nope"></span>
               <br>
+              <label style="font-size: 14px">Pilih Foto</label>
               <input type="file" name="file" class="form-control" style="font-size: 1em">
               <br>
               <div class="text-center py-4 mt-3">

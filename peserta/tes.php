@@ -4,11 +4,11 @@
   $ro = mysqli_fetch_assoc($q);
 ?>
           <section id="content">
-              <div class="row section-title-container">
+              <!-- <div class="row section-title-container"> -->
                   <div class="col-md-12 text-uppercase text-center">
                       <h1 class="section-title-2">Soal Ujian Online</h1>
                   </div>
-              </div>
+              <!-- </div> -->
               <style media="screen">
                 .soal{
                   margin-left: 100px;
@@ -55,7 +55,7 @@
                   <form class="form-group" action="jawab.php" method="post" id="formSoal" name="formSoal">
                 <?php
                   include 'koneksi.php';
-                  $query = mysqli_query($koneksi,"SELECT * FROM soal WHERE aktif='Y' ORDER BY RAND(), id_soal DESC LIMIT 50");
+                  $query = mysqli_query($koneksi,"SELECT * FROM soal WHERE aktif='Y' ORDER BY id_soal, id_soal DESC LIMIT 50");
                   $jumlah = mysqli_num_rows($query);
                   $urut = 0;
                   while ($row = mysqli_fetch_array($query)) {
@@ -117,8 +117,7 @@
                 </form>
                 </div>
               </div>
-              </div>
-          </div>
+            </div>
       </section>
 
 
