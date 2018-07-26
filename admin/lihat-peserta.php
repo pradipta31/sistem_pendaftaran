@@ -5,7 +5,7 @@ include "kiri.php";
   include 'koneksi.php';
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
 
-  $query = "SELECT DISTINCT tgl_pendaftaran AS "Year" FROM peserta ORDER BY "Year" ASC";
+  $query = "SELECT DISTINCT tgl_pendaftaran AS tgl_pendaftaran FROM peserta ORDER BY YEAR(tgl_pendaftaran) ASC";
 
   $statement = $connect->prepare($query);
 
