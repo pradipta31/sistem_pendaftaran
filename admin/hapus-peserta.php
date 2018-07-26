@@ -4,6 +4,12 @@
   $tampil = $koneksi->query($query);
   $sql = "DELETE FROM peserta WHERE id_peserta = ('$_GET[id_peserta]')";
   $data = $koneksi->query($sql);
+  $sql = "DELETE FROM jurusan WHERE id_peserta = ('$_GET[id_peserta]')";
+  $data = $koneksi->query($sql);
+  $sql = "DELETE FROM hasil_tes WHERE id_peserta = ('$_GET[id_peserta]')";
+  $data = $koneksi->query($sql);
+  $sql = "DELETE FROM tes WHERE id_peserta = ('$_GET[id_peserta]')";
+  $data = $koneksi->query($sql);
 
   if(mysqli_query($koneksi, $sql)){
     echo "Data Berhasil Dihapus!";

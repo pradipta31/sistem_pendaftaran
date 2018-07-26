@@ -5,8 +5,7 @@ include "kiri.php";
   $query = "SELECT * FROM peserta WHERE id_peserta='$id'";
   $hasil = mysqli_query($koneksi,$query);
   $row = mysqli_fetch_array($hasil);
-  $nomor_peserta = $row['nomor_peserta'];
-  $query1 = "SELECT * FROM jurusan WHERE nomor_peserta='$nomor_peserta'";
+  $query1 = "SELECT * FROM jurusan WHERE id_peserta='$id'";
   $hasil1 = mysqli_query($koneksi,$query1);
   $row1 = mysqli_fetch_array($hasil1);
 ?>
@@ -27,7 +26,11 @@ include "kiri.php";
         </div>
           <form action="proses-edit-peserta.php" method="post">
             <div class="box-body">
-              <input type="hidden" name="nomor_peserta" value="<?php echo $row['nomor_peserta'];?>">
+              <input type="hidden" name="id_peserta" value="<?php echo $row['id_peserta'];?>">
+              <div class="form-group">
+                <label>Nomor Peserta</label>
+                <input type="text" class="form-control" name="nomor_peserta" value="<?php echo $row['nomor_peserta'];?>" readonly>
+              </div>
               <div class="form-group">
               <label>Jurusan</label>
                 <select class="form-control" name="jurusan" value="<?php echo $row1['jurusan'];?>">
@@ -120,7 +123,7 @@ include "kiri.php";
                 <input type="text" class="form-control" name="no_telp" value="<?php echo $row['no_telp']; ?>">
               </div>
               <button type="button" class="btn btn-default" name="button" onclick="window.location='lihat-peserta.php'">Kembali</button>
-              <input type="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">
+              <input type="submit" name="submit" value="Simpan" class="btn btn-primary"  onclick="return confirm ('Yakin simpan perubahan ?')">
             </div>
           </form>
         </div>

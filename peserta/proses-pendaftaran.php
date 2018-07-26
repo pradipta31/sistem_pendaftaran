@@ -63,7 +63,7 @@
                                   VALUES ('$nomor_peserta','$tgl_pendaftaran','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp','$nama_file')"; //menambah data
                                   $mysqli = $koneksi->query($query1);
 
-                                  $query2 = "insert into jurusan (id_peserta,jurusan) values ($koneksi->insert_id,'$jurusan')";
+                                  $query2 = "insert into jurusan (id_peserta,jurusan) values (LAST_INSERT_ID(),'$jurusan')";
                                   $mysqli1 = $koneksi->query($query2);
                                 }
                                     ?>
