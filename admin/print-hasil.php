@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <title></title>
-<img src="header.png" style="width:650px; height: 105px; margin-left: 30px">
+<img src="header.png" style="width:700px; height: 105px; margin-left: 30px">
 </head>
 <body>
 

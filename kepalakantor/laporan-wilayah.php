@@ -5,10 +5,9 @@ include "kiri.php";
   include 'koneksi.php';
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
   if(isset($_GET['tahun'])){
-    $year = date('Y');
     $year = $_GET['tahun'];
   }
-  $qGetDate = "SELECT DISTINCT tgl_pendaftaran as tgl_pendaftaran FROM peserta ORDER BY YEAR(tgl_pendaftaran) ASC";
+  $qGetDate = "SELECT DISTINCT tahun FROM peserta ORDER BY tahun ASC";
 
   $qGetChartByYear = "SELECT SUM(CASE WHEN kabupaten = 'Gianyar' THEN 1 ELSE 0 END) AS a,
   SUM(CASE WHEN kabupaten = 'Denpasar' THEN 1 ELSE 0 END) AS b,
@@ -18,7 +17,7 @@ include "kiri.php";
   SUM(CASE WHEN kabupaten = 'Bangli' THEN 1 ELSE 0 END) AS f,
   SUM(CASE WHEN kabupaten = 'Buleleng' THEN 1 ELSE 0 END) AS g,
   SUM(CASE WHEN kabupaten = 'Tabanan' THEN 1 ELSE 0 END) AS h,
-  SUM(CASE WHEN kabupaten = 'Klungkung' THEN 1 ELSE 0 END) AS i FROM peserta WHERE tgl_pendaftaran LIKE '$year%'";
+  SUM(CASE WHEN kabupaten = 'Klungkung' THEN 1 ELSE 0 END) AS i FROM peserta WHERE tahun LIKE '$year%'";
 
   $rChart = $connect->query($qGetChartByYear);
 
@@ -41,7 +40,7 @@ include "kiri.php";
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title"></h3>
+              <h3 class="box-title">Data Wilayah Peserta : Tahun <?php echo $year; ?></h3>
             </div>
 
             <div class="box-body">
@@ -56,8 +55,7 @@ include "kiri.php";
                       <?php
                        foreach($result as $row)
                       {
-                       $date = $row['tgl_pendaftaran'];
-                      $date = date("Y", strtotime($date));
+                       $date = $row['tahun'];
                        echo '<option value="'.$date.'">'.$date.'</option>';
                       }
                       ?>
@@ -87,7 +85,7 @@ include "kiri.php";
           data: {
               labels: ["Gianyar", "Denpasar", "Badung", "Negara", "Karangasem", "Bangli", "Buleleng", "Tabanan", "Klungkung"],
               datasets: [{
-                  label: "Data Wilayah <?php echo $date; ?>",
+                  label: "Data Wilayah",
                   backgroundColor: 'rgb(35, 13, 143)',
                   borderColor: 'rgb(35, 13, 143)',
                   data: [dataChart['a'],dataChart['b'],dataChart['c'],dataChart['d'],

@@ -31,6 +31,7 @@ include "kiri.php";
             <!-- /.box-header -->
 
             <input type="hidden" name="hidden_peserta" id="hidden_peserta" />
+            <label style="margin-left:20px">Pilih Tahun</label>
             <div class="btn btn-xs">
               <select name="multi_search_filter" id="multi_search_filter" class="form-control">
                 <option value="tampil_semua">Tampilkan Semua</option>
