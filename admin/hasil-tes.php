@@ -44,7 +44,7 @@ include "kiri.php";
             </div>
             <div class="btn btn-xs">
               <select name="status" id="status" class="form-control">
-                <option value="tampil_semua">Tampilkan Semua</option>
+                <option value="tampil_semua">Pilih Status :</option>
                 <option value="lulus" >Lulus</option>
                 <option value="Tidak Lulus" >Tidak Lulus</option>
               </select>
