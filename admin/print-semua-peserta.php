@@ -2,15 +2,15 @@
 <head>
 <meta charset="utf-8">
 <title></title>
-<img src="header.png" style="width:650px; height: 105px; margin-left: 30px">
+<img src="header.png" style="width:700px; height: 105px; margin-left: 30px">
 </head>
 <body>
 
 
 <div style="margin-top :12px">
 
-  <label style="margin-left : 40px">Hasil dari pelaksanaan Tes Penerimaan Peserta Pelatihan Kapal Pesiar yaitu sebagai berikut : </label>
-  <table style="margin-top : 12px" width="600" border="1" align="center">
+  <label style="margin-left : 40px">Data Calon Peserta Pelatihan Kapal Pesiar yaitu sebagai berikut : </label>
+  <table style="margin-top : 12px" width="600" border="1" align="center" >
     <tr>
       <th><center>No</center></th>
       <th><center>No Peserta</center></th>

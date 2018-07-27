@@ -27,7 +27,7 @@ include "kiri.php";
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-      Data Peserta
+      Laporan Data Umur
       </h1>
     </section>
 

@@ -24,15 +24,14 @@ $result1 = mysqli_fetch_assoc($query1);
     }
   </style>
   <img src="header.png" style="width:1080px; height: 195px; margin-left: 30px">
-  <label style="margin-left:50px;font-size:25px">Berikut merupakan hasil dariserangkaian pelaksanaan Tes Penerimaan Peserta </label>
-  <p style="margin-left:50px;font-size:25px"><label>Pelatihan Kapal Pesiar yaitu sebagai berikut : </label></p>
     <div class="container">
       <div class="row">
         <!-- <div class="col-md-12"> -->
 
           <div class="col-md-6 style-line">
             <div class="form-group">
-              <label>Nomor Peserta  <b style="margin-left: 35px">:</b> <?php echo $result['nomor_peserta']; ?></label>
+              <br>
+          <label>Nomor Peserta  <b style="margin-left: 35px;">:</b> <?php echo $result['nomor_peserta']; ?></label>
             </div>
             <div class="form-group">
               <label>NIK            <b style="margin-left: 115px">:</b> <?php echo $result['nik']; ?></label>
@@ -79,7 +78,6 @@ $result1 = mysqli_fetch_assoc($query1);
             <div class="form-group">
               <label>Nomor Telepon            <b style="margin-left: 38px">:</b> <?php echo $result['no_telp']; ?></label>
             </div>
-
           </div>
           <div class="col-md-2">
 

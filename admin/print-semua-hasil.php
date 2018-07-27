@@ -15,7 +15,7 @@ $result1 = mysqli_fetch_assoc($query1);
 
 </head>
 <body>
-  <img src="header.png" style="width:650px; height: 105px; margin-left: 30px">
+  <img src="header.png" style="width:700px; height: 105px; margin-left: 30px">
 
   <pre style="font-size : 15px">
     <label>Berikut merupakan hasil dariserangkaian pelaksanaan Tes Penerimaan Peserta </label>

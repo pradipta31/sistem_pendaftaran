@@ -31,7 +31,7 @@ include "kiri.php";
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-      Data Peserta
+      Laporan Data Wilayah
       </h1>
     </section>
 
@@ -53,7 +53,7 @@ include "kiri.php";
                       <option value="2018">2018</option>
                       <option value="2019">2019</option> -->
                       <?php
-                      foreach($result as $row)
+                       foreach($result as $row)
                       {
                        $date = $row['tahun'];
                        echo '<option value="'.$date.'">'.$date.'</option>';
