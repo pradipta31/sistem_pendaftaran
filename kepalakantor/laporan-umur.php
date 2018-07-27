@@ -5,15 +5,14 @@ include "kiri.php";
   include 'koneksi.php';
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
   if(isset($_GET['tahun'])){
-    $year = date('Y');
     $year = $_GET['tahun'];
   }
-  $qGetDate = "SELECT DISTINCT tgl_pendaftaran AS tgl_pendaftaran FROM peserta ORDER BY YEAR(tgl_pendaftaran) ASC";
+  $qGetDate = "SELECT DISTINCT tahun FROM peserta ORDER BY tahun ASC";
 
   $qGetChartByYear = "SELECT SUM(CASE WHEN umur <= 20 THEN 1 ELSE 0 END) AS a,
   SUM(CASE WHEN umur BETWEEN 21 AND 23 THEN 1 ELSE 0 END) AS b,
   SUM(CASE WHEN umur BETWEEN 24 AND 26 THEN 1 ELSE 0 END) AS c,
-  SUM(CASE WHEN umur BETWEEN 27 AND 30 THEN 1 ELSE 0 END) AS d FROM peserta WHERE tgl_pendaftaran LIKE '$year%'";
+  SUM(CASE WHEN umur BETWEEN 27 AND 30 THEN 1 ELSE 0 END) AS d FROM peserta WHERE tahun LIKE '$year%'";
 
   $rChart = $connect->query($qGetChartByYear);
 
@@ -22,6 +21,7 @@ include "kiri.php";
   $statement->execute();
 
   $result = $statement->fetchAll();
+
 
 ?>
   <div class="content-wrapper">
@@ -36,7 +36,7 @@ include "kiri.php";
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Data Peserta Berdasarkan Umur</h3>
+              <h3 class="box-title">Data Peserta Berdasarkan Umur : Tahun <?php echo $year; ?></h3>
             </div>
 
             <div class="box-body">
@@ -51,8 +51,7 @@ include "kiri.php";
                       <?php
                       foreach($result as $row)
                       {
-                       $a = $row['tgl_pendaftaran'];
-                       $date = date('Y',strtotime($a));
+                       $date = $row['tahun'];
                        echo '<option value="'.$date.'">'.$date.'</option>';
                       }
                       ?>
@@ -60,7 +59,7 @@ include "kiri.php";
                   </form>
                 </div>
               </div>
-              <canvas id="chart" height="100px"> </canvas>
+              <canvas id="chart" height="100px"></canvas>
             </div>
           </div>
         </div>
@@ -81,7 +80,7 @@ include "kiri.php";
           data: {
               labels: ["<20", "21 - 23", "24 - 26", "27 - 30"],
               datasets: [{
-                  label: "Data Umur <?php echo $date; ?>",
+                  label: "Data Umur",
                   backgroundColor: 'rgb(35, 13, 143)',
                   borderColor: 'rgb(35, 13, 143)',
                   data: [dataChart['a'],dataChart['b'],dataChart['c'],dataChart['d']],

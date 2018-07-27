@@ -45,12 +45,21 @@ include "kiri.php";
                ?>
                </select>
             </div>
+
+
             <div class="btn btn-lg" id="btn">
 
             </div>
 
-            <div class="btn btn-lg" id="button_status">
-
+            <label>Pilih Status :</label>
+            <div class="btn btn-xs">
+              <select name="multi_search_filter" id="multi_search_filter" class="form-control">
+                <option value="tampil_semua">Tampilkan Semua</option>
+                <?php foreach($rows as $key){
+                  echo '<option value="'.$key['status'].'">'.$key['status'].'</option>';
+                }
+                ?>
+              </select>
             </div>
 
             <div class="table-responsive">
@@ -119,7 +128,7 @@ include "kiri.php";
      data:{query:query},
      success:function(data)
      {
-      $('#button_status').html(data);
+      $('tbody').html(data);
      }
     })
    }

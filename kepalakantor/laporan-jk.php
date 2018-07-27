@@ -4,13 +4,12 @@ include "kiri.php";
 <?php
   include 'koneksi.php';
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
-  $year = date('Y');
   if(isset($_GET['tahun'])){
     $year = $_GET['tahun'];
   }
-  $qGetDate = "SELECT DISTINCT tgl_pendaftaran as tgl_pendaftaran FROM peserta ORDER BY YEAR(tgl_pendaftaran) ASC";
+  $qGetDate = "SELECT DISTINCT tahun FROM peserta ORDER BY tahun ASC";
 
-  $qGetChartByYear = "SELECT SUM(CASE WHEN jenis_kelamin = 'pria' THEN 1 ELSE 0 END) AS a, SUM(CASE WHEN jenis_kelamin = 'wanita' THEN 1 ELSE 0 END) AS b FROM peserta WHERE tgl_pendaftaran LIKE '$year%'";
+  $qGetChartByYear = "SELECT SUM(CASE WHEN jenis_kelamin = 'pria' THEN 1 ELSE 0 END) AS a, SUM(CASE WHEN jenis_kelamin = 'wanita' THEN 1 ELSE 0 END) AS b FROM peserta WHERE tahun LIKE '$year%'";
 
   $rChart = $connect->query($qGetChartByYear);
 
@@ -48,8 +47,7 @@ include "kiri.php";
                       <?php
                       foreach($result as $row)
                       {
-                       $date = $row['tgl_pendaftaran'];
-                       $date = date("Y", strtotime($date));
+                       $date = $row['tahun'];
                        echo '<option value="'.$date.'">'.$date.'</option>';
                       }
                       ?>
@@ -62,7 +60,7 @@ include "kiri.php";
                </canvas>
               <br>
               <div class="text-center">
-                <h4>Laporan Data Jenis Kelamin Peserta : <?php echo $date;?></h4>
+                <h4>Laporan Data Jenis Kelamin Peserta : <?php echo $year; ?></h4>
               </div>
             </div>
           </div>
