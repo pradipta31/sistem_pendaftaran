@@ -3,8 +3,18 @@ include "kiri.php";
 ?>
 <?php
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
-
+  $tahun = !empty($_GET['tahun']) ? $_GET['tahun'] : null;
+  $status = !empty($_GET['status']) ? $_GET['status'] : null;
   $query = "SELECT DISTINCT tahun FROM hasil_tes ORDER BY tahun ASC";
+
+  $qDataTable = "SELECT * FROM hasil_tes ORDER BY id_hasil_tes DESC";
+  if ($tahun != null && $status == null) {
+    $qDataTable = "SELECT * FROM hasil_tes WHERE tahun='$tahun' ORDER BY id_hasil_tes DESC";
+  }elseif ($tahun == null && $status != null) {
+    $qDataTable = "SELECT * FROM hasil_tes WHERE status='$status' ORDER BY id_hasil_tes DESC";
+  } elseif($tahun != null && $status != null) {
+    $qDataTable = "SELECT * FROM hasil_tes WHERE tahun='$tahun' AND status='$status' ORDER BY id_hasil_tes DESC";
+  }
 
   $statement = $connect->prepare($query);
 
@@ -12,10 +22,16 @@ include "kiri.php";
 
   $result = $statement->fetchAll();
 
-  $qStatus = "SELECT DISTINCT status FROM hasil_tes ORDER BY status ASC";
-  $sStatus = $connect->prepare($qStatus);
-  $sStatus->execute();
-  $rows = $sStatus->fetchAll();
+  $query1 = "SELECT DISTINCT status FROM hasil_tes ORDER BY status ASC";
+
+  $statement1 = $connect->prepare($query1);
+
+  $statement1->execute();
+
+  $result1 = $statement1->fetchAll();
+
+  $dataTable = $connect->query($qDataTable);
+
 ?>
   <div class="content-wrapper">
     <section class="content-header">
@@ -32,36 +48,33 @@ include "kiri.php";
 
             </div>
             <!-- /.box-header -->
-            <input type="hidden" name="hidden_hasil" id="hidden_hasil" />
-            <label style="margin-left:20px">Pilih Tahun</label>
-            <div class="btn btn-xs">
-              <select name="multi_search_filter" id="multi_search_filter" class="form-control">
-                <option value="tampil_semua">Tampilkan Semua</option>
-               <?php
-               foreach($result as $row)
-               {
-                echo '<option value="'.$row["tahun"].'">'.$row["tahun"].'</option>';
-               }
-               ?>
-               </select>
-            </div>
 
+            <form class="" action="" method="get" id="form_search">
+              <label style="margin-left:20px">Pilih Tahun : </label>
+              <div class="btn btn-xs">
+                <select name="tahun" id="tahun" class="form-control">
+                  <option value="">Tampilkan Semua</option>
+                  <?php foreach($result as $row) : ?>
+                    <option value="<?php echo $row["tahun"]; ?>" <?php echo $tahun == $row["tahun"] ? 'selected' : '' ?>><?php echo $row["tahun"];?></option>';
+                  <?php endforeach; ?>
+                 </select>
+              </div>
+              <label style="margin-left: 20px">Pilih Status :</label>
+              <div class="btn btn-xs">
+                <select name="status" id="status" class="form-control">
+                  <option value="">Pilih Status</option>
+                  <?php foreach ($result1 as $key) : ?>
+                      <option value="<?php echo $key["status"]; ?>" <?php echo $status == $key["status"] ? 'selected' : '' ?>><?php echo $key["status"]; ?></option>';
+                    <?php endforeach; ?>
+                </select>
+              </div>
+              <div class="btn btn-lg">
+                <?php
+                echo "<a class='btn btn-primary' href='print-hasil.php?tahun=".$tahun."&status=".$status."'>Cetak Data</a>";
 
-            <div class="btn btn-lg" id="btn">
-
-            </div>
-
-            <label>Pilih Status :</label>
-            <div class="btn btn-xs">
-              <select name="multi_search_filter" id="multi_search_filter" class="form-control">
-                <option value="tampil_semua">Tampilkan Semua</option>
-                <?php foreach($rows as $key){
-                  echo '<option value="'.$key['status'].'">'.$key['status'].'</option>';
-                }
                 ?>
-              </select>
-            </div>
-
+              </div>
+            </form>
             <div class="table-responsive">
               <table class="table table-striped table-bordered">
                <thead>
@@ -77,6 +90,26 @@ include "kiri.php";
                 </tr>
                </thead>
                <tbody>
+                 <?php $no = 1; ?>
+                 <?php foreach($dataTable as $hasil) : ?>
+                   <tr>
+                     <td><?php echo $no++; ?></td>
+                     <td><?php echo $hasil['nomor_peserta']; ?></td>
+                     <td><?php echo $hasil['nama']; ?></td>
+                     <td><?php echo $hasil['nilai_tulis']; ?></td>
+                     <td><?php echo $hasil['nilai_wawancara']; ?></td>
+                     <td><?php echo $hasil['total_nilai']; ?></td>
+                     <td><?php echo $hasil['status']; ?></td>
+                     <td>
+                       <center>
+                       <a href="lihat-tes.php"><i class="fa fa-eye"></i></a>
+                       <a href="form-edit-hasil.php"><i class="fa fa-edit"></i></a>
+                       <a href="hapus-hasil.php" onclick = "return confirm(/Yakin Ingin hapus data ini/)"><i class="fa fa-trash"></i></a>
+                       <a href="print-semua-hasil.php"><i class="fa fa-print"></i></a>
+                       <center>
+                     </td>
+                   </tr>
+                 <?php endforeach;?>
                </tbody>
               </table>
              <br />
@@ -89,59 +122,18 @@ include "kiri.php";
     </section>
   </div>
   <script>
-    $(document).ready(function(){
-
-     load_data();
-     loadData();
-     ambil_data();
-
-     function load_data(query='')
-     {
-      $.ajax({
-       url:"tampil_data.php",
-       method:"POST",
-       data:{query:query},
-       success:function(data)
-       {
-        $('tbody').html(data);
-       }
-      })
-     }
-   function loadData(query='')
-   {
-    $.ajax({
-     url:"ajax-hasil.php",
-     method:"POST",
-     data:{query:query},
-     success:function(data)
-     {
-      $('#btn').html(data);
-    }
-    })
-   }
-
-   function ambil_data(query='')
-   {
-    $.ajax({
-     url:"tampil_status.php",
-     method:"POST",
-     data:{query:query},
-     success:function(data)
-     {
-      $('tbody').html(data);
-     }
-    })
-   }
-
-     $('#multi_search_filter').change(function(){
-      $('#hidden_hasil').val($('#multi_search_filter').val());
-      var query = $('#hidden_hasil').val();
-      load_data(query);
-      loadData(query);
-      ambil_data(query);
-     });
+  console.log("<?php echo $qDataTable; ?>");
+    $(function(){
+      $('#tahun').on('change', function(){
+        $('#form_search').submit();
+      });
+      $('#status').on('change', function(){
+        $('#form_search').submit();
+      });
     });
-</script>
+  </script>
+
+
 <?php
   include 'bawah.php';
 ?>
