@@ -11,6 +11,11 @@ include "kiri.php";
   $statement->execute();
 
   $result = $statement->fetchAll();
+
+  $qStatus = "SELECT DISTINCT status FROM hasil_tes ORDER BY status ASC";
+  $sStatus = $connect->prepare($qStatus);
+  $sStatus->execute();
+  $rows = $sStatus->fetchAll();
 ?>
   <div class="content-wrapper">
     <section class="content-header">
@@ -28,6 +33,7 @@ include "kiri.php";
             </div>
             <!-- /.box-header -->
             <input type="hidden" name="hidden_hasil" id="hidden_hasil" />
+            <label style="margin-left:20px">Pilih Tahun</label>
             <div class="btn btn-xs">
               <select name="multi_search_filter" id="multi_search_filter" class="form-control">
                 <option value="tampil_semua">Tampilkan Semua</option>
@@ -39,16 +45,28 @@ include "kiri.php";
                ?>
                </select>
             </div>
+
+            <input type="hidden" name="hidden_status" value="hidden_status" />
+            <label>Pilih Status :</label>
+            <div class="btn btn-xs">
+              <select name="status" id="status" class="form-control">
+                <option value="tampil_semua">Tampilkan Semua</option>
+                <?php foreach($rows as $key){
+                    echo '<option value="'.$key['status'].'">';
+                    if ($key['status'] == 1) {
+                      echo "Lulus";
+                    }else{
+                      echo "Tidak Lulus";
+                    }
+                    echo '</option>';
+                }
+                ?>
+              </select>
+            </div>
             <div class="btn btn-lg" id="btn">
 
             </div>
-            <div class="btn btn-xs">
-              <select name="status" id="status" class="form-control">
-                <option value="tampil_semua">Pilih Status :</option>
-                <option value="lulus" >Lulus</option>
-                <option value="Tidak Lulus" >Tidak Lulus</option>
-              </select>
-            </div>
+
             <div class="table-responsive">
               <table class="table table-striped table-bordered">
                <thead>
@@ -115,7 +133,7 @@ include "kiri.php";
     });
 </script>
 <script type="text/javascript">
-  $(document).ready(function(){ /* PREPARE THE SCRIPT */
+  $(document).ready(function(){
     ambil_data();
 
     function ambil_data(query='')
@@ -130,6 +148,13 @@ include "kiri.php";
       }
      })
     }
+
+    $('#status').change(function(){
+     $('#hidden_status').val($('#status').val());
+     var query = $('#hidden_status').val();
+     ambil_data(query);
+    });
+   });
   });
 </script>
 <?php
