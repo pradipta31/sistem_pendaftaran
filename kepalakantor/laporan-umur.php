@@ -4,6 +4,7 @@ include "kiri.php";
 <?php
   include 'koneksi.php';
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
+  $year = date('Y');
   if(isset($_GET['tahun'])){
     $year = $_GET['tahun'];
   }
@@ -36,7 +37,7 @@ include "kiri.php";
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Data Peserta Berdasarkan Umur : Tahun <?php echo $year; ?></h3>
+              <h3 class="box-title">Laporan Data Umur Tahun <?php echo $year; ?></h3>
             </div>
 
             <div class="box-body">

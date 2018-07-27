@@ -28,7 +28,7 @@ $qGetDate = "SELECT DISTINCT tahun as tahun FROM hasil_tes ORDER BY tahun ASC";
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-      Laporan Nilai Tes Online
+      Laporan Data Nilai Tes Online
       </h1>
     </section>
 
@@ -37,7 +37,7 @@ $qGetDate = "SELECT DISTINCT tahun as tahun FROM hasil_tes ORDER BY tahun ASC";
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Data Nilai Tes Online Peserta : Tahun <?php echo $year; ?></h3>
+              <h3 class="box-title">Laporan Data Nilai Tes Online Tahun <?php echo $year; ?></h3>
             </div>
 
             <div class="box-body">

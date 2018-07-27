@@ -33,7 +33,7 @@ include "kiri.php";
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title"></h3>
+              <h3 class="box-title">Laporan Data Hasil Tes Peserta Tahun <?php echo $year; ?></h3>
             </div>
 
             <div class="box-body">
@@ -58,7 +58,6 @@ include "kiri.php";
               <canvas id="chart" height="100px"> </canvas>
               <br>
               <div class="text-center">
-                <h4>Laporan Data Hasil Tes Peserta : Tahun <?php echo $year; ?></h4>
               </div>
             </div>
           </div>

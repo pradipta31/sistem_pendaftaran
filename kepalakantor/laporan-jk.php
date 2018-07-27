@@ -4,6 +4,7 @@ include "kiri.php";
 <?php
   include 'koneksi.php';
   $connect = new PDO("mysql:host=localhost;dbname=sistem_informasi_eksekutif", "root", "");
+  $year = date('Y');
   if(isset($_GET['tahun'])){
     $year = $_GET['tahun'];
   }
@@ -23,7 +24,7 @@ include "kiri.php";
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-      Data Peserta
+      Laporan Data Jenis Kelamin
       </h1>
     </section>
 
@@ -32,7 +33,7 @@ include "kiri.php";
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Data Jenis Kelamin Peserta</h3>
+              <h3 class="box-title">Lapororan Data Jenis Kelamin Tahun <?php echo $year; ?></h3>
             </div>
 
             <div class="box-body">
@@ -58,9 +59,6 @@ include "kiri.php";
               </div>
               <canvas id="chart" height="100px">
                </canvas>
-              <br>
-              <div class="text-center">
-                <h4>Laporan Data Jenis Kelamin Peserta : <?php echo $year; ?></h4>
               </div>
             </div>
           </div>
