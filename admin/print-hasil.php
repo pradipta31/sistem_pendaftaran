@@ -19,10 +19,19 @@
       <th><center>Status</center></th>
     </tr>
     <?php
-  $tahun = $_GET['tahun'];
+    $tahun = !empty($_GET['tahun']) ? $_GET['tahun'] : null;
+    $status = !empty($_GET['status']) ? $_GET['status'] : null;
+    $qDataTable = "SELECT * FROM hasil_tes ORDER BY id_hasil_tes DESC";
+    if ($tahun != null && $status == null) {
+      $qDataTable = "SELECT * FROM hasil_tes WHERE tahun='$tahun' ORDER BY id_hasil_tes DESC";
+    }elseif ($tahun == null && $status != null) {
+      $qDataTable = "SELECT * FROM hasil_tes WHERE status='$status' ORDER BY id_hasil_tes DESC";
+    } elseif($tahun != null && $status != null) {
+      $qDataTable = "SELECT * FROM hasil_tes WHERE tahun='$tahun' AND status='$status' ORDER BY id_hasil_tes DESC";
+    }
   include "koneksi.php";
   $no = 1;
-  $query = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE tahun='$tahun'");
+  $query = mysqli_query($koneksi, $qDataTable);
   while ($result = mysqli_fetch_assoc($query)) {
   ?>
           <tr>
