@@ -102,10 +102,10 @@ include "kiri.php";
                      <td><?php echo $hasil['status']; ?></td>
                      <td>
                        <center>
-                       <a href="lihat-tes.php"><i class="fa fa-eye"></i></a>
-                       <a href="form-edit-hasil.php"><i class="fa fa-edit"></i></a>
-                       <a href="hapus-hasil.php" onclick = "return confirm(/Yakin Ingin hapus data ini/)"><i class="fa fa-trash"></i></a>
-                       <a href="print-semua-hasil.php"><i class="fa fa-print"></i></a>
+                       <a href="lihat-tes.php?id_hasil_tes=<?= $hasil['id_hasil_tes'] ?>"><i class="fa fa-eye"></i></a>
+                       <a href="form-edit-hasil.php?id_hasil_tes=<?= $hasil['id_hasil_tes'] ?>"><i class="fa fa-edit"></i></a>
+                       <a href="hapus-hasil.php?id_hasil_tes=<?= $hasil['id_hasil_tes'] ?>" onclick = "return confirm(/Yakin Ingin hapus data ini/)"><i class="fa fa-trash"></i></a>
+                       <a href="print-semua-hasil.php?id_hasil_tes=<?= $hasil['id_hasil_tes'] ?>"><i class="fa fa-print"></i></a>
                        <center>
                      </td>
                    </tr>
