@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jul 26, 2018 at 12:39 PM
--- Server version: 5.7.19
--- PHP Version: 7.1.12
+-- Host: 127.0.0.1
+-- Generation Time: Aug 05, 2018 at 06:40 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -30,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `hasil_tes` (
   `id_hasil_tes` int(11) NOT NULL,
-  `id_peserta` int(11) DEFAULT NULL,
+  `id_peserta` int(11) NOT NULL,
   `nomor_peserta` varchar(299) DEFAULT NULL,
   `nama` varchar(100) NOT NULL,
   `tahun` varchar(299) DEFAULT NULL,
@@ -45,8 +43,16 @@ CREATE TABLE `hasil_tes` (
 --
 
 INSERT INTO `hasil_tes` (`id_hasil_tes`, `id_peserta`, `nomor_peserta`, `nama`, `tahun`, `nilai_tulis`, `nilai_wawancara`, `total_nilai`, `status`) VALUES
-(1, 1, '2017.001', 'asd', '2017', '18', NULL, NULL, NULL),
-(3, 2, '2018.002', 'I Gede Pradipta Adi Nugraha', '2018', '38', NULL, NULL, NULL);
+(3, 3, '2017.003', 'Krisna Cahya', '2017', '26', '76', '51', 'Tidak Lulus'),
+(4, 4, '2017.004', 'Nyoman Suni', '2017', '28', '80', '54', 'Tidak Lulus'),
+(5, 5, '2017.005', 'Karyana Putra', '2017', '28', '24', '26', 'Tidak Lulus'),
+(6, 6, '2017.006', 'Ni Ketut Martina Dewi', '2017', '14', '90', '52', 'Tidak Lulus'),
+(7, 7, '2017.007', 'Dendra Setiawan', '2017', '18', '70', '44', 'Tidak Lulus'),
+(8, 8, '2017.008', 'Ni Kadek Widiantari', '2017', '28', '90', '59', 'Tidak Lulus'),
+(11, 9, '2017.009', 'Ni Komang Juliana', '2017', '98', '87', '92.5', 'Lulus'),
+(12, 10, '2017.010', 'Ni Kadek Sumiani', '2017', '26', '80', '53', 'Tidak Lulus'),
+(13, 11, '2018.011', 'Ni Made Wahyu Cahyani', '2018', '28', '46', '37', 'Tidak Lulus'),
+(17, 12, '2018.012', 'I Gede Pradipta Adi Nugraha', '2018', '0', '90', '45', 'Tidak Lulus');
 
 -- --------------------------------------------------------
 
@@ -56,7 +62,7 @@ INSERT INTO `hasil_tes` (`id_hasil_tes`, `id_peserta`, `nomor_peserta`, `nama`, 
 
 CREATE TABLE `jurusan` (
   `id_jurusan` int(11) NOT NULL,
-  `id_peserta` int(11) DEFAULT NULL,
+  `id_peserta` int(11) NOT NULL,
   `jurusan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -65,11 +71,16 @@ CREATE TABLE `jurusan` (
 --
 
 INSERT INTO `jurusan` (`id_jurusan`, `id_peserta`, `jurusan`) VALUES
-(1, 1, 'Tata Graha'),
-(2, 2, 'Tata Boga'),
 (3, 3, 'Tata Boga'),
-(4, 4, 'Tata Hidangan'),
-(5, 5, 'Tata Boga');
+(4, 4, 'Tata Graha'),
+(5, 5, 'Tata Boga'),
+(6, 6, 'Tata Hidangan'),
+(7, 7, 'Tata Boga'),
+(8, 8, 'Tata Hidangan'),
+(9, 9, 'Tata Graha'),
+(10, 10, 'Tata Graha'),
+(11, 11, 'Tata Graha'),
+(12, 12, 'Tata Boga');
 
 -- --------------------------------------------------------
 
@@ -81,6 +92,7 @@ CREATE TABLE `peserta` (
   `id_peserta` int(11) NOT NULL,
   `nomor_peserta` varchar(20) DEFAULT NULL,
   `tgl_pendaftaran` date DEFAULT NULL,
+  `tahun` varchar(10) NOT NULL,
   `nik` varchar(20) DEFAULT NULL,
   `nama` varchar(299) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
@@ -102,12 +114,17 @@ CREATE TABLE `peserta` (
 -- Dumping data for table `peserta`
 --
 
-INSERT INTO `peserta` (`id_peserta`, `nomor_peserta`, `tgl_pendaftaran`, `nik`, `nama`, `email`, `umur`, `tgl_lahir`, `pendidikan`, `tahun_lulus`, `agama`, `jenis_kelamin`, `tinggi_badan`, `berat_badan`, `alamat`, `kabupaten`, `no_telp`, `file`) VALUES
-(1, '2017.001', '2017-07-25', '150030010', 'asd', 'asd@gmail.com', 20, '1997-11-08', 'Sarjana Komputer', 2015, 'Hindu', 'pria', '167', '67', 'Jl. Pratu Md. Rambug, Gang Bija V, Batubulan', 'Gianyar', '0812931237', 'profile.jpg'),
-(2, '2018.002', '2018-07-25', '150030011', 'I Gede Pradipta Adi Nugraha', 'pradiptadipta31@gmail.com', 20, '1997-08-11', 'Sarjana Komputer', 2015, 'Hindu', 'pria', '170', '61', 'Jl. Pratu Md. Rambug, Gang Bija V, Batubulan', 'Gianyar', '087861863842', '14502773_1688664304786529_1332809505877177097_n.jpg'),
-(3, '2018.003', '2018-07-25', '150030012', 'I Putu Eka Mahendra', 'ekamahendra@gmail.com', 20, '1997-11-09', 'Sarjana Komputer', 2015, 'Hindu', 'pria', '178', '88', 'Sesetan, Denpasar', 'Denpasar', '08978978987', '_MG_0916.JPG'),
-(4, '2018.004', '2018-07-25', '150030013', 'I Gede Pradipta Adi Nugraha', 'pradiptadipta321@gmail.com', 20, '1997-08-11', 'Sarjana Komputer', 2015, 'Hindu', 'pria', '170', '61', 'Jl. Pratu Md. Rambug, Gang Bija V, Batubulan', 'Gianyar', '087861863843', 'profile.jpg'),
-(5, '2018.005', '2018-07-26', '150020007', 'Ni Made Wahyu Cahyani', 'cahyaniwahyu7@gmail.com', 21, '1997-05-03', 'Sarjana Komputer', 2015, 'Hindu', 'wanita', '156', '45', 'Ketewel', 'Gianyar', '083114887626', '_MG_0916.JPG');
+INSERT INTO `peserta` (`id_peserta`, `nomor_peserta`, `tgl_pendaftaran`, `tahun`, `nik`, `nama`, `email`, `umur`, `tgl_lahir`, `pendidikan`, `tahun_lulus`, `agama`, `jenis_kelamin`, `tinggi_badan`, `berat_badan`, `alamat`, `kabupaten`, `no_telp`, `file`) VALUES
+(3, '2017.003', '2017-07-26', '2017', '150020066', 'Krisna Cahya', 'cahya@gmail.com', 26, '1991-07-09', 'D1 Pariwisata', 2011, 'Hindu', 'pria', '166', '70', 'jalan kamboja no 98', 'Denpasar', '089761514123', 'STIKOM-BALI.png'),
+(4, '2017.004', '2017-07-26', '2017', '150020067', 'Nyoman Suni', 'suni@gmail.com', 26, '1991-06-09', 'SMA', 2011, 'Hindu', 'wanita', '166', '40', 'jalan ciungwanara no 90x', 'Gianyar', '081333789876', 'STIKOM-BALI.png'),
+(5, '2017.005', '2017-07-26', '2017', '150020055', 'Karyana Putra', 'putra@gmail.com', 25, '1992-01-09', 'SMA', 2011, 'Hindu', 'pria', '180', '70', 'Jalan tibubeneng no 1x', 'Buleleng', '081234678122', 'STIKOM-BALI.png'),
+(6, '2017.006', '2017-07-26', '2017', '150020022', 'Ni Ketut Martina Dewi', 'martina@gmail.com', 21, '1996-02-01', 'SMA', 2015, 'Hindu', 'wanita', '160', '60', 'Jalan raya batur gg. arjuna no 5', 'Bangli', '083114567098', 'STIKOM-BALI.png'),
+(7, '2017.007', '2017-07-26', '2017', '150010001', 'Dendra Setiawan', 'setiawan@gmail.com', 25, '1992-07-09', 'SMA', 2012, 'Hindu', 'pria', '189', '76', 'jalan raya jembrana', 'Negara', '081234786151', 'STIKOM-BALI.png'),
+(8, '2017.008', '2017-07-26', '2017', '1500110087', 'Ni Kadek Widiantari', 'widi@gmail.com', 20, '1997-04-21', 'SMA', 2015, 'Hindu', 'wanita', '160', '65', 'Jalan raya Kusamba', 'Klungkung', '083114656610', 'STIKOM-BALI.png'),
+(9, '2017.009', '2017-07-26', '2017', '150020091', 'Ni Komang Juliana', 'juli@gmail.com', 20, '1997-02-08', 'SMA', 2015, 'Hindu', 'wanita', '155', '40', 'Jalan Raya batukaru no 99d', 'Tabanan', '092123567123', 'STIKOM-BALI.png'),
+(10, '2017.010', '2017-07-26', '2017', '1500200076', 'Ni Kadek Sumiani', 'ani@gmail.com', 24, '1992-09-11', 'SMK Pariwisata', 2013, 'Hindu', 'wanita', '150', '45', 'Jalan Raya Tulikup', 'Badung', '083112556778', 'STIKOM-BALI.png'),
+(11, '2018.011', '2018-07-26', '2018', '150020007', 'Ni Made Wahyu Cahyani', 'cahyani@gmail.com', 21, '1997-05-03', 'SMA', 2015, 'Hindu', 'wanita', '155', '40', 'Br.Gumicik, Ketewel', 'Gianyar', '084114887626', 'wahyu1.jpg'),
+(12, '2018.012', '2018-07-26', '2018', '15003016', 'I Gede Pradipta Adi Nugraha', 'dipta@gmail.com', 21, '1997-04-03', 'SMA', 2015, 'Hindu', 'pria', '188', '70', 'Jalan raya batubulan', 'Gianyar', '087861862863', 'ceritamotivasi-pusing11.jpg');
 
 -- --------------------------------------------------------
 
@@ -131,7 +148,7 @@ CREATE TABLE `soal` (
 --
 
 INSERT INTO `soal` (`id_soal`, `soal`, `a`, `b`, `c`, `d`, `knc_jawaban`, `aktif`) VALUES
-(1, 'The last sentence he wrote on his letter was that she sent .... regards to all his friends and colleagues.', 'wells', 'big', 'good', 'warm', 'd', 'Y'),
+(1, 'The last sentence he wrote on his letter was that she sent .... regards to all his friends and colleagues.', 'wells', 'big', 'good', 'warms', 'd', 'Y'),
 (2, ' I and my friends ..... in the library. We read some books', 'am', 'is', 'have', 'are', 'd', 'Y'),
 (3, 'She ..... not work because she has the flu', 'is', 'does', 'do', 'be', 'b', 'Y'),
 (4, 'Alina .... song every night.', 'sings', 'sing', 'is', 'does', 'a', 'Y'),
@@ -215,9 +232,9 @@ INSERT INTO `soal` (`id_soal`, `soal`, `a`, `b`, `c`, `d`, `knc_jawaban`, `aktif
 
 CREATE TABLE `tes` (
   `id_tes` int(11) NOT NULL,
-  `id_peserta` int(11) DEFAULT NULL,
-  `id_hasil_tes` int(11) DEFAULT NULL,
-  `id_soal` varchar(300) DEFAULT NULL,
+  `id_peserta` int(11) NOT NULL,
+  `id_hasil_tes` int(11) NOT NULL,
+  `id_soal` varchar(500) NOT NULL,
   `pilihan` varchar(300) DEFAULT NULL,
   `benar` varchar(100) DEFAULT NULL,
   `salah` varchar(100) DEFAULT NULL,
@@ -229,7 +246,17 @@ CREATE TABLE `tes` (
 --
 
 INSERT INTO `tes` (`id_tes`, `id_peserta`, `id_hasil_tes`, `id_soal`, `pilihan`, `benar`, `salah`, `kosong`) VALUES
-(1, 1, 1, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'A,C,B,D,A,A,D,D,B,D,A,B,A,D,A,B,D,A,A,B,A,D,A,A,B,A,D,A,B,A,D,A,A,B,A,A,D,A,A,B,A,D,A,A,B,A,A,A,D,A', '9', '41', '0');
+(3, 3, 3, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'A,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,C,B,B,B,B,B,C,B,C,B,B,B,B,B,B,B,B,B,B,B,C,B', '13', '34', '3'),
+(4, 4, 4, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'A,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,D,B,B,B,C,B,D,B,C,B,D,C,B,C,B,B,B,B,B,B,B,B,B,A,A,D,D', '14', '35', '1'),
+(5, 5, 5, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'B,B,B,B,C,B,B,B,C,B,B,B,B,C,B,B,B,B,B,B,B,C,B,B,B,B,B,B,B,B,B,B,C,C,B,B,B,B,C,B,B,B,C,B,C,B,B,B,B,B', '14', '36', '0'),
+(6, 6, 6, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'B,B,B,C,B,B,B,C,B,B,C,B,B,B,C,B,B,D,C,B,D,C,C,C,C,D,C,D,B,C,D,C,C,C,C,D,C,C,C,C,C,B,C,B,A,C,C,C', '7', '41', '2'),
+(7, 7, 7, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'B,B,B,B,B,B,C,B,C,C,C,C,C,C,C,C,C,C,B,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,B,B,C,C,C,B,C,C,B,C,C,A', '9', '40', '1'),
+(8, 8, 8, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'C,B,B,B,C,B,B,B,C,B,B,B,B,B,C,B,B,B,B,B,B,B,C,B,B,B,C,B,B,B,B,B,B,B,B,B,C,B,B,B,B,B,B', '14', '29', '7'),
+(11, 9, 11, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'D,D,B,A,B,C,D,D,A,B,D,C,C,D,B,D,C,B,A,C,C,D,C,D,D,B,B,D,C,D,D,B,B,B,D,B,A,A,B,D,B,B,D,D,B,D,B,B,B', '49', '0', '1'),
+(12, 10, 12, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'A,B,B,B,C,B,B,B,C,B,D,B,C,B,C,B,B,B,B,C,B,B,C,B,C,B,C,C,B,B,C,B,B,C,B,C,C,B,B,B,B,B,B,C,C,B,B,B', '13', '35', '2'),
+(13, 11, 13, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'C,B,B,B,B,B,B,B,C,B,B,B,B,B,B,C,B,B,C,B,B,B,B,C,B,C,B,B,B,B,B,C,B,B,B,B,B,C,C,C,C,B,B,B,B,C,B', '14', '33', '3'),
+(14, 12, 14, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'B', '0', '1', '49'),
+(17, 12, 17, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', '', '0', '0', '50');
 
 -- --------------------------------------------------------
 
@@ -263,15 +290,14 @@ INSERT INTO `users` (`id_users`, `nama`, `username`, `email`, `password`, `hak_a
 -- Indexes for table `hasil_tes`
 --
 ALTER TABLE `hasil_tes`
-  ADD PRIMARY KEY (`id_hasil_tes`),
-  ADD UNIQUE KEY `id_peserta` (`id_peserta`);
+  ADD PRIMARY KEY (`id_hasil_tes`);
 
 --
 -- Indexes for table `jurusan`
 --
 ALTER TABLE `jurusan`
   ADD PRIMARY KEY (`id_jurusan`),
-  ADD UNIQUE KEY `id_peserta` (`id_peserta`);
+  ADD KEY `fk_id_peserta_jurusan` (`id_peserta`);
 
 --
 -- Indexes for table `peserta`
@@ -289,10 +315,7 @@ ALTER TABLE `soal`
 -- Indexes for table `tes`
 --
 ALTER TABLE `tes`
-  ADD PRIMARY KEY (`id_tes`),
-  ADD UNIQUE KEY `id_peserta` (`id_peserta`),
-  ADD UNIQUE KEY `id_soal` (`id_soal`),
-  ADD UNIQUE KEY `id_hasil_tes` (`id_hasil_tes`);
+  ADD PRIMARY KEY (`id_tes`);
 
 --
 -- Indexes for table `users`
@@ -308,38 +331,41 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `hasil_tes`
 --
 ALTER TABLE `hasil_tes`
-  MODIFY `id_hasil_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id_hasil_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `jurusan`
 --
 ALTER TABLE `jurusan`
-  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `peserta`
 --
 ALTER TABLE `peserta`
-  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `soal`
 --
 ALTER TABLE `soal`
   MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
-
 --
 -- AUTO_INCREMENT for table `tes`
 --
 ALTER TABLE `tes`
-  MODIFY `id_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+  MODIFY `id_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `jurusan`
+--
+ALTER TABLE `jurusan`
+  ADD CONSTRAINT `fk_id_peserta_jurusan` FOREIGN KEY (`id_peserta`) REFERENCES `jurusan` (`id_jurusan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
