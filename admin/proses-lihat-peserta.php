@@ -17,10 +17,6 @@ include "kiri.php";
       <h1>
         Data Peserta
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Data Pendaftaran</li>
-      </ol>
     </section>
 
     <!-- Main content -->

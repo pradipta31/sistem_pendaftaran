@@ -40,7 +40,7 @@
      <td><center>
      <a href="proses-lihat-peserta.php?id_peserta='.$row["id_peserta"].'"><i class="fa fa-eye"></i></a>
      <a href="form-edit-peserta.php?id_peserta='.$row["id_peserta"].'"><i class="fa fa-edit"></i></a>
-     <a href="='.$row["id_peserta"].'" onclick = "return confirm(/Yakin Ingin hapus data ini/)"><i class="fa fa-trash"></i></a>
+     <a href="hapus-peserta.php?id_peserta='.$row["id_peserta"].'" onclick = "return confirm(/Yakin Ingin hapus data ini/)"><i class="fa fa-trash"></i></a>
      <a href="print-peserta.php?id_peserta='.$row["id_peserta"].'"><i class="fa fa-print"></i></a>
     </tr></center>
     ';
