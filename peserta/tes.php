@@ -55,7 +55,7 @@
                   <form class="form-group" action="jawab.php" method="post" id="formSoal" name="formSoal">
                 <?php
                   include 'koneksi.php';
-                  $query = mysqli_query($koneksi,"SELECT * FROM soal WHERE aktif='Y' ORDER BY id_soal, id_soal DESC LIMIT 50");
+                  $query = mysqli_query($koneksi,"SELECT * FROM soal WHERE aktif='Y' ORDER BY RAND(), id_soal, id_soal DESC LIMIT 50");
                   $jumlah = mysqli_num_rows($query);
                   $urut = 0;
                   while ($row = mysqli_fetch_array($query)) {

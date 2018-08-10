@@ -55,7 +55,7 @@ include "kiri.php";
                   </form>
                 </div>
               </div>
-              <canvas id="chart" height="100px"> </canvas>
+              <canvas id="chart" height="101px"> </canvas>
               <br>
               <div class="text-center">
               </div>
