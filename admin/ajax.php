@@ -32,7 +32,11 @@
      $date = $row['tgl_pendaftaran'];
      $date = strftime("%Y", strtotime($date));
    }
-   $output .='<a href="print-semua-peserta.php?tgl_pendaftaran='.$date.'" class="btn btn-primary">Cetak Data Peserta</a>';
+   if (!$row) {
+     $output .='<a href="print-semua-peserta.php?tgl_pendaftaran" class="btn btn-primary">Cetak Data Peserta</a>';
+   }else{
+     $output .='<a href="print-satu-peserta.php?tgl_pendaftaran='.$date.'" class="btn btn-primary">Cetak Data Peserta</a>';
+   }
   }
   else
   {

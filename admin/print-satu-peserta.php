@@ -17,9 +17,10 @@
       <th><center>Nama</center></th>
     </tr>
     <?php
+    $tgl = $_GET['tgl_pendaftaran'];
       include "koneksi.php";
       $no = 1;
-      $query = mysqli_query($koneksi, "SELECT * FROM peserta");
+      $query = mysqli_query($koneksi, "SELECT * FROM peserta WHERE YEAR(tgl_pendaftaran)='$tgl'");
       while ($result = mysqli_fetch_assoc($query)) {
     ?>
           <tr>
