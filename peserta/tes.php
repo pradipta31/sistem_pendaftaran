@@ -127,7 +127,11 @@
       ?>
 
       <script>
+<<<<<<< HEAD
       var seconds = 2400; // 3600 detik / 60 menit
+=======
+      var seconds = 3600; // 3600 detik / 60 menit
+>>>>>>> 9535612a8fd160f4415615e9be27356aadd1b3f6
       var form = document.getElementById('formSoal'); // mengambil id dari form
         function secondPassed() { // membuat function secondPassed
             var minutes = Math.round((seconds - 30)/60), // mengembalikan bilangan bulat kebilangan bulat terdekat
