@@ -33,6 +33,8 @@
         <div class="box-body">
           <div class="row">
             <div class="col-md-6">
+            <br>
+            <br>
               <?php
               $benar = 0;
               $salah = 0;
@@ -42,9 +44,9 @@
               $salah = $row['salah'];
               $kosong = $row['kosong'];
               $nilai = $benar*2;
-              $q = mysqli_query($koneksi,"SELECT *,LEFT(pilihan,49) pilihan FROM tes WHERE id_hasil_tes = '$id'");
+              $q = mysqli_query($koneksi,"SELECT pilihan,LEFT(pilihan,49) pilihan FROM tes WHERE id_hasil_tes = '$id'");
               $a = mysqli_fetch_assoc($q);
-              $q1 = mysqli_query($koneksi,"SELECT *,substr(pilihan, 51,98) pilihan FROM tes WHERE id_hasil_tes = '$id'");
+              $q1 = mysqli_query($koneksi,"SELECT pilihan,substr(pilihan, 51,98) pilihan FROM tes WHERE id_hasil_tes = '$id'");
               $b = mysqli_fetch_assoc($q1);
               $pilihan = $a['pilihan'];
               $pilihan1 = $b['pilihan'];
@@ -69,11 +71,10 @@
                   '.$no1++.'.
                 ';
                 echo
-                ''.$key1.'</br>';
+                '<a href="lihat-soal.php?id_soal='.$id_soal.'">'.$key1.'</a></br>';
               }
               echo "</div>";
               ?>
-
             </div>
           </div>
           <p>

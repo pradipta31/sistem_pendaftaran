@@ -17,10 +17,14 @@
       <th><center>Nama</center></th>
     </tr>
     <?php
-    $tgl = $_GET['tgl_pendaftaran'];
+    $tahun = !empty($_GET['tgl_pendaftaran']) ? $_GET['tgl_pendaftaran'] : null;
+    $qDataTable = "SELECT * FROM peserta ORDER BY id_peserta DESC";
+    if ($tahun != null) {
+      $qDataTable = "SELECT * FROM peserta WHERE YEAR(tgl_pendaftaran)='$tahun' ORDER BY id_peserta DESC";
+    }
   include "koneksi.php";
   $no = 1;
-  $query = mysqli_query($koneksi, "SELECT * FROM peserta WHERE YEAR(tgl_pendaftaran)='$tgl'");
+  $query = mysqli_query($koneksi, $qDataTable);
   while ($result = mysqli_fetch_assoc($query)) {
   ?>
           <tr>
