@@ -53,7 +53,7 @@ include 'koneksi.php';
         $jumlah_soal=mysqli_num_rows($result);
         $score = $benar*2;
 
-        session_start();//
+        session_start();
 
         $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
         $sql = mysqli_query($koneksi, "SELECT * FROM peserta WHERE nomor_peserta = '$nomor'");
@@ -76,17 +76,13 @@ include 'koneksi.php';
 
             $query1 = "INSERT INTO tes (id_peserta,id_hasil_tes,id_soal,pilihan,benar,salah,kosong) VALUES ('$id_peserta','$id_h','$implode_id_soal','$implode_pilihan','$benar','$salah','$kosong')";
             $syntax1 = mysqli_query($koneksi,$query1);
-            // echo "<script>alert('Jawaban anda berhasil disimpan!');
-            //   window.location.href='profil.php';
-            // </script>";
+            echo "<script>alert('Jawaban anda berhasil disimpan! Silahkan menunggu informasi pelaksanaan tes wawancara melalui email!');
+              window.location.href='profil.php';
+            </script>";
             echo "Jawaban berhasil disimpan";
           }else{
             echo "Gagal Insert Data";
           }
-        }else{
-          // echo "<script>alert('Anda telah melakukan tes sebelumnya!');
-          //   window.location.href='profil.php';
-          // </script>";
         }
 
 

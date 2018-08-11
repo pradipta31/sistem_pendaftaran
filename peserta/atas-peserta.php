@@ -24,7 +24,7 @@
 	<link id="bodybg" href="bodybg/bg1.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript">
   function myFunction() {
-   alert("Anda sudah melakukan Tes Online sebelumnya ! ");
+   alert("Anda sudah melakukan Tes Online sebelumnya !");
   }
   </script>
 </head>

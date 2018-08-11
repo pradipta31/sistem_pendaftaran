@@ -57,13 +57,12 @@ include "kiri.php";
                   </form>
                 </div>
               </div>
-              <canvas id="chart" height="100px">
-               </canvas>
+              <canvas id="chart" height="115px"></canvas>
+              <br>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
