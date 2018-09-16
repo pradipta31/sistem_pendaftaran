@@ -1,5 +1,5 @@
 <?php
-  $url    = 'http://localhost/sistem_informasi_eksekutif';
+  $url    = 'http://localhost:8080/sistem_informasi_eksekutif';
   $dbhost = 'localhost';
   $dbuser = 'root';
   $dbpass = '';

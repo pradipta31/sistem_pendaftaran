@@ -70,8 +70,8 @@
                 '
                   '.$no1++.'.
                 ';
-                echo
-                '<a href="lihat-soal.php?id_soal='.$id_soal.'">'.$key1.'</a></br>';
+                echo'
+                '.$key1.'</br>';
               }
               echo "</div>";
               ?>

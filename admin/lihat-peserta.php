@@ -59,8 +59,8 @@ include "kiri.php";
                 <tr>
                  <th><center>No</th>
                  <th><center>Nomor Peserta</th></center>
-                 <th><center>Nama Peserta</th></center>
-                 <th><center>tgl_pendaftaran</th></center>
+                 <th><center>Tanggal Pendaftaran</th></center>
+                <th><center>Nama Peserta</th></center>
                  <th><center>Opsi</th></center>
                 </tr>
                </thead>
@@ -70,8 +70,8 @@ include "kiri.php";
                    <tr>
                      <td><center><?php echo $no++; ?></center></td>
                      <td><center><?php echo $hasil['nomor_peserta']; ?></center></td>
-                     <td><center><?php echo $hasil['nama']; ?></center></td>
                      <td><center><?php echo $hasil['tgl_pendaftaran']; ?></center></td>
+                     <td><center><?php echo $hasil['nama']; ?></center></td>
                      <td>
                        <center>
                        <a href="proses-lihat-peserta.php?id_peserta=<?= $hasil['id_peserta'] ?>"><i class="fa fa-eye"></i></a>

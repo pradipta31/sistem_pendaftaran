@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2018 at 06:40 AM
+-- Generation Time: Aug 16, 2018 at 05:12 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -51,8 +51,9 @@ INSERT INTO `hasil_tes` (`id_hasil_tes`, `id_peserta`, `nomor_peserta`, `nama`, 
 (8, 8, '2017.008', 'Ni Kadek Widiantari', '2017', '28', '90', '59', 'Tidak Lulus'),
 (11, 9, '2017.009', 'Ni Komang Juliana', '2017', '98', '87', '92.5', 'Lulus'),
 (12, 10, '2017.010', 'Ni Kadek Sumiani', '2017', '26', '80', '53', 'Tidak Lulus'),
-(13, 11, '2018.011', 'Ni Made Wahyu Cahyani', '2018', '28', '46', '37', 'Tidak Lulus'),
-(17, 12, '2018.012', 'I Gede Pradipta Adi Nugraha', '2018', '0', '90', '45', 'Tidak Lulus');
+(13, 11, '2018.011', 'Ni Made Wahyu Cahyani', '2018', '28', '50', '39', 'Tidak Lulus'),
+(18, 14, '2018.013', 'Ni Putu Rita Cahyani', '2018', '34', '90', '62', 'Tidak Lulus'),
+(19, 15, '2018.014', 'Ni Made Kusuma Darni', '2018', '38', '90', '64', 'Tidak Lulus');
 
 -- --------------------------------------------------------
 
@@ -79,8 +80,10 @@ INSERT INTO `jurusan` (`id_jurusan`, `id_peserta`, `jurusan`) VALUES
 (8, 8, 'Tata Hidangan'),
 (9, 9, 'Tata Graha'),
 (10, 10, 'Tata Graha'),
-(11, 11, 'Tata Graha'),
-(12, 12, 'Tata Boga');
+(11, 11, 'Tata Hidangan'),
+(13, 13, 'Tata Hidangan'),
+(14, 14, 'Tata Boga'),
+(15, 15, 'Tata Hidangan');
 
 -- --------------------------------------------------------
 
@@ -124,7 +127,9 @@ INSERT INTO `peserta` (`id_peserta`, `nomor_peserta`, `tgl_pendaftaran`, `tahun`
 (9, '2017.009', '2017-07-26', '2017', '150020091', 'Ni Komang Juliana', 'juli@gmail.com', 20, '1997-02-08', 'SMA', 2015, 'Hindu', 'wanita', '155', '40', 'Jalan Raya batukaru no 99d', 'Tabanan', '092123567123', 'STIKOM-BALI.png'),
 (10, '2017.010', '2017-07-26', '2017', '1500200076', 'Ni Kadek Sumiani', 'ani@gmail.com', 24, '1992-09-11', 'SMK Pariwisata', 2013, 'Hindu', 'wanita', '150', '45', 'Jalan Raya Tulikup', 'Badung', '083112556778', 'STIKOM-BALI.png'),
 (11, '2018.011', '2018-07-26', '2018', '150020007', 'Ni Made Wahyu Cahyani', 'cahyani@gmail.com', 21, '1997-05-03', 'SMA', 2015, 'Hindu', 'wanita', '155', '40', 'Br.Gumicik, Ketewel', 'Gianyar', '084114887626', 'wahyu1.jpg'),
-(12, '2018.012', '2018-07-26', '2018', '15003016', 'I Gede Pradipta Adi Nugraha', 'dipta@gmail.com', 21, '1997-04-03', 'SMA', 2015, 'Hindu', 'pria', '188', '70', 'Jalan raya batubulan', 'Gianyar', '087861862863', 'ceritamotivasi-pusing11.jpg');
+(13, '2018.012', '2018-08-10', '2018', '150020009', 'Ni Komang Sinta', 'sinta@gmail.com', 26, '1992-05-03', 'SMU', 2012, 'Hindu', 'wanita', '155', '60', 'Jalan Noja no 6', 'Denpasar', '089712098098', 'STIKOM-BALI.png'),
+(14, '2018.013', '2018-08-10', '2018', '150020034', 'Ni Putu Rita Cahyani', 'rithacahyani32@gmail.com', 20, '1997-10-28', 'SMA', 2015, 'Hindu', 'wanita', '155', '43', 'bangli', 'Bangli', '082247079558', 'STIKOM-BALI.png'),
+(15, '2018.014', '2018-08-10', '2018', '150020011', 'Ni Made Kusuma Darni', 'darni@gmail.com', 26, '1991-09-08', 'SMK', 2011, 'Hindu', 'wanita', '155', '60', 'Jalan raya batubulan', 'Denpasar', '089654123671', 'STIKOM-BALI.png');
 
 -- --------------------------------------------------------
 
@@ -222,7 +227,8 @@ INSERT INTO `soal` (`id_soal`, `soal`, `a`, `b`, `c`, `d`, `knc_jawaban`, `aktif
 (72, 'New products .... in the electronic exhibition in Jakarta Expo Center a month ago.', 'display', 'displaying', 'were displayed', 'is displayed', 'c', 'Y'),
 (73, 'Aming is smart and diligent and ..... she is nice to all her classmate.', 'howerer', 'be sides', 'nevertheless', 'therefero', 'b', 'Y'),
 (74, 'Jusuf Kalla who comes from South Sulawesi is one of the ..... people in eastern Indonesia.', 'more richer', 'richer', 'richest', 'most rich', 'c', 'Y'),
-(75, 'I don\'t know why they prefer .... in Makasar', 'live', 'living', 'lived', 'to living', 'b', 'Y');
+(75, 'I don\'t know why they prefer .... in Makasar', 'live', 'living', 'lived', 'to living', 'b', 'Y'),
+(76, 'Alina .... song every morning', 'in', 'at', 'araund', 'on', 'a', 'Y');
 
 -- --------------------------------------------------------
 
@@ -255,8 +261,8 @@ INSERT INTO `tes` (`id_tes`, `id_peserta`, `id_hasil_tes`, `id_soal`, `pilihan`,
 (11, 9, 11, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'D,D,B,A,B,C,D,D,A,B,D,C,C,D,B,D,C,B,A,C,C,D,C,D,D,B,B,D,C,D,D,B,B,B,D,B,A,A,B,D,B,B,D,D,B,D,B,B,B', '49', '0', '1'),
 (12, 10, 12, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'A,B,B,B,C,B,B,B,C,B,D,B,C,B,C,B,B,B,B,C,B,B,C,B,C,B,C,C,B,B,C,B,B,C,B,C,C,B,B,B,B,B,B,C,C,B,B,B', '13', '35', '2'),
 (13, 11, 13, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'C,B,B,B,B,B,B,B,C,B,B,B,B,B,B,C,B,B,C,B,B,B,B,C,B,C,B,B,B,B,B,C,B,B,B,B,B,C,C,C,C,B,B,B,B,C,B', '14', '33', '3'),
-(14, 12, 14, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', 'B', '0', '1', '49'),
-(17, 12, 17, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50', '', '0', '0', '50');
+(19, 14, 18, '7,1,40,24,42,67,21,29,34,5,60,39,73,61,75,28,18,59,33,19,44,57,52,66,70,36,72,8,62,64,68,54,13,3,50,43,2,26,65,63,25,48,12,51,20,17,55,38,31,56', 'B,A,C,B,B,C,C,A,C,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B', '17', '32', '1'),
+(20, 15, 19, '4,65,11,30,8,60,74,55,34,15,21,39,27,72,69,24,45,14,12,28,23,46,48,25,18,10,22,38,59,42,1,61,33,35,63,5,68,57,64,52,62,9,19,58,56,49,3,36,7,40', 'A,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B', '19', '30', '1');
 
 -- --------------------------------------------------------
 
@@ -331,27 +337,27 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `hasil_tes`
 --
 ALTER TABLE `hasil_tes`
-  MODIFY `id_hasil_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_hasil_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `jurusan`
 --
 ALTER TABLE `jurusan`
-  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `peserta`
 --
 ALTER TABLE `peserta`
-  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `soal`
 --
 ALTER TABLE `soal`
-  MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT for table `tes`
 --
 ALTER TABLE `tes`
-  MODIFY `id_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `users`
 --

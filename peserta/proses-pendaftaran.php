@@ -32,6 +32,7 @@
                               $pendidikan = $_POST['pendidikan']; //mengambil data pendidikan
                               $tahun_lulus = $_POST['tahun_lulus']; //mengambil data tahun lulus
                               $agama = $_POST['agama']; //mengambil data agama
+                              $jenis_kelamin = '';
                               $jenis_kelamin = $_POST['jenis_kelamin']; //mengambil data jenis kelamin
                               $tinggi_badan = $_POST['tinggi_badan']; //mengambil data tinggi badan
                               $berat_badan = $_POST['berat_badan']; //mengambil data berat badan
@@ -57,7 +58,24 @@
                                   echo "<script>alert('Umur Anda tidak dapat terdaftar karena batas 30 tahun!');
                                   window.location.href='index.php';
                                 </script>";
-                              }elseif(!empty($lokasi_file)){
+                              }
+                              elseif ($jenis_kelamin == 'pria' AND $tinggi_badan < 165) {
+                                echo "<script>alert('Tinggi Badan Anda tidak cukup untuk melakukan pendaftaran!');
+                                window.location.href='index.php';
+                              </script>";
+                            }elseif ($jenis_kelamin == 'wanita' AND $tinggi_badan < 155) {
+                              echo "<script>alert('Tinggi Badan Anda tidak cukup untuk melakukan pendaftaran!');
+                              window.location.href='index.php';
+                            </script>";
+                          }elseif ($jenis_kelamin == 'wanita' AND $berat_badan < 45) {
+                            echo "<script>alert('Berat Badan Anda tidak cukup untuk melakukan pendaftaran!');
+                            window.location.href='index.php';
+                          </script>";
+                        }elseif ($jenis_kelamin == 'pria' AND $berat_badan < 58) {
+                          echo "<script>alert('Berat Badan Anda tidak cukup untuk melakukan pendaftaran!');
+                          window.location.href='index.php';
+                        </script>";
+                        }elseif(!empty($lokasi_file)){
                                   move_uploaded_file($lokasi_file,$direktori);
                                   $query1 ="insert into peserta (nomor_peserta, tgl_pendaftaran, tahun, nik, nama, email, umur, tgl_lahir, pendidikan, tahun_lulus, agama, jenis_kelamin, tinggi_badan,berat_badan,alamat,kabupaten,no_telp,file)
                                   VALUES ('$nomor_peserta','$tgl_pendaftaran','$d','$nik', '$nama','$email', '$umur', '$tgl_lahir', '$pendidikan', '$tahun_lulus', '$agama', '$jenis_kelamin', '$tinggi_badan', '$berat_badan', '$alamat_rumah','$kabupaten', '$no_telp','$nama_file')"; //menambah data

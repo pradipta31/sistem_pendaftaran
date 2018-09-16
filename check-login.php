@@ -27,7 +27,6 @@ if( strlen($username) < 2 )
         $_SESSION['nama_user'] = $row['nama'];
         $_SESSION['username_user'] = $row['username'];
         $_SESSION['akses'] = $row['hak_akses'];
-
         if($row['hak_akses'] == 'admin'){
             $_SESSION['session_admin']= 'TRUE';
         }elseif($row['hak_akses'] == 'kepalakantor') {
@@ -35,13 +34,10 @@ if( strlen($username) < 2 )
         }
         header('location:'.$url.'/'.$_SESSION['akses'].'/');
         exit();
-
     }else{
         $error = 'Login gagal';
     }
-
 }
-
 if( !empty($error) )
 {
     $_SESSION['error'] = $error;
