@@ -56,18 +56,21 @@ include 'koneksi.php';
 
         $nomor = ( isset($_SESSION['nomor']) ) ? $_SESSION['nomor'] : '';
         $nama = ( isset($_SESSION['nama_user']) ) ? $_SESSION['nama_user'] : '';
+        $sql = mysqli_query($koneksi, "SELECT * FROM peserta WHERE nomor_peserta = '$nomor'");
+        $fetch = mysqli_fetch_assoc($sql);
+        $tanggal = $fetch['tgl_pendaftaran'];
+        $tahun = date("Y",strtotime($tanggal));
 
         $cek = mysqli_query($koneksi, "SELECT * FROM hasil_tes WHERE nomor_peserta='$nomor'");
         if (mysqli_num_rows($cek) == 0) {
-          $query = "INSERT INTO hasil_tes (nomor_peserta,nama,nilai_tulis) VALUES ('$nomor','$nama','$score')";
+          $query = "INSERT INTO hasil_tes (nomor_peserta,nama,tahun,nilai_tulis) VALUES ('$nomor','$nama','$tahun','$score')";
           $syntax = mysqli_query($koneksi,$query);
 
-          session_destroy();
 
           echo "<script>alert('Jawaban anda berhasil disimpan!');
-            window.location.href='index.php';
+            window.location.href='profil.php';
           </script>";
-          // echo "Jawaban berhasil disimpan";
+          echo "Jawaban berhasil disimpan";
         }else{
           echo "<script>alert('Anda telah melakukan tes sebelumnya!');
             window.location.href='profil.php';
