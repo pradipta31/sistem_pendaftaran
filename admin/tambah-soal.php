@@ -5,16 +5,13 @@ include "kiri.php";
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Soal
+        Tambah Soal Tes
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Tambah Hasil Tes</li>
-      </ol>
     </section>
+    <!-- Content Header (Page header) -->
+
 
     <!-- Main content -->
     <section class="content">

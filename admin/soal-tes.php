@@ -4,22 +4,21 @@ include "kiri.php";
 
 
 ?>
-  <div class="content-wrapper">
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>
+      Soal Tes
+    </h1>
+  </section>
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-
-            <div class="box-header with-border">
-              <ul class="nav nav-tabs">
-
-              <h3 class="box-title">Data Soal Tes Peserta Online</h3>
-            </div>
             <div class="btn btn-lg">
               <a href="tambah-soal.php" class="btn btn-primary">Tambah Soal</a>
             </div>
             <div class="btn btn-lg">
-              <a href="print-soal.php" class="btn btn-primary">Print Soal</a>
+              <a href="print-soal.php" class="btn btn-primary">Cetak Soal</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

@@ -14,19 +14,14 @@ include "kiri.php";
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Peserta
+        Edit Hasil Tes
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Data Peserta</li>
-      </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title"></h3>
         </div>
           <form action="proses-edit-hasil.php" method="post">
             <div class="box-body">
